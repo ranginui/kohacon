@@ -1,0 +1,41 @@
+application: lollysite
+version: 1
+runtime: python
+api_version: 1
+default_expiration: '1d'
+
+handlers:
+- url: /admin/remote
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /admin/.*
+  script: admin.py
+  login: admin
+
+- upload: theme/default/s/.*   # all the files to upload
+  url: /s/([^/]+)/(.*)         # the paths this handler will serve
+  static_files: theme/\1/s/\2  # where the files actually live (on the server)
+
+- url: /test/.*
+  script: test.py
+  login: admin
+
+- url: /.*
+  script: lollysite.py
+  login: required
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- store/.*
+- Makefile
+- README
+
