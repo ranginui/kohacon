@@ -1,0 +1,90 @@
+/*** layout ***/
+#wrap {
+    background-color: white;
+}
+
+#header {
+    margin-bottom: 18px;
+    height: 18px;
+    background-color: #ddd;
+}
+
+#footer {
+    margin-top: 18px;
+    height: 18px;
+    background-color: #ddd;
+}
+
+/*** elements ***/
+body {
+    background-color: #eee;
+}
+
+ul ul {
+    margin-bottom: 0;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: black;
+    color: white;
+    padding: 0 8px;
+    vertical-align: top;
+}
+
+textarea {
+    width: 100%;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+/*** generic styles ***/
+.c {
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: right;
+}
+
+.errorlist {
+    color: red;
+}
+
+/*** specific ***/
+
+/* table.edit */
+table.edit {
+    width: 100%;
+}
+
+table.edit th {
+    width: 25%;
+    color: black;
+    background-color: white;
+    text-align: right;
+}
+
+table.edit td {
+    width: 75%;
+}
+
+table.edit ul {
+    margin-bottom: 0;
+}
+
+/* table.list */
+table.list .thin {
+    width: 32px;
+}
+
+/*** ends ***/

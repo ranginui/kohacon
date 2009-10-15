@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+    Design by Free CSS Templates
+    http://www.freecsstemplates.org
+    Released for free under a Creative Commons Attribution 2.5 License
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>{{ content.title|escape }}</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <link href="/s/verticals/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div id="wrapper">
+	  <div id="logo">
+		<h1><a href="/">{{ "Title"|cfg|escape }}</a></h1>
+		<h2>{{ "Sub Title"|cfg|escape }}</h2>
+	  </div>
+
+	  <div id="sidebar">
+		<div id="menu">
+		  <ul>
+            <li class="active"><a href="/">Homepage</a></li>
+            <li><a href="/sites.html">Sites</a></li>
+            <li><a href="/free-software.html">Free Software</a></li>
+            <li><a href="/presentations.html">Presentations</a></li>
+            <li><a href="/woodworking/">WoodWorking</a></li>
+            <li><a href="/recipe/">Recipes</a></li>
+		  </ul>
+		</div>
+        <!-- -#menu- -->
+
+		<div id="sites" class="boxed">
+		  <h2 class="title">Find me at:</h2>
+		  <div class="content">
+			<ul>
+              <li><a href="http://www.github.com/andychilton/">GitHub</a></li>
+              <li><a href="http://ohloh.net/accounts/andychilton">Ohloh</a></li>
+              <li><a href="http://identi.ca/andychilton">Identica</a></li>
+              <li><a href="http://www.flickr.com/photos/andychilton/">Flickr</a></li>
+              <li><a href="http://twitter.com/andychilton">Twitter</a></li>
+              <li><a href="http://www.facebook.com/andychilton">FaceBook</a></li>
+              <li><a href="http://www.linkedin.com/in/achilton">LinkedIn</a></li>
+			</ul>
+		  </div>
+		</div>
+        <!-- -#sites- -->
+
+		<div class="extra">&nbsp;</div>
+	  </div>
+      <!-- -#sidebar- -->
+
+	  <div id="content">
+		<div id="welcome" class="boxed">
+
+    {% block content %}{% endblock %}
+
+		</div>
+	  </div>
+      <!-- -#content- -->
+    </div>
+    <!-- -#wrapper- -->
+
+    <div id="footer">
+	  <p id="legal">
+        &copy; 2009 chilts.org
+        |
+        Created with <a href="#">LollySite</a>
+      </p>
+	  <p id="links">
+        <a href="/privacy-policy.html">Privacy Policy</a>
+        |
+        <a href="/terms-of-use.html">Terms of Use</a>
+        |
+        Original Design: <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.
+      </p>
+    </div>
+    <!-- -#footer- -->
+  </body>
+</html>

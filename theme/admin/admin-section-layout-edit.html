@@ -1,0 +1,23 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if section_layout %}
+<h2>Edit Section Layout</h2>
+{% else %}
+<h2>New Section Layout</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to Section Layout List</a></p>
+
+<form method="POST" action="">
+{% if section_layout %}
+  <input type="hidden" name="key" value="{{ section_layout.key|urlencode }}">
+{% endif %}
+  <table class="edit">
+    {{ form }}
+  </table>
+  <input type="submit" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <meta name="keywords" content="andrew chilton, andy chilton, zaapt, flickr, twitter, perl, postgres, " />
+    <meta name="description" content="" />
+    <link href="/s/admin/reset.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/admin/text.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/admin/960.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/admin/style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+<!-- #wrap -->
+<div id="wrap" class="container_12">
+
+  <!-- #header -->
+  <div id="header" class="grid_12">
+    <div class="float-right">
+      {% if user %}
+      <strong>{{ user.nickname|escape }}</strong>
+      |
+      <a href="{{ url_logout|escape }}">Sign Out</a>
+      {% else %}
+      <a href="{{ url_login|escape }}">Sign In</a>
+      {% endif %}
+    </div>
+    Welcome to <a href="#">Lollysite</a>.
+  </div>
+  <div class="clear"> </div>
+  <!-- /#header -->
+
+  <!-- #menu -->
+  <div id="menu" class="grid_3">
+    <ul>
+      <li>
+        <a href="/admin/property/">Property</a> (<a href="/admin/property/new.html">New</a>)
+      </li>
+      <li>
+        <a href="/admin/section-layout/">Section Layout</a> (<a href="/admin/section-layout/new.html">New</a>)
+      </li>
+      <li>
+        <a href="/admin/section/">Section</a> (<a href="/admin/section/new.html">New</a>)
+      </li>
+      <li>
+        <a href="/admin/page/">Page</a> (<a href="/admin/page/new.html">New</a>)
+      </li>
+    </ul>
+  </div>
+  <!-- /#menu -->
+  <!-- #content -->
+  <div id="content" class="grid_9">
+
+    {% block content %}{% endblock %}
+
+  </div>
+  <!-- /#content -->
+  <div class="clear"> </div>
+
+  <!-- #footer -->
+  <div id="footer" class="grid_12">
+    Footer
+  </div>
+  <div class="clear"> </div>
+  <!-- /#footer -->
+  <div class="clear"> </div>
+
+</div>
+<!-- /#wrap -->
+
+  </body>
+</html>

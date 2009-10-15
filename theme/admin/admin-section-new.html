@@ -1,0 +1,17 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>New Section - {{ title|escape }}</h2>
+
+<form method="POST" action="">
+{% if section %}
+  <input type="hidden" name="key" value="{{ section.key|urlencode }}">
+{% endif %}
+  <table class="edit">
+    {{ form }}
+  </table>
+  <input type="submit" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Section List</h2>
+
+{% if sections.count %}
+
+<p>There are {{ sections.count|escape }} sections.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Path</th>
+      <th>Title</th>
+      <th>Layout</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for section in sections %}
+    <tr>
+      <td>{{ section.path|escape }}</td>
+      <td><a href="edit.html?key={{ section.key|urlencode }}">{{ section.title|escape }}</a></td>
+      <td>{{ section.layout.title|escape }}</td>
+      <td class="c">
+        <a href="del.html?key={{ section.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no sections.</p>
+
+{% endif %}
+
+{% endblock %}
