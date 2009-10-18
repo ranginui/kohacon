@@ -21,6 +21,7 @@ class FormBaseHandler(webbase.WebBase):
             logging.info('form.instance=' + form.instance.__class__.__name__)
         else:
             form = self.form()
+
         # logging.info('Doing get() for ' + self.type() + ' with ' + (str(item.key()) or '[None]'))
         vals = {
             'type' : self.type(),

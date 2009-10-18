@@ -43,6 +43,7 @@ class Section(BaseModel):
     # path := m{ / (a-z[a-z0-9]*/)* }xms # intial / followed by 0 or more sections
     path = db.StringProperty( required=False )
     title = db.StringProperty( required=True )
+    description = db.TextProperty()
     layout = db.ReferenceProperty( SectionLayout, required=True, collection_name='sections' )
     in_sitemap = db.BooleanProperty( required=True, default=False )
     in_site_feed = db.BooleanProperty( required=True, default=False )
@@ -68,11 +69,11 @@ class Node(polymodel.PolyModel):
     updated = db.DateTimeProperty( auto_now=True )
 
     # common properties for every Node
-    section = db.ReferenceProperty( Section, required=True )
+    section = db.ReferenceProperty( Section, required=True, collection_name='nodes' )
     # name := a-z[a-z0-9_-.]*
     name = db.StringProperty( required=True, multiline=False )
     title = db.StringProperty( required=True, multiline=False )
-    label = db.StringListProperty()
+    labels = db.StringListProperty()
 
 # Page
 class Page(Node):

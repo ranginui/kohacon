@@ -9,10 +9,12 @@ import config
 
 ## ----------------------------------------------------------------------------
 
+register = template.create_template_register()
+
+# config.value should never (usually?) raise an exception
 def cfg(title):
     return config.value(title)
 
-register = template.create_template_register()
 register.filter(cfg)
 
 ## ----------------------------------------------------------------------------

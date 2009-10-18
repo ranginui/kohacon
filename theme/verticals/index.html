@@ -1,17 +1,18 @@
-		  <h2>Welcome to Verticals!</h2>
-		  <p><strong>Verticals</strong> is a free template from <a href="http://www.freecsstemplates.org/">Free CSS Templates</a> released under a <a href="http://creativecommons.org/licenses/by/2.5/">Creative Commons Attribution 2.5 License</a>. The photos are from <a href="http://www.pdphoto.org/">PDPhoto.org</a>. You're free to use it for both commercial or personal use. I only ask that you link back to my site in some way. <em>Enjoy :)</em></p>
-		</div>
-		<div id="example" class="boxed">
-		  <h2>Example of Tags</h2>
-		  <p>This is an example of a paragraph followed by a blockquote. In posuere  eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula.  Pellentesque viverra vulputate enim. Aliquam erat volutpat lorem ipsum  dolorem.</p>
-		  <blockquote>
-			<p>&ldquo;Pellentesque tristique ante ut  risus. Quisque dictum. Integer nisl risus, sagittis convallis, rutrum  id, elementum congue, nibh. Suspendisse dictum porta lectus. Donec  placerat odio.&rdquo;</p>
-		  </blockquote>
-		  <h3>Heading Level Three</h3>
-		  <p>This is another example of a paragraph followed by an unordered list. In posuere  eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula.  Pellentesque viverra vulputate enim. Aliquam erat volutpat lorem ipsum  dolorem.</p>
-		  <p>An ordered list example:</p>
-		  <ol>
-			<li>List item number one</li>
-			<li>List item number two</li>
-			<li>List item number thre</li>
-		  </ol>
+{% extends "wrapper.html" %}
+
+{% block content %}
+    {% for node in nodes %}
+
+        <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
+        <p><strong>{{ node.key|escape }}</strong></p>
+
+        {{ node.content }}
+
+        {% for label in node.labels %}
+            <a href="./label:{{ label|urlencode }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
+        {% endfor %}
+
+    {% endfor %}
+{% endblock %}
+
+{% block title %}{{ section.title|escape }} index{% endblock %}

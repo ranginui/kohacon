@@ -47,36 +47,72 @@ class LollySite(webbase.WebBase):
 
         # get _this_ section
         section_query = Section.all().filter('path =', this_path)
-        section = None
-        if section_query.count() > 0:
-            section = section_query.fetch(1)[0]
-
-        logging.info('section.title=' + section.title)
-        logging.info('section.layout=' + section.layout.title)
-
-        # get this stuff from the datastore
-        #content_query = Node.all().filter('name =', this_page).filter('section =', section.key)
-        content_query = Node.all().filter('name =', this_page)
-        #content_query = Node.all().filter('section =', section.key)
-        content = None
-        if content_query.count() > 0:
-            content = content_query.fetch(1)[0]
-
-        # if either the section or the content is None, then return not found
-        if section is None or content is None:
+        if section_query.count() == 0:
             self.error(404)
             return
 
-        logging.info('content.name=' + content.name)
-        logging.info('content.title=' + content.title)
+        section = section_query.fetch(1)[0]
 
-        vals = {
-            #'title'   : content.title,
-            #'content' : content.content,
-            'content' : content,
-            }
+        # get this stuff from the datastore
 
-        self.template( 'content.html', vals, config.value('Theme') );
+        # if either the section or the content is None, then return not found
+        #if section is None or node is None:
+        #    self.error(404)
+        #    return
+
+        # if this is an index, call a different template
+        if this_page == 'index':
+            #nodes_query = Node.all().filter('section =', section.key()).order('-inserted')
+            #nodes = nodes_query.fetch(10)
+
+            nodes = self.latest_nodes(section, 10)
+            vals = {
+                'section' : section,
+                'nodes'   : nodes,
+                }
+            self.template( 'index.html', vals, config.value('Theme') );
+
+        elif this_page == 'rss20' and this_ext == 'xml':
+            nodes = self.latest_nodes(section, 10)
+            vals = {
+                'section' : section,
+                'nodes'   : nodes,
+                }
+            self.template( 'rss20.xml', vals, 'rss' );
+
+        elif this_page == 'sitemapindex' and this_ext == 'xml':
+            sections = Section.all()
+            vals = {
+                'sections' : sections,
+                }
+            self.template( 'sitemapindex.xml', vals, 'sitemaps' );
+
+        elif this_page == 'urlset' and this_ext == 'xml':
+            vals = {
+                'section' : section,
+                'nodes'   : Node.all().filter('section =', section.key())
+                }
+            self.template( 'urlset.xml', vals, 'sitemaps' );
+
+        else:
+            node_query = Node.all().filter('section =', section.key()).filter('name =', this_page)
+            if node_query.count() == 0:
+                self.error(404)
+                return
+            node = node_query.fetch(1)[0]
+            logging.info('node.name=' + node.name)
+            logging.info('node.title=' + node.title)
+            vals = {
+                'section' : section,
+                'node'    : node,
+                }
+            self.template( 'page.html', vals, config.value('Theme') );
+
+    def latest_nodes(self, section, limit):
+        logging.info('Getting latest nodes for ' + section.path)
+        nodes_query = Node.all().filter('section =', section.key()).order('-inserted')
+        nodes = nodes_query.fetch(limit)
+        return nodes
 
 ## ----------------------------------------------------------------------------
 

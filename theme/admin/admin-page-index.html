@@ -12,8 +12,8 @@
   <thead>
     <tr>
       <th>Section</th>
+      <th>Name</th>
       <th>Title</th>
-      <th>Description</th>
       <th class="thin">Delete</th>
     </tr>
   </thead>
@@ -24,10 +24,10 @@
         {{ page.section.path|escape }}
       </td>
       <td>
-        <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>
+        {{ page.name|escape }}
       </td>
       <td>
-        {{ page.name|escape }}
+        <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>
       </td>
       <td class="c">
         <a href="del.html?key={{ page.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>

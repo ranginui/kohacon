@@ -47,7 +47,7 @@ class PageForm(djangoforms.ModelForm):
 
 class List(webbase.WebBase):
     def get(self):
-        pages = Page.all()
+        pages = Page.all().order('-inserted')
         vals = {
             'title' : 'Section Layout List',
             'pages' : pages

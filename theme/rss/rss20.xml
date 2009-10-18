@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:blogChannel="http://backend.userland.com/blogChannelModule">
+
+    <channel>
+        <title>{{ section.title|escape }} - chilts.org</title>
+        <link>http://www.{{ "Naked Domain"|cfg }}/</link>
+        <description>{{ section.description|escape }}</description>
+        <language>en</language>
+        <copyright>Copyright www.{{ "Naked Domain"|cfg }}</copyright>
+        <pubDate>{{ section.updated }}</pubDate>
+        <lastBuildDate>{{ section.updated }}</lastBuildDate>
+
+{% for node in nodes %}
+        <item>
+            <title>{{ node.title|escape }}</title>
+            <link>http://www.{{ "Naked Domain"|cfg }}{{ section.path|escape }}{{ node.name|escape }}.html</link>
+            <description>
+                {{ node.content_html }}
+            </description>
+            <guid isPermaLink="true">http://www.{{ "Naked Domain"|cfg }}{{ section.path|escape }}{{ node.name|escape }}.html</guid>
+            <pubDate>{{ node.updated }}</pubDate>
+        </item>
+{% endfor %}
+
+    </channel>
+</rss>
