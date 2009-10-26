@@ -23,7 +23,6 @@ handlers:
 
 - url: /.*
   script: lollysite.py
-  login: required
 
 skip_files:
 - ^(.*/)?app\.yaml
