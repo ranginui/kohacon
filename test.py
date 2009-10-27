@@ -27,10 +27,37 @@ here.
 
 " Quote here.
 
-!2 The End
+!2 Inline Stuff
+
+Some \\b{bold}.
+
+Some \\i{italics}.
+
+Some \\u{underline}.
+
+Some \\b{bold}, \\i{italics}, \\u{underline} and \\c{code}.
+
+Some \\l{links|http://news.bbc.co.uk/}.
+
+Some \\w{wiki}, \\h{http://www.google.com/} and \\l{more links|http://news.bbc.co.uk/}.
+
+An \\img{image|http://farm4.static.flickr.com/3102/3149653279_fbc303eb67_m.jpg},\\br{}\copy{}chilts.org.
+
+Harder ones like \\b{bold \\i{and italic}}. Or how about \\b{bold, \\i{italic} and \\u{underline}}. And \\b{\\i{\u{all three}}}.
+
+And a \\l{link with \\b{bold}|http://lxer.com/} here.
 
 (Ends)
 """
+
+items = [ 'rst', 'phliky', 'text', 'code' ]
+
+class Home(webapp.RequestHandler):
+    def get(self):
+        self.response.out.write('<ul>')
+        for li in items:
+            self.response.out.write('<li><a href="' + util.esc(li) + '.html">' + util.esc(li) + '</a></li>')
+        self.response.out.write('</ul>')
 
 class Rst(webapp.RequestHandler):
     def get(self):
@@ -56,6 +83,7 @@ class Code(webapp.RequestHandler):
 
 application = webapp.WSGIApplication(
     [
+        ('/test/', Home),
         ('/test/rst.html', Rst),
         ('/test/phliky.html', Phliky),
         ('/test/text.html', Text),

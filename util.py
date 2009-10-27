@@ -9,12 +9,6 @@ import cgi
 
 ## ----------------------------------------------------------------------------
 # local modules
-# from docutils.parsers import rst
-# sys.path.append('/usr/share/pyshared/')
-from docutils.core import publish_string
-
-# /usr/share/pyshared/
-# if os.path.isdir('pythonutils'):
 
 import phliky
 
@@ -34,14 +28,6 @@ def render(text, type):
     logging.info('Doing ' + type);
     if type == 'html':
         return text
-
-    # From: http://www.tele3.cz/jbar/rest/about.html
-    #elif type == 'rst':
-    #    return publish_string(
-    #        source=text,
-    #        settings_overrides={'file_insertion_enabled': 0, 'raw_enabled': 0},
-    #        writer_name='html'
-    #        )
 
     elif type == 'text':
         html = ''
