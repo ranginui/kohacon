@@ -21,6 +21,8 @@ def esc(text):
 
 def text2html(text):
     html = ''
+    # these \r's were doing my head in, so get rid of them
+    text = re.sub('\r', '', text)
     for chunk in text.split('\n\n'):
         html = html + do_chunk(chunk) + '\n'
 
