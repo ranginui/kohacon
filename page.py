@@ -16,7 +16,7 @@ import formbase
 class PageForm(djangoforms.ModelForm):
     class Meta:
         model = Page
-        exclude = ['_class', 'owner', 'editor']
+        exclude = ['_class', 'content_html', 'owner', 'editor']
 
     # override the constructor so we can set some things read only
     # From: http://stackoverflow.com/questions/324477/in-a-django-form-how-to-make-a-field-readonly-or-disabled-so-that-it-cannot-be

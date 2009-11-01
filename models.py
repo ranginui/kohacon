@@ -3,6 +3,10 @@
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 
+# local stuff
+import derivedproperty
+import util
+
 ## ----------------------------------------------------------------------------
 
 # all models should have the following properties:
@@ -77,9 +81,13 @@ class Node(polymodel.PolyModel):
 
 # Page
 class Page(Node):
-    excerpt = db.TextProperty( required=True )
     content = db.TextProperty( required=True )
+    # content_html = DerivedProperty(lambda self: self.name.lower())
     type = db.StringProperty(required=True, choices=set(["text", "phliky", "rst", "html"]))
+
+    @derivedproperty.DerivedProperty
+    def content_html(self):
+        return util.render(self.content, self.type)
 
 # From: http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 # Image

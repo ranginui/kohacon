@@ -4,13 +4,16 @@
     {% for node in nodes %}
 
         <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
-        <p><strong>{{ node.key|escape }}</strong></p>
 
-        {{ node.content }}
+        {{ node.content_html }}
 
+        <p class="updated">Updated: {{ node.updated|escape }}</p>
+        <p>
+            Labels:
         {% for label in node.labels %}
             <a href="./label:{{ label|urlencode }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
         {% endfor %}
+        </p>
 
     {% endfor %}
 {% endblock %}
