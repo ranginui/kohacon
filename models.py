@@ -77,12 +77,11 @@ class Node(polymodel.PolyModel):
     # name := a-z[a-z0-9_-.]*
     name = db.StringProperty( required=True, multiline=False )
     title = db.StringProperty( required=True, multiline=False )
-    labels = db.StringListProperty()
+    label = db.StringListProperty()
 
 # Page
 class Page(Node):
     content = db.TextProperty( required=True )
-    # content_html = DerivedProperty(lambda self: self.name.lower())
     type = db.StringProperty(required=True, choices=set(["text", "phliky", "rst", "html"]))
 
     @derivedproperty.DerivedProperty

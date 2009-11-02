@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>{{ node.title|escape }}</h1>
-    {{ node.content }}
+    {{ node.content_html }}
     {% for label in node.labels %}
         <a href="./label:{{ label|escape }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
     {% endfor %}

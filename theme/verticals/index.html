@@ -1,16 +1,21 @@
 {% extends "wrapper.html" %}
 
 {% block content %}
+    <h1>Entries for label: {{label|escape}}</h1>
+    <p>
+        Found {{nodes.count|escape}} entries.
+    </p>
+
     {% for node in nodes %}
 
-        <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
+        <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
 
         {{ node.content_html }}
 
-        <p class="updated">Updated: {{ node.updated|escape }}</p>
+        <p class="date">Inserted: {{ node.inserted|escape }}</p>
         <p>
             Labels:
-        {% for label in node.labels %}
+        {% for label in node.label %}
             <a href="./label:{{ label|urlencode }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
         {% endfor %}
         </p>

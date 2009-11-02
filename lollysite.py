@@ -4,6 +4,7 @@ import cgi
 import os
 import logging
 import re
+import urllib
 
 # Google specific modules
 from google.appengine.api import users
@@ -17,11 +18,21 @@ from models import Node
 import config
 
 ## ----------------------------------------------------------------------------
+# regexes
+
+parts = re.compile('^(.*/)(([\w\._:-]*)\.(\w+))?$')
+
+label_page = re.compile('^label:(.+)$', re.DOTALL | re.VERBOSE)
+
+## ----------------------------------------------------------------------------
 
 class LollySite(webbase.WebBase):
     def get(self):
         logging.info('Doing path ' + self.request.path)
         logging.info("Theme=" + config.value('Theme'))
+
+        path = urllib.unquote(self.request.path)
+        logging.info('Unquoted path ' + path)
 
         # matches:
         # - (/)
@@ -29,9 +40,13 @@ class LollySite(webbase.WebBase):
         # - (/blog/)(this).(html)
         # - (/something/here/)
         # - (/something/here/)(hello).(html)
-        # - (/software/cil/)(hello).(cil_v1.3.2.tar.gz).(html)
-        parts = re.compile('^(.*/)(([\w\._-]*)\.(\w+))?$')
-        m = parts.match(self.request.path)
+        # - (/software/cil/)(cil_v1.3.2.tar.gz).(html)
+        # - (/software/cil/)(label:this).(html)
+        m = parts.search(path)
+
+        if m is None:
+            self.error(404)
+            return
 
         this_path = m.group(1)
         this_page = m.group(3)
@@ -41,13 +56,15 @@ class LollySite(webbase.WebBase):
             this_page = 'index'
             this_ext = 'html'
 
-        logging.info('path=' + this_path)
-        logging.info('page=' + this_page)
-        logging.info('ext=' + this_ext)
+        logging.info('Page details:')
+        logging.info('- ' + this_path)
+        logging.info('- ' + this_page)
+        logging.info('- ' + this_ext)
 
         # get _this_ section
         section_query = Section.all().filter('path =', this_path)
         if section_query.count() == 0:
+            logging.info('404: This section not found')
             self.error(404)
             return
 
@@ -94,9 +111,22 @@ class LollySite(webbase.WebBase):
                 }
             self.template( 'urlset.xml', vals, 'sitemaps' );
 
+        elif label_page.search(this_page) and this_ext == 'html':
+            m = label_page.search(this_page)
+            label = m.group(1)
+            logging.info('m=' + repr(m))
+            logging.info('Inside a label (%s) page' % label)
+            vals = {
+                'section' : section,
+                'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label),
+                'label'   : label
+                }
+            self.template( 'index.html', vals, config.value('Theme') );
+
         else:
             node_query = Node.all().filter('section =', section.key()).filter('name =', this_page)
             if node_query.count() == 0:
+                logging.info('404: no nodes in this section (%s)' % section.path)
                 self.error(404)
                 return
             node = node_query.fetch(1)[0]
