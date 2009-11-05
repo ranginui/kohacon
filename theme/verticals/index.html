@@ -10,7 +10,18 @@
 
         <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
 
-        {{ node.content_html }}
+        <ul>
+          <li>kind={{ node.kind|escape }}</li>
+          <li>class_key={{ node.class_key|escape }}</li>
+          <li>class_name={{ node.class_name|escape }}</li>
+        </ul>
+
+        {% ifequal node.class_name 'Page' %}
+            {{ node.content_html }}
+        {% endifequal %}
+        {% ifequal node.class_name 'Image' %}
+            <p>Do something here for image.</p>
+        {% endifequal %}
 
         <p class="date">Inserted: {{ node.inserted|escape }}</p>
         <p>

@@ -136,7 +136,7 @@ class LollySite(webbase.WebBase):
                 'section' : section,
                 'node'    : node,
                 }
-            self.template( 'page.html', vals, config.value('Theme') );
+            self.template( 'node.html', vals, config.value('Theme') );
 
     def latest_nodes(self, section, limit):
         logging.info('Getting latest nodes for ' + section.path)

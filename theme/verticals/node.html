@@ -1,0 +1,50 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+    <h1>{{ node.title|escape }}</h1>
+
+    {% ifequal node.class_name 'Page' %}
+        {{ node.content_html }}
+    {% endifequal %}
+    {% ifequal node.class_name 'Image' %}
+        <p>Do something here for image.</p>
+    {% endifequal %}
+
+    <p class="date">Inserted: {{ node.inserted|escape }}</p>
+    <p>
+            Labels:
+    {% for label in node.labels %}
+        <a href="./label:{{ label|escape }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    </p>
+    <h2>Comments</h2>
+    <p>No comments so far. Be the first to discuss this article.</p>
+    <h2>Comment</h2>
+    <form method="post" action="/new-comment.html">
+        <input type="hidden" name="section" value="" />
+        <input type="hidden" name="node" value="" />
+        <p class="form">
+          <label>Name:</label>
+          <input type="text" name="name" value="" /><br />
+          <label>Email:</label>
+          <input type="text" name="email" value="" /><br />
+          <label>Website:</label>
+          <input type="text" name="website" value="" /><br />
+          <label>Comment:</label>
+          <textarea></textarea><br />
+          <label>&nbsp;</label>
+          <input type="submit" class="button" value="Submit" />
+          <input type="reset" class="button" value="Reset" /><br />
+        </p>
+    </p>
+    </form>
+{% endblock %}
+
+{% block sidebar %}
+  {{ block.super }}
+<!--  <h3>What I'm listing to</h3> -->
+  <ul>
+    <li><a href="#">Some Link</a></li>
+    <li><a href="#">Another Link</a></li>
+  </ul>
+{% endblock %}

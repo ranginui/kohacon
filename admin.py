@@ -11,10 +11,11 @@ from google.appengine.ext.webapp.util import run_wsgi_app
 
 # local modules
 import webbase
+import property
 import section
 import sectionlayout
 import page
-import property
+import image
 
 ## ----------------------------------------------------------------------------
 
@@ -29,31 +30,27 @@ class Home(webbase.WebBase):
 
 application = webapp.WSGIApplication(
     [
-        ('/', Home),
+        ('/admin/', Home),
 
         # properties
         ('/admin/property/', property.List),
         ('/admin/property/new.html', property.FormHandler),
-        ('/admin/property/edit.html', property.FormHandler),
 
         # section layouts
         ('/admin/section-layout/', sectionlayout.SectionLayoutList),
         ('/admin/section-layout/new.html', sectionlayout.SectionLayoutNew),
-        ('/admin/section-layout/edit.html', sectionlayout.SectionLayoutEdit),
 
         # sections
         ('/admin/section/', section.List),
         ('/admin/section/new.html', section.FormHandler),
-        ('/admin/section/edit.html', section.FormHandler),
 
         # pages
         ('/admin/page/', page.List),
         ('/admin/page/new.html', page.FormHandler),
-        ('/admin/page/edit.html', page.FormHandler),
 
         # images
-        #('image/', image.ImageList),
-        #('image/edit.html', image.ImageEdit),
+        ('/admin/image/', image.List),
+        ('/admin/image/new.html', image.FormHandler),
 
         # files
         #('file/', file.FileList),

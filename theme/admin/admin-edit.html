@@ -8,11 +8,9 @@
 <h2>New {{type}}</h2>
 {% endif %}
 
-<h2>BLAH!</h2>
-
 <p><a href=".">&laquo;&laquo; Back to {{type|escape}} List</a></p>
 
-<form method="POST" action="">
+<form method="post" action="">
 {% if item %}
   <input type="hidden" name="key" value="{{item.key|urlencode}}">
 {% endif %}

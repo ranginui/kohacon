@@ -17,6 +17,44 @@ body {
 form {
 }
 
+.form input, .form textarea {
+    border: 1px solid #6d8ede;
+    width: 75%;
+    height: 19px;
+    background: #d9d9d9;
+}
+
+.form input.button {
+    border: 1px solid #6d8ede;
+    width: 25%;
+    height: 19px;
+    background: #d9d9d9;
+}
+
+.form input:hover, .form textarea:hover {
+    background: #ebebeb;
+}
+
+.form input:focus, .form textarea:focus {
+    border: 1px solid #f00;
+    background: #ff6;
+}
+
+.form br { clear: left; }
+
+.form textarea {
+    height: 7em;
+    margin-bottom: 0px;
+}
+
+.form label {
+    display: block;
+    width: 20%;
+    float: left;
+    margin: 2px 4px 6px 4px;
+    text-align: right;
+}
+
 fieldset {
 }
 

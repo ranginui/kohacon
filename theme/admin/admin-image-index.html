@@ -1,0 +1,46 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Image List</h2>
+
+{% if images.count %}
+
+<p>There are {{ images.count|escape }} images.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for image in images %}
+    <tr>
+      <td>
+        {{ image.section.path|escape }}
+      </td>
+      <td>
+        {{ image.name|escape }}
+      </td>
+      <td>
+        <a href="edit.html?key={{ image.key|urlencode }}">{{ image.title|escape }}</a>
+      </td>
+      <td class="c">
+        <a href="del.html?key={{ image.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no images.</p>
+
+{% endif %}
+
+{% endblock %}

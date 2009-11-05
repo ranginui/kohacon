@@ -91,7 +91,8 @@ class Page(Node):
 # From: http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 # Image
 class Image(Node):
-    image = db.BlobProperty( required=True )
+    data = db.BlobProperty( required=True )
+    filename = db.StringProperty( required=True )
     mimetype = db.StringProperty( required=True )
 
 # File
