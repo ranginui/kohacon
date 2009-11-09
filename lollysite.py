@@ -126,7 +126,7 @@ class LollySite(webbase.WebBase):
         else:
             node_query = Node.all().filter('section =', section.key()).filter('name =', this_page)
             if node_query.count() == 0:
-                logging.info('404: no nodes in this section (%s)' % section.path)
+                logging.info('404: no nodes in this section (%s) of that name (%s.%s)' % (section.path, this_page, this_ext))
                 self.error(404)
                 return
             node = node_query.fetch(1)[0]

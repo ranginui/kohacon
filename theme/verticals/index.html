@@ -20,7 +20,9 @@
             {{ node.content_html }}
         {% endifequal %}
         {% ifequal node.class_name 'Image' %}
-            <p>Do something here for image.</p>
+            <p><src img="/node/image/{{ node.filename|escape }}" /></a></p>
+            <p>Caption / Credit</p>
+            <p><a href="/node/image/{{ node.filename|escape }}">Link to image</a></p>
         {% endifequal %}
 
         <p class="date">Inserted: {{ node.inserted|escape }}</p>

@@ -62,29 +62,18 @@ class FormHandler(webbase.WebBase):
         blah = file.value
         # section = models.Section.all().filter('key =', self.request.POST['section']).fetch(1)
         section = db.get( self.request.POST['section'] )
+        imagedata = models.ImageData(
+            data = self.request.POST.get('image').file.read()
+            )
+        imagedata.put()
         item = models.Image(
             section = section,
             name = self.request.POST['name'],
             title = self.request.POST['title'],
             filename = file.filename,
             mimetype = file.type,
-            data = self.request.POST.get('image').file.read()
+            imagedata = imagedata,
             )
-        #item.section = self.request.POST['section']
-        #item.name = self.request.POST['name']
-        #item.title = self.request.POST['title']
-        #item.filename = file.filename
-        #item.mimetype = file.type
-        #item = models.Image(
-        #    section = self.request.POST['section'],
-        #    name = self.request.POST['name'],
-        #    title = self.request.POST['title'],
-        #    # label = self.request.POST['label'].split('\n'),
-        #    # blob = self.request.get("image"),
-        #    filename = file.filename,
-        #    mimetype = file.type
-        #    )
-        #item.blob = self.request.get("image")
         item.put()
         self.redirect('.')
 
