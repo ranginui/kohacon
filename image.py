@@ -29,15 +29,10 @@ class FormHandler(webbase.WebBase):
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
             logging.info('item=' + item.__class__.__name__)
-            # form = self.form(instance=item)
-            # logging.info('form.instance=' + form.instance.__class__.__name__)
         else:
-            # form = self.form()
             pass
 
         vals = {
-            # 'type' : self.type(),
-            # 'form' : form,
             'item' : item,
             'sections' : models.Section.all(),
             }
@@ -48,19 +43,15 @@ class FormHandler(webbase.WebBase):
         form = None
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
-            # form = self.form( self.request.POST, instance=item )
         else:
-            # form = self.form( self.request.POST )
             pass
 
-        # logging.info('Doing get() for ' + self.type() + ' with ' + (str(item.key()) or '[None]'))
-
+        # save the image
         file = self.request.POST['image']
         logging.info('filename = ' + file.filename)
         logging.info('mimetype = ' + file.type)
         logging.info('length   = ' + str(len(file.value)))
         blah = file.value
-        # section = models.Section.all().filter('key =', self.request.POST['section']).fetch(1)
         section = db.get( self.request.POST['section'] )
         imagedata = models.ImageData(
             data = self.request.POST.get('image').file.read()

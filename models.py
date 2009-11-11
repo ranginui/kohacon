@@ -88,7 +88,8 @@ class Page(Node):
     def content_html(self):
         return util.render(self.content, self.type)
 
-# From: http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
+# Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
+
 # Image
 class ImageData(db.Model):
     data = db.BlobProperty( required=True )
@@ -99,8 +100,12 @@ class Image(Node):
     mimetype = db.StringProperty( required=True )
 
 # File
-class File(Node):
+class FileData(db.Model):
     data = db.BlobProperty( required=True )
+
+class File(Node):
+    filedata = db.ReferenceProperty( FileData, required=True, collection_name='file' )
+    filename = db.StringProperty( required=True )
     mimetype = db.StringProperty( required=True )
 
 ## ----------------------------------------------------------------------------

@@ -21,6 +21,9 @@ handlers:
   script: test.py
   login: admin
 
+- url: /node/.*
+  script: node.py
+
 - url: /.*
   script: lollysite.py
 
