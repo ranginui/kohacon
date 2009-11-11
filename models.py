@@ -48,9 +48,6 @@ class Section(BaseModel):
     path = db.StringProperty( required=False )
     title = db.StringProperty( required=True )
     description = db.TextProperty()
-    layout = db.ReferenceProperty( SectionLayout, required=True, collection_name='sections' )
-    in_sitemap = db.BooleanProperty( required=True, default=False )
-    in_site_feed = db.BooleanProperty( required=True, default=False )
 
     # so it looks nice in References in DjangoForms
     def __unicode__(self):
@@ -95,6 +92,9 @@ class ImageData(db.Model):
     data = db.BlobProperty( required=True )
 
 class Image(Node):
+    caption = db.TextProperty()
+    credit = db.TextProperty()
+    credit_link = db.LinkProperty()
     imagedata = db.ReferenceProperty( ImageData, required=True, collection_name='image' )
     filename = db.StringProperty( required=True )
     mimetype = db.StringProperty( required=True )

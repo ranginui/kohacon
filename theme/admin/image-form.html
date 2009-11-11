@@ -47,18 +47,42 @@
     </tr>
     <tr>
       <th>
-        <label for="id_label">Label:</label>
-      </th>
-      <td>
-        <textarea name="label" id="id_label">{{ item.label|escape }}</textarea>
-      </td>
-    </tr>
-    <tr>
-      <th>
         <label for="id_mimetype">Image:</label>
       </th>
       <td>
         <input type="file" name="image" id="id_image" />
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_caption">Caption:</label>
+      </th>
+      <td>
+        <textarea name="caption" id="id_caption">{{ item.caption|escape }}</textarea>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_credit">Credit:</label>
+      </th>
+      <td>
+        <textarea name="credit" id="id_credit">{{ item.credit|escape }}</textarea>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_credit_link">Credit Link:</label>
+      </th>
+      <td>
+        <textarea name="credit_link" id="id_credit_link">{{ item.credit_link|escape }}</textarea>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        <label for="id_label">Label:</label>
+      </th>
+      <td>
+        <textarea name="label" id="id_label">{{ item.label|escape }}</textarea>
       </td>
     </tr>
   </table>

@@ -95,6 +95,7 @@ class LollySite(webbase.WebBase):
                 'section' : section,
                 'nodes'   : nodes,
                 }
+            self.response.headers['Content-Type'] = 'application/rss+xml'
             self.template( 'rss20.xml', vals, 'rss' );
 
         elif this_page == 'sitemapindex' and this_ext == 'xml':
@@ -102,6 +103,7 @@ class LollySite(webbase.WebBase):
             vals = {
                 'sections' : sections,
                 }
+            self.response.headers['Content-Type'] = 'text/xml'
             self.template( 'sitemapindex.xml', vals, 'sitemaps' );
 
         elif this_page == 'urlset' and this_ext == 'xml':
@@ -109,6 +111,7 @@ class LollySite(webbase.WebBase):
                 'section' : section,
                 'nodes'   : Node.all().filter('section =', section.key())
                 }
+            self.response.headers['Content-Type'] = 'text/xml'
             self.template( 'urlset.xml', vals, 'sitemaps' );
 
         elif label_page.search(this_page) and this_ext == 'html':

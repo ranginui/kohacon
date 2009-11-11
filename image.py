@@ -48,9 +48,6 @@ class FormHandler(webbase.WebBase):
 
         # save the image
         file = self.request.POST['image']
-        logging.info('filename = ' + file.filename)
-        logging.info('mimetype = ' + file.type)
-        logging.info('length   = ' + str(len(file.value)))
         blah = file.value
         section = db.get( self.request.POST['section'] )
         imagedata = models.ImageData(
@@ -64,6 +61,9 @@ class FormHandler(webbase.WebBase):
             filename = file.filename,
             mimetype = file.type,
             imagedata = imagedata,
+            caption = self.request.POST['caption'],
+            credit = self.request.POST['credit'],
+            credit_link = self.request.POST['credit_link'],
             )
         item.put()
         self.redirect('.')

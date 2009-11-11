@@ -21,8 +21,16 @@
         {% endifequal %}
         {% ifequal node.class_name 'Image' %}
             <p><img src="/node/image/{{ node.filename|escape }}" /></p>
-            <p>Caption / Credit</p>
-            <p><a href="/node/image/{{ node.filename|escape }}">Link to image</a></p>
+            {% if node.caption %}
+            <p>{{ node.caption|escape }}</p>
+            {% endif %}
+            {% if node.credit %}
+                {% if node.credit_link %}
+            <p>Credit: <a href="{{ node.credit_link|escape }}">{{ node.credit|escape }}</a></p>
+                {% else %}
+            <p>Credit: {{ node.credit|escape }}</p>
+                {% endif %}
+            {% endif %}
         {% endifequal %}
 
         <p class="date">Inserted: {{ node.inserted|escape }}</p>
