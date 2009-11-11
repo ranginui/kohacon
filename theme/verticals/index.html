@@ -20,7 +20,7 @@
             {{ node.content_html }}
         {% endifequal %}
         {% ifequal node.class_name 'Image' %}
-            <p><img src="/node/image/{{ node.filename|escape }}" /></p>
+            <p class="c"><img src="/node/image/{{ node.filename|escape }}" /></p>
             {% if node.caption %}
             <p>{{ node.caption|escape }}</p>
             {% endif %}
