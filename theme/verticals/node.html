@@ -58,3 +58,5 @@
     <li><a href="#">Another Link</a></li>
   </ul>
 {% endblock %}
+
+{% block title %}{{ node.title|escape }} - {{ section.title|escape }}{% endblock %}
