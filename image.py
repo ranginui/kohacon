@@ -1,6 +1,7 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
 import logging
+import re
 
 # Google specific modules
 from google.appengine.ext.webapp import template
@@ -29,8 +30,6 @@ class FormHandler(webbase.WebBase):
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
             logging.info('item=' + item.__class__.__name__)
-        else:
-            pass
 
         vals = {
             'item' : item,
@@ -43,8 +42,6 @@ class FormHandler(webbase.WebBase):
         form = None
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
-        else:
-            pass
 
         # save the image
         file = self.request.POST['image']
@@ -54,6 +51,12 @@ class FormHandler(webbase.WebBase):
             data = self.request.POST.get('image').file.read()
             )
         imagedata.put()
+
+        # remove the weirdness from the labels
+        label = self.request.POST['label']
+        label = re.sub('\r', '', label)
+
+        # put the item to the stastore
         item = models.Image(
             section = section,
             name = self.request.POST['name'],
@@ -64,6 +67,7 @@ class FormHandler(webbase.WebBase):
             caption = self.request.POST['caption'],
             credit = self.request.POST['credit'],
             credit_link = self.request.POST['credit_link'],
+            label = label.split('\n')
             )
         item.put()
         self.redirect('.')
