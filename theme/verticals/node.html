@@ -3,30 +3,8 @@
 {% block content %}
     <h1>{{ node.title|escape }}</h1>
 
-    {% ifequal node.class_name 'Page' %}
-        {{ node.content_html }}
-    {% endifequal %}
-    {% ifequal node.class_name 'Image' %}
-        <p class="c"><img src="/node/image/{{ node.filename|escape }}" /></p>
-        {% if node.caption %}
-        <p>{{ node.caption|escape }}</p>
-        {% endif %}
-        {% if node.credit %}
-            {% if node.credit_link %}
-        <p>Credit: <a href="{{ node.credit_link|escape }}">{{ node.credit|escape }}</a></p>
-            {% else %}
-        <p>Credit: {{ node.credit|escape }}</p>
-            {% endif %}
-        {% endif %}
-    {% endifequal %}
+    {% include 'node.frag' %}
 
-    <p class="date">Inserted: {{ node.inserted|escape }}</p>
-    <p>
-            Labels:
-    {% for label in node.labels %}
-        <a href="./label:{{ label|escape }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
-    {% endfor %}
-    </p>
     <h2>Comments</h2>
     <p>No comments so far. Be the first to discuss this article.</p>
     <h2>Comment</h2>

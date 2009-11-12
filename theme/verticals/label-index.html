@@ -1,0 +1,13 @@
+{% extends "blog-index.html" %}
+
+{% block content %}
+    <h1>Entries for label: {{label|escape}}</h1>
+    <p>
+        Found {{nodes.count|escape}} entries.
+    </p>
+
+    {% for node in nodes %}
+    <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+        {% include 'node.frag' %}
+    {% endfor %}
+{% endblock %}

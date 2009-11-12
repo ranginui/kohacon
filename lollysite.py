@@ -87,7 +87,7 @@ class LollySite(webbase.WebBase):
                 'section' : section,
                 'nodes'   : nodes,
                 }
-            self.template( 'index.html', vals, config.value('Theme') );
+            self.template( 'blog-index.html', vals, config.value('Theme') );
 
         elif this_page == 'rss20' and this_ext == 'xml':
             nodes = self.latest_nodes(section, 10)
@@ -124,7 +124,7 @@ class LollySite(webbase.WebBase):
                 'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label),
                 'label'   : label
                 }
-            self.template( 'index.html', vals, config.value('Theme') );
+            self.template( 'label-index.html', vals, config.value('Theme') );
 
         else:
             node_query = Node.all().filter('section =', section.key()).filter('name =', this_page)
