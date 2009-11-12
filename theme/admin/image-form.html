@@ -74,7 +74,7 @@
         <label for="id_credit_link">Credit Link:</label>
       </th>
       <td>
-        <textarea name="credit_link" id="id_credit_link">{{ item.credit_link|escape }}</textarea>
+        <input type="text" name="credit_link" id="id_credit_link" value="{{ item.credit_link|escape }}" />
       </td>
     </tr>
     <tr>
