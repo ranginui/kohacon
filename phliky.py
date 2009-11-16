@@ -51,12 +51,10 @@ def do_chunk(chunk):
 def do_inline(line):
     finished = False
     while not finished:
-        logging.info('Got=' + line)
         m = balanced.search(line)
         if m:
             type = m.group(1)
             str = m.group(2)
-            logging.info('Type=' + type)
 
             if type == 'b':
                 line = balanced.sub(r'<strong>\2</strong>', line, 1)
@@ -72,7 +70,6 @@ def do_inline(line):
                 line = balanced.sub(r'<code>\2</code>', line, 1)
 
             elif type == 'l':
-                logging.info('Splitting: %s' % str)
                 (text, href) = str.split(r'|')
                 line = balanced.sub('<a href="%s">%s</a>' % (href, text), line, 1)
 
@@ -83,7 +80,6 @@ def do_inline(line):
                 line = balanced.sub('<a href="%s.html">%s</a>' % (str, str), line, 1)
 
             elif type == 'img':
-                logging.info('Splitting: %s' % str)
                 (title, src) = str.split(r'|')
                 line = balanced.sub('<img src="%s" title="%s" />' % (src, title), line, 1)
 
@@ -100,7 +96,6 @@ def do_inline(line):
             else:
                 line = balanced.sub(r'\[\1]{\2}', line, 1)
         else:
-            logging.info('Not found')
             finished = True
 
     return line

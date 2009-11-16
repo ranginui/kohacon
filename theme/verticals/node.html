@@ -5,23 +5,32 @@
 
     {% include 'node.frag' %}
 
-    {% if node.allow_comment %}
-    <h2>Comments</h2>
-    <p>No comments so far. Be the first to discuss this article.</p>
+    {% if node.comments %}
+    {% endif %}
 
-    <h2>Comment</h2>
-    <form method="post" action="/new-comment.html">
-        <input type="hidden" name="section" value="" />
-        <input type="hidden" name="node" value="" />
+    {% if comments.count %}
+    <h2>Comments</h2>
+        {% for comment in comments %}
+          <h4>{{ forloop.counter|escape }}. <a href="{{ comment.website|escape }}">{{ comment.name|escape }}</a></h4>
+          {{ comment.comment_html }}
+          <p class="date">Inserted: {{ comment.inserted|date:"Y-m-d H:i" }} ({{ comment.inserted|timesince }} ago)</p>
+        {% endfor %}
+    {% endif %}
+
+    {% if node.allow_comment %}
+    <h2>Your Comment</h2>
+    <form method="post" action="./comment.html">
+        <input type="hidden" name="_act" value="new" />
+        <input type="hidden" name="node" value="{{ node.key|escape }}" />
         <p class="form">
           <label>Name:</label>
           <input type="text" name="name" value="" /><br />
           <label>Email:</label>
           <input type="text" name="email" value="" /><br />
           <label>Website:</label>
-          <input type="text" name="website" value="" /><br />
+          <input type="text" name="website" value="http://" /><br />
           <label>Comment:</label>
-          <textarea></textarea><br />
+          <textarea name="comment"></textarea><br />
           <label>&nbsp;</label>
           <input type="submit" class="button" value="Submit" />
           <input type="reset" class="button" value="Reset" /><br />

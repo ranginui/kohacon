@@ -1,0 +1,57 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  <h2>New Comments</h2>
+
+  <p><a href="../">&laquo;&laquo; Back to Admin List</a></p>
+
+  {% if comments.count %}
+
+  <p>There are {{ comments.count|escape }} comments awaiting moderation.</p>
+
+  <table class="list striped">
+    <thead>
+      <tr>
+        <th>Info</th>
+        <th>Comment</th>
+        <th class="thin">Approve</th>
+        <th class="thin">Reject</th>
+        <th class="thin">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for comment in comments %}
+      <tr>
+        <td>
+          <strong>{{ comment.name|escape }} &lt;{{ comment.email|escape }}&gt;</strong>
+          <br />
+          {{ comment.website|escape }}
+          <br />
+          {{ comment.inserted|escape }}
+        </td>
+        <td>
+          Comment on <a href="{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html">{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html</a>
+          <br />
+          {{ comment.comment_html }}
+        </td>
+        <td class="c">
+          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/s/admin/i/accept.png" /></a>
+        </td>
+        <td class="c">
+          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/s/admin/i/exclamation.png" /></a>
+        </td>
+        <td class="c">
+          <a href="/admin/del.html?key={{ comment.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% else %}
+
+  <p>There are no comments waiting to be moderated.</p>
+
+  {% endif %}
+
+{% endblock %}

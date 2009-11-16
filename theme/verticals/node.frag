@@ -18,7 +18,7 @@
         {% endif %}
     {% endifequal %}
 
-    <p class="date">Inserted: {{ node.inserted|escape }}</p>
+    <p class="date">Inserted: {{ node.inserted|date:"Y-m-d H:i" }} ({{ node.inserted|timesince }} ago)</p>
     <p>
         Labels:
     {% for label in node.label %}

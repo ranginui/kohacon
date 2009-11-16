@@ -6,6 +6,7 @@
 import logging
 import sys
 import cgi
+import re
 
 ## ----------------------------------------------------------------------------
 # local modules
@@ -25,6 +26,7 @@ def esc(text):
     return cgi.escape(text, True)
 
 def render(text, type):
+    text = re.sub('\r', '', text);
     logging.info('Doing ' + type);
     if type == 'html':
         return text

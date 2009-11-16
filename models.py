@@ -42,12 +42,17 @@ class SectionLayout(BaseModel):
         return self.title
 
 # Section: to group Nodes together
-class Section(BaseModel):
+class Section(db.Model):
     # path := usually something starting with '/', like '/', '/blog/', '/article/' and '/path/to/'
     # path := m{ / (a-z[a-z0-9]*/)* }xms # intial / followed by 0 or more sections
-    path = db.StringProperty( required=False )
+    path = db.StringProperty( required=True )
     title = db.StringProperty( required=True )
     description = db.TextProperty()
+    layout = db.StringProperty(
+        required=False,
+        default='content',
+        choices=['content', 'blog'] # maybe 'faq' soon
+        )
 
     # so it looks nice in References in DjangoForms
     def __unicode__(self):
@@ -108,5 +113,21 @@ class File(Node):
     filedata = db.ReferenceProperty( FileData, required=True, collection_name='file' )
     filename = db.StringProperty( required=True )
     mimetype = db.StringProperty( required=True )
+
+## ----------------------------------------------------------------------------
+# comments
+
+class Comment(BaseModel):
+    node = db.ReferenceProperty( Node, required=True, collection_name='comments' )
+    name = db.StringProperty(multiline=False)
+    email = db.StringProperty(multiline=False)
+    website = db.StringProperty(multiline=False)
+    comment = db.TextProperty()
+    comment_html = db.TextProperty()
+    status = db.StringProperty(
+        required=True,
+        default='new',
+        choices=['new', 'approved', 'rejected']
+        )
 
 ## ----------------------------------------------------------------------------

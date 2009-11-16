@@ -10,6 +10,28 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: Comment
+  properties:
+  - name: node
+  - name: inserted
+
+- kind: Comment
+  properties:
+  - name: node
+  - name: inserted
+    direction: desc
+
+- kind: Comment
+  properties:
+  - name: node
+  - name: status
+  - name: inserted
+
+- kind: Comment
+  properties:
+  - name: status
+  - name: inserted
+
 - kind: Node
   properties:
   - name: class

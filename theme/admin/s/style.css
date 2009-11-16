@@ -43,6 +43,14 @@ input[type=text] {
     width: 100%;
 }
 
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 20px;
+}
+
 /*** generic styles ***/
 .c {
     text-align: center;
@@ -85,6 +93,18 @@ table.edit ul {
 /* table.list */
 table.list .thin {
     width: 32px;
+}
+
+table.list tr.odd {
+    background-color: #dcddd3;
+}
+
+table.list tr.even {
+    background-color: #ecede3;
+}
+
+table.list tr.hover {
+    background-color: #ff6;
 }
 
 /*** ends ***/

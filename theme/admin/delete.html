@@ -1,0 +1,24 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+  <h1>Delete this Entity?</h1>
+
+  <dl>
+    <dt>Kind</dt>
+    <dd>{{ entity.kind|escape }}</dd>
+    <dt>Inserted</dt>
+    <dd>{{ entity.inserted|escape }}</dd>
+    <dt>Updated</dt>
+    <dd>{{ entity.updated|escape }}</dd>
+    <dt>Owner</dt>
+    <dd>{{ entity.owner|escape }}</dd>
+    <dt>Editor</dt>
+    <dd>{{ entity.editor|escape }}</dd>
+  </dl>
+
+  <p>
+    <a href="?key={{ entity.key|escape }};_act=del">Confirm Deletion</a>
+  </p>
+
+{% endblock %}

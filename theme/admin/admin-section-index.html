@@ -22,9 +22,9 @@
     <tr>
       <td>{{ section.path|escape }}</td>
       <td><a href="edit.html?key={{ section.key|urlencode }}">{{ section.title|escape }}</a></td>
-      <td>{{ section.layout.title|escape }}</td>
+      <td>{{ section.layout|escape }}</td>
       <td class="c">
-        <a href="del.html?key={{ section.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+        <a href="/admin/del.html?key={{ section.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}
