@@ -75,6 +75,7 @@ class Node(polymodel.PolyModel):
     name = db.StringProperty( required=True, multiline=False )
     title = db.StringProperty( required=True, multiline=False )
     label = db.StringListProperty()
+    allow_comment = db.BooleanProperty( required=True, default=True )
 
 # Page
 class Page(Node):

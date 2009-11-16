@@ -5,8 +5,10 @@
 
     {% include 'node.frag' %}
 
+    {% if node.allow_comment %}
     <h2>Comments</h2>
     <p>No comments so far. Be the first to discuss this article.</p>
+
     <h2>Comment</h2>
     <form method="post" action="/new-comment.html">
         <input type="hidden" name="section" value="" />
@@ -24,8 +26,8 @@
           <input type="submit" class="button" value="Submit" />
           <input type="reset" class="button" value="Reset" /><br />
         </p>
-    </p>
     </form>
+    {% endif %}
 {% endblock %}
 
 {% block sidebar %}
