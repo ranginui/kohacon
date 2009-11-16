@@ -76,7 +76,7 @@ h2 {
 	font-size: 1.6em;
 }
 
-h3 {
+h3, h4 {
 	font-size: 1em;
 	font-weight: bold;
 }
@@ -282,6 +282,10 @@ dl dd {
 #content h3 {
 	margin: 1em 0;
 	background: url(underline.gif) repeat-x left bottom;
+}
+
+#content h4 {
+	margin: 1em 0;
 }
 
 #content .date {

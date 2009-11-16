@@ -18,10 +18,11 @@
         {% endif %}
     {% endifequal %}
 
-    <p class="date">Inserted: {{ node.inserted|date:"Y-m-d H:i" }} ({{ node.inserted|timesince }} ago)</p>
     <p>
         Labels:
     {% for label in node.label %}
         <a href="./label:{{ label|urlencode }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
     {% endfor %}
     </p>
+
+    <p class="date">Inserted: {{ node.inserted|date:"Y-m-d H:i" }} ({{ node.inserted|timesince }} ago)</p>
