@@ -1,0 +1,28 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
+  <p>{{ section.description|escape }}</p>
+
+  {% if nodes.count %}
+    <h2>Contents</h2>
+    <ul>
+    {% for node in nodes %}
+      <li>{{ node.title|escape }}</li>
+    {% endfor %}
+    </ul>
+
+    {% for node in nodes %}
+      <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+      {% include 'node-skel.frag' %}
+    {% endfor %}
+
+  {% else %}
+
+    <p>Currently, there are no questions in this FAQ.</p>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block title %}{{ section.title|escape }}{% endblock %}

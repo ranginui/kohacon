@@ -69,7 +69,7 @@ class LollySite(webbase.WebBase):
                 'section' : section,
                 'nodes'   : nodes,
                 }
-            self.template( 'blog-index.html', vals, config.value('Theme') );
+            self.template(  section.layout + '-index.html', vals, config.value('Theme') );
 
         elif this_page == 'rss20' and this_ext == 'xml':
             # rss20.xml
@@ -223,8 +223,7 @@ class LollySite(webbase.WebBase):
     def latest_nodes(self, section, limit):
         logging.info('Getting latest nodes for ' + section.path)
         nodes_query = Node.all().filter('section =', section.key()).order('-inserted')
-        nodes = nodes_query.fetch(limit)
-        return nodes
+        return nodes_query
 
 ## ----------------------------------------------------------------------------
 

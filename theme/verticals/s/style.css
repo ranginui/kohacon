@@ -89,6 +89,7 @@ p, blockquote, ul, ol, pre {
 pre {
 	padding: 1em;
 	background: #EEEEEE;
+	overflow: auto;
 }
 
 blockquote {

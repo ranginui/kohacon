@@ -1,0 +1,22 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
+  <p>{{ section.description|escape }}</p>
+
+  {% if nodes.count %}
+
+    {% for node in nodes %}
+    <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+        {% include 'node.frag' %}
+    {% endfor %}
+
+  {% else %}
+
+    <p>Currently, there is no content in this section.</p>
+
+  {% endif %}
+
+{% endblock %}
+
+{% block title %}{{ section.title|escape }}{% endblock %}

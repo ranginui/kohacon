@@ -51,7 +51,7 @@ class Section(db.Model):
     layout = db.StringProperty(
         required=False,
         default='content',
-        choices=['content', 'blog'] # maybe 'faq' soon
+        choices=['content', 'blog', 'faq']
         )
 
     # so it looks nice in References in DjangoForms
