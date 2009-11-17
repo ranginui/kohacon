@@ -1,0 +1,75 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit {{type}}</h2>
+{% else %}
+<h2>New {{type}}</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to Page List</a></p>
+
+<form method="post" action="">
+{% if item %}
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+{% endif %}
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>
+          <select id="id_section" name="section">
+            <option selected="selected" value="">Select...</option>
+{% for section in sections %}
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_name">Name:</label></th>
+        <td><input type="text" id="id_name" name="name" value="{{ item.name|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_title">Title:</label></th>
+        <td><input type="text" id="id_title" name="title" value="{{ item.title|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_content">Content:</label></th>
+        <td><textarea id="id_content" name="content" class="content">{{ item.content|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_type">Type:</label></th>
+        <td>
+          <select id="id_type" name="type">
+            <option selected="selected" value="">Select...</option>
+{% for type in types %}
+            <option value="{{ type|escape }}"{% ifequal type item.type %} selected="selected"{% endifequal %}>{{ type|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_label">Label:</label></th>
+        <td><textarea id="id_label" name="label">{{ item.label|list }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_allow_comment">Allow comment:</label></th>
+        <td><input type="checkbox" id="id_allow_comment" name="allow_comment" value="Y"{% if item.allow_comment %} checked="checked"{% endif %} /></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit"/>
+</form>
+
+{% endblock %}

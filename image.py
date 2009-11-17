@@ -4,7 +4,6 @@ import logging
 import re
 
 # Google specific modules
-from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
 # local modules
@@ -14,7 +13,7 @@ import formbase
 
 ## ----------------------------------------------------------------------------
 
-# Forms
+# list
 class List(webbase.WebBase):
     def get(self):
         images = models.Image.all().order('-inserted')
@@ -24,6 +23,7 @@ class List(webbase.WebBase):
         }
         self.template( 'admin-image-index.html', vals, 'admin' );
 
+# form
 class FormHandler(webbase.WebBase):
     def get(self):
         item = None
@@ -39,7 +39,6 @@ class FormHandler(webbase.WebBase):
 
     def post(self):
         item = None
-        form = None
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
 

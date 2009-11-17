@@ -85,11 +85,8 @@ class Node(polymodel.PolyModel):
 # Page
 class Page(Node):
     content = db.TextProperty( required=True )
+    content_html = db.TextProperty( required=True )
     type = db.StringProperty(required=True, choices=set(["text", "phliky", "rst", "html"]))
-
-    @derivedproperty.DerivedProperty
-    def content_html(self):
-        return util.render(self.content, self.type)
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 

@@ -16,75 +16,56 @@
 {% endif %}
 
   <table class="edit">
-    <tr>
-      <th>
-        <label for="id_section">Section:</label>
-      </th>
-      <td>
-        <select name="section" id="id_section">
-          <option value="" selected="selected">---------</option>
+    <tbody>
+
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>
+          <select name="section" id="id_section">
+            <option value="" selected="selected">---------</option>
 {% for section in sections %}
-          <option value="{{ section.key|urlencode }}">{{ section.path|escape }}</option>
+            <option value="{{ section.key|urlencode }}">{{ section.path|escape }}</option>
 {% endfor %}
-        </select>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_name">Name:</label>
-      </th>
-      <td>
-        <input type="text" name="name" id="id_name" value="{{ item.name|escape }}" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_title">Title:</label>
-      </th>
-      <td>
-        <input type="text" name="title" id="id_title" value="{{ item.title|escape }}" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_mimetype">Image:</label>
-      </th>
-      <td>
-        <input type="file" name="image" id="id_image" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_caption">Caption:</label>
-      </th>
-      <td>
-        <textarea name="caption" id="id_caption">{{ item.caption|escape }}</textarea>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_credit">Credit:</label>
-      </th>
-      <td>
-        <textarea name="credit" id="id_credit">{{ item.credit|escape }}</textarea>
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_credit_link">Credit Link:</label>
-      </th>
-      <td>
-        <input type="text" name="credit_link" id="id_credit_link" value="{{ item.credit_link|escape }}" />
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <label for="id_label">Label:</label>
-      </th>
-      <td>
-        <textarea name="label" id="id_label">{{ item.label|escape }}</textarea>
-      </td>
-    </tr>
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_name">Name:</label></th>
+        <td><input type="text" name="name" id="id_name" value="{{ item.name|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_title">Title:</label></th>
+        <td><input type="text" name="title" id="id_title" value="{{ item.title|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_mimetype">Image:</label></th>
+        <td><input type="file" name="image" id="id_image" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_caption">Caption:</label></th>
+        <td><textarea name="caption" id="id_caption">{{ item.caption|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_credit">Credit:</label></th>
+        <td><textarea name="credit" id="id_credit">{{ item.credit|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_credit_link">Credit Link:</label></th>
+        <td><input type="text" name="credit_link" id="id_credit_link" value="{{ item.credit_link|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_label">Label:</label></th>
+        <td><textarea name="label" id="id_label">{{ item.label|escape }}</textarea></td>
+      </tr>
+
+    </tbody>
   </table>
   <input type="submit" />
 </form>
