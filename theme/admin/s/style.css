@@ -35,6 +35,31 @@ th {
     vertical-align: top;
 }
 
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 20px;
+}
+
+input, textarea {
+    border: 1px solid #6d8ede;
+}
+
+input:hover, textarea:hover {
+    background: #ebebeb;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid #f00;
+    background: #ff6;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
 textarea {
     width: 100%;
     height: 5em;
@@ -42,18 +67,6 @@ textarea {
 
 textarea.content {
     height: 20em;
-}
-
-input[type=text] {
-    width: 100%;
-}
-
-dt {
-    font-weight: bold;
-}
-
-dd {
-    margin-left: 20px;
 }
 
 /*** generic styles ***/
