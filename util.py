@@ -47,4 +47,22 @@ def render(text, type):
     else:
         raise InvalidTypeError(type)
 
+def urlify(title):
+    name = title.lower()
+
+    # special case to remove ' completely (for things like: let's it's and o'clock)
+    name = re.sub(r'\'', '', name )
+
+    # replace anything not a letter or number with a dash
+    name = re.sub(r'[^a-z0-9]+', '-', name )
+
+    # replace any dashes at start or end with one
+    name = re.sub(r'-+', '-', name )
+    name = re.sub(r'^-', '', name )
+
+    # and multiple dashes with just one
+    name = re.sub(r'-$', '', name )
+
+    return name
+
 ## ----------------------------------------------------------------------------
