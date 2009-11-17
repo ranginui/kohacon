@@ -11,6 +11,7 @@ from google.appengine.api import users
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext import db
+from google.appengine.api import mail
 
 # local modules
 import webbase
@@ -163,11 +164,6 @@ class LollySite(webbase.WebBase):
         this_page = m.group(3) or 'index'
         this_ext = m.group(4) or 'html'
 
-        logging.info('Page details:')
-        logging.info('- ' + this_path)
-        logging.info('- ' + this_page)
-        logging.info('- ' + this_ext)
-
         # get section and node
         section = Section.all().filter('path =', this_path).get()
         node = Node.all().filter('section =', section).get()
@@ -176,33 +172,46 @@ class LollySite(webbase.WebBase):
             self.error(404)
             return
 
-        logging.info(section.path)
-        logging.info(node.name)
-
         self.request.charset = 'utf8'
 
-        logging.info(self.request.POST['node'])
-        logging.info(self.request.POST['name'])
-        logging.info(self.request.POST['comment'])
-        logging.info(self.request.POST['email'])
-        logging.info(self.request.POST['website'])
-
         # remove the horribleness from comment
-        comment_text = re.sub('\r', '', self.request.POST['comment']);
-
         if this_page == 'comment' and this_ext == 'html':
             # comment submission for each section
-            logging.info('saving comment')
             node = db.get( self.request.POST['node'] )
+            name = self.request.POST['name']
+            email = self.request.POST['email']
+            website = self.request.POST['website']
+            comment_text = re.sub('\r', '', self.request.POST['comment']);
+
+            # now create the comment
             comment = Comment(
                 node = node,
-                name = self.request.POST['name'],
-                email = self.request.POST['email'],
-                website = self.request.POST['website'],
+                name = name,
+                email = email,
+                website = website,
                 comment = comment_text,
                 comment_html = util.render(comment_text, 'text'),
                 )
             comment.put()
+
+            # send a mail to the admin
+            admin_email = config.value('Admin Email')
+            if mail.is_email_valid(admin_email):
+                url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?status='
+                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/del?key='
+
+                body = 'Comment from ' + name + '<' + email + '>\n'
+                body = body + website + '\n\n'
+                body = body + comment_text + '\n\n'
+                body = body + '---\n\nActions\n\n'
+                body = body + 'Approve = ' + url_mod + 'approve&key=' + str(comment.key())
+                body = body + 'Reject  = ' + url_mod + 'reject&key=' + str(comment.key())
+                body = body + 'Approve = ' + url_del + str(comment.key())
+                mail.send_mail(admin_email, admin_email, 'New comment on ' + section.path + node.name + '.html', body)
+            else:
+                # don't do anything
+                logging.info('No valid email set, skipping sending admin an email for new comment')
+
             # redirect to the comment page
             self.redirect('comment.html?key=' + str(comment.key()))
             return
