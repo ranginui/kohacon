@@ -2,9 +2,7 @@
 
 {% block content %}
     <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
-    <p>{{ section.description|escape }}</p>
-
-    <p>The time is {% current_time "%Y-%m-%d %I:%M %p" %}.</p>
+    <p>{{ section.description_html }}</p>
 
     {% for node in section|latest:10 %}
     <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>

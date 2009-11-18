@@ -15,6 +15,9 @@ import util
 # * inserted = db.DateTimeProperty( auto_now_add = True )
 # * updated = db.DateTimeProperty( auto_now = True )
 
+type_choices = ["text", "code", "phliky", "html"]
+layout_choices = ['content', 'blog', 'faq']
+
 ## ----------------------------------------------------------------------------
 # normal models
 
@@ -48,15 +51,13 @@ class Section(db.Model):
     path = db.StringProperty( required=True )
     title = db.StringProperty( required=True )
     description = db.TextProperty()
+    description_html = db.TextProperty()
+    type = db.StringProperty(required=True, choices=set(type_choices))
     layout = db.StringProperty(
         required=False,
         default='content',
-        choices=['content', 'blog', 'faq']
+        choices=layout_choices
         )
-
-    # so it looks nice in References in DjangoForms
-    def __unicode__(self):
-        return self.title
 
 # NodeLayout: how to lay out each node
 class NodeLayout(BaseModel):
@@ -86,7 +87,7 @@ class Node(polymodel.PolyModel):
 class Page(Node):
     content = db.TextProperty( required=True )
     content_html = db.TextProperty( required=True )
-    type = db.StringProperty(required=True, choices=set(["text", "phliky", "rst", "html"]))
+    type = db.StringProperty(required=True, choices=set(type_choices))
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 
