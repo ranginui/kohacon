@@ -64,10 +64,9 @@ class LollySite(webbase.WebBase):
         # if this is an index, call a different template
         if this_page == 'index' and this_ext == 'html':
             # index.html
-            nodes = self.latest_nodes(section, 10)
+            # nodes = self.latest_nodes(section, 10)
             vals = {
                 'section' : section,
-                'nodes'   : nodes,
                 }
             self.template(  section.layout + '-index.html', vals, config.value('Theme') );
 

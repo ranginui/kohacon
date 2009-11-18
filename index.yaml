@@ -42,4 +42,9 @@ indexes:
   properties:
   - name: section
   - name: inserted
+
+- kind: Node
+  properties:
+  - name: section
+  - name: inserted
     direction: desc
