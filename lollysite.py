@@ -64,7 +64,6 @@ class LollySite(webbase.WebBase):
         # if this is an index, call a different template
         if this_page == 'index' and this_ext == 'html':
             # index.html
-            # nodes = self.latest_nodes(section, 10)
             vals = {
                 'section' : section,
                 }
@@ -221,8 +220,8 @@ class LollySite(webbase.WebBase):
 
     def latest_nodes(self, section, limit):
         logging.info('Getting latest nodes for ' + section.path)
-        nodes_query = Node.all().filter('section =', section.key()).order('-inserted')
-        return nodes_query
+        nodes = Node.all().filter('section =', section.key()).order('-inserted').fetch(limit)
+        return nodes
 
 ## ----------------------------------------------------------------------------
 
