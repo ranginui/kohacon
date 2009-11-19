@@ -1,5 +1,4 @@
 ## ----------------------------------------------------------------------------
-import logging
 import cgi
 import re
 
@@ -10,6 +9,7 @@ heading = re.compile('^!([123456])\s+(.*)', re.DOTALL)
 pre = re.compile('^\s')
 html = re.compile('^<\s(.*)', re.DOTALL)
 blockquote = re.compile('^"\s+(.*)', re.DOTALL)
+list = re.compile('^([\#\*]+)\s+(.*)', re.DOTALL)
 
 # inline regexes
 balanced = re.compile(r'\\(\w+){([^{}]*?)}', re.DOTALL | re.VERBOSE)
@@ -44,6 +44,10 @@ def do_chunk(chunk):
     m = blockquote.search(chunk)
     if m:
         return '<blockquote>' + do_inline(esc(m.group(1))) + '</blockquote>'
+
+    m = list.search(chunk)
+    if m:
+        return do_list(chunk)
 
     # just a normal paragraph
     return '<p>' + do_inline(esc(chunk)) + '</p>'
@@ -100,7 +104,54 @@ def do_inline(line):
 
     return line
 
-def list(chunk):
-    return chunk
+def do_list(chunk):
+    # make the para into lines
+    lines = chunk.split('\n')
+
+    if len(lines) == 0:
+        return ''
+
+    html = ''
+    indent = []
+
+    for line in lines:
+        (type, length, content) = list_line_info( line )
+
+        if length == len(indent):
+            # same indent
+            html = html + '</li><li>' + do_inline(esc(content))
+        elif length == len(indent)+1:
+            # new indent
+            indent.append(type)
+            html = html + '<%s><li>' % (type) + do_inline(esc(content))
+        elif length < len(indent):
+            while len(indent) != length:
+                # new outdent
+                html = html + '</li></%s>' % (indent.pop())
+            html = html + '</li><li>' + do_inline(esc(content))
+        else:
+            while len(indent) != length:
+                # indenting multiple times
+                indent.append(type)
+                html = html + '<%s><li>' % (type)
+            html = html + do_inline(esc(content))
+
+    while len(indent) > 0:
+        # final outdenting
+        html = html + '</li></%s>' % (indent.pop())
+
+    return html
+
+def list_line_info(line):
+    m = list.search(line)
+    if m:
+        type = m.group(1)
+        content = m.group(2)
+        length = len(type)
+        type = 'ol' if type[0] == '#' else 'ul'
+        return (type, length, content)
+
+    return (None, None, None)
+
 
 ## ----------------------------------------------------------------------------

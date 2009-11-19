@@ -50,7 +50,45 @@ And a \\l{link with \\b{bold}|http://lxer.com/} here.
 (Ends)
 """
 
-items = [ 'rst', 'phliky', 'text', 'code' ]
+sample_list = """\
+!2 List Stuff
+
+* a simple list
+* here
+
+-
+
+* an indented list
+** here
+
+-
+
+* an indented list
+** here
+* finishes on one
+
+-
+
+# one - simple
+# two - list
+# three - end
+
+-
+
+# this
+** more
+** here
+# end
+
+-
+
+* one
+## two
+*** three
+
+"""
+
+items = [ 'rst', 'phliky', 'phliky-list', 'text', 'code' ]
 
 class Home(webapp.RequestHandler):
     def get(self):
@@ -67,6 +105,11 @@ class Rst(webapp.RequestHandler):
 class Phliky(webapp.RequestHandler):
     def get(self):
         html = util.render(sample_text, 'phliky')
+        self.response.out.write(html)
+
+class PhlikyList(webapp.RequestHandler):
+    def get(self):
+        html = util.render(sample_list, 'phliky')
         self.response.out.write(html)
 
 class Text(webapp.RequestHandler):
@@ -86,6 +129,7 @@ application = webapp.WSGIApplication(
         ('/test/', Home),
         ('/test/rst.html', Rst),
         ('/test/phliky.html', Phliky),
+        ('/test/phliky-list.html', PhlikyList),
         ('/test/text.html', Text),
         ('/test/code.html', Code),
     ],
