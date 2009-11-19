@@ -4,7 +4,6 @@ from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 
 # local stuff
-import derivedproperty
 import util
 
 ## ----------------------------------------------------------------------------
