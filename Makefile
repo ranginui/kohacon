@@ -10,7 +10,13 @@ update-indexes:
 commit:
 	git commit -m 'Update of generated files' index.yaml
 
+issue-summary:
+	cil summary --is-open --label=Milestone-v0.1
+
+issue-list:
+	cil list --is-open --label=Milestone-v0.1
+
 clean:
 	find . -name '*~' -exec rm {} ';'
 
-.PHONY: start-server upload update-indexes
+.PHONY: start-server upload update-indexes issue-summary issue-list
