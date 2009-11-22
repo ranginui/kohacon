@@ -2,8 +2,9 @@ Summary: Add some boolean properties to each section/node
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.1
 Inserted: 2009-11-22T04:44:52
-Updated: 2009-11-22T04:51:35
+Updated: 2009-11-22T06:36:56
 
 Then each template can check things like:
 
