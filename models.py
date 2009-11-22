@@ -1,4 +1,8 @@
 ## ----------------------------------------------------------------------------
+# import standard modules
+import re
+import logging
+
 # Google specific modules
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
@@ -81,12 +85,28 @@ class Node(polymodel.PolyModel):
     title = db.StringProperty( required=True, multiline=False )
     label = db.StringListProperty()
     allow_comment = db.BooleanProperty( required=True, default=True )
+    # these are all generated from the 'inserted' time (e.g. 2009, 2009-01, 2009-01-20)
+    archive = db.StringListProperty()
+
+    def set_derivatives(self):
+        datetime = str(self.inserted)
+        logging.info('inserted=' + datetime)
+        y = re.search(r'^(\d\d\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
+        m = re.search(r'^(\d\d\d\d-\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
+        d = re.search(r'^(\d\d\d\d-\d\d-\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
+        logging.info('(%s-%s-%s)' % (y, m, d))
+        self.archive = [y, m, d]
 
 # Page
 class Page(Node):
     content = db.TextProperty( required=True )
     content_html = db.TextProperty( required=True )
     type = db.StringProperty(required=True, choices=set(type_choices))
+
+    def set_derivatives(self):
+        super(Page, self).set_derivatives()
+        logging.info('here')
+        self.content_html = util.render(self.content, self.type)
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 

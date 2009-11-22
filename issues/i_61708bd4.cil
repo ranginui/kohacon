@@ -1,10 +1,11 @@
 Summary: Add archive pages
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: 49febb07
 Inserted: 2009-11-21T04:50:27
-Updated: 2009-11-22T06:36:56
+Updated: 2009-11-22T08:44:20
 
 Currently the site doesn't allow archive pages. Use the example of labels:
 

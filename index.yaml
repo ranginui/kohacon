@@ -34,6 +34,19 @@ indexes:
 
 - kind: Node
   properties:
+  - name: archive
+  - name: section
+  - name: inserted
+
+- kind: Node
+  properties:
+  - name: archive
+  - name: section
+  - name: inserted
+    direction: desc
+
+- kind: Node
+  properties:
   - name: class
   - name: inserted
     direction: desc

@@ -35,6 +35,7 @@ import util
 parts = re.compile('^(.*/)(([\w\._:-]*)\.(\w+))?$')
 
 label_page = re.compile('^label:(.+)$', re.DOTALL | re.VERBOSE)
+archive_page = re.compile('^archive:(\d\d\d\d(-\d\d(-\d\d)?)?)$', re.DOTALL | re.VERBOSE)
 
 ## ----------------------------------------------------------------------------
 
@@ -105,10 +106,22 @@ class LollySite(webbase.WebBase):
             logging.info('Inside a label (%s) page' % label)
             vals = {
                 'section' : section,
-                'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label),
+                'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label).order('-inserted'),
                 'label'   : label
                 }
             self.template( 'label-index.html', vals, config.value('Theme') );
+
+        elif archive_page.search(this_page) and this_ext == 'html':
+            # path =~ 'archive:2009.html'
+            m = archive_page.search(this_page)
+            archive = m.group(1)
+            logging.info('archive=' + archive)
+            vals = {
+                'section' : section,
+                'nodes'   : Node.all().filter('section =', section.key()).filter('archive =', archive).order('-inserted'),
+                'archive' : archive
+                }
+            self.template( 'archive-index.html', vals, config.value('Theme') );
 
         elif this_page == 'comment' and this_ext == 'html':
             # get the comment if it exists

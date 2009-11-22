@@ -68,6 +68,7 @@ class FormHandler(webbase.WebBase):
             credit_link = self.request.POST['credit_link'],
             label = label.split('\n')
             )
+        item.set_derivatives()
         item.put()
         self.redirect('.')
 

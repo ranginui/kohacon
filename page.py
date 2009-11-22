@@ -55,7 +55,6 @@ class FormHandler(webbase.WebBase):
             item.name = name
             item.title = self.request.get('title')
             item.content = self.request.get('content')
-            item.content_html = util.render(self.request.get('content'), self.request.get('type'))
             item.type = self.request.get('type')
             item.label = label.split('\n')
             item.allow_comment = True if allow_comment == 'Y' else False
@@ -65,13 +64,11 @@ class FormHandler(webbase.WebBase):
                 name = name,
                 title = self.request.get('title'),
                 content = self.request.get('content'),
-                content_html = util.render(self.request.get('content'), self.request.get('type')),
                 type = self.request.get('type'),
                 label = label.split('\n'),
                 allow_comment = True if allow_comment == 'Y' else False,
                 )
-
-        # put the item to the datastore
+        item.set_derivatives()
         item.put()
         self.redirect('.')
 
