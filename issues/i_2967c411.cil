@@ -1,0 +1,17 @@
+Summary: Add a recipe Node entity
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T10:35:49
+Updated: 2009-11-21T10:37:13
+
+The recipe node could have the following fields:
+
+* serves (optional)
+* intro (type)
+* ingredients_raw (line separated list of ingredients)
+* method
+* etc
+* go look at other sites
+
+Might also have a variations bit at the bottom.

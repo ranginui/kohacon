@@ -1,0 +1,14 @@
+Summary: Add new ways to render each node
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T10:15:30
+Updated: 2009-11-21T10:16:50
+
+For example, we already have a skeleton render for FAQs, so how about:
+
+* thumbnail (eg. images)
+* URL link
+* MenuItem
+
+Let's see what happens.

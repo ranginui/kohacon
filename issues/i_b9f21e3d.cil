@@ -1,0 +1,27 @@
+Summary: Add some boolean properties to each section/node
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-22T04:44:52
+Updated: 2009-11-22T04:51:35
+
+Then each template can check things like:
+
+* {% if section|has:"comments-open" %}
+* {% if node|has:"comments-open" %}
+
+Some example properties for sections would be:
+
+* is-in-index (shows whether to appear in sitemapindex.xml)
+* has-filter-page (responds to filter.html)
+
+Some example properties for nodes would be:
+
+* does-allow-comment
+* are-comments-open
+* is-in-index (shows in section, archive, rss and sitemap.xml pages)
+* is-menu-item
+* is-feature
+
+For example, is-menu-item means it can show up in that section's menu.
+'is-feature' might be used by 'project-index' pages.

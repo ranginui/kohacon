@@ -1,0 +1,28 @@
+Summary: Make the 'verticals' theme allow menu overriding
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-22T05:24:22
+Updated: 2009-11-22T05:35:14
+
+The menu on the left should change from the top level one to a smaller but
+section dependent menu when drilling down through the site.
+
+e.g. the top level might be:
+
+* /blog/
+* /wiki/
+* /faq/
+
+But when you go into the blog section, it might look like:
+
+* << Home
+* Archives
+** 2009
+** 2008
+* Labels
+** perl
+** wellington
+** database-design
+
+Not quite sure how it fits together yet, but go for it and see what happens.

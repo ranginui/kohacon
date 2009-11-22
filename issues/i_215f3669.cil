@@ -1,0 +1,10 @@
+Summary: Add table support to Phliky
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T10:18:34
+Updated: 2009-11-21T10:19:37
+
+Table support needs to be added.
+
+See: http://github.com/andychilton/phliky/blob/master/lib/Text/Phliky.pm

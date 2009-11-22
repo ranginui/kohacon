@@ -1,0 +1,15 @@
+Summary: Add tasks to task queue to rebuild section/node information
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T10:27:03
+Updated: 2009-11-21T10:29:55
+
+When a section is added/updated, one or more tasks need to be added to rebuild
+various bits of section information. e.g. the archive counts, or the label
+counts.
+
+The same with nodes when comments are approved. A task should be added so that
+it counts the number of comments. Maybe we do this when a comment is added too
+(so we can see the unapproved list, but I doubt that is very useful. Instead,
+just do it when a comment is approved.
