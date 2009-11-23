@@ -5,10 +5,12 @@
     {% endifequal %}
 
     {% ifequal node.class_name 'Image' %}
-        <p class="c"><img src="/node/image/{{ node.filename|escape }}" /></p>
+        <p class="c"><img src="/node/image/{{ node.filename|escape }}" />
         {% if node.caption %}
-        <p>{{ node.caption|escape }}</p>
+        <br />
+        <strong>{{ node.caption|escape }}</strong>
         {% endif %}
+        </p>
         {% if node.credit %}
             {% if node.credit_link %}
         <p>Credit: <a href="{{ node.credit_link|escape }}">{{ node.credit|escape }}</a></p>

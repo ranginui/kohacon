@@ -1,6 +1,8 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
 import os
+#import cgi
+#import logging
 
 # Google specific
 from google.appengine.api import users
@@ -128,6 +130,14 @@ class Env(webbase.WebBase):
             self.write( self.esc("%s=%s" % (k, v)) )
         self.write( '</pre>' )
 
+class CSV(webbase.WebBase):
+    def get(self):
+        self.write('<pre>')
+        for row in ['one,two,three', 'another, line, right here']:
+            list = row.split(',')
+            self.write( repr(list) )
+        self.write('</pre>')
+
 ## ----------------------------------------------------------------------------
 
 application = webapp.WSGIApplication(
@@ -139,6 +149,7 @@ application = webapp.WSGIApplication(
         ('/test/text.html', Text),
         ('/test/code.html', Code),
         ('/test/env.html', Env),
+        ('/test/csv.html', CSV),
     ],
     debug = True
 )

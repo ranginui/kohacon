@@ -61,8 +61,8 @@
       </tr>
 
       <tr>
-        <th><label for="id_label">Label:</label></th>
-        <td><textarea name="label" id="id_label">{{ item.label|escape }}</textarea></td>
+        <th><label for="id_label_raw">Label:</label></th>
+        <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
       </tr>
 
     </tbody>

@@ -1,0 +1,8 @@
+Issue: beba51d7
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-23T09:10:05
+Updated: 2009-11-23T09:10:56
+
+Make the labels a text input and split it when saving: from label_raw -> label.
+
+Also, tidied up some rendering of images and suchlike.

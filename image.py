@@ -10,6 +10,7 @@ from google.appengine.ext import db
 import models
 import webbase
 import formbase
+import util
 
 ## ----------------------------------------------------------------------------
 
@@ -42,23 +43,23 @@ class FormHandler(webbase.WebBase):
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
 
+        # do some preprocessing of the input params
+        name = self.request.get('name')
+        if name == '':
+            name = util.urlify(self.request.get('title'))
+
         # save the image
         file = self.request.POST['image']
-        blah = file.value
         section = db.get( self.request.POST['section'] )
         imagedata = models.ImageData(
             data = self.request.POST.get('image').file.read()
             )
         imagedata.put()
 
-        # remove the weirdness from the labels
-        label = self.request.POST['label']
-        label = re.sub('\r', '', label)
-
         # put the item to the stastore
         item = models.Image(
             section = section,
-            name = self.request.POST['name'],
+            name = name,
             title = self.request.POST['title'],
             filename = file.filename,
             mimetype = file.type,
@@ -66,7 +67,7 @@ class FormHandler(webbase.WebBase):
             caption = self.request.POST['caption'],
             credit = self.request.POST['credit'],
             credit_link = self.request.POST['credit_link'],
-            label = label.split('\n')
+            label_raw = self.request.get('label_raw'),
             )
         item.set_derivatives()
         item.put()

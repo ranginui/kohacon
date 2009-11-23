@@ -2,6 +2,7 @@
 # import standard modules
 import re
 import logging
+import csv
 
 # Google specific modules
 from google.appengine.ext import db
@@ -83,24 +84,27 @@ class Node(polymodel.PolyModel):
     # name := a-z[a-z0-9_-.]*
     name = db.StringProperty( required=True, multiline=False )
     title = db.StringProperty( required=True, multiline=False )
+    label_raw = db.StringProperty( multiline=False )
     label = db.StringListProperty()
     allow_comment = db.BooleanProperty( required=True, default=True )
     # these are all generated from the 'inserted' time (e.g. 2009, 2009-01, 2009-01-20)
     archive = db.StringListProperty()
 
     def set_derivatives(self):
+        # set the archive dates
         datetime = str(self.inserted)
-        logging.info('inserted=' + datetime)
         y = re.search(r'^(\d\d\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
         m = re.search(r'^(\d\d\d\d-\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
         d = re.search(r'^(\d\d\d\d-\d\d-\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
-        logging.info('(%s-%s-%s)' % (y, m, d))
         self.archive = [y, m, d]
+
+        # set the label(s) from label_raw
+        self.label = self.label_raw.split(',')
 
 # Page
 class Page(Node):
     content = db.TextProperty( required=True )
-    content_html = db.TextProperty( required=True )
+    content_html = db.TextProperty()
     type = db.StringProperty(required=True, choices=set(type_choices))
 
     def set_derivatives(self):

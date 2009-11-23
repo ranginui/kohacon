@@ -1,10 +1,11 @@
 Summary: Save labels as 'label_raw' and have 'label' generated from it
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: 96e7fff2
 Inserted: 2009-11-21T10:33:30
-Updated: 2009-11-22T06:36:56
+Updated: 2009-11-23T09:13:09
 
 Having the original field means we can present that same input back to the
 user. This also means it's a good opportunity to let them input in a text input
