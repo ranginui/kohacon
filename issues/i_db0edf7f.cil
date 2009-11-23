@@ -3,8 +3,9 @@ Status: InProgress
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: e914e17d
 Inserted: 2009-11-21T10:23:55
-Updated: 2009-11-22T08:38:23
+Updated: 2009-11-23T09:24:25
 
 The migrations are a bit weird at the moment, so kinda do like what Rails does.
 The migrations should be named something like:

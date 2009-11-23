@@ -18,7 +18,10 @@ class Node(db.Expando):
     pass
 
 # migration list
-migrations = [ '20091122a_RemoveUnusedArchive' ]
+migrations = [
+    '20091122a_RemoveUnusedArchive',
+    '20091123a_GenerateLabelRaw',
+    ]
 
 ## ----------------------------------------------------------------------------
 
@@ -35,6 +38,8 @@ class Migrate(webbase.WebBase):
         m = self.request.get('m')
         if m == '20091122a_RemoveUnusedArchive':
             self.m_20091122a_RemoveUnusedArchive()
+        elif m == '20091123a_GenerateLabelRaw':
+            self.m_20091123a_GenerateLabelRaw()
         else:
             logging.info('Not doing any migration')
 
@@ -55,5 +60,18 @@ class Migrate(webbase.WebBase):
                 new.append(n)
         db.put(new)
         logging.info('new.count()' + str(new.count(new)))
+
+    def m_20091123a_GenerateLabelRaw(self):
+        logging.info('20091123a_GenerateLabelRaw')
+        nodes = db.GqlQuery("SELECT * FROM Node")
+        new = []
+        for n in nodes:
+            if hasattr(n, 'label'):
+                n.label_raw = ','.join(n.label)
+            else:
+                n.label_raw = ''
+            logging.info('label_raw=' + n.label_raw)
+            new.append(n)
+        db.put(new)
 
 ## ----------------------------------------------------------------------------
