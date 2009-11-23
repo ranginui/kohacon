@@ -45,7 +45,6 @@ class FormHandler(webbase.WebBase):
         name = self.request.get('name')
         if name == '':
             name = util.urlify(self.request.get('title'))
-        label = re.sub('\r', '', self.request.get('label'))
         allow_comment = self.request.get('allow_comment', default_value='' )
 
         item = None
@@ -56,7 +55,7 @@ class FormHandler(webbase.WebBase):
             item.title = self.request.get('title')
             item.content = self.request.get('content')
             item.type = self.request.get('type')
-            item.label = label.split('\n')
+            item.label_raw = self.request.get('label_raw')
             item.allow_comment = True if allow_comment == 'Y' else False
         else:
             item = models.Page(
@@ -65,7 +64,7 @@ class FormHandler(webbase.WebBase):
                 title = self.request.get('title'),
                 content = self.request.get('content'),
                 type = self.request.get('type'),
-                label = label.split('\n'),
+                label_raw = self.request.get('label_raw'),
                 allow_comment = True if allow_comment == 'Y' else False,
                 )
         item.set_derivatives()

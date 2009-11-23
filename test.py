@@ -3,6 +3,7 @@
 #import cgi
 #import os
 #import logging
+import csv
 
 # Google specific
 from google.appengine.api import users
@@ -10,6 +11,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 import util
+import webbase
 
 ## ----------------------------------------------------------------------------
 
@@ -122,6 +124,14 @@ class Code(webapp.RequestHandler):
         html = util.render(sample_text, 'code')
         self.response.out.write(html)
 
+class CSV(webbase.WebBase):
+    def get(self):
+        self.write('<pre>')
+        for row in ['one,two,three', 'another, line, right here']:
+            list = row.split(',')
+            self.write( repr(list) )
+        self.write('</pre>')
+
 ## ----------------------------------------------------------------------------
 
 application = webapp.WSGIApplication(
@@ -132,6 +142,7 @@ application = webapp.WSGIApplication(
         ('/test/phliky-list.html', PhlikyList),
         ('/test/text.html', Text),
         ('/test/code.html', Code),
+        ('/test/csv.html', CSV),
     ],
     debug = True
 )
