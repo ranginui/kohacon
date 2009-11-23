@@ -1,8 +1,6 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
-#import cgi
-#import os
-#import logging
+import os
 
 # Google specific
 from google.appengine.api import users
@@ -10,6 +8,7 @@ from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 
 import util
+import webbase
 
 ## ----------------------------------------------------------------------------
 
@@ -122,6 +121,13 @@ class Code(webapp.RequestHandler):
         html = util.render(sample_text, 'code')
         self.response.out.write(html)
 
+class Env(webbase.WebBase):
+    def get(self):
+        self.write( '<pre>' )
+        for k, v in os.environ.items():
+            self.write( self.esc("%s=%s" % (k, v)) )
+        self.write( '</pre>' )
+
 ## ----------------------------------------------------------------------------
 
 application = webapp.WSGIApplication(
@@ -132,6 +138,7 @@ application = webapp.WSGIApplication(
         ('/test/phliky-list.html', PhlikyList),
         ('/test/text.html', Text),
         ('/test/code.html', Code),
+        ('/test/env.html', Env),
     ],
     debug = True
 )
