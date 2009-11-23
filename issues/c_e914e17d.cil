@@ -1,0 +1,8 @@
+Issue: db0edf7f
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-23T09:23:37
+Updated: 2009-11-23T09:24:25
+
+Added a quick and easy migration policy, but doesn't yet save which migrations
+have already been done. Merging into master such that we can make use of it,
+but still InProgress.

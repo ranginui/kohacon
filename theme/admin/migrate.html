@@ -7,8 +7,7 @@
   <ul>
     {% for migration in migrations %}
     <li>
-      <a href="?from={{ migration.from|escape }};to={{ migration.to|escape }}">Forward {{ migration.from|escape }} -&gt; {{ migration.to|escape }}</a>
-      (<a href="?from={{ migration.to|escape }};to={{ migration.from|escape }}">Back)
+      <a href="?m={{ migration|escape }}">{{ migration|escape }}</a>
     </li>
     {% endfor %}
   <ul>
