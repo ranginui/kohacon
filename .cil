@@ -1,11 +1,19 @@
 VCS: Git
 StatusStrict: 1
 StatusAllowedList: New
+StatusAllowedList: Reviewed
+StatusAllowedList: Assigned
 StatusAllowedList: InProgress
 StatusAllowedList: Finished
+StatusAllowedList: WontFix
+StatusAllowedList: Cancelled
 StatusOpenList: New
+StatusOpenList: Reviewed
+StatusOpenList: Assigned
 StatusOpenList: InProgress
 StatusClosedList: Finished
+StatusClosedList: WontFix
+StatusClosedList: Cancelled
 DefaultNewStatus: New
 LabelStrict: 1
 LabelAllowedList: Type-Enhancement
@@ -15,3 +23,4 @@ LabelAllowedList: Priority-Medium
 LabelAllowedList: Priority-Low
 LabelAllowedList: Release-v0.1.0
 LabelAllowedList: Milestone-v0.1
+LabelAllowedList: Milestone-Future
