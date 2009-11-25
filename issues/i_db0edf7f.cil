@@ -2,10 +2,10 @@ Summary: Complete migration policy
 Status: InProgress
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
-Label: Milestone-v0.1
+Label: Milestone-Future
 Comment: e914e17d
 Inserted: 2009-11-21T10:23:55
-Updated: 2009-11-23T09:24:25
+Updated: 2009-11-25T07:01:57
 
 The migrations are a bit weird at the moment, so kinda do like what Rails does.
 The migrations should be named something like:
