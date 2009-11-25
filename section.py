@@ -1,5 +1,6 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
+import logging
 
 # Google specific modules
 from google.appengine.ext import db
@@ -43,6 +44,7 @@ class FormHandler(webbase.WebBase):
         description = self.request.get('description')
         type = self.request.get('type')
         layout = self.request.get('layout')
+        attribute_raw = self.request.get('attribute_raw')
 
         # some pre-processing of the input params
         description_html = util.render(description, type)
@@ -56,6 +58,7 @@ class FormHandler(webbase.WebBase):
             item.description_html = description_html
             item.type = type
             item.layout = layout
+            item.attribute_raw = attribute_raw
         else:
             item = models.Section(
                 path = path,
@@ -64,9 +67,9 @@ class FormHandler(webbase.WebBase):
                 description_html = description_html,
                 type = type,
                 layout = layout,
+                attribute_raw = attribute_raw,
                 )
-
-        # put the item to the datastore
+        item.set_derivatives()
         item.put()
         self.redirect('.')
 

@@ -5,9 +5,6 @@
 
     {% include 'node.frag' %}
 
-    {% if node.comments %}
-    {% endif %}
-
     {% if comments.count %}
     <h2>Comments</h2>
         {% for comment in comments %}
@@ -17,7 +14,7 @@
         {% endfor %}
     {% endif %}
 
-    {% if node.allow_comment %}
+    {% if node|has:"comments-open" %}
     <h2>Your Comment</h2>
     <form method="post" action="./comment.html">
         <input type="hidden" name="_act" value="new" />

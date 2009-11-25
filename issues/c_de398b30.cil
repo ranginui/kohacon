@@ -1,0 +1,6 @@
+Issue: b9f21e3d
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-24T09:16:47
+Updated: 2009-11-24T09:17:10
+
+Fields like 'allow_comment' cann now be removed since they are superceded.

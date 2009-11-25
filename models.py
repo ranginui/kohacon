@@ -62,6 +62,14 @@ class Section(db.Model):
         default='content',
         choices=layout_choices
         )
+    attribute_raw = db.StringProperty( multiline=False )
+
+    # these are all generated
+    attribute = db.StringListProperty()
+
+    def set_derivatives(self):
+        # set the lists from their raw values
+        self.attribute = self.attribute_raw.split(' ')
 
 # NodeLayout: how to lay out each node
 class NodeLayout(BaseModel):
@@ -85,10 +93,12 @@ class Node(polymodel.PolyModel):
     name = db.StringProperty( required=True, multiline=False )
     title = db.StringProperty( required=True, multiline=False )
     label_raw = db.StringProperty( multiline=False )
+    attribute_raw = db.StringProperty( multiline=False )
+
+    # these are all generated
     label = db.StringListProperty()
-    allow_comment = db.BooleanProperty( required=True, default=True )
-    # these are all generated from the 'inserted' time (e.g. 2009, 2009-01, 2009-01-20)
     archive = db.StringListProperty()
+    attribute = db.StringListProperty()
 
     def set_derivatives(self):
         # set the archive dates
@@ -98,8 +108,9 @@ class Node(polymodel.PolyModel):
         d = re.search(r'^(\d\d\d\d-\d\d-\d\d)', datetime, re.DOTALL | re.VERBOSE).group(1)
         self.archive = [y, m, d]
 
-        # set the label(s) from label_raw
+        # set the lists from their raw values
         self.label = self.label_raw.split(',')
+        self.attribute = self.attribute_raw.split(r' ')
 
 # Page
 class Page(Node):
@@ -108,8 +119,7 @@ class Page(Node):
     type = db.StringProperty(required=True, choices=set(type_choices))
 
     def set_derivatives(self):
-        super(Page, self).set_derivatives()
-        logging.info('here')
+        Node.set_derivatives(self)
         self.content_html = util.render(self.content, self.type)
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine

@@ -2,6 +2,7 @@
 # import standard modules
 import cgi
 import datetime
+import logging
 
 # Google Specific
 from google.appengine.ext.webapp import template
@@ -53,5 +54,18 @@ def index(section):
     return nodes
 
 register.filter(index)
+
+# returns whether this entity has a particular attribute
+def has(item, attribute):
+    # loop through the entities
+    logging.info('Got=' + attribute)
+    logging.info('Testing against=' + repr(item.attribute))
+    for a in item.attribute:
+        logging.info('testing=' + a)
+        if a == attribute:
+            return True
+    return False
+
+register.filter(has)
 
 ## ----------------------------------------------------------------------------

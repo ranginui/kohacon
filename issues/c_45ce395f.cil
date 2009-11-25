@@ -1,0 +1,7 @@
+Issue: b9f21e3d
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-24T09:03:26
+Updated: 2009-11-24T09:03:58
+
+All of these things should be called 'Attributes' and not 'Properties' since
+property is already used for the general site.

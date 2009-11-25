@@ -1,6 +1,7 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
 import re
+import logging
 
 # Google specific modules
 from google.appengine.ext import db
@@ -45,7 +46,8 @@ class FormHandler(webbase.WebBase):
         name = self.request.get('name')
         if name == '':
             name = util.urlify(self.request.get('title'))
-        allow_comment = self.request.get('allow_comment', default_value='' )
+
+        attribute_raw = self.request.get('attribute_raw')
 
         item = None
         if self.request.get('key'):
@@ -56,7 +58,7 @@ class FormHandler(webbase.WebBase):
             item.content = self.request.get('content')
             item.type = self.request.get('type')
             item.label_raw = self.request.get('label_raw')
-            item.allow_comment = True if allow_comment == 'Y' else False
+            item.attribute_raw = attribute_raw
         else:
             item = models.Page(
                 section = section,
@@ -65,9 +67,11 @@ class FormHandler(webbase.WebBase):
                 content = self.request.get('content'),
                 type = self.request.get('type'),
                 label_raw = self.request.get('label_raw'),
-                allow_comment = True if allow_comment == 'Y' else False,
+                attribute_raw = attribute_raw,
                 )
+        logging.info( 'here1=' + item.attribute_raw)
         item.set_derivatives()
+        logging.info( 'here2=' + '|'.join(item.attribute) )
         item.put()
         self.redirect('.')
 

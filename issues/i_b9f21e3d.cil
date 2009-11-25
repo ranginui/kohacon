@@ -1,10 +1,13 @@
 Summary: Add some boolean properties to each section/node
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: 45ce395f
+Comment: de398b30
+Comment: f31a14c7
 Inserted: 2009-11-22T04:44:52
-Updated: 2009-11-22T06:36:56
+Updated: 2009-11-25T06:50:08
 
 Then each template can check things like:
 

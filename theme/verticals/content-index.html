@@ -4,6 +4,13 @@
   <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
   <p>{{ section.description_html }}</p>
 
+  {% if section|has:"in-index" %}
+  <p>Is in Index</p>
+  {% endif %}
+  {% if section|has:"has-contact-form" %}
+  <p>Has contact form</p>
+  {% endif %}
+
   {% for node in section|index %}
     <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
     {% include 'node.frag' %}

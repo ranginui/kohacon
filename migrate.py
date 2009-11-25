@@ -7,20 +7,17 @@ from google.appengine.ext import db
 
 # local modules
 import webbase
+from models import Section
+from models import Node
 
 ## ----------------------------------------------------------------------------
 # define all the entity types we have
-
-class Section(db.Expando):
-    pass
-
-class Node(db.Expando):
-    pass
 
 # migration list
 migrations = [
     '20091122a_RemoveUnusedArchive',
     '20091123a_GenerateLabelRaw',
+    '20091124a_MakeSectionRightAgain',
     ]
 
 ## ----------------------------------------------------------------------------
@@ -40,6 +37,8 @@ class Migrate(webbase.WebBase):
             self.m_20091122a_RemoveUnusedArchive()
         elif m == '20091123a_GenerateLabelRaw':
             self.m_20091123a_GenerateLabelRaw()
+        elif m == '20091124a_MakeSectionRightAgain':
+            self.m_20091124a_MakeSectionRightAgain()
         else:
             logging.info('Not doing any migration')
 
@@ -72,6 +71,17 @@ class Migrate(webbase.WebBase):
                 n.label_raw = ''
             logging.info('label_raw=' + n.label_raw)
             new.append(n)
+        db.put(new)
+
+    def m_20091124a_MakeSectionRightAgain(self):
+        logging.info('20091124a_MakeSectionRightAgain')
+        sections = db.GqlQuery("SELECT * FROM Section")
+        new = []
+        for s in sections:
+            s.attribute_raw = ''
+            s.attribute = s.attribute_raw.split(r'\s+')
+            new.append(s)
+        logging.info('Putting...')
         db.put(new)
 
 ## ----------------------------------------------------------------------------
