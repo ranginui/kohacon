@@ -215,16 +215,11 @@ dl dd {
 
 #sidebar .boxed a {
 	color: #FFFFFF;
-	text-decoration: underline;
-}
-
-#sidebar .boxed a:hover {
 	text-decoration: none;
 }
 
-#sidebar .extra {
-	height: 35px;
-	background: url(sidebar-extra.gif);
+#sidebar .boxed a:hover {
+	text-decoration: underline;
 }
 
 /* Menu */
@@ -240,6 +235,7 @@ dl dd {
 
 #menu li {
 	display: inline;
+    color: white;
 }
 
 #menu a {
@@ -258,11 +254,46 @@ dl dd {
 
 #menu a:hover {
 	background-image: url(button-hover.gif);
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #menu .active a {
 	background: #FF8C68 url(button-active.gif) no-repeat;
+}
+
+/* the embedded list */
+#menu ul ul {
+	margin: 0 0 5px 10px;
+	list-style: none;
+}
+
+#menu ul ul li {
+	padding: 0 0 0 12px;
+	background: url(li.png) no-repeat left top;
+	display: block;
+}
+
+#menu ul ul a {
+	display: inline;
+	height: 27px;
+	background: none;
+	margin: 0 0 5px 0;
+	padding: 3px 0 0 0;
+	text-transform: none;
+	letter-spacing: 0;
+	font: normal 1em "Trebuchet MS", Arial, Helvetica, sans-serif;
+	text-decoration: none;
+}
+
+#menu ul ul a:hover {
+	background: none;
+	text-decoration: underline;
+}
+
+/* the bit at the bottom */
+#sidebar .extra {
+	height: 35px;
+	background: url(sidebar-extra.gif);
 }
 
 /* Content */
@@ -292,8 +323,8 @@ dl dd {
 }
 
 #content .date {
-    text-align: right;
-    font-size: 9px;
+	text-align: right;
+	font-size: 9px;
 }
 
 /* Footer */

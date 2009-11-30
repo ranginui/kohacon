@@ -1,10 +1,11 @@
 Summary: Make the 'verticals' theme allow menu overriding
-Status: New
+Status: InProgress
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: c29602a7
 Inserted: 2009-11-22T05:24:22
-Updated: 2009-11-22T06:36:56
+Updated: 2009-11-30T09:07:12
 
 The menu on the left should change from the top level one to a smaller but
 section dependent menu when drilling down through the site.

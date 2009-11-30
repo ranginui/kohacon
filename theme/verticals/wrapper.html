@@ -7,7 +7,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>{% block title %}chilts.org{% endblock %} - chilts.org</title>
+    <title>{% block title %}{{ section.title|escape }}{% endblock %} - chilts.org</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
@@ -25,18 +25,33 @@
 	  <div id="sidebar">
 		<div id="menu">
 		  <ul>
-            <li class="active"><a href="/">Homepage</a></li>
-            <li><a href="/sites.html">Sites</a></li>
-            <li><a href="/free-software.html">Free Software</a></li>
-            <li><a href="/presentations.html">Presentations</a></li>
-            <li><a href="/woodworking/">WoodWorking</a></li>
+            {% ifequal section.path '/' %}
+            <li class="active"><a href="/blog/">Blog</a></li>
+            <li><a href="/retire-at-40/">Retire at 40</a></li>
+            <li><a href="/simplicity/">Simplicity</a></li>
             <li><a href="/recipe/">Recipes</a></li>
+            <li><a href="/simple-starters/">Simple Starters</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+            {% endifequal %}
+            {% block mainmenu %}<li>???</li>{% endblock %}
 		  </ul>
-          {% block sidebar %}{% endblock %}
 		</div>
         <!-- -#menu- -->
 
 		<div id="sites" class="boxed">
+          {% ifnotequal section.path '/' %}
+		  <h2 class="title">Other sections:</h2>
+		  <div class="content">
+			<ul>
+			  <li><a href="/blog/">Blog</a></li>
+			  <li><a href="/retire-at-40/">Retire at 40</a></li>
+			  <li><a href="/simplicity/">Simplicity</a></li>
+			  <li><a href="/recipes/">Recipes</a></li>
+			  <li><a href="/simple-starters/">Simple Starters</a></li>
+			</ul>
+		  </div>
+          {% endifnotequal %}
 		  <h2 class="title">Find me at:</h2>
 		  <div class="content">
 			<ul>

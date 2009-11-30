@@ -17,4 +17,27 @@
     {% endfor %}
 {% endblock %}
 
-{% block title %}{{ section.title|escape }}{% endblock %}
+{% block mainmenu %}
+  {% ifnotequal section.path '/' %}
+  <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
+  <ul>
+    <li>
+      <a href="#">Archive</a>
+      <ul>
+        <li><a href="#">Feb 2009</a></li>
+        <li><a href="#">Jan 2009</a></li>
+        <li><a href="#">Dec 2008</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#">Labels</a>
+      <ul>
+        <li><a href="#">This</a></li>
+        <li><a href="#">That</a></li>
+        <li><a href="#">Other</a></li>
+      </ul>
+    </li>
+  </ul>
+  <li><a href="/">&laquo; Home</a></li>
+  {% endifnotequal %}
+{% endblock %}

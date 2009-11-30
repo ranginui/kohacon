@@ -12,10 +12,16 @@
   </ul>
 
   {% for node in section|all %}
-    <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+    <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
     {% include 'node-skel.frag' %}
   {% endfor %}
 
 {% endblock %}
 
-{% block title %}{{ section.title|escape }}{% endblock %}
+{% block mainmenu %}
+  {% ifnotequal section.path '/' %}
+  <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
+  <li>This FAQ has {{ section.nodes.count|escape }} questions</li>
+  <li><a href="/">&laquo; Home</a></li>
+  {% endifnotequal %}
+{% endblock %}
