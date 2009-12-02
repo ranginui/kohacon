@@ -7,6 +7,22 @@ upload: update-indexes
 update-indexes:
 	../google_appengine/appcfg.py update_indexes ./
 
+# for when you delete an index (to clear it out)
+vacuum-indexes:
+	../google_appengine/appcfg.py vacuum_indexes ./
+
+# update task queus
+update-queues:
+	../google_appengine/appcfg.py update_queues ./
+
+# update cron
+update-cron:
+	../google_appengine/appcfg.py update_cron ./
+
+# download log for today (check appcfg.py for further info)
+request-logs:
+	../google_appengine/appcfg.py request_logs ./ log.txt
+
 commit:
 	git commit -m 'Update of generated files' index.yaml
 
