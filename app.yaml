@@ -1,0 +1,36 @@
+application: kohacon
+version: v0-1
+runtime: python
+api_version: 1
+default_expiration: '1d'
+
+handlers:
+- url: /admin/remote
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+
+- url: /admin/.*
+  script: admin.py
+  login: admin
+
+- upload: theme/*/s/*          # all the files to upload
+  url: /s/([^/]+)/(.*)         # the paths this handler will serve
+  static_files: theme/\1/s/\2  # where the files actually live (on the server)
+
+- url: /.*
+  script: kohacon.py
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- store/.*
+- Makefile
+- README
+
