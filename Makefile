@@ -1,7 +1,7 @@
 start-server:
 	../google_appengine/dev_appserver.py --datastore_path=store/data.db --history_path=store/data.db.history ./
 
-upload: update-indexes
+upload:
 	../google_appengine/appcfg.py update ./
 
 update-indexes:
