@@ -59,7 +59,7 @@ class Section(db.Model):
     attribute = db.StringListProperty()
     def set_derivatives(self):
         # set the lists from their raw values
-        self.attribute = self.attribute_raw.split(' ')
+        self.attribute = self.attribute_raw.split()
 
     # Generated Properties (and the tasks to kick them off)
     archive_json = properties.JsonProperty()
@@ -98,8 +98,8 @@ class Node(polymodel.PolyModel):
         self.archive = [y, m, d]
 
         # set the lists from their raw values
-        self.label = self.label_raw.split(',')
-        self.attribute = self.attribute_raw.split(r' ')
+        self.label = self.label_raw.split()
+        self.attribute = self.attribute_raw.split()
 
     # Generated Properties (and the tasks to kick them off)
     comment_count = db.IntegerProperty( required=True, default=0 )

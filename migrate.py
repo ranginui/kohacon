@@ -79,7 +79,7 @@ class Migrate(webbase.WebBase):
         new = []
         for s in sections:
             s.attribute_raw = ''
-            s.attribute = s.attribute_raw.split(r'\s+')
+            s.attribute = s.attribute_raw.split()
             new.append(s)
         logging.info('Putting...')
         db.put(new)
