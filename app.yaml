@@ -32,16 +32,19 @@ handlers:
   script: lollysite.py
 
 skip_files:
-- ^(.*/)?app\.yaml
-- ^(.*/)?app\.yml
-- ^(.*/)?index\.yaml
-- ^(.*/)?index\.yml
-- ^(.*/)?#.*#
-- ^(.*/)?.*~
-- ^(.*/)?.*\.py[co]
-- ^(.*/)?.*/RCS/.*
-- ^(.*/)?\..*
-- store/.*
-- Makefile
-- README
-
+- ^(.*/)?app\.yaml$
+- ^(.*/)?app\.yml$
+- ^(.*/)?index\.yaml$
+- ^(.*/)?index\.yml$
+- ^(.*/)?.*\.log$
+- ^(.*/)?.*\.dat$
+- ^(.*/)?.*\.py[co]$           # compiled Python
+- ^(.*/)?.*/RCS/.*             # any RCS files
+- ^(.*/)?\..*                  # dotfiles
+- ^(.*/)?#.*#                  # emacs autosave
+- ^(.*/)?.*~$                  # backup files
+- ^issues/.*                   # cil issues
+- ^store/.*                    # local datastore
+- ^Makefile
+- ^README
+- ^LICENSE
