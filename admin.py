@@ -14,7 +14,6 @@ from google.appengine.ext import db
 import webbase
 import property
 import section
-import sectionlayout
 import page
 import image
 import comment
@@ -55,11 +54,6 @@ application = webapp.WSGIApplication(
         ('/admin/property/', property.List),
         ('/admin/property/new.html', property.FormHandler),
         ('/admin/property/edit.html', property.FormHandler),
-
-        # section layouts
-        ('/admin/section-layout/', sectionlayout.SectionLayoutList),
-        ('/admin/section-layout/new.html', sectionlayout.SectionLayoutNew),
-        ('/admin/section-layout/edit.html', sectionlayout.SectionLayoutNew),
 
         # sections
         ('/admin/section/', section.List),

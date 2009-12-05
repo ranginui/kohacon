@@ -39,16 +39,6 @@ class Property(BaseModel):
     title = db.StringProperty( required=True )
     value = db.StringProperty( required=True )
 
-# SectionLayout: how to lay out each section
-class SectionLayout(BaseModel):
-    title = db.StringProperty( required=True )
-    description = db.TextProperty()
-    template = db.TextProperty( required=True )
-
-    # so it looks nice in References in DjangoForms
-    def __unicode__(self):
-        return self.title
-
 # Section: to group Nodes together
 class Section(db.Model):
     # path := usually something starting with '/', like '/', '/blog/', '/article/' and '/path/to/'
@@ -76,12 +66,6 @@ class Section(db.Model):
     label_json = properties.JsonProperty()
     def regenerate(self):
         Task( params={ 'key': self.key }, countdown=30, ).add( queue_name='section-regenerate' )
-
-# NodeLayout: how to lay out each node
-class NodeLayout(BaseModel):
-    title = db.StringProperty( required=True )
-    description = db.TextProperty()
-    template = db.TextProperty( required=True )
 
 ## ----------------------------------------------------------------------------
 # polymodels
