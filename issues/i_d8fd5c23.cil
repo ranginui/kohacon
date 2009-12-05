@@ -1,0 +1,16 @@
+Summary: Add task to regenerate certain fields on Nodes (eg. comment count)
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.1
+Inserted: 2009-12-05T00:29:19
+Updated: 2009-12-05T00:32:20
+
+When a comment is added (or in fact, approved), there should be a field on that
+particular node to save the comment count.
+
+New field required on Node:
+
+   comment_count = db.IntegerProperty( required=True, default=0 )
+
+Please see issue cil-5cc7cb70 for other information.
