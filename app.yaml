@@ -1,4 +1,4 @@
-application: chilts-org
+application: lollysite
 version: v0-1
 runtime: python
 api_version: 1
