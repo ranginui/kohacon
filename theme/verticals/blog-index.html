@@ -4,13 +4,6 @@
     <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
     <p>{{ section.description_html }}</p>
 
-  {% if section|has:"in-index" %}
-  <p>Is in Index</p>
-  {% endif %}
-  {% if section|has:"has-contact-form" %}
-  <p>Has contact form</p>
-  {% endif %}
-
     {% for node in section|latest:10 %}
     <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
       {% include 'node.frag' %}
@@ -22,7 +15,7 @@
   <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
   <ul>
     <li>
-      <a href="#">Archive</a>
+      Archive
       <ul>
         {% for archive in section.archive_json %}
             <li><a href="./archive:{{ archive.archive }}.html">{{ archive.archive|escape }}</a> ({{ archive.count|escape }})</li>
@@ -30,7 +23,7 @@
       </ul>
     </li>
     <li>
-      <a href="#">Labels</a>
+      Labels
       <ul>
         {% for label in section.label_json %}
             <li><a href="./label:{{ label.label|escape }}.html">{{ label.label|escape }}</a> ({{ label.count|escape }})</li>
