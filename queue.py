@@ -15,6 +15,7 @@ from google.appengine.ext.db import GqlQuery
 import webbase
 from models import Section
 from models import Node
+from models import Comment
 
 ## ----------------------------------------------------------------------------
 
@@ -22,7 +23,7 @@ from models import Node
 class SectionRegenerate(webbase.WebBase):
     def get(self):
         self.response.headers['Content-Type'] = 'text/plain'
-        self.write('Started task:')
+        self.write('Started section regeneration task:')
 
         key = self.request.get('key')
         self.write('- key = ' + key)
@@ -78,11 +79,39 @@ class SectionRegenerate(webbase.WebBase):
 
         self.write('Finished')
 
+# try http://localhost:8080/_ah/queue/node-regenerate?key=?
+class NodeRegenerate(webbase.WebBase):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.write('Started node regeneration task:')
+
+        key = self.request.get('key')
+        self.write('- key = ' + key)
+        logging.info( 'Regenerating ' +  key )
+
+        # ok, so get the section first
+        node = db.get( self.request.get('key') )
+        if node is None:
+            self.write('No node found')
+            return
+
+        self.write('Section = ' + node.section.path)
+        self.write('Node = ' + node.name)
+
+        # get the approved comments and update the node itself
+        # comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved').order('inserted')
+        comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved')
+        node.comment_count = comments.count()
+        self.write('- count=' + str(node.comment_count))
+        node.put()
+        self.write('Finished')
+
 application = webapp.WSGIApplication(
     [
         # these locations are the default
         # See: http://code.google.com/appengine/docs/python/taskqueue/overview.html#Queue_Default_URLs
         ('/_ah/queue/section-regenerate', SectionRegenerate),
+        ('/_ah/queue/node-regenerate', NodeRegenerate),
     ],
     debug = True
 )

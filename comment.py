@@ -42,6 +42,7 @@ class Index(webbase.WebBase):
         else:
             comment.status = status_map[status]
             comment.put()
+            comment.node.regenerate()
             self.redirect('./')
             return
 

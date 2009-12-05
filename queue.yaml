@@ -1,3 +1,5 @@
 queue:
 - name: section-regenerate
   rate: 6/m
+- name: node-regenerate
+  rate: 1/s

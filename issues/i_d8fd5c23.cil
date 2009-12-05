@@ -1,10 +1,11 @@
 Summary: Add task to regenerate certain fields on Nodes (eg. comment count)
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: f3c6fe7f
 Inserted: 2009-12-05T00:29:19
-Updated: 2009-12-05T00:32:20
+Updated: 2009-12-05T01:06:16
 
 When a comment is added (or in fact, approved), there should be a field on that
 particular node to save the comment count.

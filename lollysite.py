@@ -153,12 +153,14 @@ class LollySite(webbase.WebBase):
             logging.info('node.name=' + node.name)
             logging.info('node.title=' + node.title)
 
-            # get the approved comments
-            comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved').order('inserted')
+            # get the approved comments (but only if we know some are there, save a trip to the datastore)
+            comments = None
+            if node.comment_count:
+                comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved').order('inserted')
 
             vals = {
-                'section' : section,
-                'node'    : node,
+                'section'  : section,
+                'node'     : node,
                 'comments' : comments,
                 }
             self.template( 'node.html', vals, config.value('Theme') );

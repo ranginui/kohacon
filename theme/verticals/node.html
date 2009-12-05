@@ -8,7 +8,7 @@
     {% include 'node.frag' %}
 
     {% if comments.count %}
-    <h2>Comments</h2>
+    <h2>{{ comments.count }} Comment{{ comments.count|pluralize }}</h2>
         {% for comment in comments %}
           <h4>{{ forloop.counter|escape }}. <a href="{{ comment.website|escape }}">{{ comment.name|escape }}</a></h4>
           {{ comment.comment_html }}
