@@ -17,7 +17,7 @@ handlers:
   script: queue.py
   login: admin
 
-- upload: theme/*/s/*          # all the files to upload
+- upload: theme/[^/]+/s/*      # all the files to upload
   url: /s/([^/]+)/(.*)         # the paths this handler will serve
   static_files: theme/\1/s/\2  # where the files actually live (on the server)
 
