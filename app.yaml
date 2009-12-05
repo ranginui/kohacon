@@ -45,6 +45,7 @@ skip_files:
 - ^(.*/)?.*~$                  # backup files
 - ^issues/.*                   # cil issues
 - ^store/.*                    # local datastore
+- ^logs/.*                     # downloaded logs
 - ^Makefile
 - ^README
 - ^LICENSE
