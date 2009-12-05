@@ -69,10 +69,14 @@ class FormHandler(webbase.WebBase):
                 label_raw = self.request.get('label_raw'),
                 attribute_raw = attribute_raw,
                 )
-        logging.info( 'here1=' + item.attribute_raw)
+
+        # update and save this page
         item.set_derivatives()
-        logging.info( 'here2=' + '|'.join(item.attribute) )
         item.put()
+
+        # once saved, regenerate certain section properties
+        section.regenerate()
+
         self.redirect('.')
 
 ## ----------------------------------------------------------------------------

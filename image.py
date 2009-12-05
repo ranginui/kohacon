@@ -69,8 +69,14 @@ class FormHandler(webbase.WebBase):
             credit_link = self.request.POST['credit_link'],
             label_raw = self.request.get('label_raw'),
             )
+
+        # update and save this page
         item.set_derivatives()
         item.put()
+
+        # once saved, regenerate certain section properties
+        section.regenerate()
+
         self.redirect('.')
 
 ## ----------------------------------------------------------------------------

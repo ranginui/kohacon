@@ -11,7 +11,7 @@ update-indexes:
 vacuum-indexes:
 	../google_appengine/appcfg.py vacuum_indexes ./
 
-# update task queus
+# update task queues
 update-queues:
 	../google_appengine/appcfg.py update_queues ./
 

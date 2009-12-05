@@ -1,0 +1,9 @@
+Issue: 5cc7cb70
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-05T00:26:11
+Updated: 2009-12-05T00:27:51
+
+Finished the Section regeneration code. Archives and labels are now regenerated
+30s after a node has been saved underneath them.
+
+Will add the regeneration for comments into a separate issue.

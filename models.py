@@ -2,14 +2,15 @@
 # import standard modules
 import re
 import logging
-import csv
 
 # Google specific modules
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
+from google.appengine.api.labs.taskqueue import Task
 
 # local stuff
 import util
+import properties
 
 ## ----------------------------------------------------------------------------
 
@@ -64,12 +65,18 @@ class Section(db.Model):
         )
     attribute_raw = db.StringProperty( multiline=False )
 
-    # these are all generated
+    # Derivative Properties
     attribute = db.StringListProperty()
-
     def set_derivatives(self):
         # set the lists from their raw values
         self.attribute = self.attribute_raw.split(' ')
+
+    # Generated Properties (and the tasks to kick them off)
+    # (usually generated in task queues)
+    archive_json = properties.JsonProperty()
+    label_json = properties.JsonProperty()
+    def regenerate(self):
+        Task( params={ 'key': self.key }, countdown=30, ).add( queue_name='section-regenerate' )
 
 # NodeLayout: how to lay out each node
 class NodeLayout(BaseModel):
@@ -95,11 +102,10 @@ class Node(polymodel.PolyModel):
     label_raw = db.StringProperty( multiline=False )
     attribute_raw = db.StringProperty( multiline=False )
 
-    # these are all generated
+    # Derivative Properties
     label = db.StringListProperty()
     archive = db.StringListProperty()
     attribute = db.StringListProperty()
-
     def set_derivatives(self):
         # set the archive dates
         datetime = str(self.inserted)

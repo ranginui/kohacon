@@ -1,0 +1,3 @@
+queue:
+- name: section-regenerate
+  rate: 6/m

@@ -4,6 +4,7 @@ import logging
 
 # Google specific modules
 from google.appengine.ext import db
+from google.appengine.api.labs.taskqueue import Task
 
 # local modules
 import models
@@ -69,8 +70,15 @@ class FormHandler(webbase.WebBase):
                 layout = layout,
                 attribute_raw = attribute_raw,
                 )
+
+        # update and save this section
         item.set_derivatives()
         item.put()
+
+        # once saved, add the section to the two task queues
+        Task( params={ 'key': item.key }, countdown=30, ).add( queue_name='section-update-label' )
+        Task( params={ 'key': item.key }, countdown=45, ).add( queue_name='section-update-archive' )
+
         self.redirect('.')
 
 ## ----------------------------------------------------------------------------

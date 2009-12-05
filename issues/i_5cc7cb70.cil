@@ -1,10 +1,11 @@
 Summary: Add tasks to task queue to rebuild section/node information
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.1
+Comment: f17e8af3
 Inserted: 2009-11-21T10:27:03
-Updated: 2009-12-02T04:10:12
+Updated: 2009-12-05T00:27:51
 
 When a section is added/updated, one or more tasks need to be added to rebuild
 various bits of section information. e.g. the archive counts, or the label
