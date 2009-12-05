@@ -2,6 +2,30 @@
 
 LollySite - a simple sitemaker which runs on Google AppEngine
 
+* http://www.chilts.org/project/lollysite/
+
+-------------------------------------------------------------------------------
+
+All you need to do to get Lollysite working on your AppSpot account is:
+
+1) Change the app.yaml 'application' line to match your AppSpot ID.
+
+2) Run 'appcfg.py update .'
+
+That's it.
+
+Then, go to your admin interface:
+
+* http://<yourid>.appspot.com/admin/property/
+
+... and add the following five properties.
+
+* Theme = verticals
+* Title = chilts.org
+* Sub Title = Andy Chilton
+* Naked Domain = chilts.org
+* Admin Email = andychilton@gmail.com
+
 -------------------------------------------------------------------------------
 
 Blog Entries that Helped me Write LollySite
