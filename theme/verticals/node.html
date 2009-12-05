@@ -1,4 +1,4 @@
-{% extends "wrapper.html" %}
+{% extends "minimal.html" %}
 
 {% block title %}{{ node.title|escape }} - {{ section.title|escape }}{% endblock %}
 
@@ -36,16 +36,4 @@
         </p>
     </form>
     {% endif %}
-{% endblock %}
-
-{% block mainmenu %}
-  {% ifnotequal section.path '/' %}
-  <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
-  <ul>
-    <li><a href="#">This</a></li>
-    <li><a href="#">That</a></li>
-    <li><a href="#">Other</a></li>
-  </ul>
-  <li><a href="/">&laquo; Home</a></li>
-  {% endifnotequal %}
 {% endblock %}
