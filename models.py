@@ -118,6 +118,12 @@ class Node(polymodel.PolyModel):
         self.label = self.label_raw.split(',')
         self.attribute = self.attribute_raw.split(r' ')
 
+    # Generated Properties (and the tasks to kick them off)
+    archive_json = properties.JsonProperty()
+    label_json = properties.JsonProperty()
+    def regenerate(self):
+        Task( params={ 'key': self.key }, countdown=30, ).add( queue_name='section-regenerate' )
+
 # Page
 class Page(Node):
     content = db.TextProperty( required=True )
