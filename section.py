@@ -36,7 +36,9 @@ class FormHandler(webbase.WebBase):
             'types' : models.type_choices,
             'layouts' : models.layout_choices,
             }
-        self.template( 'section-form.html', vals, 'admin' );
+        # blah.html = section-form.html ... but see:
+        # http://groups.google.com/group/google-appengine-python/browse_thread/thread/5541f51962034e28
+        self.template( 'blah.html', vals, 'admin' );
 
     def post(self):
         # get all the incoming values
