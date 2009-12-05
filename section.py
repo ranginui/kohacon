@@ -76,8 +76,7 @@ class FormHandler(webbase.WebBase):
         item.put()
 
         # once saved, add the section to the two task queues
-        Task( params={ 'key': item.key }, countdown=30, ).add( queue_name='section-update-label' )
-        Task( params={ 'key': item.key }, countdown=45, ).add( queue_name='section-update-archive' )
+        item.regenerate()
 
         self.redirect('.')
 
