@@ -24,17 +24,17 @@
     <li>
       <a href="#">Archive</a>
       <ul>
-        <li><a href="#">Feb 2009</a></li>
-        <li><a href="#">Jan 2009</a></li>
-        <li><a href="#">Dec 2008</a></li>
+        {% for archive in section.archive_json %}
+            <li><a href="./archive:{{ archive.archive }}.html">{{ archive.archive|escape }}</a> ({{ archive.count|escape }})</li>
+        {% endfor %}
       </ul>
     </li>
     <li>
       <a href="#">Labels</a>
       <ul>
-        <li><a href="#">This</a></li>
-        <li><a href="#">That</a></li>
-        <li><a href="#">Other</a></li>
+        {% for label in section.label_json %}
+            <li><a href="./label:{{ label.label|escape }}.html">{{ label.label|escape }}</a> ({{ label.count|escape }})</li>
+        {% endfor %}
       </ul>
     </li>
   </ul>
