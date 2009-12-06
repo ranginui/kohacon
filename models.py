@@ -40,7 +40,7 @@ class Property(BaseModel):
     value = db.StringProperty( required=True )
 
 # Section: to group Nodes together
-class Section(db.Model):
+class Section(BaseModel):
     # path := usually something starting with '/', like '/', '/blog/', '/article/' and '/path/to/'
     # path := m{ / (a-z[a-z0-9]*/)* }xms # intial / followed by 0 or more sections
     path = db.StringProperty( required=True )
