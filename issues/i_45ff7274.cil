@@ -1,0 +1,10 @@
+Summary: Add proper license information to all source files
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-06T19:33:56
+Updated: 2009-12-06T19:35:01
+
+At the top of each source file should be a copyright statement and information
+about the license of that particular file. Also, check what needs to happen for
+a changelog, README, LICENSE, COPYING and all that.
