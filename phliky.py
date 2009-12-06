@@ -10,6 +10,7 @@ pre = re.compile('^\s')
 html = re.compile('^<\s(.*)', re.DOTALL)
 blockquote = re.compile('^"\s+(.*)', re.DOTALL)
 list = re.compile('^([\#\*]+)\s+(.*)', re.DOTALL)
+centered = re.compile('^\^\s+(.*)', re.DOTALL)
 
 # inline regexes
 balanced = re.compile(r'\\(\w+){([^{}]*?)}', re.DOTALL | re.VERBOSE)
@@ -48,6 +49,10 @@ def do_chunk(chunk):
     m = list.search(chunk)
     if m:
         return do_list(chunk)
+
+    m = centered.search(chunk)
+    if m:
+        return '<p class="c">' + do_inline(esc(m.group(1))) + '</p>'
 
     # just a normal paragraph
     return '<p>' + do_inline(esc(chunk)) + '</p>'
