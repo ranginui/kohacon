@@ -24,12 +24,7 @@ import migrate
 
 class Home(webbase.WebBase):
     def get(self):
-        vals = {
-            'title' : 'Lollysite',
-            'user' : users.get_current_user(),
-            'app' : self
-        }
-        self.template( 'index.html', vals, 'admin' );
+        self.redirect('/admin/section/')
 
 class Delete(webbase.WebBase):
     def get(self):

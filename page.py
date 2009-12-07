@@ -7,7 +7,7 @@ import logging
 from google.appengine.ext import db
 
 # local modules
-import models
+from models import Section, Page
 import webbase
 import formbase
 import util
@@ -17,7 +17,7 @@ import util
 # list
 class List(webbase.WebBase):
     def get(self):
-        pages = models.Page.all().order('-inserted')
+        pages = Page.all().order('-inserted')
         vals = {
             'title' : 'Section Layout List',
             'pages' : pages
@@ -30,10 +30,17 @@ class FormHandler(webbase.WebBase):
         item = None
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
+        else:
+            item = {}
+            for arg in self.request.arguments():
+                if arg == 'section':
+                    item['section'] = { 'key' : str(self.request.get(arg)) }
+                else:
+                    item[arg] = str(self.request.get(arg))
 
         vals = {
             'item' : item,
-            'sections' : models.Section.all(),
+            'sections' : Section.all(),
             'types' : [ 'rst', 'phliky', 'text', 'code', 'html' ]
             }
         self.template( 'page-form.html', vals, 'admin' );
@@ -60,7 +67,7 @@ class FormHandler(webbase.WebBase):
             item.label_raw = self.request.get('label_raw')
             item.attribute_raw = attribute_raw
         else:
-            item = models.Page(
+            item = Page(
                 section = section,
                 name = name,
                 title = self.request.get('title'),

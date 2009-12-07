@@ -11,18 +11,27 @@
 <table class="list striped">
   <thead>
     <tr>
+      <th class="thin">Actions</th>
       <th>Path</th>
       <th>Title</th>
       <th>Layout</th>
+      <th class="thin">Edit</th>
       <th class="thin">Delete</th>
     </tr>
   </thead>
   <tbody>
     {% for section in sections %}
     <tr>
+      <td class="c">
+        <a href="/admin/page/new.html?section={{ section.key|urlencode }}"><img title="New Post" src="/s/admin/i/add.png" /></a>
+        <a href="/admin/image/new.html?section={{ section.key|urlencode }}"><img title="New Image" src="/s/admin/i/image_add.png" /></a>
+      </td>
       <td>{{ section.path|escape }}</td>
       <td><a href="edit.html?key={{ section.key|urlencode }}">{{ section.title|escape }}</a></td>
       <td>{{ section.layout|escape }}</td>
+      <td class="c">
+        <a href="edit.html?key={{ section.key|urlencode }}"><img src="/s/admin/i/layout_edit.png" /></a>
+      </td>
       <td class="c">
         <a href="/admin/del.html?key={{ section.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
       </td>

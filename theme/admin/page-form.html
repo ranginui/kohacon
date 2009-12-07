@@ -22,9 +22,9 @@
         <th><label for="id_section">Section:</label></th>
         <td>
           <select id="id_section" name="section">
-            <option selected="selected" value="">Select...</option>
+            <option value="">Select...</option>
 {% for section in sections %}
-            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key.str item.section.key.str %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
 {% endfor %}
           </select>
         </td>
