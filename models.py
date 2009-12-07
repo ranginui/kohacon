@@ -46,7 +46,6 @@ class Section(BaseModel):
     path = db.StringProperty( required=True )
     title = db.StringProperty( required=True )
     description = db.TextProperty()
-    description_html = db.TextProperty()
     type = db.StringProperty(required=True, choices=set(type_choices))
     layout = db.StringProperty(
         required=False,
@@ -56,8 +55,11 @@ class Section(BaseModel):
     attribute_raw = db.StringProperty( multiline=False )
 
     # Derivative Properties
+    description_html = db.TextProperty()
     attribute = db.StringListProperty()
     def set_derivatives(self):
+        # set the description_html
+        self.description_html = util.render(self.description, self.type)
         # set the lists from their raw values
         self.attribute = self.attribute_raw.split()
 

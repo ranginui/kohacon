@@ -4,7 +4,7 @@
     <channel>
         <title>{{ section.title|escape }} - chilts.org</title>
         <link>http://www.{{ "Naked Domain"|cfg }}/</link>
-        <description>{{ section.description|escape }}</description>
+        <description>{{ section.description_html|escape }}</description>
         <language>en</language>
         <copyright>Copyright www.{{ "Naked Domain"|cfg }}</copyright>
         <pubDate>{{ section.updated|date:"D, d M Y H:m:s" }} GMT</pubDate>
