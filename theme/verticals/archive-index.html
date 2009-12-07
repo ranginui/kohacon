@@ -3,7 +3,7 @@
 {% block content %}
     <h1>Entries for archive: {{archive|escape}}</h1>
     <p>
-        Found {{nodes.count|escape}} entries.
+        Found {{nodes.count|escape}} entr{{ nodes.count|pluralize:"y,ies" }}.
     </p>
 
     {% for node in nodes %}
