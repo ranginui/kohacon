@@ -67,7 +67,7 @@ class Section(BaseModel):
     archive_json = properties.JsonProperty()
     label_json = properties.JsonProperty()
     def regenerate(self):
-        Task( params={ 'key': self.key() }, countdown=30, ).add( queue_name='section-regenerate' )
+        Task( params={ 'key': self.key }, countdown=30, ).add( queue_name='section-regenerate' )
 
 ## ----------------------------------------------------------------------------
 # polymodels
@@ -106,7 +106,7 @@ class Node(polymodel.PolyModel):
     # Generated Properties (and the tasks to kick them off)
     comment_count = db.IntegerProperty( required=True, default=0 )
     def regenerate(self):
-        Task( params={ 'key': self.key() }, countdown=30, ).add( queue_name='node-regenerate' )
+        Task( params={ 'key': self.key }, countdown=30, ).add( queue_name='node-regenerate' )
 
 # Page
 class Page(Node):
