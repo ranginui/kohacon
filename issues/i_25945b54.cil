@@ -1,11 +1,12 @@
 Summary: When changing a Property, it should be deleted from MemCached
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.2
 Label: Type-Defect
+Comment: a51799aa
 Inserted: 2009-12-07T08:32:22
-Updated: 2009-12-07T08:33:34
+Updated: 2009-12-07T09:27:47
 
 Otherwise, it'll stay in Memcached and the old value will end up being used
 instead of the new value.
