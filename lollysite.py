@@ -210,16 +210,16 @@ class LollySite(webbase.WebBase):
             # send a mail to the admin
             admin_email = config.value('Admin Email')
             if mail.is_email_valid(admin_email):
-                url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?status='
-                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/del?key='
+                url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
+                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/del.html?key='+ str(comment.key())
 
                 body = 'Comment from ' + name + '<' + email + '>\n'
                 body = body + website + '\n\n'
                 body = body + comment_text + '\n\n'
                 body = body + '---\n\nActions\n\n'
-                body = body + 'Approve = ' + url_mod + 'approve&key=' + str(comment.key())
-                body = body + 'Reject  = ' + url_mod + 'reject&key=' + str(comment.key())
-                body = body + 'Approve = ' + url_del + str(comment.key())
+                body = body + 'Approve = ' + url_mod + 'approve\n'
+                body = body + 'Reject  = ' + url_mod + 'reject\n'
+                body = body + 'Delete  = ' + url_del + '\n'
                 mail.send_mail(admin_email, admin_email, 'New comment on ' + section.path + node.name + '.html', body)
             else:
                 # don't do anything
