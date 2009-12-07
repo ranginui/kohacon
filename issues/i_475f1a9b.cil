@@ -2,8 +2,10 @@ Summary: Implement error checking when adding/editing sections/nodes
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.2
+Label: Type-Defect
 Inserted: 2009-11-21T10:21:14
-Updated: 2009-11-21T10:23:45
+Updated: 2009-12-07T07:46:02
 
 Currently if the datastore rejects a value when saving, you just see the Python
 exception and hit the back button. Proper error checking should be added to be

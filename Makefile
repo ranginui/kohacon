@@ -2,10 +2,10 @@ start-server:
 	google_appengine/dev_appserver.py --datastore_path=store/data.db --history_path=store/data.db.history ./
 
 issue-summary:
-	cil summary --is-open --label=Milestone-v0.1
+	cil summary --is-open --label=Milestone-v0.2
 
 issue-list:
-	cil list --is-open --label=Milestone-v0.1
+	cil list --is-open --label=Milestone-v0.2
 
 clean:
 	find . -name '*~' -exec rm {} ';'
