@@ -40,11 +40,11 @@ sed -i.orig "1,1s/^application: lollysite$/application: $APP/" app.yaml
 case "$COMMAND" in
     update|update_indexes|update_queues|update_cron)
         echo "Doing $COMMAND"
-        ../google_appengine/appcfg.py $COMMAND ./
+        google_appengine/appcfg.py $COMMAND ./
         ;;
     request-logs)
         echo "Doing update"
-        ../google_appengine/appcfg.py request_logs ./ logs/access-$APP.log
+        google_appengine/appcfg.py request_logs ./ logs/access-$APP.log
         ;;
     *)
         echo "Unknown command"
