@@ -21,7 +21,7 @@ from models import Comment
 
 # try http://localhost:8080/_ah/queue/section-regenerate?key=agpjaGlsdHMtb3Jncg0LEgdTZWN0aW9uGGQM
 class SectionRegenerate(webbase.WebBase):
-    def get(self):
+    def post(self):
         self.response.headers['Content-Type'] = 'text/plain'
         self.write('Started section regeneration task:')
 
@@ -81,7 +81,7 @@ class SectionRegenerate(webbase.WebBase):
 
 # try http://localhost:8080/_ah/queue/node-regenerate?key=?
 class NodeRegenerate(webbase.WebBase):
-    def get(self):
+    def post(self):
         self.response.headers['Content-Type'] = 'text/plain'
         self.write('Started node regeneration task:')
 
