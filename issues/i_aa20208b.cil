@@ -1,10 +1,11 @@
 Summary: Looks like labels and archive are not being regenerated on live
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.2
 Label: Type-Defect
+Comment: 3478283b
 Inserted: 2009-12-06T19:21:06
-Updated: 2009-12-07T07:45:00
+Updated: 2009-12-07T09:31:16
 
 On /blog/, there is one entry. But neither the labels or archive have been regenerated.
