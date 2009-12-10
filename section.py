@@ -22,7 +22,7 @@ class List(webbase.WebBase):
             'title' : 'Section List',
             'sections' : sections
         }
-        self.template( 'section-list.html', vals, 'admin' );
+        self.template( 'blah-list.html', vals, 'admin' );
 
 # form
 class FormHandler(webbase.WebBase):
