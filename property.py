@@ -3,7 +3,7 @@
 import logging
 
 # Google specific modules
-from google.appengine.ext.db import djangoforms
+from google.appengine.ext import db
 from google.appengine.api import memcache
 
 # local modules
@@ -14,12 +14,7 @@ import config
 
 ## ----------------------------------------------------------------------------
 
-# Forms
-class PropertyForm(djangoforms.ModelForm):
-    class Meta:
-        model = Property
-        exclude = ['owner', 'editor']
-
+# list
 class List(webbase.WebBase):
     def get(self):
         properties = Property.all()
@@ -30,13 +25,39 @@ class List(webbase.WebBase):
         }
         self.template( 'property-list.html', vals, 'admin' );
 
-class FormHandler(formbase.FormBaseHandler):
-    def type(self):
-        return Property.__name__
 
-    def form(self, *args, **kwargs):
-        return PropertyForm(*args, **kwargs)
+# form
+class FormHandler(webbase.WebBase):
+    def get(self):
+        item = None
+        if self.request.get('key'):
+            item = db.get( self.request.get('key') )
 
+        vals = {
+            'item' : item,
+            }
+        self.template( 'property-form.html', vals, 'admin' );
+
+    def post(self):
+        # get all the incoming values
+        title = self.request.get('title')
+        value = self.request.get('value')
+
+        item = None
+        if self.request.get('key'):
+            item = db.get( self.request.get('key') )
+            item.title = title
+            item.value = value
+        else:
+            item = Property(
+                title = title,
+                value = value,
+                )
+        item.put()
+        memcache.delete(title, namespace='property')
+        self.redirect('.')
+
+# Empty Form (ie. never seen ... does something then goes back to the PropertyList)
 class UnCache(webbase.WebBase):
     def get(self):
         title = self.request.get('title')
