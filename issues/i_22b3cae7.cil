@@ -1,0 +1,10 @@
+Summary: Deleting a Property value doesn't work
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Type-Defect
+Inserted: 2009-12-10T10:05:29
+Updated: 2009-12-10T10:06:44
+
+Deleting a property value should both remove it from memcache and delete it
+from the datastore. I suspect nothing is working.
