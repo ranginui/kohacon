@@ -1,0 +1,7 @@
+Issue: 25945b54
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-10T09:19:35
+Updated: 2009-12-10T09:19:58
+
+Might as well have a button which can delete it from memcached from the admin
+interface too. Just in case.

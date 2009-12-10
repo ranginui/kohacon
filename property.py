@@ -4,6 +4,7 @@ import logging
 
 # Google specific modules
 from google.appengine.ext.db import djangoforms
+from google.appengine.api import memcache
 
 # local modules
 from models import Property
@@ -27,7 +28,7 @@ class List(webbase.WebBase):
             'properties' : properties,
             'config' : config,
         }
-        self.template( 'admin-property-index.html', vals, 'admin' );
+        self.template( 'property-list.html', vals, 'admin' );
 
 class FormHandler(formbase.FormBaseHandler):
     def type(self):
@@ -35,5 +36,11 @@ class FormHandler(formbase.FormBaseHandler):
 
     def form(self, *args, **kwargs):
         return PropertyForm(*args, **kwargs)
+
+class UnCache(webbase.WebBase):
+    def get(self):
+        title = self.request.get('title')
+        memcache.delete(title, namespace='property')
+        self.redirect('.')
 
 ## ----------------------------------------------------------------------------

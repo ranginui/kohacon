@@ -49,6 +49,7 @@ application = webapp.WSGIApplication(
         ('/admin/property/', property.List),
         ('/admin/property/new.html', property.FormHandler),
         ('/admin/property/edit.html', property.FormHandler),
+        ('/admin/property/uncache.html', property.UnCache),
 
         # sections
         ('/admin/section/', section.List),
