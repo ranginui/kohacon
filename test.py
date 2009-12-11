@@ -138,6 +138,18 @@ class CSV(webbase.WebBase):
             self.write( repr(list) )
         self.write('</pre>')
 
+class ThemeDir(webbase.WebBase):
+    def get(self):
+        dir = 'admin'
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.write('Files:')
+        dir = os.path.join(os.path.dirname(__file__), 'theme', 'admin')
+        for dirname, dirnames, filenames in os.walk( dir ):
+            for subdirname in dirnames:
+                self.write(os.path.join(dirname, subdirname))
+            for filename in filenames:
+                self.write(os.path.join(dirname, filename))
+
 ## ----------------------------------------------------------------------------
 
 application = webapp.WSGIApplication(
@@ -150,6 +162,7 @@ application = webapp.WSGIApplication(
         ('/test/code.html', Code),
         ('/test/env.html', Env),
         ('/test/csv.html', CSV),
+        ('/test/themedir.html', ThemeDir),
     ],
     debug = True
 )
