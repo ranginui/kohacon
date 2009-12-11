@@ -140,7 +140,6 @@ class CSV(webbase.WebBase):
 
 class ThemeDir(webbase.WebBase):
     def get(self):
-        dir = 'admin'
         self.response.headers['Content-Type'] = 'text/plain'
         self.write('Files:')
         dir = os.path.join(os.path.dirname(__file__), 'theme', 'admin')
