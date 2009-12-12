@@ -265,7 +265,7 @@ ul {
 			border-color: #ffffff !important;
 			background-color: #ffffff !important;
 		}
-			
+
 /** BEGIN middle **/
 #middle {
 	width: 179px;
@@ -297,7 +297,7 @@ ul {
 		padding-bottom: 18px;
 	}
 
-/** END right **/		
+/** END right **/
 
 /** BEGIN sidebar **/
 #sidebar {
@@ -348,7 +348,7 @@ ul {
 				margin: 3px 1px;
 			}
 		#sidebar .video {
-			padding: 5px 5px 0 5px; 
+			padding: 5px 5px 0 5px;
 		}
 		#sidebar form {
 			width: 260px; height: 30px;
@@ -375,7 +375,7 @@ ul {
 			background-color: transparent;
 			text-transform: uppercase;
 		}
-		
+
 /** END sidebar **/
 
 /** BEGIN footer **/
@@ -415,7 +415,7 @@ ul {
 		line-height: 1.6em;
 	}
 	#comments form {
-		
+
 	}
 	#comments form p {
 		margin-bottom: 5px;
@@ -498,7 +498,7 @@ h2.title {
 		float: right;
 	}
 	#comments ol li .comment-author {
-		
+
 	}
 		#comments ol li .comment-author .fn {
 			font-weight: bold;
