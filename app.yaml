@@ -46,6 +46,7 @@ skip_files:
 - ^issues/.*                   # cil issues
 - ^store/.*                    # local datastore
 - ^logs/.*                     # downloaded logs
+- ^docs/.*                     # all the docs
 - ^google_appengine/.*         # the SDK
 - ^Makefile
 - ^README
