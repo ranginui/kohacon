@@ -54,6 +54,9 @@ class Section(BaseModel):
         )
     attribute_raw = db.StringProperty( multiline=False )
 
+    def has(self, attr):
+        return [ x for x in self.attribute if x == attr ]
+
     # Derivative Properties
     description_html = db.TextProperty()
     attribute = db.StringListProperty()
@@ -156,5 +159,15 @@ class Comment(BaseModel):
         default='new',
         choices=['new', 'approved', 'rejected']
         )
+
+## ----------------------------------------------------------------------------
+# messages
+
+class Message(BaseModel):
+    name = db.StringProperty(multiline=False)
+    email = db.StringProperty(multiline=False)
+    website = db.StringProperty(multiline=False)
+    subject = db.StringProperty(multiline=False)
+    message = db.TextProperty()
 
 ## ----------------------------------------------------------------------------

@@ -70,6 +70,16 @@ class LollySite(webbase.WebBase):
                 }
             self.template(  section.layout + '-index.html', vals, config.value('Theme') );
 
+        elif this_page == 'contact' and this_ext == 'html' and section.has('contact-form'):
+            logging.info('right here')
+            # contact.html
+            node = Node.all().filter('section =', section.key()).filter('name =', 'contact').get()
+            vals = {
+                'section' : section,
+                'node'    : node,
+                }
+            self.template(  'contact.html', vals, config.value('Theme') );
+
         elif this_page == 'rss20' and this_ext == 'xml':
             # rss20.xml
             nodes = self.latest_nodes(section, 10)

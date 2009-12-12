@@ -1,4 +1,5 @@
 {% extends "wrapper.html" %}
+
 {% block mainmenu %}
   {% ifnotequal section.path '/' %}
   <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
