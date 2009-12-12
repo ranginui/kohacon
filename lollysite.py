@@ -18,6 +18,7 @@ import webbase
 from models import Section
 from models import Node
 from models import Comment
+from models import Message
 import config
 import util
 
@@ -237,6 +238,40 @@ class LollySite(webbase.WebBase):
 
             # redirect to the comment page
             self.redirect('comment.html?key=' + str(comment.key()))
+            return
+
+        elif this_page == 'contact' and this_ext == 'html':
+            # comment submission for each section
+            name = self.request.POST['name']
+            email = self.request.POST['email']
+            website = self.request.POST['website']
+            subject = self.request.POST['subject']
+            message = re.sub('\r', '', self.request.POST['message']);
+
+            # now create the message
+            msg = Message(
+                name = name,
+                email = email,
+                website = website,
+                subject = subject,
+                message = message,
+                )
+            msg.put()
+
+            # send a mail to the admin
+            admin_email = config.value('Admin Email')
+            if mail.is_email_valid(admin_email):
+                body =        'name    : ' + name + '\n'
+                body = body + 'email   : ' + email + '\n'
+                body = body + 'website : ' + website + '\n'
+                body = body + 'subject : ' + subject + '\n'
+                body = body + message + '\n'
+                mail.send_mail(admin_email, admin_email, '[Contact] ' + subject, body)
+            else:
+                # don't do anything
+                logging.info('No valid email set, skipping sending admin an email for new contact message')
+
+            self.redirect('.')
             return
         else:
             # not found

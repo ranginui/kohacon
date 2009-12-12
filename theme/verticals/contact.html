@@ -3,15 +3,13 @@
 {% block title %}{{ section.title|escape }}{% endblock %}
 
 {% block content %}
-    <h1>Contact</h1>
-
     {% if node %}
     {% include 'node-skel.frag' %}
     {% endif %}
 
     <h2>Contact Form</h2>
 
-    <form method="post" action="./comment.html">
+    <form method="post" action="./contact.html">
         <input type="hidden" name="_act" value="contact" />
         <p class="form">
           <label>Name:</label>
