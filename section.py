@@ -22,7 +22,7 @@ class List(webbase.WebBase):
             'title' : 'Section List',
             'sections' : sections
         }
-        self.template( 'blah-list.html', vals, 'admin' );
+        self.template( 'section-list.html', vals, 'admin' );
 
 # form
 class FormHandler(webbase.WebBase):
@@ -38,7 +38,7 @@ class FormHandler(webbase.WebBase):
             }
         # blah.html = section-form.html ... but see:
         # http://groups.google.com/group/google-appengine-python/browse_thread/thread/5541f51962034e28
-        self.template( 'blah.html', vals, 'admin' );
+        self.template( 'section-form.html', vals, 'admin' );
 
     def post(self):
         # get all the incoming values

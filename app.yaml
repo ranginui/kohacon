@@ -17,9 +17,9 @@ handlers:
   script: queue.py
   login: admin
 
-- upload: theme/[^/]+/s/*      # all the files to upload
-  url: /s/([^/]+)/(.*)         # the paths this handler will serve
-  static_files: theme/\1/s/\2  # where the files actually live (on the server)
+- upload: theme/[^/]+/static/.*      # all the files to upload
+  url: /static/([^/]+)/(.*)          # the paths this handler will serve
+  static_files: theme/\1/static/\2   # where the files actually live (on the server)
 
 - url: /test/.*
   script: test.py
@@ -46,6 +46,7 @@ skip_files:
 - ^issues/.*                   # cil issues
 - ^store/.*                    # local datastore
 - ^logs/.*                     # downloaded logs
+- ^google_appengine/.*         # the SDK
 - ^Makefile
 - ^README
 - ^LICENSE

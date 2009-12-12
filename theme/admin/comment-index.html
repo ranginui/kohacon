@@ -35,13 +35,13 @@
           {{ comment.comment_html }}
         </td>
         <td class="c">
-          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/s/admin/i/accept.png" /></a>
+          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/static/admin/i/accept.png" /></a>
         </td>
         <td class="c">
-          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/s/admin/i/exclamation.png" /></a>
+          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/static/admin/i/exclamation.png" /></a>
         </td>
         <td class="c">
-          <a href="/admin/del.html?key={{ comment.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+          <a href="/admin/del.html?key={{ comment.key|urlencode }}"><img src="/static/admin/i/cancel.png" /></a>
         </td>
       </tr>
       {% endfor %}

@@ -25,10 +25,10 @@
       <td>{{ property.value|escape }}</td>
       <td>{{ property.title|cfg }}</td>
       <td class="c">
-        <a href="uncache.html?title={{ property.title|urlencode }}"><img src="/s/admin/i/brick_delete.png" /></a>
+        <a href="uncache.html?title={{ property.title|urlencode }}"><img src="/static/admin/i/brick_delete.png" /></a>
       </td>
       <td class="c">
-        <a href="del.html?key={{ property.key|urlencode }}"><img src="/s/admin/i/cancel.png" /></a>
+        <a href="del.html?key={{ property.key|urlencode }}"><img src="/static/admin/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}
