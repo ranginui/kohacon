@@ -1,0 +1,40 @@
+{% extends "minimal.html" %}
+
+{% block content %}
+
+    <h1>Thanks!</h1>
+
+    <p>
+      Thanks for your comment on <a href="{{ node.name|escape }}.html">{{ node.title|escape }}</a>.
+      This comment
+      {% ifequal comment.status 'new' %}is awaiting moderator approval.{% endifequal %}
+      {% ifequal comment.status 'approved' %}has already been approved.{% endifequal %}
+      {% ifequal comment.status 'rejected' %}has been rejected.{% endifequal %}
+    </p>
+
+    <h2>You Said</h2>
+
+    <dl>
+      <dt>Name</dt>
+      <dd>{{ comment.name|escape }}</dd>
+      <dt>Email</dt>
+      <dd>{{ comment.email|escape }}</dd>
+      <dt>Website</dt>
+      <dd>{{ comment.website|escape }}</dd>
+      <dt>Comment</dt>
+      <dd>{{ comment.comment_html }}</dd>
+    </dl>
+
+    <p>
+      If any of this looks wrong, just go <a href="{{ node.name|escape }}.html" onclick="history.go(-1); return false;">back</a>,
+      correct it and resubmit. Check back here to see this comment's status.
+    </p>
+
+    <p>
+      This comment has a <a href="?key={{ comment.key|escape }}">Permalink</a>.
+    </p>
+
+
+{% endblock %}
+
+{% block title %}{{ node.title|escape }} - {{ section.title|escape }}{% endblock %}

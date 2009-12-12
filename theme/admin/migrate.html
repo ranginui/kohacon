@@ -1,0 +1,15 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+  <h1>Migrations</h1>
+
+  <ul>
+    {% for migration in migrations %}
+    <li>
+      <a href="?m={{ migration|escape }}">{{ migration|escape }}</a>
+    </li>
+    {% endfor %}
+  <ul>
+
+{% endblock %}

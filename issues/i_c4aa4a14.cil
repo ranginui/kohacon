@@ -1,0 +1,14 @@
+Summary: Fix up deletions
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.2
+Label: Type-Defect
+Inserted: 2009-11-21T10:16:57
+Updated: 2009-12-07T07:46:02
+
+When deleting a node, it redirects back to itself rather than back to the page
+you came from.
+
+Also, when the node is shown, it just shows the common fields. Instead, it
+should render from something like 'node-readonly.html' such that it looks nice.

@@ -1,0 +1,16 @@
+Summary: Move FamFamFam icons to a common top-level static section
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-07T07:52:19
+Updated: 2009-12-07T07:54:12
+
+Currently, FamFamFam icons are served from /s/admin/i/*.png, but if we move
+them somewhere else, they can be used by all themes.
+
+e.g. /cdn/i/*.png
+
+Also, whilst doing this, put things like JQuery in there too:
+
+* /cdn/css/
+* /cdn/js/

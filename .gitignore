@@ -1,0 +1,4 @@
+*.pyc
+app.yaml.*
+google_appengine
+store

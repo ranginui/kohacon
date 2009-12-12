@@ -1,2 +1,7 @@
 This is a repository for holding the app used to run the Kohacon website
 
+This application is based on Lollysite:
+
+* http://www.chilts.org/project/lollysite/
+* http://gitorious.org/lollysite
+* git clone git://gitorious.org/lollysite/lollysite.git

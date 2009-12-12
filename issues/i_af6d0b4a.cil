@@ -1,0 +1,13 @@
+Summary: Add a contact form
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.2
+Label: Type-Enhancement
+Comment: 266be84e
+Comment: 8c04ba86
+Inserted: 2009-12-07T07:39:22
+Updated: 2009-12-12T05:21:53
+
+Add the ability to add a contact.html page to any section. This should use the
+'has-contact-form' attribute from the section object.

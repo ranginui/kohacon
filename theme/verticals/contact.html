@@ -1,0 +1,30 @@
+{% extends "minimal.html" %}
+
+{% block title %}{{ section.title|escape }}{% endblock %}
+
+{% block content %}
+    {% if node %}
+    {% include 'node-skel.frag' %}
+    {% endif %}
+
+    <h2>Contact Form</h2>
+
+    <form method="post" action="./contact.html">
+        <input type="hidden" name="_act" value="contact" />
+        <p class="form">
+          <label>Name:</label>
+          <input type="text" name="name" value="" /><br />
+          <label>Email:</label>
+          <input type="text" name="email" value="" /><br />
+          <label>Website:</label>
+          <input type="text" name="website" value="http://" /><br />
+          <label>Subject:</label>
+          <input type="text" name="subject" value="" /><br />
+          <label>Message:</label>
+          <textarea name="message"></textarea><br />
+          <label>&nbsp;</label>
+          <input type="submit" class="button" value="Send Message" />
+          <input type="reset" class="button" value="Reset" /><br />
+        </p>
+    </form>
+{% endblock %}

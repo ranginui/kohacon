@@ -11,6 +11,10 @@ from google.appengine.ext.webapp import template
 
 ## ----------------------------------------------------------------------------
 
+template.register_template_library('tags')
+
+## ----------------------------------------------------------------------------
+
 # the local classes
 class WebBase(webapp.RequestHandler):
     def esc(self, s):

@@ -1,0 +1,46 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Page List</h2>
+
+{% if pages.count %}
+
+<p>There are {{ pages.count|escape }} pages.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for page in pages %}
+    <tr>
+      <td>
+        {{ page.section.path|escape }}
+      </td>
+      <td>
+        {{ page.name|escape }}
+      </td>
+      <td>
+        <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>
+      </td>
+      <td class="c">
+        <a href="/admin/del.html?key={{ page.key|urlencode }}"><img src="/static/admin/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no pages.</p>
+
+{% endif %}
+
+{% endblock %}

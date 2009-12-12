@@ -1,0 +1,8 @@
+Issue: 25945b54
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-10T09:50:47
+Updated: 2009-12-10T09:51:30
+
+To actually remove the value from memcached upon save, it is worth moving away
+from DjangoForms (since they are overcomplicated and have given me lots of
+trouble) to something a little simpler.

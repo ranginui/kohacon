@@ -1,0 +1,44 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Property List</h2>
+
+{% if properties.count %}
+
+<p>There are {{ properties.count|escape }} properties.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Value</th>
+      <th>Memcache</th>
+      <th class="thin">Uncache</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for property in properties %}
+    <tr>
+      <td><a href="edit.html?key={{ property.key|urlencode }}">{{ property.title|escape }}</a></td>
+      <td>{{ property.value|escape }}</td>
+      <td>{{ property.title|cfg }}</td>
+      <td class="c">
+        <a href="uncache.html?title={{ property.title|urlencode }}"><img src="/static/admin/i/brick_delete.png" /></a>
+      </td>
+      <td class="c">
+        <a href="del.html?key={{ property.key|urlencode }}"><img src="/static/admin/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no properties.</p>
+
+{% endif %}
+
+{% endblock %}

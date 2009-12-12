@@ -1,0 +1,13 @@
+Summary: Add a filter.html page (dependent on section properties)
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T10:30:35
+Updated: 2009-11-21T10:32:40
+
+Having a filter.html page which just looks at labels would be interesting.
+Maybe in the future it could also look at inserted, updated, owner and other
+fields to be a bit more flexible.
+
+The use-case for this is looking for recipes that contain both asparagus _and_
+sour cream. Maybe we allow 2, 3 or many labels to be checked.

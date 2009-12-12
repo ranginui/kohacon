@@ -1,0 +1,10 @@
+Summary: Add ability to view Messages in the admin interface
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-12T05:20:28
+Updated: 2009-12-12T05:21:26
+
+Currently contact messages are sent to the user. They are also saved (might as
+well) but there is not way to see them in the admin interface. Something should
+be added to make this available.

@@ -1,0 +1,11 @@
+Summary: Make the comment.html MainMenu block override it
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Comment: 4212371e
+Inserted: 2009-12-05T00:50:26
+Updated: 2009-12-05T01:26:23
+
+Currently the comment page doesn't have an overriden mainmenu block. This
+should either be overridden by itself or the template should inherit from one
+which does.

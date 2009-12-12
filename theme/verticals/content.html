@@ -1,0 +1,14 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+    {{ node.content }}
+{% endblock %}
+
+{% block sidebar %}
+  {{ block.super }}
+<!--  <h3>What I'm listing to</h3> -->
+  <ul>
+    <li><a href="#">Some Link</a></li>
+    <li><a href="#">Another Link</a></li>
+  </ul>
+{% endblock %}

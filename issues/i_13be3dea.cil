@@ -1,0 +1,19 @@
+Summary: Make the link to the RSS files absolute
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.2
+Label: Type-Defect
+Inserted: 2009-11-23T08:03:47
+Updated: 2009-12-07T09:00:27
+
+Currently the link to the RSS files are:
+
+ <link rel="alternate" type="application/rss+xml" title="RSS" href="rss20.xml" />
+
+The href="" really ought to be absolute:
+
+ e.g. http://www.chilts.org/rss20.xml
+
+This is easy enough since the Properties and Section object contain all the
+info needed.

@@ -1,0 +1,126 @@
+/*** layout ***/
+#wrap {
+    background-color: white;
+}
+
+#header {
+    margin-bottom: 18px;
+    height: 18px;
+}
+
+#footer {
+    margin-top: 18px;
+    height: 18px;
+}
+
+/*** elements ***/
+body {
+    background-color: #eee;
+}
+
+ul ul {
+    margin-bottom: 0;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    background-color: black;
+    color: white;
+    padding: 0 8px;
+    vertical-align: top;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 20px;
+}
+
+input, textarea {
+    border: 1px solid #6d8ede;
+}
+
+input:hover, textarea:hover {
+    background: #ebebeb;
+}
+
+input:focus, textarea:focus {
+    border: 1px solid #f00;
+    background: #ff6;
+}
+
+input[type=text] {
+    width: 100%;
+}
+
+textarea {
+    width: 100%;
+    height: 5em;
+}
+
+textarea.content {
+    height: 20em;
+}
+
+/*** generic styles ***/
+.c {
+    text-align: center;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left {
+    float: right;
+}
+
+.errorlist {
+    color: red;
+}
+
+/*** specific ***/
+
+/* table.edit */
+table.edit {
+    width: 100%;
+}
+
+table.edit th {
+    width: 25%;
+    color: black;
+    background-color: white;
+    text-align: right;
+}
+
+table.edit td {
+    width: 75%;
+}
+
+table.edit ul {
+    margin-bottom: 0;
+}
+
+/* table.list */
+table.list .thin {
+    width: 32px;
+}
+
+table.list tr.odd {
+    background-color: #dcddd3;
+}
+
+table.list tr.even {
+    background-color: #ecede3;
+}
+
+table.list tr.hover {
+    background-color: #ff6;
+}
+
+/*** ends ***/

@@ -1,0 +1,10 @@
+Summary: Allow the Page/Image/Node listing filter on Section
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-07T09:09:53
+Updated: 2009-12-07T09:11:39
+
+Currently each Node listing page shows all the nodes spread across all
+sections. By being able to filter on one section means it'll make nodes easier
+to find.

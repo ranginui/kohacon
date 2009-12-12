@@ -1,0 +1,13 @@
+Summary: Add ability to edit comments
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-07T23:41:50
+Updated: 2009-12-07T23:43:23
+
+Mostly, we don't want to edit comments, but sometimes people make mistakes (and
+don't realise and don't correct them). Having the ability to edit comments from
+the 'New Comments' list would be good.
+
+Editing and saving a comment, wouldn't change it's status though, so we'd leave
+that to the nice clicky buttons on the new comment list.

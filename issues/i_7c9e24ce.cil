@@ -1,0 +1,15 @@
+Summary: Add a menu component for each section
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-21T04:54:06
+Updated: 2009-11-21T04:57:24
+
+This might be separate entities (like a Menu model) or it could be just nodes
+added to the section. e.g. URL nodes but with a particular label. For example, maybe a URL node with the label 'menu-item'.
+
+In most cases, the 'in-index' property would be absent.
+
+e.g. menu-item label
+
+There must be some way to rank those nodes, otherwise won't work.

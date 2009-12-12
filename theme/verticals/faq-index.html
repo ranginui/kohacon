@@ -1,0 +1,27 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
+  <p>{{ section.description_html }}</p>
+
+  <h2>Contents</h2>
+  <ul>
+  {% for node in section|all %}
+    <li>{{ node.title|escape }}</li>
+  {% endfor %}
+  </ul>
+
+  {% for node in section|all %}
+    <h1><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h1>
+    {% include 'node-skel.frag' %}
+  {% endfor %}
+
+{% endblock %}
+
+{% block mainmenu %}
+  {% ifnotequal section.path '/' %}
+  <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
+  <li>This FAQ has {{ section.nodes.count|escape }} questions</li>
+  <li><a href="/">&laquo; Home</a></li>
+  {% endifnotequal %}
+{% endblock %}

@@ -1,0 +1,16 @@
+Summary: Add new section layouts - Featured Node (or equivalent)
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-11-23T01:43:33
+Updated: 2009-11-23T01:48:56
+
+Have two new section layouts which find the top 1 or the top 4 nodes from a
+particular section. Maybe these have a property 'is-featured'. Other nodes then
+render as per usual underneath.
+
+The first layout will just have one node at the top (ie. the Node rendered in a
+particular way).
+
+The second layout will have a similar image at the top, then a block of 3
+nodes side-by-side underneath, before the rest of the nodes show underneath.

@@ -1,0 +1,13 @@
+Summary: Remove NodeLayout stuff since it isn't used
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.1
+Comment: d16a43ef
+Inserted: 2009-12-05T00:36:59
+Updated: 2009-12-05T01:36:40
+
+In models.py, there is still a NodeLayout class. This isn't used, nor is the
+menu item in the admin interface.
+
+This should all be removed.

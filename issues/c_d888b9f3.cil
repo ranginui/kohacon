@@ -1,0 +1,11 @@
+Issue: 475f1a9b
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-07T09:03:21
+Updated: 2009-12-07T09:04:50
+
+Also, instead of passing the 'item' object, we should take the fields from that
+_OR_ the input params (whether that is from the initial GET params or if the
+item has been edited and validation failed.
+
+This is easier since then we don't have things like {{ item.section.key.str }}
+in the template and we can just do {{ item.section }}.

@@ -1,0 +1,23 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit {{type}}</h2>
+{% else %}
+<h2>New {{type}}</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to {{type}} List</a></p>
+
+<form method="POST" action="">
+{% if item %}
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+{% endif %}
+  <table class="edit">
+    {{ form }}
+  </table>
+  <input type="submit" />
+</form>
+
+{% endblock %}

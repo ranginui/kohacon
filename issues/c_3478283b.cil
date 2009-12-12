@@ -1,0 +1,6 @@
+Issue: aa20208b
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-07T09:30:53
+Updated: 2009-12-07T09:31:05
+
+Heh, funny story. I was using self.key instead of self.key().

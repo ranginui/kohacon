@@ -1,0 +1,25 @@
+Summary: Complete migration policy
+Status: InProgress
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-Future
+Comment: e914e17d
+Inserted: 2009-11-21T10:23:55
+Updated: 2009-11-25T07:01:57
+
+The migrations are a bit weird at the moment, so kinda do like what Rails does.
+The migrations should be named something like:
+
+* 20091119a_AddNewLayoutToSection_Forward
+* 20091119a_AddNewLayoutToSection_Reverse
+
+We need to somehow store in the database _what_ migrations have been performed.
+Maybe this could be a migration object which contains:
+
+* name = the name of the migration (e.g. 20091119a_AddNewLayoutToSection)
+* the datetime it started
+* the datetime it finished
+* how many entities were looked at
+* how many entities were updated (and saved)
+
+All of this information could be interesting.

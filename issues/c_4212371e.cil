@@ -1,0 +1,9 @@
+Issue: fba16979
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-05T01:25:38
+Updated: 2009-12-05T01:26:23
+
+Unfortunately, I can't make the comment inherit from the layout of the section.
+This is annoying since it's like Mason all over again.
+
+There must be a better way.

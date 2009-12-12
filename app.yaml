@@ -1,5 +1,5 @@
 application: kohacon
-version: v0-1
+version: v0-02
 runtime: python
 api_version: 1
 default_expiration: '1d'
@@ -13,24 +13,41 @@ handlers:
   script: admin.py
   login: admin
 
-- upload: theme/[^/]+/s/.*     # all the files to upload
-  url: /s/([^/]+)/(.*)         # the paths this handler will serve
-  static_files: theme/\1/s/\2  # where the files actually live (on the server)
+- url: /_ah/queue/.*
+  script: queue.py
+  login: admin
+
+- upload: theme/[^/]+/static/.*      # all the files to upload
+  url: /static/([^/]+)/(.*)          # the paths this handler will serve
+  static_files: theme/\1/static/\2   # where the files actually live (on the server)
+
+- url: /test/.*
+  script: test.py
+  login: admin
+
+- url: /node/.*
+  script: node.py
 
 - url: /.*
-  script: kohacon.py
+  script: lollysite.py
 
 skip_files:
-- ^(.*/)?app\.yaml
-- ^(.*/)?app\.yml
-- ^(.*/)?index\.yaml
-- ^(.*/)?index\.yml
-- ^(.*/)?#.*#
-- ^(.*/)?.*~
-- ^(.*/)?.*\.py[co]
-- ^(.*/)?.*/RCS/.*
-- ^(.*/)?\..*
-- store/.*
-- Makefile
-- README
-
+- ^(.*/)?app\.yaml$
+- ^(.*/)?app\.yml$
+- ^(.*/)?index\.yaml$
+- ^(.*/)?index\.yml$
+- ^(.*/)?.*\.log$
+- ^(.*/)?.*\.dat$
+- ^(.*/)?.*\.py[co]$           # compiled Python
+- ^(.*/)?.*/RCS/.*             # any RCS files
+- ^(.*/)?\..*                  # dotfiles
+- ^(.*/)?#.*#                  # emacs autosave
+- ^(.*/)?.*~$                  # backup files
+- ^issues/.*                   # cil issues
+- ^store/.*                    # local datastore
+- ^logs/.*                     # downloaded logs
+- ^docs/.*                     # all the docs
+- ^google_appengine/.*         # the SDK
+- ^Makefile
+- ^README
+- ^LICENSE
