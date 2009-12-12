@@ -215,6 +215,16 @@ ul {
 			line-height: 1.2em;
             text-align: right;
 		}
+		#content .post ul {
+			list-style-type: disc;
+		}
+		#content .post ul, #content .post ol {
+			list-style-position: inside;
+			margin-bottom: 10px;
+		}
+		#content .post li {
+			padding: 2px 0;
+		}
 		#content .post pre {
 			padding: 10px;
 			line-height: 1.2em;
