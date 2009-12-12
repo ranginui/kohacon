@@ -28,6 +28,9 @@ case "$APP" in
     lollysite)
         echo "Main Lollysite site"
         ;;
+    kohacon)
+        echo "KohaCon website"
+        ;;
     *)
        echo "Unknown site"
        exit 2
