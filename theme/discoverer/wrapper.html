@@ -3,10 +3,10 @@
 <head>
 <title>KohaCon 2010</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="stylesheet" type="text/css" href="/s/discoverer/style.css" />
+<link rel="stylesheet" type="text/css" href="/static/discoverer/style.css" />
 <!--[if lte IE 6]>
-<link rel="stylesheet" type="text/css" href="/s/discoverer/ie6.css" />
-<script type="text/javascript" src="/s/discoverer/unitpngfix.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/discoverer/ie6.css" />
+<script type="text/javascript" src="/static/discoverer/unitpngfix.js"></script>
 <![endif]-->
 </head>
 <body>
@@ -24,7 +24,7 @@
     <p class="rss"> <a href="#">Posts</a> | <a href="#">Comments</a> | <a href="#">E-mail</a> </p>
 {% endcomment %}
     <h1><a href="/">KohaCon 2010</a></h1>
-    <div class="ad"><a href="#"><img src="/s/discoverer/ad468x60.gif" alt="" /></a></div>
+    <div class="ad"><a href="#"><img src="/static/discoverer/ad468x60.gif" alt="" /></a></div>
     <ul class="menu">
 {% comment %}      <li>Wellington 2010 &raquo;</li> {% endcomment %}
       <li><a href="/2010/registration/">Registration</a></li>
@@ -38,7 +38,11 @@
   <!-- BEGIN body -->
   <div id="body">
 
+    <!-- BEGIN content -->
+    <div id="content">
     {% block content %}{% endblock %}
+    </div>
+    <!-- END content -->
 
     <!-- BEGIN right -->
     <div id="middle">
@@ -78,10 +82,10 @@
 
       <!-- begin sponsors -->
       <h2>Sponsors</h2>
-      <a class="sponsor" href="http://bywatersolutions.com/"><img src="/s/discoverer/bywater.jpg" alt="ByWater Solutions" /></a> 
-      <a class="sponsors" href="#"><img src="/s/discoverer/ad125x125.jpg" alt="" /></a> 
-      <a class="sponsor" href="#"><img src="/s/discoverer/ad125x125.jpg" alt="" /></a> 
-      <a class="sponsors" href="#"><img src="/s/discoverer/ad125x125.jpg" alt="" /></a>
+      <a class="sponsor" href="http://bywatersolutions.com/"><img src="/static/discoverer/bywater.png" alt="ByWater Solutions" /></a>
+      <a class="sponsors" href="#"><img src="/static/discoverer/ad125x125.jpg" alt="" /></a>
+      <a class="sponsor" href="#"><img src="/static/discoverer/ad125x125.jpg" alt="" /></a>
+      <a class="sponsors" href="#"><img src="/static/discoverer/ad125x125.jpg" alt="" /></a>
       <!-- end sponsors -->
 
       <!-- begin search -->
@@ -105,20 +109,20 @@
 
       <!-- begin flickr photos -->
       <h2>Flickr Photos</h2>
-      <p class="flickr"> <a href="#"><img src="/s/discoverer/thumb05.jpg" alt="" /></a> <a href="#"><img src="/s/discoverer/thumb06.jpg" alt="" /></a> <a href="#"><img src="/s/discoverer/thumb07.jpg" alt="" /></a> <a href="#"><img src="/s/discoverer/thumb08.jpg" alt="" /></a> <a href="#"><img src="/s/discoverer/thumb09.jpg" alt="" /></a> <a href="#"><img src="/s/discoverer/thumb10.jpg" alt="" /></a> </p>
+      <p class="flickr"> <a href="#"><img src="/static/discoverer/thumb05.jpg" alt="" /></a> <a href="#"><img src="/static/discoverer/thumb06.jpg" alt="" /></a> <a href="#"><img src="/static/discoverer/thumb07.jpg" alt="" /></a> <a href="#"><img src="/static/discoverer/thumb08.jpg" alt="" /></a> <a href="#"><img src="/static/discoverer/thumb09.jpg" alt="" /></a> <a href="#"><img src="/static/discoverer/thumb10.jpg" alt="" /></a> </p>
       <!-- end flickr photos -->
 
       <!-- begin featured video -->
       <h2>Featured Video</h2>
       <div class="video"> 
-      <object width="280">
+      <object width="250">
         <param name="movie" value="http://www.youtube.com/v/7wKhrEFzLfM&hl=en_US&fs=1&rel=0"></param>
         <param name="allowFullScreen" value="true"></param>
         <param name="allowscriptaccess" value="always"></param>
         <embed
            src="http://www.youtube.com/v/7wKhrEFzLfM&hl=en_US&fs=1&rel=0"
            type="application/x-shockwave-flash" allowscriptaccess="always"
-           allowfullscreen="true" width="280">
+           allowfullscreen="true" width="245">
         </embed>
       </object>
       </div>

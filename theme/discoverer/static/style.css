@@ -167,7 +167,9 @@ ul {
 	}
 		#content .post h2 {
 			font-size: 1.5em;
+			padding-top: 12px;
 			padding-bottom: 12px;
+			color: #2F5074;
 		}
 			#content .post h2 a {
 				color: #2F5074;
@@ -175,6 +177,18 @@ ul {
 			#content .post h2 a:hover {
 				text-decoration: none;
 			}
+		#content .post h3 {
+			font-size: 1.3em;
+			padding-top: 12px;
+			padding-bottom: 12px;
+			color: #2F5074;
+		}
+		#content .post h4 {
+			font-size: 1.0em;
+			padding-top: 12px;
+			padding-bottom: 12px;
+			color: #2F5074;
+		}
 		#content .post img {
 			padding: 7px;
 			border: 1px solid #E9E9E9;
@@ -196,6 +210,18 @@ ul {
 			#content .post p a:hover {
 				color: #2F5074;
 			}
+		#content .post p.label {
+			padding: 4px 0 10px 0;
+			line-height: 1.2em;
+            text-align: right;
+		}
+		#content .post pre {
+			padding: 10px;
+			line-height: 1.2em;
+            background-color: #e7e7e7;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+		}
 		#content .navigation {
 			clear: both;
 		}

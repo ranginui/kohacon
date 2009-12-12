@@ -1,0 +1,19 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  {% for node in section|index %}
+  <div class="post"> 
+    <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+    {% include 'node.frag' %}
+  </div>
+  {% endfor %}
+
+{% endblock %}
+
+{% block mainmenu %}
+  {% ifnotequal section.path '/' %}
+  <li class="active"><a href="{{ section.path|escape }}">{{ section.title|escape }}</a></li>
+  <li>This section has {{ section.nodes.count|escape }} pages</li>
+  <li><a href="/">&laquo; Home</a></li>
+  {% endifnotequal %}
+{% endblock %}
