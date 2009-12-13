@@ -1,0 +1,14 @@
+Summary: Make index pages and sitemap pages adhere to attributes
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-13T06:04:36
+Updated: 2009-12-13T06:05:59
+
+On every section and every node, there are the following two attributes:
+
+* index-entry
+* sitemap-entry
+
+Therefore, both the index and the sitemap should adhere to their respective
+attributes when figuring out what should be in them.
