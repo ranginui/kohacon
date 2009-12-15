@@ -26,6 +26,9 @@ def esc(text):
     return cgi.escape(text, True)
 
 def render(text, type):
+    if type is None or type.strip() == '':
+        return ''
+
     text = re.sub('\r', '', text);
     logging.info('Doing ' + type);
     if type == 'html':

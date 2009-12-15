@@ -39,23 +39,31 @@ class FormHandler(webbase.WebBase):
         self.template( 'property-form.html', vals, 'admin' );
 
     def post(self):
-        # get all the incoming values
-        title = self.request.get('title')
-        value = self.request.get('value')
-
         item = None
-        if self.request.get('key'):
-            item = db.get( self.request.get('key') )
-            item.title = title
-            item.value = value
-        else:
-            item = Property(
-                title = title,
-                value = value,
-                )
-        item.put()
-        memcache.delete(title, namespace='property')
-        self.redirect('.')
+        vals = {}
+        try:
+            # get all the incoming values
+            title = self.request.get('title').strip()
+            value = self.request.get('value').strip()
+
+            if self.request.get('key'):
+                item = db.get( self.request.get('key') )
+                item.title = title
+                item.value = value
+            else:
+                item = Property(
+                    title = title,
+                    value = value,
+                    )
+
+            item.put()
+            memcache.delete(title, namespace='property')
+            self.redirect('.')
+
+        except Exception, err:
+            vals['item'] = self.request.POST
+            vals['err'] = err
+            self.template( 'property-form.html', vals, 'admin' );
 
 # Empty Form (ie. never seen ... does something then goes back to the PropertyList)
 class UnCache(webbase.WebBase):

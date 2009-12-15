@@ -80,7 +80,11 @@ textarea.content {
     float: right;
 }
 
-.errorlist {
+.msg {
+    color: green;
+}
+
+.err {
     color: red;
 }
 

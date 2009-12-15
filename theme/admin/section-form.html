@@ -10,6 +10,8 @@
 
 <p><a href=".">&laquo;&laquo; Back to Section List</a></p>
 
+{% include 'msg.html' %}
+
 <form method="post" action="">
 {% if item %}
   <input type="hidden" name="key" value="{{ item.key|urlencode }}">

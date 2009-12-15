@@ -41,45 +41,52 @@ class FormHandler(webbase.WebBase):
         self.template( 'section-form.html', vals, 'admin' );
 
     def post(self):
-        # get all the incoming values
-        path = self.request.get('path')
-        title = self.request.get('title')
-        description = self.request.get('description')
-        type = self.request.get('type')
-        layout = self.request.get('layout')
-        attribute_raw = self.request.get('attribute_raw')
-
-        # some pre-processing of the input params
-        description_html = util.render(description, type)
-
         item = None
-        if self.request.get('key'):
-            item = db.get( self.request.get('key') )
-            item.path = path
-            item.title = title
-            item.description = description
-            item.description_html = description_html
-            item.type = type
-            item.layout = layout
-            item.attribute_raw = attribute_raw
-        else:
-            item = models.Section(
-                path = path,
-                title = title,
-                description = description,
-                description_html = description_html,
-                type = type,
-                layout = layout,
-                attribute_raw = attribute_raw,
-                )
+        vals = {}
+        try:
+            # get all the incoming values
+            path = self.request.get('path').strip()
+            title = self.request.get('title').strip()
+            description = self.request.get('description')
+            type = self.request.get('type')
+            layout = self.request.get('layout')
+            logging.info('layout=' + layout)
+            attribute_raw = self.request.get('attribute_raw').strip()
 
-        # update and save this section
-        item.set_derivatives()
-        item.put()
+            # some pre-processing of the input params
+            description_html = util.render(description, type)
 
-        # once saved, add the section to the two task queues
-        item.regenerate()
+            if self.request.get('key'):
+                item = db.get( self.request.get('key') )
+                item.path = path
+                item.title = title
+                item.description = description
+                item.description_html = description_html
+                item.type = type
+                item.layout = layout
+                item.attribute_raw = attribute_raw
+            else:
+                item = models.Section(
+                    path = path,
+                    title = title,
+                    description = description,
+                    description_html = description_html,
+                    type = type,
+                    layout = layout,
+                    attribute_raw = attribute_raw,
+                    )
 
-        self.redirect('.')
+            # update and save this section
+            item.set_derivatives()
+            item.put()
+            # once saved, add the section to the two task queues
+            item.regenerate()
+            self.redirect('.')
+        except Exception, err:
+            vals['item'] = self.request.POST
+            vals['err'] = err
+            vals['types'] = models.type_choices
+            vals['layouts'] = models.layout_choices
+            self.template( 'section-form.html', vals, 'admin' );
 
 ## ----------------------------------------------------------------------------

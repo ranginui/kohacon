@@ -48,7 +48,7 @@ class Section(BaseModel):
     description = db.TextProperty()
     type = db.StringProperty(required=True, choices=set(type_choices))
     layout = db.StringProperty(
-        required=False,
+        required=True,
         default='content',
         choices=layout_choices
         )
@@ -113,7 +113,7 @@ class Node(polymodel.PolyModel):
 
 # Page
 class Page(Node):
-    content = db.TextProperty( required=True )
+    content = db.TextProperty( required=False )
     content_html = db.TextProperty()
     type = db.StringProperty(required=True, choices=set(type_choices))
 
