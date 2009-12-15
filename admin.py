@@ -47,19 +47,22 @@ application = webapp.WSGIApplication(
 
         # properties
         ('/admin/property/', property.List),
-        ('/admin/property/new.html', property.FormHandler),
-        ('/admin/property/edit.html', property.FormHandler),
+        ('/admin/property/new.html', property.Edit),
+        ('/admin/property/edit.html', property.Edit),
         ('/admin/property/uncache.html', property.UnCache),
+        ('/admin/property/del.html', property.Del),
 
         # sections
         ('/admin/section/', section.List),
-        ('/admin/section/new.html', section.FormHandler),
-        ('/admin/section/edit.html', section.FormHandler),
+        ('/admin/section/new.html', section.Edit),
+        ('/admin/section/edit.html', section.Edit),
+        ('/admin/section/del.html', section.Del),
 
         # pages
         ('/admin/page/', page.List),
-        ('/admin/page/new.html', page.FormHandler),
-        ('/admin/page/edit.html', page.FormHandler),
+        ('/admin/page/new.html', page.Edit),
+        ('/admin/page/edit.html', page.Edit),
+        ('/admin/page/del.html', page.Del),
 
         # images
         ('/admin/image/', image.List),

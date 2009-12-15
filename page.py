@@ -15,7 +15,7 @@ import util
 
 ## ----------------------------------------------------------------------------
 
-# list
+# List
 class List(webbase.WebBase):
     def get(self):
         pages = Page.all().order('-inserted')
@@ -23,10 +23,10 @@ class List(webbase.WebBase):
             'title' : 'Section Layout List',
             'pages' : pages
         }
-        self.template( 'admin-page-index.html', vals, 'admin' );
+        self.template( 'page-list.html', vals, 'admin' );
 
-# form
-class FormHandler(webbase.WebBase):
+# Edit
+class Edit(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
@@ -95,5 +95,37 @@ class FormHandler(webbase.WebBase):
             vals['sections'] = Section.all()
             vals['types'] = models.type_choices
             self.template( 'page-form.html', vals, 'admin' );
+
+# Delete
+class Del(webbase.WebBase):
+    def get(self):
+        try:
+            if self.request.get('key'):
+                item = db.get( self.request.get('key') )
+
+                vals = {
+                    'item' : item,
+                    }
+                self.template( 'page-del.html', vals, 'admin' );
+            else:
+                self.redirect('.')
+        except:
+            self.redirect('.')
+
+    def post(self):
+        try:
+            item = db.get( self.request.get('key') ) if self.request.get('key') else None
+            if item is not None:
+                try:
+                    item.delete()
+                    self.redirect('.')
+                except:
+                    vals = {
+                        'item' : item,
+                        'err' : 'There was an error when deleting this page, please try again'
+                        }
+                    self.template( 'page-del.html', vals, 'admin' );
+        except:
+            self.redirect('.')
 
 ## ----------------------------------------------------------------------------
