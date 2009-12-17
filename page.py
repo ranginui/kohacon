@@ -5,6 +5,7 @@ import logging
 
 # Google specific modules
 from google.appengine.ext import db
+from google.appengine.api.labs.taskqueue import Task
 
 # local modules
 from models import Section, Page
@@ -81,6 +82,8 @@ class Edit(webbase.WebBase):
             item.put()
             # once saved, regenerate certain section properties
             section.regenerate()
+            # also, check that this section doesn't have duplicate content
+            Task( params={ 'key': str(section.key()), 'name': item.name }, countdown=30, ).add( queue_name='section-check-duplicate-nodes' )
             self.redirect('.')
         except Exception, err:
             vals['item'] = self.request.POST
