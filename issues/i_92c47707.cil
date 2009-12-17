@@ -1,0 +1,10 @@
+Summary: Section dropdown (when editing a page) selects all items
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Type-Defect
+Inserted: 2009-12-17T08:10:52
+Updated: 2009-12-17T08:15:45
+
+All items are selected in the drop down. This needs to be fixed so it's just
+the one.
