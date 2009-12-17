@@ -21,6 +21,10 @@ handlers:
   url: /static/([^/]+)/(.*)          # the paths this handler will serve
   static_files: theme/\1/static/\2   # where the files actually live (on the server)
 
+- upload: s/.*       # all the files to upload
+  url: /s/(.*)       # the paths this handler will serve
+  static_files: s/\1 # where the files actually live (on the server)
+
 - url: /test/.*
   script: test.py
   login: admin
