@@ -1,0 +1,6 @@
+Issue: 1eb22241
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-17T10:01:05
+Updated: 2009-12-17T10:01:26
+
+Made admin interface use general static files. Removed old ones.
