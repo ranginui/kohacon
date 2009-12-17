@@ -7,7 +7,7 @@ import re
 from google.appengine.ext import db
 
 # local modules
-import models
+from models import Section, Image, ImageData
 import webbase
 import formbase
 import util
@@ -17,7 +17,7 @@ import util
 # list
 class List(webbase.WebBase):
     def get(self):
-        images = models.Image.all().order('-inserted')
+        images = Image.all().order('-inserted')
         vals = {
             'title' : ' List',
             'images' : images
@@ -34,7 +34,7 @@ class FormHandler(webbase.WebBase):
 
         vals = {
             'item' : item,
-            'sections' : models.Section.all(),
+            'sections' : Section.all(),
             }
         self.template( 'image-form.html', vals, 'admin' );
 
@@ -51,13 +51,13 @@ class FormHandler(webbase.WebBase):
         # save the image
         file = self.request.POST['image']
         section = db.get( self.request.POST['section'] )
-        imagedata = models.ImageData(
+        imagedata = ImageData(
             data = self.request.POST.get('image').file.read()
             )
         imagedata.put()
 
         # put the item to the stastore
-        item = models.Image(
+        item = Image(
             section = section,
             name = name,
             title = self.request.POST['title'],

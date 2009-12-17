@@ -8,6 +8,7 @@ from google.appengine.api.labs.taskqueue import Task
 
 # local modules
 import models
+from models import Section
 import webbase
 import formbase
 import util
@@ -17,7 +18,7 @@ import util
 # List
 class List(webbase.WebBase):
     def get(self):
-        sections = models.Section.all()
+        sections = Section.all()
         vals = {
             'title' : 'Section List',
             'sections' : sections
@@ -64,7 +65,7 @@ class Edit(webbase.WebBase):
                 item.layout = layout
                 item.attribute_raw = attribute_raw
             else:
-                item = models.Section(
+                item = Section(
                     path = path,
                     title = title,
                     description = description,

@@ -1,0 +1,14 @@
+Issue: a559fe58
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-17T08:56:02
+Updated: 2009-12-17T08:56:57
+
+Instead of:
+
+    from models import *
+
+I decided to be picky and do the ones I need:
+
+    from models import Section, Node
+
+All done.
