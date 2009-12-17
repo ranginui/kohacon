@@ -1,0 +1,18 @@
+Summary: Allow people to use their site as an OpenID provider
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-17T01:40:52
+Updated: 2009-12-17T01:43:25
+
+Much like kapiti.geek.nz, allow the owner to use it as their OpenID provider.
+
+ <link rel="openid.server" href="http://www.myopenid.com/server" />
+ <link rel="openid.delegate" href="http://andychilton.myopenid.com/" />
+ <meta http-equiv="X-XRDS-Location" content="http://andychilton.myopenid.com/xrds" />
+
+This probably just involves adding a few 'Property' values for:
+
+* OpenID Server
+* OpenID Delegate
+* XRDS Location
