@@ -47,6 +47,13 @@ indexes:
 
 - kind: Node
   properties:
+  - name: attribute
+  - name: section
+  - name: inserted
+    direction: desc
+
+- kind: Node
+  properties:
   - name: class
   - name: inserted
     direction: desc
@@ -68,3 +75,8 @@ indexes:
   - name: section
   - name: inserted
     direction: desc
+
+- kind: Section
+  properties:
+  - name: attribute
+  - name: inserted

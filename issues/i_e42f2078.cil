@@ -1,9 +1,11 @@
 Summary: Make index pages and sitemap pages adhere to attributes
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.2
+Comment: 2c089b6d
 Inserted: 2009-12-13T06:04:36
-Updated: 2009-12-13T06:05:59
+Updated: 2009-12-17T00:49:48
 
 On every section and every node, there are the following two attributes:
 

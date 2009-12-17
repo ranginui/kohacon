@@ -1,0 +1,11 @@
+Issue: e42f2078
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-17T00:44:32
+Updated: 2009-12-17T00:45:21
+
+This is now changed.
+
+* sitemap-entry - only applies to sections
+* index-entry   - only applies to nodes
+
+This makes some things a little easier :)
