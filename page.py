@@ -31,13 +31,6 @@ class Edit(webbase.WebBase):
         item = None
         if self.request.get('key'):
             item = db.get( self.request.get('key') )
-        else:
-            item = {}
-            for arg in self.request.arguments():
-                if arg == 'section':
-                    item['section'] = { 'key' : str(self.request.get(arg)) }
-                else:
-                    item[arg] = str(self.request.get(arg))
 
         vals = {
             'item' : item,
