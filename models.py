@@ -20,7 +20,7 @@ import properties
 # * inserted = db.DateTimeProperty( auto_now_add = True )
 # * updated = db.DateTimeProperty( auto_now = True )
 
-type_choices = ["text", "code", "phliky", "html"]
+type_choices = ["text", "code", "phliky", "textile", "html"]
 layout_choices = ['content', 'blog', 'faq']
 
 ## ----------------------------------------------------------------------------

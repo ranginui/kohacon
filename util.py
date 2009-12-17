@@ -11,6 +11,8 @@ import re
 ## ----------------------------------------------------------------------------
 # local modules
 
+import textile
+
 import phliky
 
 ## ----------------------------------------------------------------------------
@@ -46,6 +48,9 @@ def render(text, type):
 
     elif type == 'phliky':
         return phliky.text2html(text)
+
+    elif type == 'textile':
+        return textile.textile(text)
 
     else:
         raise InvalidTypeError(type)
