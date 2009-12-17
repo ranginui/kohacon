@@ -2,8 +2,9 @@ Summary: Use 'from models import *' where possible
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
 Inserted: 2009-12-12T22:26:14
-Updated: 2009-12-12T22:28:00
+Updated: 2009-12-17T04:10:13
 
 Instead of having lots of import lines or having to preceed all models with
 'models.Whatever()' just use the following:

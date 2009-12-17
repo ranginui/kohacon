@@ -2,8 +2,9 @@ Summary: Add rst, Markdown and others if necessary
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
 Inserted: 2009-12-17T02:49:20
-Updated: 2009-12-17T02:58:49
+Updated: 2009-12-17T04:10:13
 
 Add the following markup languages to lollysite:
 

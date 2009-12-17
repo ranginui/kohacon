@@ -2,8 +2,9 @@ Summary: Use Model.get() in admin classes, rather than db.get()
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
 Inserted: 2009-12-14T07:19:36
-Updated: 2009-12-14T07:22:08
+Updated: 2009-12-17T04:10:13
 
 See http://code.google.com/appengine/docs/python/datastore/modelclass.html#Model_get
 

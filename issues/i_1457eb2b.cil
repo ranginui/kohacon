@@ -2,8 +2,9 @@ Summary: Use transactions where necessary
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
 Inserted: 2009-12-13T07:10:07
-Updated: 2009-12-13T07:13:24
+Updated: 2009-12-17T04:10:13
 
 When reading an entity, changing it and saving it back out, it should be done
 in a transaction so that other things can't go and read/change them at the same
