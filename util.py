@@ -12,6 +12,7 @@ import re
 # local modules
 
 import textile
+import markdown
 
 import phliky
 
@@ -51,6 +52,9 @@ def render(text, type):
 
     elif type == 'textile':
         return textile.textile(text)
+
+    elif type == 'markdown':
+        return markdown.markdown(text)
 
     else:
         raise InvalidTypeError(type)
