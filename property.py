@@ -31,7 +31,7 @@ class Edit(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Property.get( self.request.get('key') )
 
         vals = {
             'item' : item,
@@ -47,7 +47,7 @@ class Edit(webbase.WebBase):
             value = self.request.get('value').strip()
 
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Property.get( self.request.get('key') )
                 item.title = title
                 item.value = value
             else:
@@ -77,7 +77,7 @@ class Del(webbase.WebBase):
     def get(self):
         try:
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Property.get( self.request.get('key') )
 
                 vals = {
                     'item' : item,
@@ -90,7 +90,7 @@ class Del(webbase.WebBase):
 
     def post(self):
         try:
-            item = db.get( self.request.get('key') ) if self.request.get('key') else None
+            item = Property.get( self.request.get('key') ) if self.request.get('key') else None
             if item is not None:
                 try:
                     item.delete()

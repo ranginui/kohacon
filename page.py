@@ -31,7 +31,7 @@ class Edit(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Page.get( self.request.get('key') )
 
         vals = {
             'item' : item,
@@ -45,7 +45,7 @@ class Edit(webbase.WebBase):
         vals = {}
         try:
             # get all the incoming values
-            section = db.get( self.request.get('section') )
+            section = Section.get( self.request.get('section') )
             name = self.request.get('name').strip()
             title = self.request.get('title').strip()
             content = self.request.get('content')
@@ -58,7 +58,7 @@ class Edit(webbase.WebBase):
                 name = util.urlify(self.request.get('title'))
 
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Page.get( self.request.get('key') )
                 item.section = section
                 item.name = name
                 item.title = title
@@ -97,7 +97,7 @@ class Del(webbase.WebBase):
     def get(self):
         try:
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Page.get( self.request.get('key') )
 
                 vals = {
                     'item' : item,
@@ -110,7 +110,7 @@ class Del(webbase.WebBase):
 
     def post(self):
         try:
-            item = db.get( self.request.get('key') ) if self.request.get('key') else None
+            item = Page.get( self.request.get('key') ) if self.request.get('key') else None
             if item is not None:
                 try:
                     item.delete()

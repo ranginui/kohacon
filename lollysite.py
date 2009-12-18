@@ -200,7 +200,7 @@ class LollySite(webbase.WebBase):
         # remove the horribleness from comment
         if this_page == 'comment' and this_ext == 'html':
             # comment submission for each section
-            node = db.get( self.request.POST['node'] )
+            node = Node.get( self.request.POST['node'] )
             name = self.request.POST['name']
             email = self.request.POST['email']
             website = self.request.POST['website']

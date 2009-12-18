@@ -30,7 +30,7 @@ class Edit(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Section.get( self.request.get('key') )
 
         vals = {
             'item' : item,
@@ -56,7 +56,7 @@ class Edit(webbase.WebBase):
             description_html = util.render(description, type)
 
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Section.get( self.request.get('key') )
                 item.path = path
                 item.title = title
                 item.description = description
@@ -93,7 +93,7 @@ class Del(webbase.WebBase):
     def get(self):
         try:
             if self.request.get('key'):
-                item = db.get( self.request.get('key') )
+                item = Section.get( self.request.get('key') )
 
                 vals = {
                     'item' : item,
@@ -106,7 +106,7 @@ class Del(webbase.WebBase):
 
     def post(self):
         try:
-            item = db.get( self.request.get('key') ) if self.request.get('key') else None
+            item = Section.get( self.request.get('key') ) if self.request.get('key') else None
             if item is not None:
                 try:
                     item.delete()

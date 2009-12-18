@@ -13,9 +13,7 @@ from google.appengine.ext.db import GqlQuery
 
 # local modules
 import webbase
-from models import Section
-from models import Node
-from models import Comment
+from models import Section, Node, Comment
 
 ## ----------------------------------------------------------------------------
 
@@ -30,7 +28,7 @@ class SectionRegenerate(webbase.WebBase):
         logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
-        section = db.get( self.request.get('key') )
+        section = Section.get( self.request.get('key') )
         if section is None:
             self.write('No section found')
             logging.warn( 'No section found for key: ' +  key )
@@ -93,7 +91,7 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         logging.info( 'Checking for duplicate nodes named [%s] in section [%s]: ' %  name, section.path )
 
         # ok, so get the section first
-        section = db.get( self.request.get('key') )
+        section = Section.get( self.request.get('key') )
         if section is None:
             self.write('No section found')
             logging.warn( 'No section found for key: ' +  key )
@@ -128,7 +126,7 @@ class NodeRegenerate(webbase.WebBase):
         logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
-        node = db.get( self.request.get('key') )
+        node = Section.get( self.request.get('key') )
         if node is None:
             self.write('No node found')
             return

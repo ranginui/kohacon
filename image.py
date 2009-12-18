@@ -29,7 +29,7 @@ class FormHandler(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Image.get( self.request.get('key') )
             logging.info('item=' + item.__class__.__name__)
 
         vals = {
@@ -41,7 +41,7 @@ class FormHandler(webbase.WebBase):
     def post(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Image.get( self.request.get('key') )
 
         # do some preprocessing of the input params
         name = self.request.get('name')
@@ -50,7 +50,7 @@ class FormHandler(webbase.WebBase):
 
         # save the image
         file = self.request.POST['image']
-        section = db.get( self.request.POST['section'] )
+        section = Section.get( self.request.POST['section'] )
         imagedata = ImageData(
             data = self.request.POST.get('image').file.read()
             )
