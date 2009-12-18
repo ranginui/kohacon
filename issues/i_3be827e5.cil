@@ -1,0 +1,9 @@
+Summary: Remove all references to /admin/del.html
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-18T09:13:55
+Updated: 2009-12-18T09:14:56
+
+Now that all the models have their own (and better) del page, we can now remove
+all references to /admin/del.html since it is now unused.
