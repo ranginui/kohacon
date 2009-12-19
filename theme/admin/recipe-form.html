@@ -1,0 +1,92 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit {{type}}</h2>
+{% else %}
+<h2>New {{type}}</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to Recipe List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+{% if item %}
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+{% endif %}
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>
+          <select id="id_section" name="section">
+            <option value="">Select...</option>
+{% for section in sections %}
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_name">Name:</label></th>
+        <td><input type="text" id="id_name" name="name" value="{{ item.name|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_title">Title:</label></th>
+        <td><input type="text" id="id_title" name="title" value="{{ item.title|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_intro">Intro:</label></th>
+        <td><textarea id="id_intro" name="intro" class="small">{{ item.intro|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_serves">Serves:</label></th>
+        <td><input type="text" id="id_serves" name="serves" value="{{ item.serves|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_ingredients">Ingredients:</label></th>
+        <td><textarea id="id_ingredients" name="ingredients" class="medium">{{ item.ingredients|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_method">Method:</label></th>
+        <td><textarea id="id_method" name="method" class="large">{{ item.method|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_type">Type:</label></th>
+        <td>
+          <select id="id_type" name="type">
+            <option selected="selected" value="">Select...</option>
+{% for type in types %}
+            <option value="{{ type|escape }}"{% ifequal type item.type %} selected="selected"{% endifequal %}>{{ type|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_label_raw">Label:</label></th>
+        <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_attribute_raw">Attribute:</label></th>
+        <td><input type="text" id="id_attribute_raw" name="attribute_raw" value="{{ item.attribute_raw|escape }}" /></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit"/>
+</form>
+
+{% endblock %}

@@ -41,7 +41,7 @@
 
 {% else %}
 
-<p>There are no pages.</p>
+<p>There are no pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 {% endif %}
 

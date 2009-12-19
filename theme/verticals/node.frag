@@ -4,6 +4,21 @@
         {{ node.content_html }}
     {% endifequal %}
 
+    {% ifequal node.class_name 'Recipe' %}
+        {{ node.intro_html }}
+
+        <h2>Ingredients</h2>
+        {% if node.serves %}
+          <p>
+            Serves: {{ node.serves|escape }}
+          </p>
+        {% endif %}
+        {{ node.ingredients_html }}
+
+        <h2>Method</h2>
+        {{ node.method_html }}
+    {% endifequal %}
+
     {% ifequal node.class_name 'Image' %}
         <p class="c"><img src="/node/image/{{ node.filename|escape }}" />
         {% if node.caption %}

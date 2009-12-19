@@ -2,6 +2,7 @@
 # import standard modules
 import cgi
 import os
+import sys
 from types import *
 
 # Google specific modules
@@ -17,6 +18,9 @@ import section
 import page
 import image
 import comment
+
+sys.path.append('node')
+import recipe
 
 import migrate
 
@@ -63,6 +67,12 @@ application = webapp.WSGIApplication(
         ('/admin/page/new.html', page.Edit),
         ('/admin/page/edit.html', page.Edit),
         ('/admin/page/del.html', page.Del),
+
+        # recipes
+        ('/admin/recipe/', recipe.List),
+        ('/admin/recipe/new.html', recipe.Edit),
+        ('/admin/recipe/edit.html', recipe.Edit),
+        ('/admin/recipe/del.html', recipe.Del),
 
         # images
         ('/admin/image/', image.List),

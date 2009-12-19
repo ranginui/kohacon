@@ -1,10 +1,11 @@
 Summary: Add a recipe Node entity
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.03
+Comment: e616f181
 Inserted: 2009-11-21T10:35:49
-Updated: 2009-12-17T04:10:13
+Updated: 2009-12-19T09:37:35
 
 The recipe node could have the following fields:
 

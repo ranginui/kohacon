@@ -114,12 +114,33 @@ class Node(polymodel.PolyModel):
 # Page
 class Page(Node):
     content = db.TextProperty( required=False )
-    content_html = db.TextProperty()
     type = db.StringProperty(required=True, choices=set(type_choices))
+
+    # Derivative Properties
+    content_html = db.TextProperty( required=False )
 
     def set_derivatives(self):
         Node.set_derivatives(self)
         self.content_html = util.render(self.content, self.type)
+
+# Recipe
+class Recipe(Node):
+    intro = db.TextProperty( required=False )
+    serves = db.StringProperty( required=False )
+    ingredients = db.TextProperty( required=False )
+    method = db.TextProperty( required=False )
+    type = db.StringProperty(required=True, choices=set(type_choices))
+
+    # Derivative Properties
+    intro_html = db.TextProperty()
+    ingredients_html = db.TextProperty()
+    method_html = db.TextProperty()
+
+    def set_derivatives(self):
+        Node.set_derivatives(self)
+        self.intro_html = util.render(self.intro, self.type)
+        self.ingredients_html = util.render(self.ingredients, self.type)
+        self.method_html = util.render(self.method, self.type)
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 

@@ -1,0 +1,48 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Recipe List</h2>
+
+{% include 'section-filter.fhtml' %}
+
+{% if recipes.count %}
+
+<p>There are {{ recipes.count|escape }} recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Name</th>
+      <th>Title</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for recipe in recipes %}
+    <tr>
+      <td>
+        {{ recipe.section.path|escape }}
+      </td>
+      <td>
+        {{ recipe.name|escape }}
+      </td>
+      <td>
+        <a href="edit.html?key={{ recipe.key|urlencode }}">{{ recipe.title|escape }}</a>
+      </td>
+      <td class="c">
+        <a href="/admin/recipe/del.html?key={{ recipe.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+
+{% endif %}
+
+{% endblock %}
