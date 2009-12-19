@@ -6,6 +6,7 @@ import logging
 # Google specific modules
 from google.appengine.ext import db
 from google.appengine.api.labs.taskqueue import Task
+from google.appengine.api.datastore_errors import BadKeyError
 
 # local modules
 from models import Section, Page
@@ -19,10 +20,22 @@ import util
 # List
 class List(webbase.WebBase):
     def get(self):
-        pages = Page.all().order('-inserted')
+        if self.request.get('section'):
+            section = None
+            try:
+                section = Section.get( self.request.get('section') )
+            except BadKeyError:
+                # invalid key
+                self.redirect('.')
+            pages = Page.all().filter('section =', section).order('-inserted')
+        else:
+            pages = Page.all().order('-inserted')
+
         vals = {
-            'title' : 'Section Layout List',
-            'pages' : pages
+            'title'    : 'Page List',
+            'sections' : Section.all(),
+            'section'  : section,
+            'pages'    : pages,
         }
         self.template( 'page-list.html', vals, 'admin' );
 

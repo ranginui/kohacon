@@ -4,9 +4,11 @@
 
 <h2>Page List</h2>
 
+{% include 'section-filter.fhtml' %}
+
 {% if pages.count %}
 
-<p>There are {{ pages.count|escape }} pages.</p>
+<p>There are {{ pages.count|escape }} pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 <table class="list striped">
   <thead>

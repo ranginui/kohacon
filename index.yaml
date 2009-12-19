@@ -60,6 +60,18 @@ indexes:
 
 - kind: Node
   properties:
+  - name: class
+  - name: section
+
+- kind: Node
+  properties:
+  - name: class
+  - name: section
+  - name: inserted
+    direction: desc
+
+- kind: Node
+  properties:
   - name: label
   - name: section
   - name: inserted
