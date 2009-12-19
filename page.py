@@ -20,8 +20,8 @@ import util
 # List
 class List(webbase.WebBase):
     def get(self):
+        section = None
         if self.request.get('section'):
-            section = None
             try:
                 section = Section.get( self.request.get('section') )
             except BadKeyError:

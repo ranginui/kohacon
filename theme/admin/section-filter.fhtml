@@ -1,0 +1,11 @@
+{% if sections.count %}
+<p>
+  Filter by section: 
+  <select class="section-filter">
+    <option value="">(none)</option>
+    {% for s in sections %}
+    <option value="{{ s.key|escape }}"{% ifequal s.key section.key %} selected="selected"{% endifequal %}>{{ s.path|escape }}</option>
+    {% endfor %}
+  </select>
+</p>
+{% endif %}
