@@ -24,6 +24,8 @@ LabelAllowedList: Priority-Low
 LabelAllowedList: Release-v0.01
 LabelAllowedList: Release-v0.02
 LabelAllowedList: Release-v0.03
+LabelAllowedList: Release-v0.04
 LabelAllowedList: Milestone-v0.01
 LabelAllowedList: Milestone-v0.02
+LabelAllowedList: Milestone-v0.03
 LabelAllowedList: Milestone-Future
