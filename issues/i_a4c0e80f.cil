@@ -2,8 +2,9 @@ Summary: Add a 'FlickrImage' node type
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
 Inserted: 2009-11-22T05:40:18
-Updated: 2009-11-22T06:06:39
+Updated: 2009-12-20T03:43:56
 
 Have a new node type which has the normal 'Node' properties plus the following
 new ones:

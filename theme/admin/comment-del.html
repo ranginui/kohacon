@@ -1,0 +1,57 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Remove Comment?</h2>
+
+<p><a href=".">&laquo;&laquo; Back to Comment List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th>Section:</th>
+        <td>{{ item.node.section.path|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Node:</th>
+        <td>{{ item.node.name|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Name:</th>
+        <td>{{ item.name|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Email:</th>
+        <td>{{ item.email|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Website:</th>
+        <td>{{ item.website|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Comment:</th>
+        <td>{{ item.comment_html }}</td>
+      </tr>
+
+      <tr>
+        <th>Status:</th>
+        <td>{{ item.status|escape }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Delete" />
+</form>
+
+{% endblock %}

@@ -14,7 +14,7 @@ import config
 
 ## ----------------------------------------------------------------------------
 
-# list
+# List
 class List(webbase.WebBase):
     def get(self):
         properties = Property.all()
@@ -26,12 +26,12 @@ class List(webbase.WebBase):
         self.template( 'property-list.html', vals, 'admin' );
 
 
-# form
-class FormHandler(webbase.WebBase):
+# Edit
+class Edit(webbase.WebBase):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = db.get( self.request.get('key') )
+            item = Property.get( self.request.get('key') )
 
         vals = {
             'item' : item,
@@ -39,23 +39,31 @@ class FormHandler(webbase.WebBase):
         self.template( 'property-form.html', vals, 'admin' );
 
     def post(self):
-        # get all the incoming values
-        title = self.request.get('title')
-        value = self.request.get('value')
-
         item = None
-        if self.request.get('key'):
-            item = db.get( self.request.get('key') )
-            item.title = title
-            item.value = value
-        else:
-            item = Property(
-                title = title,
-                value = value,
-                )
-        item.put()
-        memcache.delete(title, namespace='property')
-        self.redirect('.')
+        vals = {}
+        try:
+            # get all the incoming values
+            title = self.request.get('title').strip()
+            value = self.request.get('value').strip()
+
+            if self.request.get('key'):
+                item = Property.get( self.request.get('key') )
+                item.title = title
+                item.value = value
+            else:
+                item = Property(
+                    title = title,
+                    value = value,
+                    )
+
+            item.put()
+            memcache.delete(title, namespace='property')
+            self.redirect('.')
+
+        except Exception, err:
+            vals['item'] = self.request.POST
+            vals['err'] = err
+            self.template( 'property-form.html', vals, 'admin' );
 
 # Empty Form (ie. never seen ... does something then goes back to the PropertyList)
 class UnCache(webbase.WebBase):
@@ -63,5 +71,38 @@ class UnCache(webbase.WebBase):
         title = self.request.get('title')
         memcache.delete(title, namespace='property')
         self.redirect('.')
+
+# Delete
+class Del(webbase.WebBase):
+    def get(self):
+        try:
+            if self.request.get('key'):
+                item = Property.get( self.request.get('key') )
+
+                vals = {
+                    'item' : item,
+                    }
+                self.template( 'property-del.html', vals, 'admin' );
+            else:
+                self.redirect('.')
+        except:
+            self.redirect('.')
+
+    def post(self):
+        try:
+            item = Property.get( self.request.get('key') ) if self.request.get('key') else None
+            if item is not None:
+                try:
+                    item.delete()
+                    memcache.delete(item.title, namespace='property')
+                    self.redirect('.')
+                except:
+                    vals = {
+                        'item' : item,
+                        'err' : 'There was an error when deleting this property, please try again'
+                        }
+                    self.template( 'property-del.html', vals, 'admin' );
+        except:
+            self.redirect('.')
 
 ## ----------------------------------------------------------------------------

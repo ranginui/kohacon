@@ -1,0 +1,26 @@
+Summary: Serve file uploads (or any node with data) from it's own section
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Inserted: 2009-12-12T09:26:40
+Updated: 2009-12-20T03:43:56
+
+Currently all uploaded files are served from either:
+
+* /node/image/<file>
+* /node/file/<file>
+
+Whilst this is easy, they really should be served from the section they exist
+in.
+
+For example, if I upload a file: cil-v0.06.00.tar.gz to /project/cil/:
+
+The HTML page should be: cil-v0.06.00.tar.gz.html
+File should be at : /project/cil/cil-v0.06.00.tar.gz
+
+Otherwise, it's going to make it really hard to do anything easy. For example,
+uploading 'favicon.ico' into '/' is impossible.
+
+I won't 'git add' this issue yet, since I'm still not sure of the best way of
+doing things, but we'll see how it goes.

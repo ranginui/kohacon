@@ -11,6 +11,9 @@ import re
 ## ----------------------------------------------------------------------------
 # local modules
 
+import textile
+import markdown
+
 import phliky
 
 ## ----------------------------------------------------------------------------
@@ -26,6 +29,9 @@ def esc(text):
     return cgi.escape(text, True)
 
 def render(text, type):
+    if type is None or type.strip() == '':
+        return ''
+
     text = re.sub('\r', '', text);
     logging.info('Doing ' + type);
     if type == 'html':
@@ -43,6 +49,12 @@ def render(text, type):
 
     elif type == 'phliky':
         return phliky.text2html(text)
+
+    elif type == 'textile':
+        return textile.textile(text)
+
+    elif type == 'markdown':
+        return markdown.markdown(text)
 
     else:
         raise InvalidTypeError(type)

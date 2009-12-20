@@ -10,6 +10,16 @@ $(function() {
 
     $('.striped tr')
         .mouseover( function() { $(this).addClass('hover'); } )
-        .mouseout( function() { $(this).removeClass('hover'); } );
+        .mouseout( function() { $(this).removeClass('hover'); } )
+    ;
 
+    $('.section-filter')
+        .change( function() {
+            var pathname = window.location.pathname;
+            // alert('pathname = ' + pathname);
+            // alert('$(this).value = ' + $(this));
+            // alert('$(this).value = ' + $(this).val());
+            window.location = pathname + '?section=' + $(this).val();
+        })
+    ;
 });

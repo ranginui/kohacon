@@ -1,5 +1,5 @@
 application: lollysite
-version: v0-02
+version: v0-04-00
 runtime: python
 api_version: 1
 default_expiration: '1d'
@@ -20,6 +20,9 @@ handlers:
 - upload: theme/[^/]+/static/.*      # all the files to upload
   url: /static/([^/]+)/(.*)          # the paths this handler will serve
   static_files: theme/\1/static/\2   # where the files actually live (on the server)
+
+- url: /s/
+  static_dir: s
 
 - url: /test/.*
   script: test.py

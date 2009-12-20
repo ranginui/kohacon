@@ -13,9 +13,7 @@ from google.appengine.ext.db import GqlQuery
 
 # local modules
 import webbase
-from models import Section
-from models import Node
-from models import Comment
+from models import Section, Node, Comment
 
 ## ----------------------------------------------------------------------------
 
@@ -30,9 +28,10 @@ class SectionRegenerate(webbase.WebBase):
         logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
-        section = db.get( self.request.get('key') )
+        section = Section.get( self.request.get('key') )
         if section is None:
             self.write('No section found')
+            logging.warn( 'No section found for key: ' +  key )
             return
 
         # keep a count of all these things
@@ -79,6 +78,43 @@ class SectionRegenerate(webbase.WebBase):
 
         self.write('Finished')
 
+# try http://localhost:8080/_ah/queue/section-check-duplicate-nodes?key=?&name=?
+class SectionCheckDuplicateNodes(webbase.WebBase):
+    def post(self):
+        self.response.headers['Content-Type'] = 'text/plain'
+        self.write('Started section duplicate node check:')
+
+        key = self.request.get('key')
+        name = self.request.get('name')
+        self.write('- key  = ' + key)
+        self.write('- name = ' + name)
+        logging.info( 'Checking for duplicate nodes named [%s] in section [%s]: ' %  name, section.path )
+
+        # ok, so get the section first
+        section = Section.get( self.request.get('key') )
+        if section is None:
+            self.write('No section found')
+            logging.warn( 'No section found for key: ' +  key )
+            return
+
+        nodes = Node.all().filter('section =', key).filter('name =', name).fetch()
+        if nodes.count() <= 1:
+            msg = 'Only [%d] nodes of this name in this section' % nodes.count()
+            self.write(msg)
+            logging.info(msg)
+            return
+
+        msg = 'More than one node named [%s] in section [%s]' % name, section.path
+        self.write(msg)
+        logging.warn(msg)
+        if not mail.is_email_valid(admin_email):
+            return
+
+        # url_edit = 'http://www.' + config.value('Naked Domain') + '/admin/node/'
+        url_edit = 'http://www.%s/admin/node/' % config.value('Naked Domain')
+        body = 'Section %s has two nodes named %s ' % section.path, name
+        mail.send_mail(admin_email, admin_email, 'Duplicate node name in section ' + section.path, body)
+
 # try http://localhost:8080/_ah/queue/node-regenerate?key=?
 class NodeRegenerate(webbase.WebBase):
     def post(self):
@@ -90,7 +126,7 @@ class NodeRegenerate(webbase.WebBase):
         logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
-        node = db.get( self.request.get('key') )
+        node = Section.get( self.request.get('key') )
         if node is None:
             self.write('No node found')
             return

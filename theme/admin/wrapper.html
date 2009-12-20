@@ -2,14 +2,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title></title>
-    <meta name="keywords" content="andrew chilton, andy chilton, zaapt, flickr, twitter, perl, postgres, " />
+    <title>{{ title|escape }} - Lollysite</title>
+    <meta name="keywords" content="andrew chilton, andy chilton, app engine, python, chilts.org, lollysite" />
     <meta name="description" content="" />
-    <link href="/static/admin/reset.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/admin/text.min.css" rel="stylesheet" type="text/css" />
-    <link href="/static/admin/960.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/css/reset.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/css/text.min.css" rel="stylesheet" type="text/css" />
+    <link href="/s/css/960.min.css" rel="stylesheet" type="text/css" />
     <link href="/static/admin/style.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/s/js/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="/static/admin/ready.js"></script>
   </head>
   <body>
@@ -42,14 +42,21 @@
       <li>
         <a href="/admin/section/">Section</a> (<a href="/admin/section/new.html">New</a>)
       </li>
-      <li>
-        <a href="/admin/page/">Page</a> (<a href="/admin/page/new.html">New</a>)
+      <li>Nodes
+        <ul>
+          <li>
+            <a href="/admin/page/">Page</a> (<a href="/admin/page/new.html">New</a>)
+          </li>
+          <li>
+            <a href="/admin/recipe/">Recipe</a> (<a href="/admin/recipe/new.html">New</a>)
+          </li>
+        </ul>
       </li>
       <li>
         <a href="/admin/image/">Image</a> (<a href="/admin/image/new.html">New</a>)
       </li>
       <li>
-        <a href="/admin/comment/">Comment</a>
+        <a href="/admin/comment/">Comments</a>
       </li>
     </ul>
   </div>

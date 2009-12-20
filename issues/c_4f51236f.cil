@@ -1,0 +1,6 @@
+Issue: 384b3296
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-18T09:22:32
+Updated: 2009-12-18T09:22:53
+
+Just going to switch to Model.get() now. Will play with other stuff later.

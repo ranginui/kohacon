@@ -1,0 +1,16 @@
+Summary: Make site feed at top level
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Inserted: 2009-12-13T22:57:59
+Updated: 2009-12-20T03:43:56
+
+Currently, the rss feeds just go off the section they are serving.
+
+In addition to this, we should have an RSS feed at the top level that has _all_
+of the nodes in the site added to it so people can subscribe to the entire
+site.
+
+As normal (and following on from cil-e42f2078), the feed should adhere to the
+sitemap-index attribute.

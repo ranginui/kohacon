@@ -1,0 +1,72 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Remove Recipe?</h2>
+
+<p><a href=".">&laquo;&laquo; Back to Recipe List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th>Section:</th>
+        <td>{{ item.section.path|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Name:</th>
+        <td>{{ item.name|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Title:</th>
+        <td>{{ item.title|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Intro:</th>
+        <td><pre>{{ item.intro|escape }}</pre></td>
+      </tr>
+
+      <tr>
+        <th>Serves:</th>
+        <td>{{ item.serves|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Ingredients:</th>
+        <td><pre>{{ item.ingredients|escape }}</pre></td>
+      </tr>
+
+      <tr>
+        <th>Method:</th>
+        <td><pre>{{ item.method|escape }}</pre></td>
+      </tr>
+
+      <tr>
+        <th>Type:</th>
+        <td>{{ item.type|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Label:</th>
+        <td>{{ item.label_raw|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Attribute:</th>
+        <td>{{ item.attribute_raw|escape }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Delete" />
+</form>
+
+{% endblock %}

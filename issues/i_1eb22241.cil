@@ -1,9 +1,12 @@
 Summary: Move FamFamFam icons to a common top-level static section
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
+Comment: 63a8ab48
+Comment: b547b63c
 Inserted: 2009-12-07T07:52:19
-Updated: 2009-12-07T07:54:12
+Updated: 2009-12-17T10:01:43
 
 Currently, FamFamFam icons are served from /s/admin/i/*.png, but if we move
 them somewhere else, they can be used by all themes.

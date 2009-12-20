@@ -1,0 +1,6 @@
+{% if msg %}
+<ul class="msg"><li>{{ msg|escape }}</li></ul>
+{% endif %}
+{% if err %}
+<ul class="err"><li>{{ err|escape }}</li></ul>
+{% endif %}

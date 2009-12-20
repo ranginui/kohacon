@@ -83,7 +83,7 @@ class LollySite(webbase.WebBase):
 
         elif this_page == 'rss20' and this_ext == 'xml':
             # rss20.xml
-            nodes = self.latest_nodes(section, 10)
+            nodes = self.latest_nodes(section, 'index-entry', 10)
             vals = {
                 'section' : section,
                 'nodes'   : nodes,
@@ -93,9 +93,8 @@ class LollySite(webbase.WebBase):
 
         elif this_page == 'sitemapindex' and this_ext == 'xml':
             # sitemapindex.xml
-            sections = Section.all()
             vals = {
-                'sections' : sections,
+                'sections' : Section.all().filter('attribute =', 'sitemap-entry').order('inserted'),
                 }
             self.response.headers['Content-Type'] = 'text/xml'
             self.template( 'sitemapindex.xml', vals, 'sitemaps' );
@@ -104,7 +103,7 @@ class LollySite(webbase.WebBase):
             # urlset.xml
             vals = {
                 'section' : section,
-                'nodes'   : Node.all().filter('section =', section.key())
+                'nodes'   : Node.all().filter('section =', section.key()).filter('attribute =', 'index-entry').order('inserted')
                 }
             self.response.headers['Content-Type'] = 'text/xml'
             self.template( 'urlset.xml', vals, 'sitemaps' );
@@ -201,7 +200,7 @@ class LollySite(webbase.WebBase):
         # remove the horribleness from comment
         if this_page == 'comment' and this_ext == 'html':
             # comment submission for each section
-            node = db.get( self.request.POST['node'] )
+            node = Node.get( self.request.POST['node'] )
             name = self.request.POST['name']
             email = self.request.POST['email']
             website = self.request.POST['website']
@@ -222,7 +221,7 @@ class LollySite(webbase.WebBase):
             admin_email = config.value('Admin Email')
             if mail.is_email_valid(admin_email):
                 url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
-                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/del.html?key='+ str(comment.key())
+                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
 
                 body = 'Comment from ' + name + '<' + email + '>\n'
                 body = body + website + '\n\n'
@@ -278,9 +277,9 @@ class LollySite(webbase.WebBase):
             self.error(404)
             return
 
-    def latest_nodes(self, section, limit):
-        logging.info('Getting latest nodes for ' + section.path)
-        nodes = Node.all().filter('section =', section.key()).order('-inserted').fetch(limit)
+    def latest_nodes(self, section, attribute, limit):
+        logging.info('Getting latest nodes (with attribute ' +  attribute + ' for ' + section.path)
+        nodes = Node.all().filter('section =', section.key()).filter('attribute =', attribute).order('-inserted').fetch(limit)
         return nodes
 
 ## ----------------------------------------------------------------------------

@@ -1,0 +1,18 @@
+Summary: Use transactions where necessary
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-13T07:10:07
+Updated: 2009-12-17T04:10:13
+
+When reading an entity, changing it and saving it back out, it should be done
+in a transaction so that other things can't go and read/change them at the same
+time.
+
+There are other cases however, when this doesn't need to happen. If (for
+example) a new page has been added to a section, when the section regenerates
+from the task queue, it doesn't need a transaction since it'll fail. Due to the
+way the task queue works, it'll retry it until it does. At that stage you can
+be sure no-one else has changed it in the meantime.
+
+See http://blog.notdot.net/2009/12/Most-popular-metrics-in-App-Engine

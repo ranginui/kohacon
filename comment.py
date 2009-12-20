@@ -46,4 +46,36 @@ class Index(webbase.WebBase):
             self.redirect('./')
             return
 
+# Delete
+class Del(webbase.WebBase):
+    def get(self):
+        try:
+            if self.request.get('key'):
+                item = Comment.get( self.request.get('key') )
+
+                vals = {
+                    'item' : item,
+                    }
+                self.template( 'comment-del.html', vals, 'admin' );
+            else:
+                self.redirect('.')
+        except:
+            self.redirect('.')
+
+    def post(self):
+        try:
+            item = Comment.get( self.request.get('key') ) if self.request.get('key') else None
+            if item is not None:
+                try:
+                    item.delete()
+                    self.redirect('.')
+                except:
+                    vals = {
+                        'item' : item,
+                        'err' : 'There was an error when deleting this comment, please try again'
+                        }
+                    self.template( 'comment-del.html', vals, 'admin' );
+        except:
+            self.redirect('.')
+
 ## ----------------------------------------------------------------------------

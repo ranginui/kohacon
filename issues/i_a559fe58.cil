@@ -1,0 +1,17 @@
+Summary: Use 'from models import *' where possible
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.03
+Comment: 7ab49686
+Inserted: 2009-12-12T22:26:14
+Updated: 2009-12-17T08:56:57
+
+Instead of having lots of import lines or having to preceed all models with
+'models.Whatever()' just use the following:
+
+from models import *
+
+That way we can use Section, Node, Comment, Message etc as standalone. Since
+they are core to the system, this shouldn't be a problem figuring out where
+they come from.

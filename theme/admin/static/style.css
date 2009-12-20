@@ -63,7 +63,15 @@ textarea {
     height: 5em;
 }
 
-textarea.content {
+textarea.small {
+    height: 5em;
+}
+
+textarea.medium {
+    height: 10em;
+}
+
+textarea.large, textarea.content {
     height: 20em;
 }
 
@@ -80,8 +88,16 @@ textarea.content {
     float: right;
 }
 
-.errorlist {
+.msg {
+    color: green;
+}
+
+.err {
     color: red;
+}
+
+.monospace {
+	font-family: monospaced;
 }
 
 /*** specific ***/

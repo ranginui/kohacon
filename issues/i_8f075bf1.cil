@@ -1,0 +1,14 @@
+Summary: Add a YouTube node type
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-13T20:48:18
+Updated: 2009-12-13T20:49:39
+
+Adding a YouTube node type would be nice. But ...
+
+When doing it, make sure that if someone doesn't have Flash, it gives a proper
+link to the YouTube page and from there they can do what they like.
+
+Also, it seems that Google APIs also host an swflash.js script, so you could
+use that.

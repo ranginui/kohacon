@@ -1,0 +1,9 @@
+Issue: 475f1a9b
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-15T08:13:27
+Updated: 2009-12-15T08:14:05
+
+This is done, though not for Images.
+
+New thinking is that images should be assets, not nodes. This will be corrected
+in a different issue.

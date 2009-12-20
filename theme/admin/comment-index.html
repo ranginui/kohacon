@@ -3,8 +3,6 @@
 {% block content %}
   <h2>New Comments</h2>
 
-  <p><a href="../">&laquo;&laquo; Back to Admin List</a></p>
-
   {% if comments.count %}
 
   <p>There are {{ comments.count|escape }} comments awaiting moderation.</p>
@@ -35,13 +33,13 @@
           {{ comment.comment_html }}
         </td>
         <td class="c">
-          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/static/admin/i/accept.png" /></a>
+          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/s/i/accept.png" /></a>
         </td>
         <td class="c">
-          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/static/admin/i/exclamation.png" /></a>
+          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/s/i/exclamation.png" /></a>
         </td>
         <td class="c">
-          <a href="/admin/del.html?key={{ comment.key|urlencode }}"><img src="/static/admin/i/cancel.png" /></a>
+          <a href="del.html?key={{ comment.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
         </td>
       </tr>
       {% endfor %}

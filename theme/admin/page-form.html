@@ -10,6 +10,8 @@
 
 <p><a href=".">&laquo;&laquo; Back to Page List</a></p>
 
+{% include 'msg.html' %}
+
 <form method="post" action="">
 {% if item %}
   <input type="hidden" name="key" value="{{ item.key|urlencode }}">
@@ -24,7 +26,7 @@
           <select id="id_section" name="section">
             <option value="">Select...</option>
 {% for section in sections %}
-            <option value="{{ section.key|urlencode }}"{% ifequal section.key.str item.section.key.str %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
 {% endfor %}
           </select>
         </td>
