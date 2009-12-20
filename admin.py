@@ -30,9 +30,14 @@ class Home(webbase.WebBase):
     def get(self):
         self.redirect('/admin/section/')
 
+class Credit(webbase.WebBase):
+    def get(self):
+        self.template( 'credits.html', {}, 'admin' );
+
 application = webapp.WSGIApplication(
     [
         ('/admin/', Home),
+        ('/admin/credits.html', Credit),
 
         # properties
         ('/admin/property/', property.List),
