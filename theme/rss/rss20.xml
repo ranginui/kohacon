@@ -15,7 +15,23 @@
             <title>{{ node.title|escape }}</title>
             <link>http://www.{{ "Naked Domain"|cfg }}{{ section.path|escape }}{{ node.name|escape }}.html</link>
             <description>
+  {% ifequal node.class_name 'Page' %}
                 {{ node.content_html|escape }}
+  {% endifequal %}
+  {% ifequal node.class_name 'Recipe' %}
+        {{ node.intro_html|escape }}
+
+        &lt;h2&gt;Ingredients&lt;/h2&gt;
+        {% if node.serves %}
+          &lt;p&gt;
+            Serves: {{ node.serves|escape }}
+          &lt;/p&gt;
+        {% endif %}
+        {{ node.ingredients_html|escape }}
+
+        &lt;h2&gt;Method&lt;/h2&gt;
+        {{ node.method_html|escape }}
+  {% endifequal %}
             </description>
             <guid isPermaLink="true">http://www.{{ "Naked Domain"|cfg }}{{ section.path|escape }}{{ node.name|escape }}.html</guid>
             <pubDate>{{ node.updated|date:"D, d M Y H:m:s" }} GMT</pubDate>

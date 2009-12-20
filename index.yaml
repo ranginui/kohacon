@@ -48,6 +48,12 @@ indexes:
 - kind: Node
   properties:
   - name: attribute
+  - name: inserted
+    direction: desc
+
+- kind: Node
+  properties:
+  - name: attribute
   - name: section
   - name: inserted
 

@@ -91,6 +91,16 @@ class LollySite(webbase.WebBase):
             self.response.headers['Content-Type'] = 'application/rss+xml'
             self.template( 'rss20.xml', vals, 'rss' );
 
+        elif this_page == 'sitefeed' and this_ext == 'xml' and section.has('sitefeed'):
+            # sitefeed.xml
+            nodes = Node.all().filter('attribute =', 'index-entry').order('-inserted').fetch(10)
+            vals = {
+                'section' : section,
+                'nodes'   : nodes,
+                }
+            self.response.headers['Content-Type'] = 'application/rss+xml'
+            self.template( 'rss20.xml', vals, 'rss' );
+
         elif this_page == 'sitemapindex' and this_ext == 'xml':
             # sitemapindex.xml
             vals = {
