@@ -103,7 +103,7 @@ class LollySite(webbase.WebBase):
             # urlset.xml
             vals = {
                 'section' : section,
-                'nodes'   : Node.all().filter('section =', section.key()).order('inserted')
+                'nodes'   : Node.all().filter('section =', section.key()).filter('attribute =', 'index-entry').order('inserted')
                 }
             self.response.headers['Content-Type'] = 'text/xml'
             self.template( 'urlset.xml', vals, 'sitemaps' );
