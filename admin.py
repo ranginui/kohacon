@@ -32,7 +32,7 @@ class Home(webbase.WebBase):
 
 class Credit(webbase.WebBase):
     def get(self):
-        self.template( 'credits.html', {}, 'admin' );
+        self.template( 'credits.html', { 'title': 'Credits' }, 'admin' );
 
 application = webapp.WSGIApplication(
     [
