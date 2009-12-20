@@ -50,6 +50,12 @@ indexes:
   - name: attribute
   - name: section
   - name: inserted
+
+- kind: Node
+  properties:
+  - name: attribute
+  - name: section
+  - name: inserted
     direction: desc
 
 - kind: Node
