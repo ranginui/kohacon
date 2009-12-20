@@ -2,8 +2,9 @@ Summary: Serve file uploads (or any node with data) from it's own section
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
 Inserted: 2009-12-12T09:26:40
-Updated: 2009-12-12T09:31:28
+Updated: 2009-12-20T03:43:56
 
 Currently all uploaded files are served from either:
 

@@ -1,9 +1,10 @@
 Summary: Make images (files, etc) assets rather than nodes
-Status: New
+Status: InProgress
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
 Inserted: 2009-12-15T08:15:58
-Updated: 2009-12-15T08:17:06
+Updated: 2009-12-20T03:43:57
 
 Images and files aren't really nodes, so make them assets. These should be able
 to be linked to any node or section and do the right thing. Usually the
