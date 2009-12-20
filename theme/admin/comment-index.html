@@ -3,8 +3,6 @@
 {% block content %}
   <h2>New Comments</h2>
 
-  <p><a href="../">&laquo;&laquo; Back to Admin List</a></p>
-
   {% if comments.count %}
 
   <p>There are {{ comments.count|escape }} comments awaiting moderation.</p>
@@ -41,7 +39,7 @@
           <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/s/i/exclamation.png" /></a>
         </td>
         <td class="c">
-          <a href="/admin/del.html?key={{ comment.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+          <a href="del.html?key={{ comment.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
         </td>
       </tr>
       {% endfor %}

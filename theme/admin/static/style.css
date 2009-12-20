@@ -96,6 +96,10 @@ textarea.large, textarea.content {
     color: red;
 }
 
+.monospace {
+	font-family: monospaced;
+}
+
 /*** specific ***/
 
 /* table.edit */

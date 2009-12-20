@@ -221,7 +221,7 @@ class LollySite(webbase.WebBase):
             admin_email = config.value('Admin Email')
             if mail.is_email_valid(admin_email):
                 url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
-                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/del.html?key='+ str(comment.key())
+                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
 
                 body = 'Comment from ' + name + '<' + email + '>\n'
                 body = body + website + '\n\n'

@@ -30,21 +30,6 @@ class Home(webbase.WebBase):
     def get(self):
         self.redirect('/admin/section/')
 
-class Delete(webbase.WebBase):
-    def get(self):
-        entity = db.get( self.request.get('key') )
-        action = self.request.get('_act')
-        if action == 'rem':
-            pass
-        elif action == 'del':
-            entity.delete()
-        else:
-            pass
-        vals = {
-            'entity' : entity
-            }
-        self.template( 'delete.html', vals, 'admin' )
-
 application = webapp.WSGIApplication(
     [
         ('/admin/', Home),
@@ -85,9 +70,7 @@ application = webapp.WSGIApplication(
 
         # comments
         ('/admin/comment/', comment.Index),
-
-        # delete any entity
-        ('/admin/del.html', Delete),
+        ('/admin/comment/del.html', comment.Del),
 
         # migrations
         ('/admin/migrate/', migrate.Migrate),
