@@ -1,12 +1,13 @@
 Summary: Add rst, Markdown and others if necessary
-Status: InProgress
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.03
+Comment: 85ca9ca2
 Comment: bcab23f8
 Comment: e094230f
 Inserted: 2009-12-17T02:49:20
-Updated: 2009-12-18T21:23:22
+Updated: 2009-12-20T03:02:33
 
 Add the following markup languages to lollysite:
 
