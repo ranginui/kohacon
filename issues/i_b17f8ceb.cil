@@ -1,0 +1,30 @@
+Summary: Add an import page so we can manually do old entries
+Status: InProgress
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Inserted: 2009-12-22T10:07:57
+Updated: 2009-12-22T10:13:51
+
+After playing with the remote_api and it being just terrible, and also looking
+at the bulk loader and it being overly complicated, I've decided to just have a
+form somewhere in the admin interface which takes some YAML of an entry (of
+type page, recipe, etc) and which section it should go in.
+
+e.g.
+
+ Section = /blog/
+ NodeType = page
+ YAML = title: Blog Post Title
+        content: This is the blog post.
+        inserted: 2008-12-01 12:56:21
+        updated: 2009-01-02 22:12:52
+        comments:
+        - name: A Person
+          email: name@example.com
+          inserted: 2008-12-02 09:14:53
+        - name: Another Person
+          email: someone@example.org
+          website: http://www.example.net/
+
+This doesn't show the real YAML but gives an indication about what it needs.
