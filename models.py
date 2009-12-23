@@ -21,6 +21,7 @@ import properties
 # * updated = db.DateTimeProperty( auto_now = True )
 
 type_choices = ["text", "code", "phliky", "textile", "html", "markdown"]
+node_choices = ['page', 'recipe']
 layout_choices = ['content', 'blog', 'faq']
 
 ## ----------------------------------------------------------------------------

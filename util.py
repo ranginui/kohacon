@@ -7,6 +7,8 @@ import logging
 import sys
 import cgi
 import re
+import datetime
+import re
 
 ## ----------------------------------------------------------------------------
 # local modules
@@ -76,5 +78,11 @@ def urlify(title):
     name = re.sub(r'-$', '', name )
 
     return name
+
+def str_to_datetime(str):
+    """ takes strings of the form yyyy-mm-dd hh:mm:ss and returns a datetime """
+    a = [ int(x) for x in re.split(r'[ \-:]', str) ]
+    dt = datetime.datetime(a[0], a[1], a[2], a[3], a[4], a[5])
+    return dt
 
 ## ----------------------------------------------------------------------------

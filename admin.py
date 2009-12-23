@@ -20,7 +20,9 @@ import image
 import comment
 
 sys.path.append('node')
+sys.path.append('admin')
 import recipe
+import load
 
 import migrate
 
@@ -76,6 +78,9 @@ application = webapp.WSGIApplication(
         # comments
         ('/admin/comment/', comment.Index),
         ('/admin/comment/del.html', comment.Del),
+
+        # load
+        ('/admin/load/', load.Import),
 
         # migrations
         ('/admin/migrate/', migrate.Migrate),

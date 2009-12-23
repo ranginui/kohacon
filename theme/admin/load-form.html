@@ -1,0 +1,58 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Import a Node (with Comments)</h2>
+
+<form method="post" action="">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>
+          <select id="id_section" name="section">
+            <option value="">Select...</option>
+  {% for section in sections %}
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+  {% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_node_type">Node Type:</label></th>
+        <td>
+          <select id="id_node_type" name="node_type">
+            <option value="">Select...</option>
+  {% for node_type in node_types %}
+            <option value="{{ node_type|escape }}">{{ node_type|escape }}</option>
+  {% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_data">Data:</label></th>
+        <td><textarea id="id_data" name="data_input" class="large"></textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_data_type">Data Type:</label></th>
+        <td>
+  {% for data_type in data_types %}
+          <input type="radio" id="id_data_type" name="data_type" value="{{ data_type.value|escape }}"{% if forloop.first %} checked="checked"{% endif %} /> {{ data_type.text|escape }}
+          {% if not forloop.last %}<br />{% endif %}
+  {% endfor %}
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <input type="submit"/>
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Node Imported</h2>
+
+<ul>
+{% for msg in msgs %}
+  <li>{{ msg|escape }}</li>
+{% endfor %}
+</ul>
+
+<p><a href=".">Import Another</a></p>
+
+{% endblock %}
