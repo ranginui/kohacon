@@ -1,0 +1,7 @@
+Issue: cf2c65d5
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-23T09:12:30
+Updated: 2009-12-23T09:13:11
+
+This never really worked. Found a few things locally (just now) and fixed them.
+Luckily, the task queues on the dev server seem to be working these days.

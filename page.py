@@ -96,7 +96,7 @@ class Edit(webbase.WebBase):
             # once saved, regenerate certain section properties
             section.regenerate()
             # also, check that this section doesn't have duplicate content
-            Task( params={ 'key': str(section.key()), 'name': item.name }, countdown=30, ).add( queue_name='section-check-duplicate-nodes' )
+            Task( params={ 'section_key': str(section.key()), 'name': item.name }, countdown=30, ).add( queue_name='section-check-duplicate-nodes' )
             self.redirect('.')
         except Exception, err:
             vals['item'] = self.request.POST

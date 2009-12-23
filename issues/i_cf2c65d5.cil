@@ -3,9 +3,10 @@ Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.03
+Comment: 6cfe38d5
 Comment: d604556a
 Inserted: 2009-11-22T04:51:45
-Updated: 2009-12-17T09:21:47
+Updated: 2009-12-23T09:13:11
 
 After a node has been inserted or updated, checks to make sure a duplicate node
 name hasn't been used. If a clash has been found, the author of the newer
