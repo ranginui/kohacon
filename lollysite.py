@@ -15,10 +15,7 @@ from google.appengine.api import mail
 
 # local modules
 import webbase
-from models import Section
-from models import Node
-from models import Comment
-from models import Message
+from models import Section, Node, Comment, Message
 import config
 import util
 
