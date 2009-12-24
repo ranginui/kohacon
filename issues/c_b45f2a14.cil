@@ -1,0 +1,9 @@
+Issue: 9fea4fc1
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-24T04:58:55
+Updated: 2009-12-24T04:59:34
+
+Slight cleanup of dispatching code.
+
+One problem remains, if you don't set the property, you'll still get the tag.
+Ah well, you can't have everything.

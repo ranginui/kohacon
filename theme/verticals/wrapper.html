@@ -10,6 +10,11 @@
     <title>{% block title %}{{ section.title|escape }}{% endblock %} - chilts.org</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
+{% ifequal section.path '/' %}
+  {% ifequal page 'index.html' %}
+    <meta name="google-site-verification" content="{{ "Google Webmaster Site Verification"|cfg|escape }}" />
+  {% endifequal %}
+{% endifequal %}
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
     <script type="text/javascript" src="/static/verticals/verticals.js"></script>
     <link href="/static/verticals/style.css" rel="stylesheet" type="text/css" />

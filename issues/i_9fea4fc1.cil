@@ -1,10 +1,11 @@
 Summary: Ability to do Google Webmaster site verification (for sitemaps, etc)
-Status: InProgress
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.04
+Comment: b45f2a14
 Inserted: 2009-12-24T04:40:14
-Updated: 2009-12-24T04:42:10
+Updated: 2009-12-24T04:59:34
 
 Add a property called 'Google Webmaster Verification' and show it _only_ on the
 front page (ie. section = '/' and page = 'index.html').

@@ -56,7 +56,6 @@ class LollySite(webbase.WebBase):
 
         section = Section.all().filter('path =', this_path).get()
         if section is None:
-            logging.info('404: This section not found')
             self.error(404)
             return
 
@@ -64,15 +63,16 @@ class LollySite(webbase.WebBase):
         if this_page == 'index' and this_ext == 'html':
             # index.html
             vals = {
+                'page'    : 'index.html',
                 'section' : section,
                 }
             self.template(  section.layout + '-index.html', vals, config.value('Theme') );
 
         elif this_page == 'contact' and this_ext == 'html' and section.has('contact-form'):
-            logging.info('right here')
             # contact.html
             node = Node.all().filter('section =', section.key()).filter('name =', 'contact').get()
             vals = {
+                'page'    : 'contact.html',
                 'section' : section,
                 'node'    : node,
                 }
@@ -82,6 +82,7 @@ class LollySite(webbase.WebBase):
             # rss20.xml
             nodes = self.latest_nodes(section, 'index-entry', 10)
             vals = {
+                'page'    : 'rss20.xml',
                 'section' : section,
                 'nodes'   : nodes,
                 }
@@ -92,6 +93,7 @@ class LollySite(webbase.WebBase):
             # sitefeed.xml
             nodes = Node.all().filter('attribute =', 'index-entry').order('-inserted').fetch(10)
             vals = {
+                'page'    : 'sitefeed.xml',
                 'section' : section,
                 'nodes'   : nodes,
                 }
@@ -101,6 +103,7 @@ class LollySite(webbase.WebBase):
         elif this_page == 'sitemapindex' and this_ext == 'xml':
             # sitemapindex.xml
             vals = {
+                'page'    : 'sitemapindex.xml',
                 'sections' : Section.all().filter('attribute =', 'sitemap-entry').order('inserted'),
                 }
             self.response.headers['Content-Type'] = 'text/xml'
@@ -109,6 +112,7 @@ class LollySite(webbase.WebBase):
         elif this_page == 'urlset' and this_ext == 'xml':
             # urlset.xml
             vals = {
+                'page'    : 'urlset.xml',
                 'section' : section,
                 'nodes'   : Node.all().filter('section =', section.key()).filter('attribute =', 'index-entry').order('inserted')
                 }
@@ -119,9 +123,8 @@ class LollySite(webbase.WebBase):
             # path =~ 'label:something.html'
             m = label_page.search(this_page)
             label = m.group(1)
-            logging.info('m=' + repr(m))
-            logging.info('Inside a label (%s) page' % label)
             vals = {
+                'page'    : 'label:' + label + '.html',
                 'section' : section,
                 'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label).order('-inserted'),
                 'label'   : label
@@ -132,8 +135,8 @@ class LollySite(webbase.WebBase):
             # path =~ 'archive:2009.html'
             m = archive_page.search(this_page)
             archive = m.group(1)
-            logging.info('archive=' + archive)
             vals = {
+                'page'    : 'archive:' + archive + '.html',
                 'section' : section,
                 'nodes'   : Node.all().filter('section =', section.key()).filter('archive =', archive).order('-inserted'),
                 'archive' : archive
@@ -153,22 +156,20 @@ class LollySite(webbase.WebBase):
                 return
 
             vals = {
+                'page'    : 'comment.html',
                 'section' : section,
                 'node'    : comment.node,
                 'comment' : comment,
                 }
             self.template( 'comment.html', vals, config.value('Theme') );
 
-        else:
+        elif this_ext == 'html':
             # get the node itself
             node_query = Node.all().filter('section =', section.key()).filter('name =', this_page)
             if node_query.count() == 0:
-                logging.info('404: no nodes in this section (%s) of that name (%s.%s)' % (section.path, this_page, this_ext))
                 self.error(404)
                 return
             node = node_query.fetch(1)[0]
-            logging.info('node.name=' + node.name)
-            logging.info('node.title=' + node.title)
 
             # get the approved comments (but only if we know some are there, save a trip to the datastore)
             comments = None
@@ -176,11 +177,16 @@ class LollySite(webbase.WebBase):
                 comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved').order('inserted')
 
             vals = {
+                'page'     : this_page + '.html',
                 'section'  : section,
                 'node'     : node,
                 'comments' : comments,
                 }
             self.template( 'node.html', vals, config.value('Theme') );
+        else:
+            # 404
+            self.error(404)
+            return
 
     def post(self):
         path = urllib.unquote(self.request.path)
@@ -285,7 +291,6 @@ class LollySite(webbase.WebBase):
             return
 
     def latest_nodes(self, section, attribute, limit):
-        logging.info('Getting latest nodes (with attribute ' +  attribute + ' for ' + section.path)
         nodes = Node.all().filter('section =', section.key()).filter('attribute =', attribute).order('-inserted').fetch(limit)
         return nodes
 
