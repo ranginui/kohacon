@@ -49,15 +49,12 @@ class Import(webbase.WebBase):
         data_type = self.request.get('data_type')
         data = None
         if data_type == 'json':
-            logging.info(data_input)
             data = simplejson.loads( data_input )
         elif data_type == 'yaml':
             data = yaml.load( data_input )
         else:
             # someone is messing with the input params
             self.redirect('.')
-
-        logging.info(data)
 
         # figure out what this node_type is
         item = None
@@ -73,7 +70,6 @@ class Import(webbase.WebBase):
                 inserted = util.str_to_datetime( data['inserted'] ),
                 updated = util.str_to_datetime( data['updated'] ),
                 )
-            logging.info('here1')
 
         elif node_type == 'recipe':
             item = Recipe(
@@ -90,7 +86,6 @@ class Import(webbase.WebBase):
                 inserted = util.str_to_datetime( data['inserted'] ),
                 updated = util.str_to_datetime( data['updated'] ),
                 )
-            logging.info('here2')
 
         else:
             # again, someone is messing with the input params

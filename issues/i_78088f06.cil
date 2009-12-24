@@ -1,0 +1,17 @@
+Summary: The Date in sitemaps and urlsets need to be fixed
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-24T05:40:56
+Updated: 2009-12-24T05:42:30
+
+Currently, the datetimes look like:
+
+    2009-12-23 09:34:59.108551
+
+They need to look like:
+
+    2005-02-21T18:00:15+00:00
+
+See http://www.google.com/support/webmasters/bin/answer.py?hl=en&answer=35738
+
