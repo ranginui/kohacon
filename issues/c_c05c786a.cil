@@ -1,0 +1,7 @@
+Issue: b17f8ceb
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-24T10:39:43
+Updated: 2009-12-24T10:40:12
+
+Changed it to a file upload, rather than a text area. Way easier to control
+newlines and other such stuff.

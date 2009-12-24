@@ -45,8 +45,9 @@ class Import(webbase.WebBase):
             self.redirect('.')
 
         node_type = self.request.get('node_type')
-        data_input = self.request.get('data_input')
+        data_input = self.request.POST.get('data_input').file.read()
         data_type = self.request.get('data_type')
+
         data = None
         if data_type == 'json':
             data = simplejson.loads( data_input )
@@ -108,6 +109,7 @@ class Import(webbase.WebBase):
                     website = comment['website'],
                     comment = comment['comment'],
                     comment_html = util.render(comment['comment'], 'text'),
+                    status = comment['status'],
                     inserted = util.str_to_datetime( comment['inserted'] ),
                     updated = util.str_to_datetime( comment['updated'] ),
                 )

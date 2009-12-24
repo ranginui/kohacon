@@ -4,8 +4,9 @@ CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.04
 Comment: 6cb461af
+Comment: c05c786a
 Inserted: 2009-12-22T10:07:57
-Updated: 2009-12-23T08:43:11
+Updated: 2009-12-24T10:40:12
 
 After playing with the remote_api and it being just terrible, and also looking
 at the bulk loader and it being overly complicated, I've decided to just have a
