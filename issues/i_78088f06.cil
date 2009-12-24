@@ -1,9 +1,10 @@
 Summary: The Date in sitemaps and urlsets need to be fixed
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Comment: 2134dd7f
 Inserted: 2009-12-24T05:40:56
-Updated: 2009-12-24T05:42:30
+Updated: 2009-12-24T08:19:23
 
 Currently, the datetimes look like:
 
