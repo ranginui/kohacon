@@ -1,0 +1,6 @@
+Issue: b17f8ceb
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-29T10:34:24
+Updated: 2009-12-29T10:34:45
+
+Made it so that it remembers the state of some of the options if you so choose.

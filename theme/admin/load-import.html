@@ -10,6 +10,9 @@
 {% endfor %}
 </ul>
 
-<p><a href=".">Import Another</a></p>
+<ul>
+  <li><a href=".">Import Another</a></li>
+  <li><a href="?data_type={{ data_type|urlencode }};node_type={{ node_type|urlencode }};section_key={{ section_key|urlencode }}">Import Another with Same Input Settings</a></li>
+</ul>
 
 {% endblock %}

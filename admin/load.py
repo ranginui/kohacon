@@ -10,7 +10,7 @@ import datetime
 from google.appengine.ext import db
 from google.appengine.api.labs.taskqueue import Task
 from google.appengine.api.datastore_errors import BadKeyError
-from django.utils import simplejson
+from django.utils import simplejson as json
 
 # local modules
 sys.path.append("..")
@@ -32,6 +32,9 @@ class Import(webbase.WebBase):
                 { 'value' : 'json', 'text' : 'JSON' },
                 { 'value' : 'yaml', 'text' : 'YAML' },
                 ],
+            'node_type'   : self.request.get('node_type'),
+            'section_key' : self.request.get('section_key'),
+            'data_type'   : self.request.get('data_type'),
             }
         self.template( 'load-form.html', vals, 'admin' );
 
@@ -39,7 +42,7 @@ class Import(webbase.WebBase):
         msgs = []
         section = None
         try:
-            section = Section.get( self.request.get('section') )
+            section = Section.get( self.request.get('section_key') )
         except BadKeyError:
             # invalid key, try again
             self.redirect('.')
@@ -50,18 +53,20 @@ class Import(webbase.WebBase):
 
         data = None
         if data_type == 'json':
-            data = simplejson.loads( data_input )
+            data = json.loads( data_input )
         elif data_type == 'yaml':
             data = yaml.load( data_input )
         else:
             # someone is messing with the input params
             self.redirect('.')
 
+        # logging.info( 'data=' + json.dumps( data ) )
+
         # figure out what this node_type is
         item = None
         if node_type == 'page':
             item = Page(
-                section = Section.get( self.request.get('section') ),
+                section = section,
                 name = data['name'],
                 title = data['title'],
                 content = data['content'],
@@ -74,7 +79,7 @@ class Import(webbase.WebBase):
 
         elif node_type == 'recipe':
             item = Recipe(
-                section = Section.get( self.request.get('section') ),
+                section = section,
                 name = data['name'],
                 title = data['title'],
                 intro = data['intro'],
@@ -97,6 +102,7 @@ class Import(webbase.WebBase):
         item.put()
         item.section.regenerate()
 
+        # output messages
         msgs.append( 'Added node [%s, %s]' % (item.name, item.title) )
 
         if 'comments' in data:
@@ -116,9 +122,18 @@ class Import(webbase.WebBase):
                 comment.put()
                 msgs.append( 'Added comment [%s, %s]' % (comment.name, comment.email) )
 
-        # now that we've added some comments, make the node regenerate
+        # now that we've added a node, regenerate it
         item.regenerate()
 
-        self.template( 'load-import.html', { 'msgs' : msgs }, 'admin' );
+        # also, check that this section doesn't have duplicate content
+        Task( params={ 'section_key': str(section.key()), 'name': item.name }, countdown=30, ).add( queue_name='section-check-duplicate-nodes' )
+
+        vals = {
+            'msgs'        : msgs,
+            'node_type'   : node_type,
+            'section_key' : section.key(),
+            'data_type'   : data_type,
+            }
+        self.template( 'load-import.html', vals, 'admin' );
 
 ## ----------------------------------------------------------------------------
