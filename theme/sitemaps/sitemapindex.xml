@@ -3,7 +3,7 @@
 {% for section in sections %}
    <sitemap>
       <loc>http://www.{{ "Naked Domain"|cfg|escape }}{{ section.path|escape }}urlset.xml</loc>
-      <lastmod>{{ section.updated|date:"Y-m-d\TH:i:s"|escape }}</lastmod>
+      <lastmod>{{ section.updated|date:"Y-m-d\TH:i:s\Z"|escape }}</lastmod>
    </sitemap>
 {% endfor %}
 </sitemapindex>

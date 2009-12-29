@@ -2,14 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
    <url>
       <loc>http://www.{{ "Naked Domain"|cfg|escape }}{{ section.path|escape }}</loc>
-      <lastmod>{{ section.updated|date:"Y-m-d\TH:i:s"|escape }}</lastmod>
+      <lastmod>{{ section.updated|date:"Y-m-d\TH:i:s\Z"|escape }}</lastmod>
       <changefreq>daily</changefreq>
       <priority>0.8</priority>
    </url>
 {% for node in nodes %}
    <url>
       <loc>http://www.{{ "Naked Domain"|cfg|escape }}{{ section.path|escape }}{{ node.name|escape }}.html</loc>
-      <lastmod>{{ node.updated|date:"Y-m-d\TH:i:s"|escape }}</lastmod>
+      <lastmod>{{ node.updated|date:"Y-m-d\TH:i:s\Z"|escape }}</lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.8</priority>
    </url>
