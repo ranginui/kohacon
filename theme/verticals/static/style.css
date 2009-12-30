@@ -82,6 +82,7 @@ h3, h4 {
 }
 
 p, blockquote, ul, ol, pre {
+	margin-bottom: 1.4em;
 	line-height: 1.4em;
 }
 
@@ -95,7 +96,7 @@ blockquote {
 	margin: 0 1.2em;
 	padding: 1em;
 	background: #EEEEEE;
-	border-left: 1px dotted #CCCCCC;
+	border: 1px dotted #CCCCCC;
 }
 
 ul {
