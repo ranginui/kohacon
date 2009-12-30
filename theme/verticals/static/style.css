@@ -344,10 +344,12 @@ dl dd {
 
 /* Footer > Legal */
 
-#legal {
+#icons {
+    float: right;
 }
 
-/* Footer > Links */
+#legal {
+}
 
 #links {
 }
