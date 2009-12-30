@@ -1,0 +1,29 @@
+Summary: Add a SPAM question thing so we don't get all the spam
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-30T20:27:50
+Updated: 2009-12-30T20:53:36
+
+Some simple questions should do the trick. Hmm, maybe I should integrate that
+capture stuff, dunno, maybe check it out.
+
+What is 1 plus 3? 4
+What is in the center of the following list: red, blue and green? Blue
+What comes after Thursday in the week? Friday
+Which is bigger, an elephant or a mouse? Elephant
+Is Elvis alive? No
+What comes after April?
+What is 4 - 1? 3
+
+
+Make it case insensitive and trim their result too.
+
+You might have to go and check the contact page now so that it fails gracefully
+(with a form with their values in it) instead of just sending it like we do
+now.
+
+See:
+
+http://stackoverflow.com/questions/1577918/blocking-comment-spam-without-using-captcha
+http://nedbatchelder.com/text/stopbots.html
