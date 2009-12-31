@@ -1,0 +1,13 @@
+Summary: Allow Section Properties
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-31T23:33:10
+Updated: 2009-12-31T23:35:12
+
+Currently, sections don't have their own properties. I think they are needed.
+
+For example, on /retire-at-40/, I want people to subscribe to the RetireAt40
+RSS Feed rather than the default rss20.xml one. If there was a section
+property, "RSS Feed URL", that could be used in wrapper.html instead of the
+normal one.
