@@ -13,8 +13,8 @@
 <table class="list striped">
   <thead>
     <tr>
+      <th class="thin">Edit</th>
       <th>Section</th>
-      <th>Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -22,8 +22,8 @@
   <tbody>
     {% for recipe in recipes %}
     <tr>
-      <td>
-        {{ recipe.section.path|escape }}
+      <td class="c">
+        <a href="edit.html?key={{ recipe.key|urlencode }}"><img title="Edit Recipe" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
         {{ recipe.name|escape }}
@@ -32,7 +32,7 @@
         <a href="edit.html?key={{ recipe.key|urlencode }}">{{ recipe.title|escape }}</a>
       </td>
       <td class="c">
-        <a href="/admin/recipe/del.html?key={{ recipe.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+        <a href="/admin/recipe/del.html?key={{ recipe.key|urlencode }}"><img title="Delete Recipe" src="/s/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}

@@ -12,10 +12,10 @@
   <thead>
     <tr>
       <th class="thin">Actions</th>
+      <th class="thin">Edit</th>
       <th>Path</th>
       <th>Title</th>
       <th>Layout</th>
-      <th class="thin">Edit</th>
       <th class="thin">Delete</th>
     </tr>
   </thead>
@@ -24,16 +24,15 @@
     <tr>
       <td class="c">
         <a href="/admin/page/new.html?section={{ section.key|urlencode }}"><img title="New Post" src="/s/i/add.png" /></a>
-        <a href="/admin/image/new.html?section={{ section.key|urlencode }}"><img title="New Image" src="/s/i/image_add.png" /></a>
+      </td>
+      <td class="c">
+        <a href="edit.html?key={{ section.key|urlencode }}"><img title="Edit Section" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>{{ section.path|escape }}</td>
       <td><a href="edit.html?key={{ section.key|urlencode }}">{{ section.title|escape }}</a></td>
       <td>{{ section.layout|escape }}</td>
       <td class="c">
-        <a href="edit.html?key={{ section.key|urlencode }}"><img src="/s/i/layout_edit.png" /></a>
-      </td>
-      <td class="c">
-        <a href="/admin/section/del.html?key={{ section.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+        <a href="/admin/section/del.html?key={{ section.key|urlencode }}"><img title="Delete Section" src="/s/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}

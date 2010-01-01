@@ -11,7 +11,7 @@
     <thead>
       <tr>
         <th>Info</th>
-        <th>Comment</th>
+        <th>Page / Comment</th>
         <th class="thin">Approve</th>
         <th class="thin">Reject</th>
         <th class="thin">Delete</th>
@@ -28,18 +28,18 @@
           {{ comment.inserted|escape }}
         </td>
         <td>
-          Comment on <a href="{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html">{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html</a>
+          <a href="{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html">{{ comment.node.section.path|escape }}{{ comment.node.name|escape }}.html</a>
           <br />
           {{ comment.comment_html }}
         </td>
         <td class="c">
-          <a href="?status=approve;key={{ comment.key|urlencode }}"><img src="/s/i/accept.png" /></a>
+          <a href="?status=approve;key={{ comment.key|urlencode }}"><img title="Accept Comment" src="/s/i/accept.png" /></a>
         </td>
         <td class="c">
-          <a href="?status=reject;key={{ comment.key|urlencode }}"><img src="/s/i/exclamation.png" /></a>
+          <a href="?status=reject;key={{ comment.key|urlencode }}"><img title="Reject Comment" src="/s/i/exclamation.png" /></a>
         </td>
         <td class="c">
-          <a href="del.html?key={{ comment.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+          <a href="del.html?key={{ comment.key|urlencode }}"><img title="Delete Comment" src="/s/i/cancel.png" /></a>
         </td>
       </tr>
       {% endfor %}
