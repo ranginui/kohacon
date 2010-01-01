@@ -1,0 +1,13 @@
+Issue: a4c0e80f
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-01T12:08:05
+Updated: 2010-01-01T12:09:05
+
+Once cil-dfb824e5 is done, then this issue will need some revising to figure
+out the best way to do it.
+
+I suspect we can have a 'Create Image from Flickr' option, which gets and
+parses the things it needs.
+
+Caveat: the image might not have a license attribute against it, so this needs
+to be sorted out.
