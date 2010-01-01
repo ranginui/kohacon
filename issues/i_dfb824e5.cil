@@ -3,8 +3,10 @@ Status: InProgress
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.04
+Comment: 37d3f590
+Comment: 5876ac2f
 Inserted: 2009-12-15T08:15:58
-Updated: 2009-12-20T03:43:57
+Updated: 2010-01-01T11:52:21
 
 Images and files aren't really nodes, so make them assets. These should be able
 to be linked to any node or section and do the right thing. Usually the

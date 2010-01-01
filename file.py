@@ -10,7 +10,7 @@ from google.appengine.ext.webapp import blobstore_handlers
 from google.appengine.ext.blobstore import blobstore
 
 # local modules
-from models import Image
+from models import File
 import webbase
 import formbase
 import util
@@ -20,25 +20,25 @@ import util
 # List
 class List(webbase.WebBase):
     def get(self):
-        images = Image.all().order('-inserted')
+        files = File.all().order('-inserted')
         vals = {
-            'images' : images
+            'files' : files
         }
-        self.template( 'image-list.html', vals, 'admin' );
+        self.template( 'file-list.html', vals, 'admin' );
 
 # Edit
 class Edit(webbase.WebBaseBlobstoreUploadHandler):
     def get(self):
         item = None
         if self.request.get('key'):
-            item = Image.get( self.request.get('key') )
+            item = File.get( self.request.get('key') )
 
         vals = {
             'item'       : item,
             # this is either new.html or edit.html
             'upload_url' : blobstore.create_upload_url( str(urllib.unquote(self.request.path)) ),
             }
-        self.template( 'image-form.html', vals, 'admin' );
+        self.template( 'file-form.html', vals, 'admin' );
 
     def post(self):
         item = None
@@ -47,30 +47,21 @@ class Edit(webbase.WebBaseBlobstoreUploadHandler):
         # get all the incoming values
         title = self.request.get('title').strip()
         blob_key = None
-        caption = self.request.get('caption').strip()
-        credit_who = self.request.get('credit_who').strip()
-        credit_link = self.request.get('credit_link').strip() if self.request.get('credit_link') else None
         label_raw = self.request.get('label_raw').strip()
 
         # get the file information
-        uploaded_files = self.get_uploads('image')
+        uploaded_files = self.get_uploads('file')
         if len(uploaded_files) == 1:
             blob_info = uploaded_files[0]
             blob_key = blob_info.key()
 
         if self.request.get('key'):
-            item = Page.get( self.request.get('key') )
+            item = File.get( self.request.get('key') )
             item.title       = title
-            item.caption     = caption
-            item.credit_who  = credit_who
-            item.credit_link = credit_link
             item.label_raw   = label_raw
         else:
-            item = Image(
+            item = File(
                 title       = title,
-                caption     = caption,
-                credit_who  = credit_who,
-                credit_link = credit_link,
                 label_raw   = label_raw,
                 )
 
@@ -87,7 +78,7 @@ class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
         key = str( urllib.unquote(key) )
         blob_info = blobstore.BlobInfo.get(key)
         if blob_info:
-            self.send_blob(blob_info)
+            self.send_blob(blob_info, save_as=True)
         else:
             self.error(404)
 

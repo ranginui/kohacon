@@ -17,6 +17,7 @@ import property
 import section
 import page
 import image
+import file
 import comment
 
 sys.path.append('node')
@@ -68,12 +69,13 @@ application = webapp.WSGIApplication(
 
         # images
         ('/admin/image/', image.List),
-        ('/admin/image/new.html', image.FormHandler),
-        ('/admin/image/edit.html', image.FormHandler),
+        ('/admin/image/new.html', image.Edit),
+        ('/admin/image/edit.html', image.Edit),
 
         # files
-        #('file/', file.FileList),
-        #('file/edit.html', file.FileEdit),
+        ('/admin/file/', file.List),
+        ('/admin/file/new.html', file.Edit),
+        ('/admin/file/edit.html', file.Edit),
 
         # comments
         ('/admin/comment/', comment.Index),

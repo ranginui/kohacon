@@ -7,6 +7,7 @@ import logging
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 from google.appengine.api.labs.taskqueue import Task
+from google.appengine.ext.blobstore import blobstore
 
 # local stuff
 import util
@@ -145,26 +146,36 @@ class Recipe(Node):
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 
-# Image
-class ImageData(db.Model):
-    data = db.BlobProperty( required=True )
+## ----------------------------------------------------------------------------
+# assets (BlobStore files)
 
-class Image(Node):
+class Asset(polymodel.PolyModel):
+    # common properties for _every_ datastore object
+    owner = db.UserProperty( auto_current_user_add=True )
+    editor = db.UserProperty( auto_current_user=True )
+    inserted = db.DateTimeProperty( auto_now_add=True )
+    updated = db.DateTimeProperty( auto_now=True )
+
+    # common properties for every Asset
+    title = db.StringProperty( required=True, multiline=False )
+    blob = blobstore.BlobReferenceProperty()
+    label_raw = db.StringProperty( multiline=False )
+
+    # Derivative Properties
+    label = db.StringListProperty()
+    def set_derivatives(self):
+        # set the lists from their raw values
+        self.label = self.label_raw.split()
+
+# Image
+class Image(Asset):
     caption = db.TextProperty()
-    credit = db.TextProperty()
+    credit_who = db.TextProperty()
     credit_link = db.LinkProperty()
-    imagedata = db.ReferenceProperty( ImageData, required=True, collection_name='image' )
-    filename = db.StringProperty( required=True )
-    mimetype = db.StringProperty( required=True )
 
 # File
-class FileData(db.Model):
-    data = db.BlobProperty( required=True )
-
-class File(Node):
-    filedata = db.ReferenceProperty( FileData, required=True, collection_name='file' )
-    filename = db.StringProperty( required=True )
-    mimetype = db.StringProperty( required=True )
+class File(Asset):
+    pass
 
 ## ----------------------------------------------------------------------------
 # comments

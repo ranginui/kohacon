@@ -11,23 +11,29 @@
 <table class="list striped">
   <thead>
     <tr>
-      <th>Section</th>
-      <th>Name</th>
+      <th class="thin">Edit</th>
       <th>Title</th>
+      <th>Filename</th>
+      <th>Blob Info</th>
       <th class="thin">Delete</th>
     </tr>
   </thead>
   <tbody>
     {% for image in images %}
     <tr>
-      <td>
-        {{ image.section.path|escape }}
-      </td>
-      <td>
-        {{ image.name|escape }}
+      <td class="c">
+        <a href="edit.html?key={{ image.key|urlencode }}"><img src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
         <a href="edit.html?key={{ image.key|urlencode }}">{{ image.title|escape }}</a>
+      </td>
+      <td>
+        {{ image.blob.filename|escape }}
+        (<a target="_new" href="/asset/image/{{ image.blob.key|escape }}">View Image</a>)
+      </td>
+      <td>
+        {{ image.blob.content_type|escape }},
+        {{ image.blob.size|escape }} bytes
       </td>
       <td class="c">
         <a href="del.html?key={{ image.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
