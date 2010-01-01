@@ -1,0 +1,30 @@
+Summary: Using |cfg is bad, it's not a filter anymore, needs changing
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-01T22:10:08
+Updated: 2010-01-01T22:14:25
+
+When doing something like this in the templates:
+
+   "Naked Domain"|cfg|escape
+
+... it's bad. This isn't a filter, it's actually getting something from the
+dataastore.
+
+I know this is wrong, since trying to use it in IF statements to see if it is
+defined, fails.
+
+e.g. {% if "Naked Domain"|cfg %} ... it never gets resolved since the 'if'
+doesn't do the filter call.
+
+Instead, we should have an app.config['dictionary'] which can be used in
+templates as follows:
+
+     {% if app.config.NakedDomain %}
+         {{ app.config.NakedDomain|escape }}
+     {% endif %}
+
+That should solve some problems as well as speed up access. That dictionary
+should also be stored in memcached and regenerated when a config option is
+saved. Also needs to be regenerated if it wasn't in memcached.
