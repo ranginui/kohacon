@@ -27,7 +27,15 @@
     {% ifequal section.path "/blog/" %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-Blog" />
     {% else %}
+      {% ifequal section.path "/on-cycling/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-OnCycling" />
+      {% else %}
+        {% ifequal section.path "/being-green/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-BeingGreen" />
+        {% else %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.{{ "Naked Domain"|cfg|escape }}{{ section.path|escape }}rss20.xml" />
+        {% endifequal %}
+      {% endifequal %}
     {% endifequal %}
   {% endifequal %}
 {% endifequal %}
@@ -57,6 +65,8 @@
             <li><a href="/blog/">Blog</a></li>
             <li><a href="/retire-at-40/">Retire at 40</a></li>
             <li><a href="/simplicity/">Simplicity</a></li>
+            <li><a href="/on-cycling/">On Cycling</a></li>
+            <li><a href="/being-green/">Being Green</a></li>
             <li><a href="/photo/">Photos</a></li>
             <li><a href="/recipe/">Recipes</a></li>
             <li><a href="/wiki/">Wiki</a></li>
@@ -79,6 +89,8 @@
 			  <li><a href="/blog/">Blog</a></li>
 			  <li><a href="/retire-at-40/">Retire at 40</a></li>
 			  <li><a href="/simplicity/">Simplicity</a></li>
+			  <li><a href="/on-cycling/">On Cycling</a></li>
+			  <li><a href="/being-green/">Being Green</a></li>
 			  <li><a href="/photo/">Photos</a></li>
 			  <li><a href="/recipe/">Recipes</a></li>
 			  <li><a href="/wiki/">Wiki</a></li>
