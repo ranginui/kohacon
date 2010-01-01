@@ -157,7 +157,7 @@ class Asset(polymodel.PolyModel):
     updated = db.DateTimeProperty( auto_now=True )
 
     # common properties for every Asset
-    title = db.StringProperty( required=True, multiline=False )
+    title = db.StringProperty( multiline=False )
     blob = blobstore.BlobReferenceProperty()
     label_raw = db.StringProperty( multiline=False )
 

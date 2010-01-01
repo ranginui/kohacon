@@ -71,11 +71,13 @@ application = webapp.WSGIApplication(
         ('/admin/image/', image.List),
         ('/admin/image/new.html', image.Edit),
         ('/admin/image/edit.html', image.Edit),
+        ('/admin/image/del.html', image.Del),
 
         # files
         ('/admin/file/', file.List),
         ('/admin/file/new.html', file.Edit),
         ('/admin/file/edit.html', file.Edit),
+        ('/admin/file/del.html', file.Del),
 
         # comments
         ('/admin/comment/', comment.Index),

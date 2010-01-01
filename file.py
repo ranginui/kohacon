@@ -73,6 +73,41 @@ class Edit(webbase.WebBaseBlobstoreUploadHandler):
         item.put()
         self.redirect('.')
 
+# Delete
+class Del(webbase.WebBase):
+    def get(self):
+        try:
+            if self.request.get('key'):
+                item = File.get( self.request.get('key') )
+
+                vals = {
+                    'item' : item,
+                    }
+                self.template( 'file-del.html', vals, 'admin' );
+            else:
+                self.redirect('.')
+        except:
+            self.redirect('.')
+
+    def post(self):
+        try:
+            item = File.get( self.request.get('key') ) if self.request.get('key') else None
+            if item is not None:
+                try:
+                    if item.blob:
+                        item.blob.delete()
+                    item.delete()
+                    self.redirect('.')
+                except:
+                    vals = {
+                        'item' : item,
+                        'err' : 'There was an error when deleting this file, please try again'
+                        }
+                    self.template( 'file-del.html', vals, 'admin' );
+        except:
+            self.redirect('.')
+
+# ServeHandler
 class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
     def get(self, key):
         key = str( urllib.unquote(key) )

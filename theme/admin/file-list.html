@@ -28,12 +28,19 @@
         <a href="edit.html?key={{ file.key|urlencode }}">{{ file.title|escape }}</a>
       </td>
       <td>
+  {% if file.blob %}
         {{ file.blob.filename|escape }}
         (<a target="_new" href="/asset/file/{{ file.blob.key|escape }}">Download File</a>)
+  {% else %}
+        no file attached
+  {% endif %}
       </td>
       <td>
-        {{ file.blob.content_type|escape }},
-        {{ file.blob.size|escape }} bytes
+  {% if file.blob %}
+        {{ file.blob.content_type|escape }}, {{ file.blob.size|escape }} bytes
+  {% else %}
+        -
+  {% endif %}
       </td>
       <td class="c">
         <a href="del.html?key={{ file.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
