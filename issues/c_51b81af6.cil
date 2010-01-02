@@ -1,0 +1,6 @@
+Issue: cdc986bc
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T05:16:08
+Updated: 2010-01-02T05:16:25
+
+Also, remove the formbase.py stuff, I don't think it's used anymore.
