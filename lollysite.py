@@ -268,6 +268,7 @@ class LollySite(webbase.WebBase):
                 subject = subject,
                 message = message,
                 )
+            msg.set_derivatives()
             msg.put()
 
             # send a mail to the admin

@@ -200,10 +200,15 @@ class Comment(BaseModel):
 # messages
 
 class Message(BaseModel):
-    name = db.StringProperty(multiline=False)
-    email = db.StringProperty(multiline=False)
-    website = db.StringProperty(multiline=False)
-    subject = db.StringProperty(multiline=False)
+    name = db.StringProperty( multiline=False )
+    email = db.StringProperty( multiline=False )
+    website = db.StringProperty( multiline=False )
+    subject = db.StringProperty( multiline=False )
     message = db.TextProperty()
+
+    # Derivative Properties
+    message_html = db.TextProperty()
+    def set_derivatives(self):
+        self.message_html = util.render(self.message, 'text')
 
 ## ----------------------------------------------------------------------------

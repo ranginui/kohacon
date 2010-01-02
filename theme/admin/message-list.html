@@ -1,0 +1,40 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Message List</h2>
+
+{% include 'section-filter.fhtml' %}
+
+<p>There {{ messages.count|pluralize:"is,are"}} {{ messages.count|escape }} message{{ messages.count|pluralize }}.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th>Info</th>
+      <th>Message</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for message in messages %}
+    <tr>
+      <td>
+        <strong>{{ message.name|escape }} &lt;{{ message.email|escape }}&gt;</strong>
+        <br />
+        {{ message.website|escape }}
+        <br />
+        {{ message.inserted|escape }}
+      </td>
+      <td>
+        {{ message.message_html }}
+      </td>
+      <td class="c">
+        <a href="/admin/message/del.html?key={{ message.key|urlencode }}"><img title="Delete Message" src="/s/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Remove Message?</h2>
+
+<p><a href=".">&laquo;&laquo; Back to Message List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th>Name:</th>
+        <td>{{ item.name|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Email:</th>
+        <td>{{ item.email|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Website:</th>
+        <td>{{ item.website|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Subject:</th>
+        <td>{{ item.subject|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Message:</th>
+        <td>{{ item.message_html }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Delete Message" />
+</form>
+
+{% endblock %}

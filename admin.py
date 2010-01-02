@@ -19,6 +19,7 @@ import page
 import image
 import file
 import comment
+import message
 
 sys.path.append('node')
 sys.path.append('admin')
@@ -82,6 +83,10 @@ application = webapp.WSGIApplication(
         # comments
         ('/admin/comment/', comment.Index),
         ('/admin/comment/del.html', comment.Del),
+
+        # messages
+        ('/admin/message/', message.List),
+        ('/admin/message/del.html', message.Del),
 
         # load
         ('/admin/load/', load.Import),
