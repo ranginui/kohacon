@@ -64,7 +64,13 @@ class Edit(webbase.WebBase):
             content = self.request.get('content')
             type = self.request.get('type')
             label_raw = self.request.get('label_raw').strip()
-            attribute_raw = self.request.get('attribute_raw').strip()
+            attribute_raw = util.make_attr_raw_string(
+                {
+                    'index-entry'   : self.request.get('index_entry'),
+                    'has-comments'  : self.request.get('has_comments'),
+                    'comments-open' : self.request.get('comments_open'),
+                    }
+                ).strip()
 
             # some pre-processing of the input params
             if name == '':

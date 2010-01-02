@@ -85,4 +85,13 @@ def str_to_datetime(str):
     dt = datetime.datetime(a[0], a[1], a[2], a[3], a[4], a[5])
     return dt
 
+def make_attr_raw_string(d):
+    """ takes a dict and makes a string dependent on whether they are true """
+    attr_raw = ''
+    for attr in d.keys():
+        if d[attr]:
+            attr_raw = attr_raw + ' ' + attr
+    attr_raw.strip()
+    return attr_raw
+
 ## ----------------------------------------------------------------------------
