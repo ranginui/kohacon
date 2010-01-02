@@ -1,0 +1,10 @@
+Summary: Make the Comment model do it's comment_html in set_derivatives()
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Inserted: 2010-01-02T10:17:29
+Updated: 2010-01-02T10:19:53
+
+The other models have moved on and comment has been left standing. Update it so
+it looks and feels like the other models.
