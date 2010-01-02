@@ -10,7 +10,6 @@ from google.appengine.api.labs.taskqueue import Task
 import models
 from models import Section
 import webbase
-import formbase
 import util
 
 ## ----------------------------------------------------------------------------

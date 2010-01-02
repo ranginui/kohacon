@@ -12,7 +12,6 @@ from google.appengine.api.datastore_errors import BadKeyError
 from models import Section, Page
 import models
 import webbase
-import formbase
 import util
 
 ## ----------------------------------------------------------------------------

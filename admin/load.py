@@ -17,7 +17,6 @@ sys.path.append("..")
 from models import Section, Page, Recipe, Comment
 import models
 import webbase
-import formbase
 import util
 
 ## ----------------------------------------------------------------------------

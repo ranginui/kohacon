@@ -12,7 +12,6 @@ from google.appengine.ext.blobstore import blobstore
 # local modules
 from models import File
 import webbase
-import formbase
 import util
 
 ## ----------------------------------------------------------------------------

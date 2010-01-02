@@ -9,7 +9,6 @@ from google.appengine.api import memcache
 # local modules
 from models import Property
 import webbase
-import formbase
 import config
 
 ## ----------------------------------------------------------------------------
