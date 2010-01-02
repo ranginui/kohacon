@@ -59,7 +59,7 @@ class Edit(webbase.WebBaseBlobstoreUploadHandler):
             blob_key = blob_info.key()
 
         if self.request.get('key'):
-            item = Page.get( self.request.get('key') )
+            item = Image.get( self.request.get('key') )
             item.title       = title
             item.caption     = caption
             item.credit_who  = credit_who
@@ -77,7 +77,7 @@ class Edit(webbase.WebBaseBlobstoreUploadHandler):
         if blob_key:
             item.blob = blob_key
 
-        # update and save this page
+        # update and save this image
         item.set_derivatives()
         item.put()
         self.redirect('.')

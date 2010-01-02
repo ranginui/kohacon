@@ -68,7 +68,7 @@ class Edit(webbase.WebBaseBlobstoreUploadHandler):
         if blob_key:
             item.blob = blob_key
 
-        # update and save this page
+        # update and save this file
         item.set_derivatives()
         item.put()
         self.redirect('.')
