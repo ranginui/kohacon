@@ -189,12 +189,17 @@ class Comment(BaseModel):
     email = db.StringProperty(multiline=False)
     website = db.StringProperty(multiline=False)
     comment = db.TextProperty()
-    comment_html = db.TextProperty()
     status = db.StringProperty(
         required=True,
         default='new',
         choices=['new', 'approved', 'rejected']
         )
+
+    # Derivative Properties
+    comment_html = db.TextProperty()
+    def set_derivatives(self):
+        self.comment_html = util.render(self.comment, 'text')
+
 
 ## ----------------------------------------------------------------------------
 # messages

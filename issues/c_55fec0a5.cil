@@ -1,0 +1,6 @@
+Issue: e942894a
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T12:49:05
+Updated: 2010-01-02T12:49:26
+
+Made the comment utilise the set_derivatives() methodology.

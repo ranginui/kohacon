@@ -226,8 +226,8 @@ class LollySite(webbase.WebBase):
                 email = email,
                 website = website,
                 comment = comment_text,
-                comment_html = util.render(comment_text, 'text'),
                 )
+            comment.set_derivatives()
             comment.put()
 
             # send a mail to the admin
