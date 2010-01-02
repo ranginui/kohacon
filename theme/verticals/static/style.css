@@ -93,10 +93,14 @@ pre {
 }
 
 blockquote {
-	margin: 0 1.2em;
+	margin: 1.4em 1.2em;
 	padding: 1em;
 	background: #EEEEEE;
 	border: 1px dotted #CCCCCC;
+}
+
+blockquote p {
+    margin-bottom: 0;
 }
 
 ul {
