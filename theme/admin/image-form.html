@@ -3,37 +3,20 @@
 {% block content %}
 
 {% if item %}
-<h2>Edit {{type}}</h2>
+<h2>Edit Image</h2>
 {% else %}
-<h2>New {{type}}</h2>
+<h2>New Image</h2>
 {% endif %}
 
 <p><a href=".">&laquo;&laquo; Back to Image List</a></p>
 
-<form method="post" action="" enctype="multipart/form-data">
+<form method="post" action="{{ upload_url|escape }}" enctype="multipart/form-data">
 {% if item %}
   <input type="hidden" name="key" value="{{ item.key|urlencode }}">
 {% endif %}
 
   <table class="edit">
     <tbody>
-
-      <tr>
-        <th><label for="id_section">Section:</label></th>
-        <td>
-          <select name="section" id="id_section">
-            <option value="" selected="selected">---------</option>
-{% for section in sections %}
-            <option value="{{ section.key|urlencode }}">{{ section.path|escape }}</option>
-{% endfor %}
-          </select>
-        </td>
-      </tr>
-
-      <tr>
-        <th><label for="id_name">Name:</label></th>
-        <td><input type="text" name="name" id="id_name" value="{{ item.name|escape }}" /></td>
-      </tr>
 
       <tr>
         <th><label for="id_title">Title:</label></th>
@@ -51,8 +34,8 @@
       </tr>
 
       <tr>
-        <th><label for="id_credit">Credit:</label></th>
-        <td><textarea name="credit" id="id_credit">{{ item.credit|escape }}</textarea></td>
+        <th><label for="id_credit_who">CreditWho:</label></th>
+        <td><textarea name="credit_who" id="id_credit_who">{{ item.credit_who|escape }}</textarea></td>
       </tr>
 
       <tr>
@@ -63,11 +46,6 @@
       <tr>
         <th><label for="id_label_raw">Label:</label></th>
         <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
-      </tr>
-
-      <tr>
-        <th><label for="id_attribute_raw">Attribute:</label></th>
-        <td><input type="text" id="id_attribute_raw" name="attribute_raw" value="{{ item.attribute_raw|escape }}" /></td>
       </tr>
 
     </tbody>

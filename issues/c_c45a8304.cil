@@ -1,0 +1,6 @@
+Issue: dfb824e5
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-01T22:43:25
+Updated: 2010-01-01T22:43:46
+
+Now added ability to delete file and image assets (and their blobs).
