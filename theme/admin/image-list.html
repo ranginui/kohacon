@@ -30,7 +30,7 @@
       <td>
   {% if image.blob %}
         {{ image.blob.filename|escape }}
-        (<a target="_new" href="/asset/image/{{ image.blob.key|escape }}">View Image</a>)
+        (<a target="_new" href="/asset/image/{{ image.filename|escape }}">View Image</a>)
   {% else %}
         no image attached
   {% endif %}

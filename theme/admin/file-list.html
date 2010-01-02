@@ -29,8 +29,8 @@
       </td>
       <td>
   {% if file.blob %}
-        {{ file.blob.filename|escape }}
-        (<a target="_new" href="/asset/file/{{ file.blob.key|escape }}">Download File</a>)
+        {{ file.filename|escape }}
+        (<a href="/asset/{{ file.blob.key|escape }}">Download File</a>)
   {% else %}
         no file attached
   {% endif %}

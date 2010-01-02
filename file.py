@@ -109,11 +109,10 @@ class Del(webbase.WebBase):
 
 # ServeHandler
 class ServeHandler(blobstore_handlers.BlobstoreDownloadHandler):
-    def get(self, key):
-        key = str( urllib.unquote(key) )
-        blob_info = blobstore.BlobInfo.get(key)
-        if blob_info:
-            self.send_blob(blob_info, save_as=True)
+    def get(self, filename):
+        file = File.all().filter('filename =', filename).get()
+        if file:
+            self.send_blob(file.blob, save_as=True)
         else:
             self.error(404)
 

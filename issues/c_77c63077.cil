@@ -1,0 +1,17 @@
+Issue: dfb824e5
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T04:25:31
+Updated: 2010-01-02T04:27:44
+
+When serving from a BlobInfo.key(), it's far too long. Instead, we should be
+able to serve by using the filename that was uploaded.
+
+So /asset/image/red-rocket.jpg serves the image.
+and /asset/file/lollysite-v0.01.tar.gz serves the tarball.
+
+But also:
+
+* /asset/abc...blah...abc
+* /asset/xyz...blah...xyz
+
+... both serve the blob as a download too.

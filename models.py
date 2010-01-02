@@ -163,9 +163,12 @@ class Asset(polymodel.PolyModel):
 
     # Derivative Properties
     label = db.StringListProperty()
+    filename = db.StringProperty( multiline=False )
     def set_derivatives(self):
         # set the lists from their raw values
         self.label = self.label_raw.split()
+        if self.blob:
+            self.filename = self.blob.filename
 
 # Image
 class Image(Asset):
