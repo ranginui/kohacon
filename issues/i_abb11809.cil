@@ -1,0 +1,13 @@
+Summary: When deleting a comment that's already deleted, it should say not found
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-03T11:10:22
+Updated: 2010-01-03T11:12:17
+
+If I get two emails, click the first and then click the delete link and then
+click delete on the 2nd comment, if I then click the delete link on the 2nd
+email it comes up a delete page with blank fields.
+
+Instead it should say, "no comment found" and redirect you to the comment page
+again.
