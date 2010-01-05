@@ -366,3 +366,7 @@ td {
 .c {
     text-align: center;
 }
+
+.faux, .form label.faux {
+    display: none;
+}

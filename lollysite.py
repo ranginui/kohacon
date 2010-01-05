@@ -212,6 +212,14 @@ class LollySite(webbase.WebBase):
 
         # remove the horribleness from comment
         if this_page == 'comment' and this_ext == 'html':
+            # firstly, check the 'faux' field and if something is in there, redirect
+            faux = self.request.POST['faux']
+            logging.info('faux = ' + faux)
+            if len(faux) > 0:
+                logging.info('COMMENT: Spam detected, not saving')
+                self.redirect('/')
+                return
+
             # comment submission for each section
             node = Node.get( self.request.POST['node'] )
             name = self.request.POST['name']
@@ -253,7 +261,15 @@ class LollySite(webbase.WebBase):
             return
 
         elif this_page == 'contact' and this_ext == 'html':
-            # comment submission for each section
+            # firstly, check the 'faux' field and if something is in there, redirect
+            faux = self.request.POST['faux']
+            logging.info('faux = ' + faux)
+            if len(faux) > 0:
+                logging.info('CONTACT: Spam detected, not saving')
+                self.redirect('/')
+                return
+
+            # contact submission for each section
             name = self.request.POST['name']
             email = self.request.POST['email']
             website = self.request.POST['website']

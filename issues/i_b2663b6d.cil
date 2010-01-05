@@ -1,0 +1,18 @@
+Summary: Implement a blank field for spam stopping
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Inserted: 2010-01-05T09:09:43
+Updated: 2010-01-05T09:33:28
+
+From: http://nedbatchelder.com/text/stopbots.html
+
+Out of the 'Playback Bots', 'Form-filling bots' and 'Humans' I think the site
+is being hit by the form-filling bots.
+
+So the plan is, implement the Honeypot fields so that the bots will fill them in
+and we can chuck the comment away.
+
+Hopefully this will stop the immediate spam and give me time to do the other
+bits and pieces (if necessary).
