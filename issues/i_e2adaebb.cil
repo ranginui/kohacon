@@ -1,10 +1,11 @@
 Summary: Add a new help section (/admin/help/)
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.04
+Comment: 9ddaae44
 Inserted: 2010-01-02T01:36:18
-Updated: 2010-01-02T02:27:39
+Updated: 2010-01-05T09:07:33
 
 Am just adding the Attributes to each node and realised that having a '?' icon
 at the end of each one which links through to the help would be quite nice.

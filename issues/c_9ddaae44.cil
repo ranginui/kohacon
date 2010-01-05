@@ -1,0 +1,9 @@
+Issue: e2adaebb
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-05T09:06:13
+Updated: 2010-01-05T09:07:17
+
+Due to Python and Django being just plain weird, I've had to put all the help
+files in the dame directory under help-*.html rather than having a hierarchy.
+After not getting to bed until 1am and then thinking about it some more, I'd
+rather it just worked than have to try and do all that rubbish again.

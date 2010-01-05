@@ -38,6 +38,10 @@ class Credit(webbase.WebBase):
     def get(self):
         self.template( 'credits.html', { 'title': 'Credits' }, 'admin' );
 
+class Help(webbase.WebBase):
+    def get(self, page):
+        self.template( page, { 'title': 'Help' }, 'admin' );
+
 application = webapp.WSGIApplication(
     [
         ('/admin/', Home),
@@ -93,6 +97,9 @@ application = webapp.WSGIApplication(
 
         # migrations
         ('/admin/migrate/', migrate.Migrate),
+
+        # help
+        ('/admin/(help-.*)', Help),
     ],
     debug = True
 )
