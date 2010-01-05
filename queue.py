@@ -27,7 +27,6 @@ class SectionRegenerate(webbase.WebBase):
 
         key = self.request.get('key')
         self.write('- key = ' + key)
-        logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
         section = Section.get( self.request.get('key') )
@@ -98,13 +97,10 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
             logging.warn( 'No section found for key: ' +  section_key )
             return
 
-        logging.info( 'Checking for duplicate nodes named [%s] in section [%s]: ' %  (name, section.path) )
-
         nodes = Node.all().filter('section =', section).filter('name =', name)
         if nodes.count() <= 1:
             msg = 'Only [%d] nodes of this name in this section' % nodes.count()
             self.write(msg)
-            logging.info(msg)
             return
 
         msg = 'More than one node named [%s] in section [%s]' % (name, section.path)
@@ -127,7 +123,6 @@ class NodeRegenerate(webbase.WebBase):
 
         key = self.request.get('key')
         self.write('- key = ' + key)
-        logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
         node = db.Model.get( self.request.get('key') )

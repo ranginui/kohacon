@@ -48,7 +48,6 @@ class Edit(webbase.WebBase):
             description = self.request.get('description')
             type = self.request.get('type')
             layout = self.request.get('layout')
-            logging.info('layout=' + layout)
             attribute_raw = util.make_attr_raw_string(
                 {
                     'sitemap-entry' : self.request.get('sitemap_entry'),

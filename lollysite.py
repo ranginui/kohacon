@@ -214,7 +214,6 @@ class LollySite(webbase.WebBase):
         if this_page == 'comment' and this_ext == 'html':
             # firstly, check the 'faux' field and if something is in there, redirect
             faux = self.request.POST['faux']
-            logging.info('faux = ' + faux)
             if len(faux) > 0:
                 logging.info('COMMENT: Spam detected, not saving')
                 self.redirect('/')
@@ -263,7 +262,6 @@ class LollySite(webbase.WebBase):
         elif this_page == 'contact' and this_ext == 'html':
             # firstly, check the 'faux' field and if something is in there, redirect
             faux = self.request.POST['faux']
-            logging.info('faux = ' + faux)
             if len(faux) > 0:
                 logging.info('CONTACT: Spam detected, not saving')
                 self.redirect('/')

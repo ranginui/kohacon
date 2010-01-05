@@ -35,7 +35,6 @@ def render(text, type):
         return ''
 
     text = re.sub('\r', '', text);
-    logging.info('Doing ' + type);
     if type == 'html':
         return text
 
