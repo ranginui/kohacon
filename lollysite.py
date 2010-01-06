@@ -213,18 +213,18 @@ class LollySite(webbase.WebBase):
         # remove the horribleness from comment
         if this_page == 'comment' and this_ext == 'html':
             # firstly, check the 'faux' field and if something is in there, redirect
-            faux = self.request.POST['faux']
+            faux = self.request.get('faux')
             if len(faux) > 0:
                 logging.info('COMMENT: Spam detected, not saving')
                 self.redirect('/')
                 return
 
             # comment submission for each section
-            node = Node.get( self.request.POST['node'] )
-            name = self.request.POST['name']
-            email = self.request.POST['email']
-            website = self.request.POST['website']
-            comment_text = re.sub('\r', '', self.request.POST['comment']);
+            node = Node.get( self.request.get('node') )
+            name = self.request.get('name')
+            email = self.request.get('email')
+            website = self.request.get('website')
+            comment_text = re.sub('\r', '', self.request.get('comment'));
 
             # now create the comment
             comment = Comment(
@@ -261,18 +261,18 @@ class LollySite(webbase.WebBase):
 
         elif this_page == 'contact' and this_ext == 'html':
             # firstly, check the 'faux' field and if something is in there, redirect
-            faux = self.request.POST['faux']
+            faux = self.request.get('faux')
             if len(faux) > 0:
                 logging.info('CONTACT: Spam detected, not saving')
                 self.redirect('/')
                 return
 
             # contact submission for each section
-            name = self.request.POST['name']
-            email = self.request.POST['email']
-            website = self.request.POST['website']
-            subject = self.request.POST['subject']
-            message = re.sub('\r', '', self.request.POST['message']);
+            name = self.request.get('name')
+            email = self.request.get('email')
+            website = self.request.get('website')
+            subject = self.request.get('subject')
+            message = re.sub('\r', '', self.request.get('message'));
 
             # now create the message
             msg = Message(
