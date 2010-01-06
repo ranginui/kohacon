@@ -10,7 +10,7 @@
     {% if comments.count %}
     <h2>{{ comments.count }} Comment{{ comments.count|pluralize }}</h2>
         {% for comment in comments %}
-          <h4>{{ forloop.counter|escape }}. <a href="{{ comment.website|escape }}">{{ comment.name|escape }}</a></h4>
+          <h4>{{ forloop.counter|escape }}. <a rel="nofollow" href="{{ comment.website|escape }}">{{ comment.name|escape }}</a></h4>
           {{ comment.comment_html }}
           <p class="date">Inserted: {{ comment.inserted|date:"Y-m-d H:i" }} ({{ comment.inserted|timesince }} ago)</p>
         {% endfor %}
@@ -28,6 +28,8 @@
           <input type="text" name="email" value="" /><br />
           <label>Website:</label>
           <input type="text" name="website" value="http://" /><br />
+          <label class="faux">Nothing:</label>
+          <input class="faux" type="text" name="faux" value="" /><br class="faux" />
           <label>Comment:</label>
           <textarea name="comment"></textarea><br />
           <label>&nbsp;</label>

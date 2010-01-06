@@ -17,10 +17,14 @@ import property
 import section
 import page
 import image
+import file
 import comment
+import message
 
 sys.path.append('node')
+sys.path.append('admin')
 import recipe
+import load
 
 import migrate
 
@@ -30,9 +34,18 @@ class Home(webbase.WebBase):
     def get(self):
         self.redirect('/admin/section/')
 
+class Credit(webbase.WebBase):
+    def get(self):
+        self.template( 'credits.html', { 'title': 'Credits' }, 'admin' );
+
+class Help(webbase.WebBase):
+    def get(self, page):
+        self.template( page, { 'title': 'Help' }, 'admin' );
+
 application = webapp.WSGIApplication(
     [
         ('/admin/', Home),
+        ('/admin/credits.html', Credit),
 
         # properties
         ('/admin/property/', property.List),
@@ -61,19 +74,32 @@ application = webapp.WSGIApplication(
 
         # images
         ('/admin/image/', image.List),
-        ('/admin/image/new.html', image.FormHandler),
-        ('/admin/image/edit.html', image.FormHandler),
+        ('/admin/image/new.html', image.Edit),
+        ('/admin/image/edit.html', image.Edit),
+        ('/admin/image/del.html', image.Del),
 
         # files
-        #('file/', file.FileList),
-        #('file/edit.html', file.FileEdit),
+        ('/admin/file/', file.List),
+        ('/admin/file/new.html', file.Edit),
+        ('/admin/file/edit.html', file.Edit),
+        ('/admin/file/del.html', file.Del),
 
         # comments
         ('/admin/comment/', comment.Index),
         ('/admin/comment/del.html', comment.Del),
 
+        # messages
+        ('/admin/message/', message.List),
+        ('/admin/message/del.html', message.Del),
+
+        # load
+        ('/admin/load/', load.Import),
+
         # migrations
         ('/admin/migrate/', migrate.Migrate),
+
+        # help
+        ('/admin/(help-.*)', Help),
     ],
     debug = True
 )

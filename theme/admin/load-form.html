@@ -1,0 +1,58 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Import a Node (with Comments)</h2>
+
+<form method="post" action="." enctype="multipart/form-data">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_section_key">Section:</label></th>
+        <td>
+          <select id="id_section_key" name="section_key">
+            <option value="">Select...</option>
+  {% for section in sections %}
+            <option value="{{ section.key|urlencode }}"{% ifequal section.key section_key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+  {% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_node_type">Node Type:</label></th>
+        <td>
+          <select id="id_node_type" name="node_type">
+            <option value="">Select...</option>
+  {% for nt in node_types %}
+            <option value="{{ nt|escape }}"{% ifequal nt node_type %} selected="selected"{% endifequal %}>{{ nt|escape }}</option>
+  {% endfor %}
+          </select>
+        </td>
+      </tr>
+
+      <tr>
+        <th><label for="id_data_input">Data:</label></th>
+        <td><input type="file" name="data_input" id="id_image" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_data_type">Data Type:</label></th>
+        <td>
+  {% for dt in data_types %}
+          <input type="radio" id="id_data_type" name="data_type" value="{{ dt.value|escape }}"{% ifequal dt.value data_type %} checked="checked"{% endifequal %} /> {{ dt.text|escape }}
+          {% if not forloop.last %}<br />{% endif %}
+  {% endfor %}
+        </td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <input type="submit" value="Import Node" />
+
+</form>
+
+{% endblock %}

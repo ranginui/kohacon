@@ -7,6 +7,8 @@ import logging
 import sys
 import cgi
 import re
+import datetime
+import re
 
 ## ----------------------------------------------------------------------------
 # local modules
@@ -33,7 +35,6 @@ def render(text, type):
         return ''
 
     text = re.sub('\r', '', text);
-    logging.info('Doing ' + type);
     if type == 'html':
         return text
 
@@ -76,5 +77,20 @@ def urlify(title):
     name = re.sub(r'-$', '', name )
 
     return name
+
+def str_to_datetime(str):
+    """ takes strings of the form yyyy-mm-dd hh:mm:ss and returns a datetime """
+    a = [ int(x) for x in re.split(r'[ \-:]', str) ]
+    dt = datetime.datetime(a[0], a[1], a[2], a[3], a[4], a[5])
+    return dt
+
+def make_attr_raw_string(d):
+    """ takes a dict and makes a string dependent on whether they are true """
+    attr_raw = ''
+    for attr in d.keys():
+        if d[attr]:
+            attr_raw = attr_raw + ' ' + attr
+    attr_raw.strip()
+    return attr_raw
 
 ## ----------------------------------------------------------------------------

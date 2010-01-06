@@ -10,11 +10,47 @@
     <title>{% block title %}{{ section.title|escape }}{% endblock %} - chilts.org</title>
     <meta name="keywords" content="" />
     <meta name="description" content="" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+{% ifequal section.path '/' %}
+  {% ifequal page 'index.html' %}
+    <meta name="google-site-verification" content="{{ "Google Webmaster Site Verification"|cfg|escape }}" />
+  {% endifequal %}
+{% endifequal %}
+    <script type="text/javascript" src="/s/js/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="/static/verticals/verticals.js"></script>
     <link href="/static/verticals/style.css" rel="stylesheet" type="text/css" />
+{% ifequal section.path "/retire-at-40/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/RetireAt40" />
+{% else %}
+  {% ifequal section.path "/simplicity/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-Simplicity" />
+  {% else %}
+    {% ifequal section.path "/blog/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-Blog" />
+    {% else %}
+      {% ifequal section.path "/on-cycling/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-OnCycling" />
+      {% else %}
+        {% ifequal section.path "/being-green/" %}
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://feeds.feedburner.com/ChiltsOrg-BeingGreen" />
+        {% else %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="http://www.{{ "Naked Domain"|cfg|escape }}{{ section.path|escape }}rss20.xml" />
+        {% endifequal %}
+      {% endifequal %}
+    {% endifequal %}
+  {% endifequal %}
+{% endifequal %}
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', '{{ "Google Analytics Tracking Code"|cfg|escape }}']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+      })();
+    </script>
   </head>
+
   <body>
     <div id="wrapper">
 	  <div id="logo">
@@ -27,12 +63,14 @@
 		  <ul>
             {% ifequal section.path '/' %}
             <li><a href="/blog/">Blog</a></li>
+            <li><a href="/retire-at-40/">Retire at 40</a></li>
+            <li><a href="/simplicity/">Simplicity</a></li>
+            <li><a href="/on-cycling/">On Cycling</a></li>
+            <li><a href="/being-green/">Being Green</a></li>
             <li><a href="/photo/">Photos</a></li>
             <li><a href="/recipe/">Recipes</a></li>
             <li><a href="/wiki/">Wiki</a></li>
 <!--
-            <li><a href="/retire-at-40/">Retire at 40</a></li>
-            <li><a href="/simplicity/">Simplicity</a></li>
             <li><a href="/simple-starters/">Simple Starters</a></li>
 -->
             <li><a href="/about.html">About</a></li>
@@ -49,6 +87,10 @@
 		  <div class="content">
 			<ul>
 			  <li><a href="/blog/">Blog</a></li>
+			  <li><a href="/retire-at-40/">Retire at 40</a></li>
+			  <li><a href="/simplicity/">Simplicity</a></li>
+			  <li><a href="/on-cycling/">On Cycling</a></li>
+			  <li><a href="/being-green/">Being Green</a></li>
 			  <li><a href="/photo/">Photos</a></li>
 			  <li><a href="/recipe/">Recipes</a></li>
 			  <li><a href="/wiki/">Wiki</a></li>
@@ -70,7 +112,6 @@
 		  </div>
 		</div>
         <!-- -#sites- -->
-
 		<div class="extra">&nbsp;</div>
 	  </div>
       <!-- -#sidebar- -->
@@ -87,6 +128,14 @@
     <!-- -#wrapper- -->
 
     <div id="footer">
+      <p id="icons">
+        <script type="text/javascript" src="http://s32.sitemeter.com/js/counter.js?site={{ "Sitemeter Account"|cfg|urlencode }}"> </script>
+        <noscript>
+          <a href="http://s32.sitemeter.com/stats.asp?site={{ "Sitemeter Account"|cfg|escape }}" target="_top" style="border: none;">
+            <img src="http://s32.sitemeter.com/meter.asp?site={{ "Sitemeter Account"|cfg|urlencode }}" alt="Site Meter" border="0" style="border: none;"/>
+          </a>
+        </noscript>
+      </p>
 	  <p id="legal">
         &copy; 2009 chilts.org
         |

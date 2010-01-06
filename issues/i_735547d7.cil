@@ -1,0 +1,11 @@
+Summary: Make the admin screens limit their numbers and paginate properly
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T02:29:09
+Updated: 2010-01-02T02:30:34
+
+Now that the website has had lots of nodes migrated to it (from kapiti.geek.nz
+and www.retire-at-40.com) it's pretty slow and sometimes times out. The admin
+screens should all paginate properly and limit the number of nodes
+(sections/comments/etc) that they show.

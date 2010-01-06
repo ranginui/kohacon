@@ -93,11 +93,14 @@ pre {
 }
 
 blockquote {
-	margin-left: 1.2em;
-	margin-right: 1.2em;
+	margin: 1.4em 1.2em;
 	padding: 1em;
 	background: #EEEEEE;
-	border-left: 1px dotted #CCCCCC;
+	border: 1px dotted #CCCCCC;
+}
+
+blockquote p {
+    margin-bottom: 0;
 }
 
 ul {
@@ -344,10 +347,12 @@ dl dd {
 
 /* Footer > Legal */
 
-#legal {
+#icons {
+    float: right;
 }
 
-/* Footer > Links */
+#legal {
+}
 
 #links {
 }
@@ -360,4 +365,8 @@ td {
 
 .c {
     text-align: center;
+}
+
+.faux, .form label.faux {
+    display: none;
 }

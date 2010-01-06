@@ -1,0 +1,10 @@
+Issue: cf3a93db
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T02:20:32
+Updated: 2010-01-02T02:21:29
+
+Done. Now presents all options to the user.
+
+By the way, instead of saving the newly created list as just 'attribute' I kept
+it as 'attribute_raw' and the 'attribute' variable is created from it. Not sure
+why, but I may take this stuff out later on.

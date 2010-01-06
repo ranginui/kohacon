@@ -10,7 +10,6 @@ from google.appengine.api.labs.taskqueue import Task
 import models
 from models import Section
 import webbase
-import formbase
 import util
 
 ## ----------------------------------------------------------------------------
@@ -49,8 +48,13 @@ class Edit(webbase.WebBase):
             description = self.request.get('description')
             type = self.request.get('type')
             layout = self.request.get('layout')
-            logging.info('layout=' + layout)
-            attribute_raw = self.request.get('attribute_raw').strip()
+            attribute_raw = util.make_attr_raw_string(
+                {
+                    'sitemap-entry' : self.request.get('sitemap_entry'),
+                    'contact-form'  : self.request.get('contact_form'),
+                    'sitefeed'      : self.request.get('sitefeed'),
+                    }
+                ).strip()
 
             # some pre-processing of the input params
             description_html = util.render(description, type)

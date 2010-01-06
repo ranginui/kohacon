@@ -4,6 +4,7 @@ StatusAllowedList: New
 StatusAllowedList: Reviewed
 StatusAllowedList: Assigned
 StatusAllowedList: InProgress
+StatusAllowedList: ReOpened
 StatusAllowedList: Finished
 StatusAllowedList: WontFix
 StatusAllowedList: Cancelled
@@ -11,6 +12,7 @@ StatusOpenList: New
 StatusOpenList: Reviewed
 StatusOpenList: Assigned
 StatusOpenList: InProgress
+StatusOpenList: ReOpened
 StatusClosedList: Finished
 StatusClosedList: WontFix
 StatusClosedList: Cancelled
@@ -28,4 +30,5 @@ LabelAllowedList: Release-v0.04
 LabelAllowedList: Milestone-v0.01
 LabelAllowedList: Milestone-v0.02
 LabelAllowedList: Milestone-v0.03
+LabelAllowedList: Milestone-v0.04
 LabelAllowedList: Milestone-Future

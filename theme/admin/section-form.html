@@ -60,13 +60,22 @@
       </tr>
 
       <tr>
-        <th><label for="id_attribute_raw">Attribute:</label></th>
-        <td><input type="text" id="id_attribute_raw" name="attribute_raw" value="{{ item.attribute_raw|escape }}" /></td>
+        <th><label>Attributes:</label></th>
+        <td>
+          <input type="checkbox" id="id_index_entry" name="sitemap_entry" value="on"{% if item %}{% if item|has:"sitemap-entry" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_sitemap_entry">Is in Sitemap?</label>
+          <br />
+          <input type="checkbox" id="id_contact_form" name="contact_form" value="on"{% if item %}{% if item|has:"contact-form" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_contact_form">Has a Contact Form?</label>
+          <br />
+          <input type="checkbox" id="id_sitefeed" name="sitefeed" value="on"{% if item %}{% if item|has:"sitefeed" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_sitefeed">Has a Sitefeed?</label>
+        </td>
       </tr>
 
     </tbody>
   </table>
-  <input type="submit"/>
+  <input type="submit" value="Save Section" />
 </form>
 
 {% endblock %}

@@ -1,0 +1,47 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Remove File?</h2>
+
+<p><a href=".">&laquo;&laquo; Back to File List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th>Title:</th>
+        <td>{{ item.title|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Filename:</th>
+        <td>{{ item.blob.filename|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Size:</th>
+        <td>{{ item.blob.size|escape }} byte{{ item.blob.size|pluralize }}</td>
+      </tr>
+
+      <tr>
+        <th>Content Type:</th>
+        <td>{{ item.blob.content_type|escape }}</td>
+      </tr>
+
+      <tr>
+        <th>Label:</th>
+        <td>{{ item.label_raw|escape }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Delete File" />
+</form>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+Summary: Make the section and node edit screens present all the attributes to the user
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Comment: a5fdca8e
+Inserted: 2009-12-20T07:45:11
+Updated: 2010-01-02T02:21:43
+
+Having to remember 'has-comments', 'index-entry' and the like is painful. These
+should all be presented as checkboxes to the user.

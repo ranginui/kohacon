@@ -1,0 +1,41 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit File</h2>
+{% else %}
+<h2>New File</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to File List</a></p>
+
+<form method="post" action="{{ upload_url|escape }}" enctype="multipart/form-data">
+{% if item %}
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+{% endif %}
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_title">Title:</label></th>
+        <td><input type="text" name="title" id="id_title" value="{{ item.title|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_mimetype">File:</label></th>
+        <td><input type="file" name="file" id="id_file" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_label_raw">Label:</label></th>
+        <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Save File" />
+</form>
+
+{% endblock %}

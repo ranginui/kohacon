@@ -10,10 +10,12 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp.util import run_wsgi_app
 from google.appengine.ext.db import GqlQuery
+from google.appengine.api import mail
 
 # local modules
 import webbase
 from models import Section, Node, Comment
+import config
 
 ## ----------------------------------------------------------------------------
 
@@ -25,7 +27,6 @@ class SectionRegenerate(webbase.WebBase):
 
         key = self.request.get('key')
         self.write('- key = ' + key)
-        logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
         section = Section.get( self.request.get('key') )
@@ -84,35 +85,34 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         self.response.headers['Content-Type'] = 'text/plain'
         self.write('Started section duplicate node check:')
 
-        key = self.request.get('key')
+        section_key = self.request.get('section_key')
         name = self.request.get('name')
-        self.write('- key  = ' + key)
+        self.write('- key  = ' + section_key)
         self.write('- name = ' + name)
-        logging.info( 'Checking for duplicate nodes named [%s] in section [%s]: ' %  name, section.path )
 
         # ok, so get the section first
-        section = Section.get( self.request.get('key') )
+        section = Section.get( self.request.get('section_key') )
         if section is None:
             self.write('No section found')
-            logging.warn( 'No section found for key: ' +  key )
+            logging.warn( 'No section found for key: ' +  section_key )
             return
 
-        nodes = Node.all().filter('section =', key).filter('name =', name).fetch()
+        nodes = Node.all().filter('section =', section).filter('name =', name)
         if nodes.count() <= 1:
             msg = 'Only [%d] nodes of this name in this section' % nodes.count()
             self.write(msg)
-            logging.info(msg)
             return
 
-        msg = 'More than one node named [%s] in section [%s]' % name, section.path
+        msg = 'More than one node named [%s] in section [%s]' % (name, section.path)
         self.write(msg)
         logging.warn(msg)
+        admin_email = config.value('Admin Email')
         if not mail.is_email_valid(admin_email):
             return
 
         # url_edit = 'http://www.' + config.value('Naked Domain') + '/admin/node/'
         url_edit = 'http://www.%s/admin/node/' % config.value('Naked Domain')
-        body = 'Section %s has two nodes named %s ' % section.path, name
+        body = 'Section %s has two nodes named %s ' % (section.path, name)
         mail.send_mail(admin_email, admin_email, 'Duplicate node name in section ' + section.path, body)
 
 # try http://localhost:8080/_ah/queue/node-regenerate?key=?
@@ -123,10 +123,9 @@ class NodeRegenerate(webbase.WebBase):
 
         key = self.request.get('key')
         self.write('- key = ' + key)
-        logging.info( 'Regenerating ' +  key )
 
         # ok, so get the section first
-        node = Section.get( self.request.get('key') )
+        node = db.Model.get( self.request.get('key') )
         if node is None:
             self.write('No node found')
             return
@@ -135,7 +134,6 @@ class NodeRegenerate(webbase.WebBase):
         self.write('Node = ' + node.name)
 
         # get the approved comments and update the node itself
-        # comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved').order('inserted')
         comments = Comment.all().filter('node =', node.key()).filter('status =', 'approved')
         node.comment_count = comments.count()
         self.write('- count=' + str(node.comment_count))
@@ -148,6 +146,7 @@ application = webapp.WSGIApplication(
         # See: http://code.google.com/appengine/docs/python/taskqueue/overview.html#Queue_Default_URLs
         ('/_ah/queue/section-regenerate', SectionRegenerate),
         ('/_ah/queue/node-regenerate', NodeRegenerate),
+        ('/_ah/queue/section-check-duplicate-nodes', SectionCheckDuplicateNodes),
     ],
     debug = True
 )

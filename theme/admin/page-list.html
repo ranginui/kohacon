@@ -13,8 +13,8 @@
 <table class="list striped">
   <thead>
     <tr>
+      <th class="thin">Edit</th>
       <th>Section</th>
-      <th>Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -22,17 +22,17 @@
   <tbody>
     {% for page in pages %}
     <tr>
-      <td>
-        {{ page.section.path|escape }}
+      <td class="c">
+        <a href="edit.html?key={{ page.key|urlencode }}"><img title="Edit Page" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
-        {{ page.name|escape }}
+        {{ page.section.path|escape }}
       </td>
       <td>
         <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>
       </td>
       <td class="c">
-        <a href="/admin/page/del.html?key={{ page.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+        <a href="/admin/page/del.html?key={{ page.key|urlencode }}"><img title="Delete Page" src="/s/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}

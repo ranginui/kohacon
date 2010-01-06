@@ -26,7 +26,7 @@
           <select id="id_section" name="section">
             <option value="">Select...</option>
 {% for section in sections %}
-            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+            <option value="{{ section.key|escape }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
 {% endfor %}
           </select>
         </td>
@@ -44,7 +44,7 @@
 
       <tr>
         <th><label for="id_content">Content:</label></th>
-        <td><textarea id="id_content" name="content" class="content">{{ item.content|escape }}</textarea></td>
+        <td><textarea id="id_content" name="content" class="large">{{ item.content|escape }}</textarea></td>
       </tr>
 
       <tr>
@@ -65,13 +65,22 @@
       </tr>
 
       <tr>
-        <th><label for="id_attribute_raw">Attribute:</label></th>
-        <td><input type="text" id="id_attribute_raw" name="attribute_raw" value="{{ item.attribute_raw|escape }}" /></td>
+        <th><label>Attributes:</label></th>
+        <td>
+          <input type="checkbox" id="id_index_entry" name="index_entry" value="on"{% if item %}{% if item|has:"index-entry" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_index_entry">Is in Section's Index (index.html, urlset.xml, etc)?</label>
+          <br />
+          <input type="checkbox" id="id_has_comments" name="has_comments" value="on"{% if item %}{% if item|has:"has-comments" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_has_comments">Has Comments?</label>
+          <br />
+          <input type="checkbox" id="id_comments_open" name="comments_open" value="on"{% if item %}{% if item|has:"comments-open" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_comments_open">Are Comments Open?</label>
+        </td>
       </tr>
 
     </tbody>
   </table>
-  <input type="submit"/>
+  <input type="submit" value="Save Page" />
 </form>
 
 {% endblock %}

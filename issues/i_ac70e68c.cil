@@ -2,9 +2,9 @@ Summary: Add new ways to render each node
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
-Label: Milestone-v0.04
+Label: Milestone-v0.05
 Inserted: 2009-11-21T10:15:30
-Updated: 2009-12-20T03:43:57
+Updated: 2010-01-02T02:25:01
 
 For example, we already have a skeleton render for FAQs, so how about:
 

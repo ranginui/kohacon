@@ -1,0 +1,23 @@
+Summary: Investigate new ways of generating the section.{label,archive}_json
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2009-12-30T20:08:04
+Updated: 2009-12-30T20:12:46
+
+It seems that getting _all_ of the entities from the datastore and looping
+through them looking for labels and archive takes a lot of CPU. Instead, we
+should add a task queue which takes the section key and the label or achive
+name.
+
+This then just does a query to find the number that have it, and the
+section_jason is updated and written back. e.g.
+
+    Node.all().filter('section =', section).filter('label =', label).count()
+
+In the case where a label has been removed from a node, that also needs to have
+been added to the queue. e.g.
+
+Old Labels: git perl vim
+New Labels: git perl emacs
+Labels added to queue: git perl vim emacs

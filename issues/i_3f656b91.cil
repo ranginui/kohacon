@@ -1,10 +1,11 @@
 Summary: Make site feed at top level
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.04
+Comment: 665b784a
 Inserted: 2009-12-13T22:57:59
-Updated: 2009-12-20T03:43:56
+Updated: 2009-12-20T08:05:07
 
 Currently, the rss feeds just go off the section they are serving.
 

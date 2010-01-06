@@ -1,0 +1,9 @@
+Issue: 96d842e8
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-02T01:21:42
+Updated: 2010-01-02T01:22:30
+
+Now that cil-dfb824e5 has been done, this issue is now useless.
+
+We still can't do something for favicon.ico or robots.txt, but we'll figure
+that out later.

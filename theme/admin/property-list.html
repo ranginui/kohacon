@@ -11,9 +11,9 @@
 <table class="list striped">
   <thead>
     <tr>
+      <th class="thin">Edit</th>
       <th>Title</th>
-      <th>Value</th>
-      <th>Memcache</th>
+      <th>Value / Memcache</th>
       <th class="thin">Uncache</th>
       <th class="thin">Delete</th>
     </tr>
@@ -21,14 +21,20 @@
   <tbody>
     {% for property in properties %}
     <tr>
-      <td><a href="edit.html?key={{ property.key|urlencode }}">{{ property.title|escape }}</a></td>
-      <td>{{ property.value|escape }}</td>
-      <td>{{ property.title|cfg }}</td>
       <td class="c">
-        <a href="uncache.html?title={{ property.title|urlencode }}"><img src="/s/i/brick_delete.png" /></a>
+        <a href="edit.html?key={{ property.key|urlencode }}"><img title="Edit Property" src="/s/i/layout_edit.png" /></a>
+      </td>
+      <td><a href="edit.html?key={{ property.key|urlencode }}">{{ property.title|escape }}</a></td>
+      <td>
+        {{ property.value|escape }}
+        <br />
+        {{ property.title|cfg }}
       </td>
       <td class="c">
-        <a href="del.html?key={{ property.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+        <a href="uncache.html?title={{ property.title|urlencode }}"><img title="Uncache Property" src="/s/i/brick_delete.png" /></a>
+      </td>
+      <td class="c">
+        <a href="del.html?key={{ property.key|urlencode }}"><img title="Delete Property" src="/s/i/cancel.png" /></a>
       </td>
     </tr>
     {% endfor %}

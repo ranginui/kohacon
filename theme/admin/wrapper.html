@@ -35,30 +35,59 @@
 
   <!-- #menu -->
   <div id="menu" class="grid_3">
+    {% block menu %}
+    <h1>Menu</h1>
     <ul>
       <li>
         <a href="/admin/property/">Property</a> (<a href="/admin/property/new.html">New</a>)
+        <a href="/admin/help-property.html"><img src="/s/i/help.png" /></a>
       </li>
       <li>
         <a href="/admin/section/">Section</a> (<a href="/admin/section/new.html">New</a>)
+        <a href="/admin/help-section.html"><img src="/s/i/help.png" /></a>
       </li>
       <li>Nodes
         <ul>
           <li>
             <a href="/admin/page/">Page</a> (<a href="/admin/page/new.html">New</a>)
+            <a href="/admin/help-page.html"><img src="/s/i/help.png" /></a>
           </li>
           <li>
             <a href="/admin/recipe/">Recipe</a> (<a href="/admin/recipe/new.html">New</a>)
+            <a href="/admin/help-recipe.html"><img src="/s/i/help.png" /></a>
+          </li>
+          <li>
+            <a href="/admin/load/">Import</a>
+            <a href="/admin/help-import.html"><img src="/s/i/help.png" /></a>
+          </li>
+        </ul>
+      </li>
+      <li>Assets
+        <ul>
+          <li>
+            <a href="/admin/file/">File</a> (<a href="/admin/file/new.html">New</a>)
+            <a href="/admin/help-file.html"><img src="/s/i/help.png" /></a>
+          </li>
+          <li>
+            <a href="/admin/image/">Image</a> (<a href="/admin/image/new.html">New</a>)
+            <a href="/admin/help-image.html"><img src="/s/i/help.png" /></a>
           </li>
         </ul>
       </li>
       <li>
-        <a href="/admin/image/">Image</a> (<a href="/admin/image/new.html">New</a>)
+        <a href="/admin/comment/">Comments</a>
+        <a href="/admin/help-comment.html"><img src="/s/i/help.png" /></a>
       </li>
       <li>
-        <a href="/admin/comment/">Comments</a>
+        <a href="/admin/message/">Messages</a>
+        <a href="/admin/help-message.html"><img src="/s/i/help.png" /></a>
       </li>
     </ul>
+    <h1>Help</h1>
+    <ul>
+      <li><a href="/admin/help-index.html">Help Index &raquo;</a></li>
+    </ul>
+    {% endblock %}
   </div>
   <!-- /#menu -->
   <!-- #content -->
@@ -73,10 +102,11 @@
   <!-- #footer -->
   <div id="footer" class="grid_12">
     Lollysite &copy; 2009 <a href="http://www.chilts.org/">chilts.org</a>
+    |
+    <a href="/admin/credits.html">Credits</a>
   </div>
   <div class="clear"> </div>
   <!-- /#footer -->
-  <div class="clear"> </div>
 
 </div>
 <!-- /#wrap -->

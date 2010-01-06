@@ -1,0 +1,31 @@
+{% extends "wrapper.html" %}
+
+{% block menu %}
+
+  <h1>Help</h1>
+  <ul>
+    <li><a href="/admin/help-index.html">Index</a></li>
+    <li><a href="/admin/help-property.html">Property</a></li>
+    <li><a href="/admin/help-section.html">Section</a></li>
+    <li>Nodes
+      <ul>
+        <li><a href="/admin/help-page.html">Page</a></li>
+        <li><a href="/admin/help-recipe.html">Recipe</a></li>
+        <li><a href="/admin/help-import.html">Import</a></li>
+      </ul>
+    </li>
+    <li>Assets
+      <ul>
+        <li><a href="/admin/help-file.html">File</a></li>
+        <li><a href="/admin/help-image.html">Image</a></li>
+      </ul>
+    </li>
+    <li><a href="/admin/help-comment.html">Comments</a></li>
+    <li><a href="/admin/help-message.html">Messages</a></li>
+  </ul>
+  <h1>Back to Admin</h1>
+  <ul>
+    <li><a href="/admin/section/">&laquo; Admin</a></li>
+  </ul>
+
+{% endblock %}

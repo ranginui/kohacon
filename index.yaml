@@ -10,6 +10,12 @@ indexes:
 # automatically uploaded to the admin console when you next deploy
 # your application using appcfg.py.
 
+- kind: Asset
+  properties:
+  - name: class
+  - name: inserted
+    direction: desc
+
 - kind: Comment
   properties:
   - name: node
@@ -42,6 +48,12 @@ indexes:
   properties:
   - name: archive
   - name: section
+  - name: inserted
+    direction: desc
+
+- kind: Node
+  properties:
+  - name: attribute
   - name: inserted
     direction: desc
 

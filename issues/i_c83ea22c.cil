@@ -1,0 +1,18 @@
+Summary: Allow 'blocks' to be added to the sidebar
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Comment: 2f92f46d
+Inserted: 2009-12-20T07:02:37
+Updated: 2009-12-21T06:11:49
+
+Not quite sure how these should work yet, but I imagine it's about adding them
+to each section.
+
+An interesting approach is, instead of having to configure each block, that it
+just figures things out from the section it is displaying on.
+
+e.g. a 'recent posts' block, which shows the last few entries in that section.
+Or a 'labels' block which shows all the labels from that section. Maybe an
+image block which looks for the first asset against the section (or even the
+first node in that section).

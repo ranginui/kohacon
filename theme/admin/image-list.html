@@ -1,0 +1,59 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Image List</h2>
+
+{% if images.count %}
+
+<p>There are {{ images.count|escape }} images.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th class="thin">Edit</th>
+      <th>Title</th>
+      <th>Filename</th>
+      <th>Blob Info</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for image in images %}
+    <tr>
+      <td class="c">
+        <a href="edit.html?key={{ image.key|urlencode }}"><img src="/s/i/layout_edit.png" /></a>
+      </td>
+      <td>
+        <a href="edit.html?key={{ image.key|urlencode }}">{{ image.title|escape }}</a>
+      </td>
+      <td>
+  {% if image.blob %}
+        {{ image.blob.filename|escape }}
+        (<a target="_new" href="/asset/image/{{ image.filename|escape }}">View Image</a>)
+  {% else %}
+        no image attached
+  {% endif %}
+      </td>
+      <td>
+  {% if image.blob %}
+        {{ image.blob.content_type|escape }}, {{ image.blob.size|escape }} bytes
+  {% else %}
+        -
+  {% endif %}
+      </td>
+      <td class="c">
+        <a href="del.html?key={{ image.key|urlencode }}"><img src="/s/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% else %}
+
+<p>There are no images.</p>
+
+{% endif %}
+
+{% endblock %}

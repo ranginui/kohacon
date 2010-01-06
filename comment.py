@@ -8,7 +8,6 @@ from google.appengine.ext import db
 
 # local modules
 import webbase
-import formbase
 from models import Comment
 
 ## ----------------------------------------------------------------------------

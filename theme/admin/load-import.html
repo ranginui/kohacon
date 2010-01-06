@@ -1,0 +1,18 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Node Imported</h2>
+
+<ul>
+{% for msg in msgs %}
+  <li>{{ msg|escape }}</li>
+{% endfor %}
+</ul>
+
+<ul>
+  <li><a href=".">Import Another</a></li>
+  <li><a href="?data_type={{ data_type|urlencode }};node_type={{ node_type|urlencode }};section_key={{ section_key|urlencode }}">Import Another with Same Input Settings</a></li>
+</ul>
+
+{% endblock %}

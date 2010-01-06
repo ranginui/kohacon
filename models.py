@@ -7,6 +7,7 @@ import logging
 from google.appengine.ext import db
 from google.appengine.ext.db import polymodel
 from google.appengine.api.labs.taskqueue import Task
+from google.appengine.ext.blobstore import blobstore
 
 # local stuff
 import util
@@ -21,6 +22,7 @@ import properties
 # * updated = db.DateTimeProperty( auto_now = True )
 
 type_choices = ["text", "code", "phliky", "textile", "html", "markdown"]
+node_choices = ['page', 'recipe']
 layout_choices = ['content', 'blog', 'faq']
 
 ## ----------------------------------------------------------------------------
@@ -144,26 +146,39 @@ class Recipe(Node):
 
 # Files: See - http://blog.notdot.net/2009/9/Handling-file-uploads-in-App-Engine
 
-# Image
-class ImageData(db.Model):
-    data = db.BlobProperty( required=True )
+## ----------------------------------------------------------------------------
+# assets (BlobStore files)
 
-class Image(Node):
+class Asset(polymodel.PolyModel):
+    # common properties for _every_ datastore object
+    owner = db.UserProperty( auto_current_user_add=True )
+    editor = db.UserProperty( auto_current_user=True )
+    inserted = db.DateTimeProperty( auto_now_add=True )
+    updated = db.DateTimeProperty( auto_now=True )
+
+    # common properties for every Asset
+    title = db.StringProperty( multiline=False )
+    blob = blobstore.BlobReferenceProperty()
+    label_raw = db.StringProperty( multiline=False )
+
+    # Derivative Properties
+    label = db.StringListProperty()
+    filename = db.StringProperty( multiline=False )
+    def set_derivatives(self):
+        # set the lists from their raw values
+        self.label = self.label_raw.split()
+        if self.blob:
+            self.filename = self.blob.filename
+
+# Image
+class Image(Asset):
     caption = db.TextProperty()
-    credit = db.TextProperty()
+    credit_who = db.TextProperty()
     credit_link = db.LinkProperty()
-    imagedata = db.ReferenceProperty( ImageData, required=True, collection_name='image' )
-    filename = db.StringProperty( required=True )
-    mimetype = db.StringProperty( required=True )
 
 # File
-class FileData(db.Model):
-    data = db.BlobProperty( required=True )
-
-class File(Node):
-    filedata = db.ReferenceProperty( FileData, required=True, collection_name='file' )
-    filename = db.StringProperty( required=True )
-    mimetype = db.StringProperty( required=True )
+class File(Asset):
+    pass
 
 ## ----------------------------------------------------------------------------
 # comments
@@ -174,21 +189,31 @@ class Comment(BaseModel):
     email = db.StringProperty(multiline=False)
     website = db.StringProperty(multiline=False)
     comment = db.TextProperty()
-    comment_html = db.TextProperty()
     status = db.StringProperty(
         required=True,
         default='new',
         choices=['new', 'approved', 'rejected']
         )
 
+    # Derivative Properties
+    comment_html = db.TextProperty()
+    def set_derivatives(self):
+        self.comment_html = util.render(self.comment, 'text')
+
+
 ## ----------------------------------------------------------------------------
 # messages
 
 class Message(BaseModel):
-    name = db.StringProperty(multiline=False)
-    email = db.StringProperty(multiline=False)
-    website = db.StringProperty(multiline=False)
-    subject = db.StringProperty(multiline=False)
+    name = db.StringProperty( multiline=False )
+    email = db.StringProperty( multiline=False )
+    website = db.StringProperty( multiline=False )
+    subject = db.StringProperty( multiline=False )
     message = db.TextProperty()
+
+    # Derivative Properties
+    message_html = db.TextProperty()
+    def set_derivatives(self):
+        self.message_html = util.render(self.message, 'text')
 
 ## ----------------------------------------------------------------------------

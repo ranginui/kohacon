@@ -1,0 +1,13 @@
+Summary: 'Submit Query' is rubbish, fix up Submit buttons on all forms
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.04
+Comment: 51b81af6
+Comment: a17fe8bd
+Inserted: 2009-12-23T09:41:44
+Updated: 2010-01-02T05:23:18
+
+Almost all submit buttons don't have a value="". This means most of the forms
+just say "Submit Query" rather than "Save", "Submit" or whatever. This should
+be fixed in all forms.
