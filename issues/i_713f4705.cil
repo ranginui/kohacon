@@ -2,8 +2,9 @@ Summary: Using |cfg is bad, it's not a filter anymore, needs changing
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
 Inserted: 2010-01-01T22:10:08
-Updated: 2010-01-01T22:14:25
+Updated: 2010-01-07T08:43:54
 
 When doing something like this in the templates:
 
