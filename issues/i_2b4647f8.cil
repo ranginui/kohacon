@@ -1,0 +1,12 @@
+Summary: Change name of page attributes
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Inserted: 2010-01-07T19:55:01
+Updated: 2010-01-07T19:56:32
+
+Instead of 'has-comments' and 'comments-open', rename to 'accept-comments' and
+'show-comments'. That language is much easier.
+
+Evaluate the other attributes too.
