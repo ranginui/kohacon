@@ -1,5 +1,5 @@
 application: lollysite
-version: v0-05-00
+version: v0-05-00alpha
 runtime: python
 api_version: 1
 default_expiration: '1d'
