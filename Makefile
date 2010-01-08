@@ -1,5 +1,5 @@
 start-server:
-	google_appengine/dev_appserver.py --datastore_path=store/data.db --history_path=store/data.db.history ./
+	~/google_appengine/dev_appserver.py --datastore_path=store/data.db --history_path=store/data.db.history ./
 
 issue-summary:
 	cil summary --is-open --label=Milestone-v0.05
