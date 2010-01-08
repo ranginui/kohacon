@@ -240,16 +240,18 @@ class LollySite(webbase.WebBase):
             # send a mail to the admin
             admin_email = config.value('Admin Email')
             if mail.is_email_valid(admin_email):
-                url_mod = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
-                url_del = 'http://www.' + config.value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
+                url_post = 'http://www.' + config.value('Naked Domain') + node.section.path + node.name + '.html'
+                url_mod  = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
+                url_del  = 'http://www.' + config.value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
 
-                body = 'Comment from ' + name + '<' + email + '>\n'
-                body = body + website + '\n\n'
+                body = 'From: ' + name + ' <' + email + '>\n'
+                body = body + 'Site: ' + website + '\n\n'
                 body = body + comment_text + '\n\n'
-                body = body + '---\n\nActions\n\n'
-                body = body + 'Approve = ' + url_mod + 'approve\n'
-                body = body + 'Reject  = ' + url_mod + 'reject\n'
-                body = body + 'Delete  = ' + url_del + '\n'
+                body = body + '*** Actions ***\n\n'
+                body = body + 'ViewPost = ' + url_post + '\n\n'
+                body = body + 'Approve  = ' + url_mod + 'approve\n'
+                body = body + 'Reject   = ' + url_mod + 'reject\n'
+                body = body + 'Delete   = ' + url_del + '\n'
                 mail.send_mail(admin_email, admin_email, 'New comment on ' + section.path + node.name + '.html', body)
             else:
                 # don't do anything
