@@ -1,10 +1,11 @@
 Summary: Enable selecting a number of comments for deletion
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: e31308ac
 Inserted: 2010-01-09T00:25:21
-Updated: 2010-01-09T00:26:24
+Updated: 2010-01-09T04:08:56
 
 Have a checkbox against each comment. Also, in the header, have a checkbox
 which then selects _all_ of the comments. Above the table there is a 'Delete'

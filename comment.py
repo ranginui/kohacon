@@ -1,6 +1,7 @@
 ## ----------------------------------------------------------------------------
 # import standard modules
 import re
+import logging
 
 # Google specific modules
 from google.appengine.ext.webapp import template
@@ -19,6 +20,8 @@ status_map = {
 
 ## ----------------------------------------------------------------------------
 
+page_count = 20
+
 # Forms
 class Index(webbase.WebBase):
     def get(self):
@@ -33,9 +36,12 @@ class Index(webbase.WebBase):
 
         if comment is None:
             # show all the 'new' comments
-            comments = Comment.all().filter('status =', 'new').order('inserted')
+            comments = Comment.all().filter('status =', 'new').order('inserted').fetch(page_count+1)
+            more = True if len(comments) > page_count else False
+            comments = comments[:page_count]
             vals = {
                 'comments' : comments,
+                'more'     : more,
                 }
             self.template( 'comment-list.html', vals, 'admin' )
         else:
@@ -76,5 +82,18 @@ class Del(webbase.WebBase):
                     self.template( 'comment-del.html', vals, 'admin' );
         except:
             self.redirect('.')
+
+class DelAll(webbase.WebBase):
+    def post(self):
+        try:
+            items = Comment.get( self.request.get_all('keys') )
+            for item in items:
+                item.delete()
+
+        except:
+            pass # just going to redirect to '.' anyway
+
+        self.redirect('.')
+
 
 ## ----------------------------------------------------------------------------

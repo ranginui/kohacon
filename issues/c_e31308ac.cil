@@ -1,0 +1,9 @@
+Issue: e4184afb
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-01-09T04:08:09
+Updated: 2010-01-09T04:08:56
+
+Added the ability to delete a bunch of comments at the same time.
+
+Also made the template slightly smaller by doing good stuff with the 'yesno'
+filter and the 'pluralize' filter.

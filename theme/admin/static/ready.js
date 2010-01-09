@@ -16,10 +16,19 @@ $(function() {
     $('.section-filter')
         .change( function() {
             var pathname = window.location.pathname;
-            // alert('pathname = ' + pathname);
-            // alert('$(this).value = ' + $(this));
-            // alert('$(this).value = ' + $(this).val());
             window.location = pathname + '?section=' + $(this).val();
+        })
+    ;
+
+    // for tables which have a 'select-all' checkbox, make it select all the
+    // 'keys' checkboxes from the table it is in
+    $('.select-all')
+        .click( function() {
+            var checked = this.checked;
+            // find all the '.keys' in the parent 'table'
+            $(".keys", $(this).closest('table')).each(function() {
+                this.checked = checked;
+            });
         })
     ;
 });

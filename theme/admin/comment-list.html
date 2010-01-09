@@ -3,13 +3,14 @@
 {% block content %}
   <h2>New Comments</h2>
 
-  {% if comments.count %}
+  <p>There {{ comments|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ comments|length|escape }} comment{{ comments|length|pluralize }} awaiting moderation.</p>
 
-  <p>There are {{ comments.count|escape }} comments awaiting moderation.</p>
-
+  <form action="del-all.html" method="post">
+    <p>Actions: <input type="submit" value="Delete" /></p>
   <table class="list striped">
     <thead>
       <tr>
+        <th class="c"><input class="select-all" type="checkbox" /></th>
         <th>Info</th>
         <th>Page / Comment</th>
         <th class="thin">Approve</th>
@@ -20,6 +21,9 @@
     <tbody>
       {% for comment in comments %}
       <tr>
+        <td class="c">
+          <input type="checkbox" class="keys" name="keys" value="{{ comment.key|escape }}" />
+        </td>
         <td>
           <strong>{{ comment.name|escape }} &lt;{{ comment.email|escape }}&gt;</strong>
           <br />
@@ -45,11 +49,6 @@
       {% endfor %}
     </tbody>
   </table>
-
-  {% else %}
-
-  <p>There are no comments waiting to be moderated.</p>
-
-  {% endif %}
+  </form>
 
 {% endblock %}
