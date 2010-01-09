@@ -1,10 +1,12 @@
 Summary: Add proper license information to all source files
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: c076b7ff
+Comment: f99872ea
 Inserted: 2009-12-06T19:33:56
-Updated: 2010-01-07T08:44:26
+Updated: 2010-01-09T20:26:32
 
 At the top of each source file should be a copyright statement and information
 about the license of that particular file. Also, check what needs to happen for
