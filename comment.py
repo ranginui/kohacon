@@ -57,6 +57,9 @@ class Del(webbase.WebBase):
         try:
             if self.request.get('key'):
                 item = Comment.get( self.request.get('key') )
+                if item is None:
+                    self.redirect('.')
+                    return
 
                 vals = {
                     'item' : item,
@@ -68,20 +71,21 @@ class Del(webbase.WebBase):
             self.redirect('.')
 
     def post(self):
+        item = None
         try:
             item = Comment.get( self.request.get('key') ) if self.request.get('key') else None
-            if item is not None:
-                try:
-                    item.delete()
-                    self.redirect('.')
-                except:
-                    vals = {
-                        'item' : item,
-                        'err' : 'There was an error when deleting this comment, please try again'
-                        }
-                    self.template( 'comment-del.html', vals, 'admin' );
-        except:
+            if item is None:
+                self.redirect('.')
+                return
+
+            item.delete()
             self.redirect('.')
+        except:
+            vals = {
+                'item' : item,
+                'err' : 'There was an error when deleting this comment, please try again'
+                }
+            self.template( 'comment-del.html', vals, 'admin' );
 
 class DelAll(webbase.WebBase):
     def post(self):
