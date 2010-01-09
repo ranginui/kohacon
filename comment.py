@@ -37,7 +37,7 @@ class Index(webbase.WebBase):
             vals = {
                 'comments' : comments,
                 }
-            self.template( 'comment-index.html', vals, 'admin' )
+            self.template( 'comment-list.html', vals, 'admin' )
         else:
             comment.status = status_map[status]
             comment.put()
