@@ -1,10 +1,11 @@
 Summary: Add a new icon to the section page to show only it's pages
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: 47de2e57
 Inserted: 2010-01-24T09:49:24
-Updated: 2010-01-24T09:50:20
+Updated: 2010-01-26T05:45:15
 
 Instead of having a shedload of pages under all sections, this will make it
 easier to see only a subset.
