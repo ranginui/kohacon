@@ -1,0 +1,10 @@
+Summary: Show the node name in the page/recipe node lists
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Inserted: 2010-01-26T05:47:08
+Updated: 2010-01-26T05:48:13
+
+It's really hard to tell what page is what, especially if it's the 'index' page
+but it's named something completely different.
