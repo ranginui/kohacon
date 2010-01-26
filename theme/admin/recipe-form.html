@@ -80,8 +80,17 @@
       </tr>
 
       <tr>
-        <th><label for="id_attribute_raw">Attribute:</label></th>
-        <td><input type="text" id="id_attribute_raw" name="attribute_raw" value="{{ item.attribute_raw|escape }}" /></td>
+        <th><label>Attributes:</label></th>
+        <td>
+          <input type="checkbox" id="id_index_entry" name="index_entry" value="on"{% if item %}{% if item|has:"index-entry" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_index_entry">Is in Section's Index (index.html, urlset.xml, etc)?</label>
+          <br />
+          <input type="checkbox" id="id_has_comments" name="has_comments" value="on"{% if item %}{% if item|has:"has-comments" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_has_comments">Has Comments?</label>
+          <br />
+          <input type="checkbox" id="id_comments_open" name="comments_open" value="on"{% if item %}{% if item|has:"comments-open" %} checked="checked"{% endif %}{% else %} checked="checked"{% endif %} />
+          <label for="id_comments_open">Are Comments Open?</label>
+        </td>
       </tr>
 
     </tbody>
