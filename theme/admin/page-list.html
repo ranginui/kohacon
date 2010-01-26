@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th class="thin">Edit</th>
-      <th>Section</th>
+      <th>Section / Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -26,7 +26,7 @@
         <a href="edit.html?key={{ page.key|urlencode }}"><img title="Edit Page" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
-        {{ page.section.path|escape }}
+        <strong>{{ page.section.path|escape }}</strong>{{ page.name|escape }}
       </td>
       <td>
         <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>

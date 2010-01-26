@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th class="thin">Edit</th>
-      <th>Section</th>
+      <th>Section / Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -26,7 +26,7 @@
         <a href="edit.html?key={{ recipe.key|urlencode }}"><img title="Edit Recipe" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
-        {{ recipe.name|escape }}
+        <strong>{{ recipe.section.path|escape }}</strong>{{ recipe.name|escape }}
       </td>
       <td>
         <a href="edit.html?key={{ recipe.key|urlencode }}">{{ recipe.title|escape }}</a>
