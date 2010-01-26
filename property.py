@@ -42,7 +42,7 @@ import config
 # List
 class List(webbase.WebBase):
     def get(self):
-        properties = Property.all()
+        properties = Property.all().fetch(1000)
         vals = {
             'title' : 'Property List',
             'properties' : properties,

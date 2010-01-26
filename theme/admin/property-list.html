@@ -4,9 +4,7 @@
 
 <h2>Property List</h2>
 
-{% if properties.count %}
-
-<p>There are {{ properties.count|escape }} properties.</p>
+<p>There {{ properties|length|pluralize:"is,are" }} {{ properties|length|escape }} propert{{ properties|length|pluralize:"y,ies" }}.</p>
 
 <table class="list striped">
   <thead>
@@ -40,11 +38,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no properties.</p>
-
-{% endif %}
 
 {% endblock %}
