@@ -1,13 +1,16 @@
 start-server:
 	~/google_appengine/dev_appserver.py --datastore_path=store/data.db --history_path=store/data.db.history ./
 
-issue-summary:
+next-release:
 	cil summary --is-open --label=Milestone-v0.05
 
-issue-list:
+open:
+	cil list --is-open
+
+closed:
 	cil list --is-open --label=Milestone-v0.05
 
 clean:
 	find . -name '*~' -exec rm {} ';'
 
-.PHONY: start-server upload update-indexes issue-summary issue-list
+.PHONY: start-server next-release open closed clean
