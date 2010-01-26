@@ -42,6 +42,8 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+page_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
@@ -52,15 +54,19 @@ class List(webbase.WebBase):
             except BadKeyError:
                 # invalid key
                 self.redirect('.')
-            pages = Page.all().filter('section =', section).order('-inserted')
+            pages = Page.all().filter('section =', section).order('-inserted').fetch(page_count+1)
         else:
-            pages = Page.all().order('-inserted')
+            pages = Page.all().order('-inserted').fetch(page_count+1)
+
+        more = True if len(pages) > page_count else False
 
         vals = {
-            'title'    : 'Page List',
-            'sections' : Section.all(),
-            'section'  : section,
-            'pages'    : pages,
+            'title'      : 'Page List',
+            'sections'   : Section.all(),
+            'section'    : section,
+            'pages'      : pages,
+            'page_count' : page_count if more else len(pages),
+            'more'       : more,
         }
         self.template( 'page-list.html', vals, 'admin' );
 

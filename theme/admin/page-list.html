@@ -6,9 +6,7 @@
 
 {% include 'section-filter.fhtml' %}
 
-{% if pages.count %}
-
-<p>There are {{ pages.count|escape }} pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+<p>There {{ pages|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ page_count|escape }} page{{ comments|length|pluralize }}{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 <table class="list striped">
   <thead>
@@ -39,10 +37,8 @@
   </tbody>
 </table>
 
-{% else %}
-
-<p>There are no pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
-
+{% if more %}
+<p><a href="/todo.html">Older &raquo;</p></p>
 {% endif %}
 
 {% endblock %}

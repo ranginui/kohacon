@@ -44,6 +44,8 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+page_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
@@ -54,15 +56,19 @@ class List(webbase.WebBase):
             except BadKeyError:
                 # invalid key
                 self.redirect('.')
-            recipes = Recipe.all().filter('section =', section).order('-inserted')
+            recipes = Recipe.all().filter('section =', section).order('-inserted').fetch(page_count+1)
         else:
-            recipes = Recipe.all().order('-inserted')
+            recipes = Recipe.all().order('-inserted').fetch(page_count+1)
+
+        more = True if len(recipes) > page_count else False
 
         vals = {
-            'title'    : 'Recipe List',
-            'sections' : Section.all(),
-            'section'  : section,
+            'title'      : 'Recipe List',
+            'sections'   : Section.all(),
+            'section'    : section,
             'recipes'    : recipes,
+            'page_count' : page_count if more else len(recipes),
+            'more'       : more,
         }
         self.template( 'recipe-list.html', vals, 'admin' );
 

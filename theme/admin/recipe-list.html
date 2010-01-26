@@ -6,9 +6,7 @@
 
 {% include 'section-filter.fhtml' %}
 
-{% if recipes.count %}
-
-<p>There are {{ recipes.count|escape }} recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+<p>There {{ recipes|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ page_count|escape }} recipe{{ comments|length|pluralize }}{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 <table class="list striped">
   <thead>
@@ -38,11 +36,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
-
-{% endif %}
 
 {% endblock %}
