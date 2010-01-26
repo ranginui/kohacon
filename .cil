@@ -1,13 +1,5 @@
-VCS: Git
+UseGit: 1
 StatusStrict: 1
-StatusAllowedList: New
-StatusAllowedList: Reviewed
-StatusAllowedList: Assigned
-StatusAllowedList: InProgress
-StatusAllowedList: ReOpened
-StatusAllowedList: Finished
-StatusAllowedList: WontFix
-StatusAllowedList: Cancelled
 StatusOpenList: New
 StatusOpenList: Reviewed
 StatusOpenList: Assigned
