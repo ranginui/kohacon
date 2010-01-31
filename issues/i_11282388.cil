@@ -1,0 +1,20 @@
+Summary: Add a generic form emailer so people can make their own forms
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Inserted: 2010-01-31T23:48:34
+Updated: 2010-01-31T23:48:34
+
+If the form has a 'subject' field, then that should be in the subject. Also,
+have a 'filter' field so that the subject is:
+
+ [filter] Subject
+
+All the other fields should just be added as follows:
+
+ field: value
+ other: value here
+
+Finally, we might as well save the form into the datastore. In which case, we
+should save it all as JSON encoded and just print it all out.
