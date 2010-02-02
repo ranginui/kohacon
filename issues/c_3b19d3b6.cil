@@ -1,0 +1,16 @@
+Issue: c2bc776c
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-02T03:56:04
+Updated: 2010-02-02T03:56:04
+
+On the /admin/file/new.html form, have a 'Section' dropdown. In the case where
+nothing is selected, the file will only be available at /asset/file/.
+
+In the case where a section _is_ selection, the file will also be available at
+that location. e.g. if / is selected for a favicon.ico file, then it will be
+available in the following two locations:
+
+* /asset/file/favicon.ico
+* /favicon.ico
+
+That'll be awesome, nice, easy, extensible and simple :)

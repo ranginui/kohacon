@@ -2,8 +2,9 @@ Summary: Figure out what to do with favicon.ico, robots.txt and other top level 
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Comment: 3b19d3b6
 Inserted: 2010-02-02T03:25:14
-Updated: 2010-02-02T03:25:14
+Updated: 2010-02-02T03:58:00
 
 Currently there is no way to be able to upload something and have it served
 from the top level. Maybe we could do something whereby you can add in a
