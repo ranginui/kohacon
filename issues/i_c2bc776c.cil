@@ -1,0 +1,14 @@
+Summary: Figure out what to do with favicon.ico, robots.txt and other top level files
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-02T03:25:14
+Updated: 2010-02-02T03:25:14
+
+Currently there is no way to be able to upload something and have it served
+from the top level. Maybe we could do something whereby you can add in a
+redirect (e.g. /favicon.ico to /asset/file/favicon.ico) but that seems a little
+painful.
+
+Another alternative is to allow the uploads to be served from the top-level.
+Other than that, I'm not sure what to do.
