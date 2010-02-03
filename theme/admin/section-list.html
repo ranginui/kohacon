@@ -4,9 +4,7 @@
 
 <h2>Section List</h2>
 
-{% if sections.count %}
-
-<p>There are {{ sections.count|escape }} sections.</p>
+<p>There {{ sections|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ section_count|escape }} section{{ sections|length|pluralize }}.</p>
 
 <table class="list striped">
   <thead>
@@ -42,11 +40,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no sections.</p>
-
-{% endif %}
 
 {% endblock %}

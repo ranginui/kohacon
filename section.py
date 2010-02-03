@@ -40,13 +40,20 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+section_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
-        sections = Section.all()
+        sections = Section.all().fetch(section_count+1)
+
+        more = True if len(sections) > section_count else False
+
         vals = {
-            'title' : 'Section List',
-            'sections' : sections
+            'title'         : 'Section List',
+            'sections'      : sections,
+            'section_count' : section_count if more else len(sections),
+            'more'          : more,
         }
         self.template( 'section-list.html', vals, 'admin' );
 
