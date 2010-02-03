@@ -4,9 +4,7 @@
 
 <h2>File List</h2>
 
-{% if files.count %}
-
-<p>There are {{ files.count|escape }} files.</p>
+<p>There {{ files|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ file_count|escape }} file{{ files|length|pluralize }}.</p>
 
 <table class="list striped">
   <thead>
@@ -49,11 +47,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no files.</p>
-
-{% endif %}
 
 {% endblock %}
