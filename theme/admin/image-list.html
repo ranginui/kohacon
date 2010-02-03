@@ -37,7 +37,9 @@
       </td>
       <td>
   {% if image.blob %}
-        {{ image.blob.content_type|escape }}, {{ image.blob.size|escape }} bytes
+        {{ image.blob.content_type|escape }}
+        <br />
+        {{ image.blob.size|escape }} bytes
   {% else %}
         -
   {% endif %}

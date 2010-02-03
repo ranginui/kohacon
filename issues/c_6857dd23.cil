@@ -1,0 +1,8 @@
+Issue: 11282388
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-03T08:32:32
+Updated: 2010-02-03T08:32:32
+
+Main development of generic messages now done, but it really should have a
+'redirect' parameter so that the form knows where to go back to after saving
+and emailing the form.

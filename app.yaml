@@ -1,8 +1,8 @@
 application: lollysite
-version: v0-04-00
+version: v0-05-dev
 runtime: python
 api_version: 1
-default_expiration: '1d'
+default_expiration: '365d'
 
 handlers:
 - url: /admin/remote

@@ -6,15 +6,13 @@
 
 {% include 'section-filter.fhtml' %}
 
-{% if pages.count %}
-
-<p>There are {{ pages.count|escape }} pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+<p>There {{ pages|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ page_count|escape }} page{{ comments|length|pluralize }}{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 <table class="list striped">
   <thead>
     <tr>
       <th class="thin">Edit</th>
-      <th>Section</th>
+      <th>Section / Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -26,7 +24,7 @@
         <a href="edit.html?key={{ page.key|urlencode }}"><img title="Edit Page" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
-        {{ page.section.path|escape }}
+        <strong>{{ page.section.path|escape }}</strong>{{ page.name|escape }}
       </td>
       <td>
         <a href="edit.html?key={{ page.key|urlencode }}">{{ page.title|escape }}</a>
@@ -39,10 +37,8 @@
   </tbody>
 </table>
 
-{% else %}
-
-<p>There are no pages{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
-
+{% if more %}
+<p><a href="/todo.html">Older &raquo;</p></p>
 {% endif %}
 
 {% endblock %}

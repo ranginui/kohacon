@@ -1,9 +1,11 @@
 Summary: When deleting a comment that's already deleted, it should say not found
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Comment: 0e2df4d8
 Inserted: 2010-01-03T11:10:22
-Updated: 2010-01-03T11:12:17
+Updated: 2010-01-09T04:19:08
 
 If I get two emails, click the first and then click the delete link and then
 click delete on the 2nd comment, if I then click the delete link on the 2nd

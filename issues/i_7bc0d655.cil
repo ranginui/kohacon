@@ -2,8 +2,9 @@ Summary: Add a SPAM question thing so we don't get all the spam
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
 Inserted: 2009-12-30T20:27:50
-Updated: 2009-12-30T20:53:36
+Updated: 2010-01-07T08:43:54
 
 Some simple questions should do the trick. Hmm, maybe I should integrate that
 capture stuff, dunno, maybe check it out.

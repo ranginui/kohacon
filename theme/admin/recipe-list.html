@@ -6,15 +6,13 @@
 
 {% include 'section-filter.fhtml' %}
 
-{% if recipes.count %}
-
-<p>There are {{ recipes.count|escape }} recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
+<p>There {{ recipes|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ page_count|escape }} recipe{{ comments|length|pluralize }}{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
 
 <table class="list striped">
   <thead>
     <tr>
       <th class="thin">Edit</th>
-      <th>Section</th>
+      <th>Section / Name</th>
       <th>Title</th>
       <th class="thin">Delete</th>
     </tr>
@@ -26,7 +24,7 @@
         <a href="edit.html?key={{ recipe.key|urlencode }}"><img title="Edit Recipe" src="/s/i/layout_edit.png" /></a>
       </td>
       <td>
-        {{ recipe.name|escape }}
+        <strong>{{ recipe.section.path|escape }}</strong>{{ recipe.name|escape }}
       </td>
       <td>
         <a href="edit.html?key={{ recipe.key|urlencode }}">{{ recipe.title|escape }}</a>
@@ -38,11 +36,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no recipes{% if section %} in '<strong>{{ section.path|escape }}</strong>'{% endif %}.</p>
-
-{% endif %}
 
 {% endblock %}

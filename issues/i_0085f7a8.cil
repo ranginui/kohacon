@@ -2,8 +2,9 @@ Summary: Add ability to edit comments
 Status: New
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
 Inserted: 2009-12-07T23:41:50
-Updated: 2009-12-07T23:43:23
+Updated: 2010-01-07T08:44:26
 
 Mostly, we don't want to edit comments, but sometimes people make mistakes (and
 don't realise and don't correct them). Having the ability to edit comments from

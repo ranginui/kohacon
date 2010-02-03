@@ -13,6 +13,7 @@
     <tr>
       <th class="thin">Actions</th>
       <th class="thin">Edit</th>
+      <th class="thin">List Pages</th>
       <th>Path</th>
       <th>Title</th>
       <th>Layout</th>
@@ -27,6 +28,9 @@
       </td>
       <td class="c">
         <a href="edit.html?key={{ section.key|urlencode }}"><img title="Edit Section" src="/s/i/layout_edit.png" /></a>
+      </td>
+      <td class="c">
+        <a href="../page/?section={{ section.key|urlencode }}"><img title="List Pages" src="/s/i/application_view_list.png" /></a>
       </td>
       <td>{{ section.path|escape }}</td>
       <td><a href="edit.html?key={{ section.key|urlencode }}">{{ section.title|escape }}</a></td>

@@ -15,18 +15,8 @@
     <tbody>
 
       <tr>
-        <th>Name:</th>
-        <td>{{ item.name|escape }}</td>
-      </tr>
-
-      <tr>
-        <th>Email:</th>
-        <td>{{ item.email|escape }}</td>
-      </tr>
-
-      <tr>
-        <th>Website:</th>
-        <td>{{ item.website|escape }}</td>
+        <th>Type:</th>
+        <td>{{ item.type|escape }}</td>
       </tr>
 
       <tr>
@@ -36,7 +26,7 @@
 
       <tr>
         <th>Message:</th>
-        <td>{{ item.message_html }}</td>
+        <td>{{ item.message|escape }}</td>
       </tr>
 
     </tbody>

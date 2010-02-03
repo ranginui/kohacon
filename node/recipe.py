@@ -1,4 +1,30 @@
 ## ----------------------------------------------------------------------------
+# Lollysite is a website builder and blogging platform for Google App Engine.
+#
+# Copyright (c) 2009, 2010 Andrew Chilton <andy@chilts.org>.
+#
+# Homepage  : http://www.chilts.org/project/lollysite/
+# Ohloh     : https://www.ohloh.net/p/lollysite/
+# FreshMeat : http://freshmeat.net/projects/lollysite
+# Source    : http://gitorious.org/lollysite/
+#
+# This file is part of Lollysite.
+#
+# Lollysite is free software: you can redistribute it and/or modify it under
+# the terms of the GNU Affero General Public License as published by the Free
+# Software Foundation, either version 3 of the License, or (at your option) any
+# later version.
+#
+# Lollysite is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR
+# A PARTICULAR PURPOSE.  See the GNU Affero General Public License for more
+# details.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with Lollysite.  If not, see <http://www.gnu.org/licenses/>.
+#
+## ----------------------------------------------------------------------------
+
 # import standard modules
 import re
 import logging
@@ -18,6 +44,8 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+page_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
@@ -28,15 +56,19 @@ class List(webbase.WebBase):
             except BadKeyError:
                 # invalid key
                 self.redirect('.')
-            recipes = Recipe.all().filter('section =', section).order('-inserted')
+            recipes = Recipe.all().filter('section =', section).order('-inserted').fetch(page_count+1)
         else:
-            recipes = Recipe.all().order('-inserted')
+            recipes = Recipe.all().order('-inserted').fetch(page_count+1)
+
+        more = True if len(recipes) > page_count else False
 
         vals = {
-            'title'    : 'Recipe List',
-            'sections' : Section.all(),
-            'section'  : section,
+            'title'      : 'Recipe List',
+            'sections'   : Section.all(),
+            'section'    : section,
             'recipes'    : recipes,
+            'page_count' : page_count if more else len(recipes),
+            'more'       : more,
         }
         self.template( 'recipe-list.html', vals, 'admin' );
 
@@ -68,7 +100,13 @@ class Edit(webbase.WebBase):
             method = self.request.get('method')
             type = self.request.get('type')
             label_raw = self.request.get('label_raw').strip()
-            attribute_raw = self.request.get('attribute_raw').strip()
+            attribute_raw = util.make_attr_raw_string(
+                {
+                    'index-entry'   : self.request.get('index_entry'),
+                    'has-comments'  : self.request.get('has_comments'),
+                    'comments-open' : self.request.get('comments_open'),
+                    }
+                ).strip()
 
             # some pre-processing of the input params
             if name == '':
