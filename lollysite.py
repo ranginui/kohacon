@@ -94,16 +94,6 @@ class LollySite(webbase.WebBase):
                 }
             self.template(  section.layout + '-index.html', vals, config.value('Theme') );
 
-        elif this_page == 'contact' and this_ext == 'html' and section.has('contact-form'):
-            # contact.html
-            node = Node.all().filter('section =', section.key()).filter('name =', 'contact').get()
-            vals = {
-                'page'    : 'contact.html',
-                'section' : section,
-                'node'    : node,
-                }
-            self.template(  'contact.html', vals, config.value('Theme') );
-
         elif this_page == 'rss20' and this_ext == 'xml':
             # rss20.xml
             nodes = self.latest_nodes(section, 'index-entry', 10)
@@ -287,44 +277,38 @@ class LollySite(webbase.WebBase):
             self.redirect('comment.html?key=' + str(comment.key()))
             return
 
-        elif this_page == 'contact' and this_ext == 'html':
+        elif this_page == 'message' and this_ext == 'html':
             # firstly, check the 'faux' field and if something is in there, redirect
             faux = self.request.get('faux')
             if len(faux) > 0:
-                logging.info('CONTACT: Spam detected, not saving')
+                logging.info('MESSAGE: Spam detected, not saving')
                 self.redirect('/')
                 return
 
-            # contact submission for each section
-            name = self.request.get('name')
-            email = self.request.get('email')
-            website = self.request.get('website')
+            # message submission for each section
+            type = self.request.get('type')
             subject = self.request.get('subject')
-            message = re.sub('\r', '', self.request.get('message'));
+            message = self.request.POST.items()
 
             # now create the message
             msg = Message(
-                name = name,
-                email = email,
-                website = website,
+                type = type,
                 subject = subject,
                 message = message,
                 )
-            msg.set_derivatives()
             msg.put()
 
             # send a mail to the admin
             admin_email = config.value('Admin Email')
             if mail.is_email_valid(admin_email):
-                body =        'name    : ' + name + '\n'
-                body = body + 'email   : ' + email + '\n'
-                body = body + 'website : ' + website + '\n'
+                body =        'type    : ' + type + '\n'
                 body = body + 'subject : ' + subject + '\n'
-                body = body + message + '\n'
-                mail.send_mail(admin_email, admin_email, '[Contact] ' + subject, body)
+                for k, v in self.request.POST.items():
+                    body = body + k + ' : ' + v + '\n'
+                mail.send_mail(admin_email, admin_email, '[' + type + '] ' + subject, body)
             else:
                 # don't do anything
-                logging.info('No valid email set, skipping sending admin an email for new contact message')
+                logging.info('No valid email set, skipping sending admin an email for new message')
 
             self.redirect('.')
             return

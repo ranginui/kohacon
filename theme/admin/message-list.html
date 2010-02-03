@@ -11,7 +11,7 @@
 <table class="list striped">
   <thead>
     <tr>
-      <th>Info</th>
+      <th class="nowrap" style="width: 20%;">Type / Subject</th>
       <th>Message</th>
       <th class="thin">Delete</th>
     </tr>
@@ -20,14 +20,12 @@
     {% for message in messages %}
     <tr>
       <td>
-        <strong>{{ message.name|escape }} &lt;{{ message.email|escape }}&gt;</strong>
+        <strong>{{ message.type|escape }}</strong>
         <br />
-        {{ message.website|escape }}
-        <br />
-        {{ message.inserted|escape }}
+        {{ message.subject|escape }}
       </td>
       <td>
-        {{ message.message_html }}
+        {{ message.message|escape }}
       </td>
       <td class="c">
         <a href="/admin/message/del.html?key={{ message.key|urlencode }}"><img title="Delete Message" src="/s/i/cancel.png" /></a>

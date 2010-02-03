@@ -1,10 +1,12 @@
 Summary: Add a generic form emailer so people can make their own forms
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: 6857dd23
+Comment: b6a991a1
 Inserted: 2010-01-31T23:48:34
-Updated: 2010-01-31T23:48:34
+Updated: 2010-02-03T08:41:02
 
 If the form has a 'subject' field, then that should be in the subject. Also,
 have a 'filter' field so that the subject is:

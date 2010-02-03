@@ -100,6 +100,10 @@ textarea.large, textarea.content {
 	font-family: monospaced;
 }
 
+.nowrap {
+    white-space: nowrap;
+}
+
 /*** specific ***/
 
 /* menu */
