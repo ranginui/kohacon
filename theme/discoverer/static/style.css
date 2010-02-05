@@ -571,3 +571,28 @@ h2.title {
 		font-size: 1.2em;
 		margin-bottom: 5px;
 	}
+        #registrationform fieldset {
+                border: 1px solid #EEE;
+                padding : .3em;
+        }
+        #registrationform label {
+                font-weight : bold;
+                display : block;
+                padding : .2em 0;
+        }
+        #registrationform ol,
+        #registrationform li {
+        list-style-type : none;
+        }
+        #registrationform li {
+                padding : .3em;
+        }
+        #registrationform fieldset.action {
+
+        }
+        #registrationform li.radio label {
+        display : inline;
+        width : auto;
+        margin : 0 1em;
+}
+
