@@ -1,0 +1,8 @@
+Issue: b2dce870
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-09T04:48:26
+Updated: 2010-02-09T04:48:26
+
+Am also going to investigate that there is an environment variable for the
+'host', such that we can check the redirect against that, instead of delving
+into the config.

@@ -289,6 +289,10 @@ class LollySite(webbase.WebBase):
             type = self.request.get('type')
             subject = self.request.get('subject')
             message = self.request.POST.items()
+            redirect = self.request.get('redirect')
+
+            # create the full URL we should be redirecting to
+            full_redirect = util.construct_redirect( redirect )
 
             # now create the message
             msg = Message(
@@ -310,7 +314,7 @@ class LollySite(webbase.WebBase):
                 # don't do anything
                 logging.info('No valid email set, skipping sending admin an email for new message')
 
-            self.redirect('.')
+            self.redirect(full_redirect)
             return
         else:
             # not found

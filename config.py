@@ -49,12 +49,12 @@ def value(title):
     # not in Memcached, so ask the datastore
     data = Property.all().filter("title =", title)
     if not data.count():
-        return ''
+        return None
 
     # if this property has no value
     value = data[0].value
     if value is None:
-        return ''
+        return None
 
     # set the new value in memcache and return it
     memcache.set(title, value, namespace='property')

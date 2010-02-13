@@ -1,9 +1,12 @@
 Summary: Add a 'redirect' field for general form (Message) submission
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Comment: 86a677f9
+Comment: ff4ecd7c
 Inserted: 2010-02-03T10:44:45
-Updated: 2010-02-03T10:44:45
+Updated: 2010-02-13T10:10:24
 
 But make sure it's not an open redirect. We should check to make sure that the
 redirect starts with 'https?://' + \w+ + '.' + 'Naked Domain'.

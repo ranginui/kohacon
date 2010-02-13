@@ -35,13 +35,14 @@ import cgi
 import re
 import datetime
 import re
+import urllib
 
 ## ----------------------------------------------------------------------------
 # local modules
 
+import config
 import textile
 import markdown
-
 import phliky
 
 ## ----------------------------------------------------------------------------
@@ -103,6 +104,18 @@ def urlify(title):
     name = re.sub(r'-$', '', name )
 
     return name
+
+def construct_redirect(path):
+    if path is None or path == '':
+        path = '/'
+
+    redirect = 'http://'
+    if config.value('Sub Domain') is not None:
+        redirect = redirect + config.value('Sub Domain') + '.'
+    redirect = redirect + config.value('Naked Domain')
+    redirect = redirect + urllib.quote(path)
+    logging.info('Redirect = ' + redirect);
+    return redirect
 
 def str_to_datetime(str):
     """ takes strings of the form yyyy-mm-dd hh:mm:ss and returns a datetime """
