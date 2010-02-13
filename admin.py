@@ -112,6 +112,7 @@ application = webapp.WSGIApplication(
 
         # comments
         ('/admin/comment/', comment.Index),
+        ('/admin/comment/edit.html', comment.Edit),
         ('/admin/comment/del.html', comment.Del),
         ('/admin/comment/del-all.html', comment.DelAll),
 

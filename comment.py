@@ -34,8 +34,10 @@ from google.appengine.ext.webapp import template
 from google.appengine.ext import db
 
 # local modules
+from models import Comment, Section
+import models
 import webbase
-from models import Comment
+import error
 
 ## ----------------------------------------------------------------------------
 
@@ -76,6 +78,57 @@ class Index(webbase.WebBase):
             comment.node.regenerate()
             self.redirect('./')
             return
+
+# Edit
+class Edit(webbase.WebBase):
+    def get(self):
+        item = None
+        if self.request.get('key'):
+            item = Comment.get( self.request.get('key') )
+        else:
+            raise error.RequiresEntityError("Needs a comment key (ie. can't add new comments in the admin interface)")
+
+        vals = {
+            'item' : item,
+            'sections' : Section.all(),
+            'types' : models.type_choices
+            }
+        self.template( 'comment-form.html', vals, 'admin' );
+
+    def post(self):
+        item = None
+        vals = {}
+        try:
+            # get all the incoming values
+            name = self.request.get('name')
+            email = self.request.get('email')
+            website = self.request.get('website')
+            comment = self.request.get('comment')
+
+            if self.request.get('key'):
+                item = Comment.get( self.request.get('key') )
+                item.name = name
+                item.email = email
+                item.website = website
+                item.comment = comment
+            else:
+                # we have no ability to add comments, so fail here
+                raise error.RequiresEntityError("Needs a comment key (ie. can't add new comments in the admin interface)")
+
+            # update and save this comment
+            item.set_derivatives()
+            item.put()
+
+            # don't need to item.node.regenerate() since the status is _not_ changing
+
+            self.redirect('.')
+        except Exception, err:
+            vals['item'] = self.request.POST
+            vals['err'] = err
+            vals['sections'] = Section.all()
+            vals['types'] = models.type_choices
+            self.template( 'comment-form.html', vals, 'admin' );
+
 
 # Delete
 class Del(webbase.WebBase):
