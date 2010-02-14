@@ -1,0 +1,63 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit {{type}}</h2>
+{% else %}
+<h2>New {{type}}</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to Comment List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+{% if item %}
+  <input type="hidden" name="key" value="{{ item.key|urlencode }}">
+{% endif %}
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>{{ item.node.section.path|escape }}</td>
+      </tr>
+
+      <tr>
+        <th><label for="id_node">Node:</label></th>
+        <td>{{ item.node.name|escape }}</td>
+      </tr>
+
+      <tr>
+        <th><label for="id_name">Name:</label></th>
+        <td><input type="text" id="id_name" name="name" value="{{ item.name|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_email">Email:</label></th>
+        <td><input type="text" id="id_email" name="email" value="{{ item.email|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_website">Website:</label></th>
+        <td><input type="text" id="id_website" name="website" value="{{ item.website|escape }}"/></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_comment">Comment:</label></th>
+        <td><textarea id="id_comment" name="comment" class="large">{{ item.comment|escape }}</textarea></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_name">Status:</label></th>
+        <td>{{ item.status|escape }}</td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Save Comment" />
+</form>
+
+{% endblock %}
