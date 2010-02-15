@@ -38,12 +38,16 @@ import re
 import urllib
 
 ## ----------------------------------------------------------------------------
+# Google specific modules
+from google.appengine.api import memcache
+
+## ----------------------------------------------------------------------------
 # local modules
 
-import config
 import textile
 import markdown
 import phliky
+import models
 
 ## ----------------------------------------------------------------------------
 # render the content as HTML
@@ -105,14 +109,45 @@ def urlify(title):
 
     return name
 
+def get_config():
+    # query for the config
+    query = models.Config.all()
+
+    # make it if necessary
+    config = None
+    if query.count() == 0:
+        config = models.Config()
+        config.config = {}
+        config.put()
+        return None
+    else:
+        config = query.fetch(1)[0]
+
+    return config
+
+def config_value(title):
+    # see if this 'title' config is in Memcache
+    value = memcache.get(title, 'config')
+    if value is not None:
+        return value
+
+    # get from the datastore
+    config = get_config()
+
+    # return it to the user
+    if title in config.config:
+        return config.config[title]
+    else:
+        return None
+
 def construct_redirect(path):
     if path is None or path == '':
         path = '/'
 
     redirect = 'http://'
-    if config.value('Sub Domain') is not None:
-        redirect = redirect + config.value('Sub Domain') + '.'
-    redirect = redirect + config.value('Naked Domain')
+    if config_value('Sub Domain') is not None:
+        redirect = redirect + config_value('Sub Domain') + '.'
+    redirect = redirect + config_value('Naked Domain')
     redirect = redirect + urllib.quote(path)
     logging.info('Redirect = ' + redirect);
     return redirect

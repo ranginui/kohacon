@@ -35,17 +35,17 @@ from google.appengine.ext.webapp import template
 from django.template import Node
 
 # local
-import config
 from models import Node
+import util
 
 register = template.create_template_register()
 
 ## ----------------------------------------------------------------------------
 # filters
 
-# config.value should never (usually?) raise an exception
+# util.config_value() should never (usually?) raise an exception
 def cfg(title):
-    return config.value(title)
+    return util.config_value(title)
 
 register.filter(cfg)
 
@@ -55,6 +55,15 @@ def list(l):
     return cgi.escape(l, True)
 
 register.filter(list)
+
+# takes a dict and returns the value of the item passed
+def hash(h, key):
+    if key in h:
+        return h[key]
+    else:
+        return None
+
+register.filter(hash)
 
 # finds the latest 'x' number of nodes in a particular section
 def latest(section, limit):

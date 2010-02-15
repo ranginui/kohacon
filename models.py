@@ -68,6 +68,10 @@ class Property(BaseModel):
     title = db.StringProperty( required=True )
     value = db.StringProperty( required=True )
 
+# Config class so the application can be configured
+class Config(BaseModel):
+    config = properties.JsonProperty()
+
 # Section: to group Nodes together
 class Section(BaseModel):
     # path := usually something starting with '/', like '/', '/blog/', '/article/' and '/path/to/'

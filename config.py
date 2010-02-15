@@ -29,35 +29,103 @@
 import logging
 
 # Google specific modules
+from google.appengine.ext import db
 from google.appengine.api import memcache
-from google.appengine.ext.webapp import template
 
 # local modules
-from models import Property
+from models import Config
+import webbase
+import util
 
 ## ----------------------------------------------------------------------------
 
-register = template.create_template_register()
+# List
+class List(webbase.WebBase):
+    def get(self):
+        config = util.get_config()
+        vals = {
+            'config' : config,
+        }
+        self.template( 'config-list.html', vals, 'admin' );
 
-# utility functions
-def value(title):
-    # see if this is in Memcache
-    value = memcache.get(title, 'property')
-    if value is not None:
-        return value
+# Edit
+class Edit(webbase.WebBase):
+    def get(self):
+        config = util.get_config()
+        title = None
+        value = None
+        if self.request.get('title'):
+            title = self.request.get('title')
+            if title in config.config:
+                value = config.config[title]
 
-    # not in Memcached, so ask the datastore
-    data = Property.all().filter("title =", title)
-    if not data.count():
-        return None
+        vals = {
+            'item'  : {
+                'title' : title,
+                'value' : value,
+                }
+            }
+        self.template( 'config-form.html', vals, 'admin' );
 
-    # if this property has no value
-    value = data[0].value
-    if value is None:
-        return None
+    def post(self):
+        title = None
+        value = None
+        config = util.get_config()
+        try:
+            # get all the incoming values
+            title = self.request.get('title').strip()
+            value = self.request.get('value').strip()
 
-    # set the new value in memcache and return it
-    memcache.set(title, value, namespace='property')
-    return value
+            config.config[title] = value
+
+            config.put()
+            memcache.delete(title, namespace='config')
+            self.redirect('.')
+
+        except Exception, err:
+            vals['item'] = self.request.POST
+            vals['err'] = err
+            self.template( 'config-form.html', vals, 'admin' );
+
+
+# Empty Form (ie. never seen ... does something then goes back to the PropertyList)
+class UnCache(webbase.WebBase):
+    def get(self):
+        title = self.request.get('title')
+        if title:
+            memcache.delete(title, namespace='config')
+        self.redirect('.')
+
+# Delete
+class Del(webbase.WebBase):
+    def get(self):
+        try:
+            title = self.request.get('title').strip()
+            if title:
+                config = util.get_config()
+                vals = {
+                    'item' : {
+                        'title' : title,
+                        'value' : config.config[title],
+                        }
+                    }
+                self.template( 'config-del.html', vals, 'admin' );
+            else:
+                self.redirect('.')
+        except:
+            self.redirect('.')
+
+    def post(self):
+        try:
+            title = self.request.get('title').strip()
+            if title:
+                config = util.get_config()
+                del config.config[title]
+                config.put()
+                memcache.delete(title, namespace='config')
+            # else, just redirect to this dir
+            self.redirect('.')
+        except:
+            self.redirect('.')
 
 ## ----------------------------------------------------------------------------

@@ -1,11 +1,12 @@
 Summary: Using |cfg is bad, it's not a filter anymore, needs changing
-Status: InProgress
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: 22c60361
 Comment: 6c1a7447
 Inserted: 2010-01-01T22:10:08
-Updated: 2010-02-14T05:45:10
+Updated: 2010-02-15T10:55:51
 
 When doing something like this in the templates:
 

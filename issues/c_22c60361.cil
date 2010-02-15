@@ -1,0 +1,9 @@
+Issue: 713f4705
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-15T10:49:56
+Updated: 2010-02-15T10:49:56
+
+I kept the ability to say 'title'|cfg but also added the ability to write
+util.config_value('title') which means that can be tested in templates.
+
+(well, at least I hope it can, else I'll cache the whole dictionary too.)
