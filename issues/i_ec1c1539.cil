@@ -1,0 +1,10 @@
+Summary: Fix queue.py for www.%s (Naked Domain)
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-15T10:54:09
+Updated: 2010-02-15T10:54:09
+
+Need to use the create URL function (and if there isn't one, create one) which
+checks the 'Sub Domain' and creates the proper URL depending on whether that is
+set or not.
