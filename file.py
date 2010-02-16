@@ -42,12 +42,19 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+file_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
-        files = File.all().order('-inserted')
+        files = File.all().order('-inserted').fetch(file_count+1)
+
+        more = True if len(files) > file_count else False
+
         vals = {
-            'files' : files
+            'files'      : files,
+            'file_count' : file_count if more else len(files),
+            'more'       : more,
         }
         self.template( 'file-list.html', vals, 'admin' );
 

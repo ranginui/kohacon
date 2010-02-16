@@ -1,10 +1,11 @@
 Summary: Change /admin/file/ to point to the /asset/file/.* location
-Status: New
+Status: Finished
 CreatedBy: Andrew Chilton <andychilton@gmail.com>
 AssignedTo: Andrew Chilton <andychilton@gmail.com>
 Label: Milestone-v0.05
+Comment: 05d88235
 Inserted: 2010-02-02T04:02:00
-Updated: 2010-02-02T04:02:00
+Updated: 2010-02-03T10:52:39
 
 At the moment the /admin/file/ listings are pointing to /asset/.* (with a big
 long list of chars). It'd be better if it pointed to the real filename at

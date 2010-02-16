@@ -132,12 +132,12 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         msg = 'More than one node named [%s] in section [%s]' % (name, section.path)
         self.write(msg)
         logging.warn(msg)
-        admin_email = config.value('Admin Email')
+        admin_email = util.config_value('Admin Email')
         if not mail.is_email_valid(admin_email):
             return
 
-        # url_edit = 'http://www.' + config.value('Naked Domain') + '/admin/node/'
-        url_edit = 'http://www.%s/admin/node/' % config.value('Naked Domain')
+        # url_edit = 'http://www.' + util.config_value('Naked Domain') + '/admin/node/'
+        url_edit = 'http://www.%s/admin/node/' % util.config_value('Naked Domain')
         body = 'Section %s has two nodes named %s ' % (section.path, name)
         mail.send_mail(admin_email, admin_email, 'Duplicate node name in section ' + section.path, body)
 

@@ -50,6 +50,7 @@ import properties
 type_choices = ["text", "code", "phliky", "textile", "html", "markdown"]
 node_choices = ['page', 'recipe']
 layout_choices = ['content', 'blog', 'faq']
+comment_choices = ['new', 'approved', 'rejected']
 
 ## ----------------------------------------------------------------------------
 # normal models
@@ -66,6 +67,10 @@ class BaseModel(db.Model):
 class Property(BaseModel):
     title = db.StringProperty( required=True )
     value = db.StringProperty( required=True )
+
+# Config class so the application can be configured
+class Config(BaseModel):
+    config = properties.JsonProperty()
 
 # Section: to group Nodes together
 class Section(BaseModel):
@@ -215,11 +220,7 @@ class Comment(BaseModel):
     email = db.StringProperty(multiline=False)
     website = db.StringProperty(multiline=False)
     comment = db.TextProperty()
-    status = db.StringProperty(
-        required=True,
-        default='new',
-        choices=['new', 'approved', 'rejected']
-        )
+    status = db.StringProperty(required=True, default='new', choices=set(comment_choices))
 
     # Derivative Properties
     comment_html = db.TextProperty()

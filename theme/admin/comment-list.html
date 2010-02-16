@@ -11,6 +11,7 @@
     <thead>
       <tr>
         <th class="c"><input class="select-all" type="checkbox" /></th>
+        <th class="thin">Edit</th>
         <th>Info</th>
         <th>Page / Comment</th>
         <th class="thin">Approve</th>
@@ -23,6 +24,9 @@
       <tr>
         <td class="c">
           <input type="checkbox" class="keys" name="keys" value="{{ comment.key|escape }}" />
+        </td>
+        <td class="c">
+          <a href="edit.html?key={{ comment.key|urlencode }}"><img title="Edit Comment" src="/s/i/layout_edit.png" /></a>
         </td>
         <td>
           <strong>{{ comment.name|escape }} &lt;{{ comment.email|escape }}&gt;</strong>

@@ -92,7 +92,7 @@ class LollySite(webbase.WebBase):
                 'page'    : 'index.html',
                 'section' : section,
                 }
-            self.template(  section.layout + '-index.html', vals, config.value('Theme') );
+            self.template(  section.layout + '-index.html', vals, util.config_value('Theme') );
 
         elif this_page == 'rss20' and this_ext == 'xml':
             # rss20.xml
@@ -145,7 +145,7 @@ class LollySite(webbase.WebBase):
                 'nodes'   : Node.all().filter('section =', section.key()).filter('label =', label).order('-inserted'),
                 'label'   : label
                 }
-            self.template( 'label-index.html', vals, config.value('Theme') );
+            self.template( 'label-index.html', vals, util.config_value('Theme') );
 
         elif archive_page.search(this_page) and this_ext == 'html':
             # path =~ 'archive:2009.html'
@@ -157,7 +157,7 @@ class LollySite(webbase.WebBase):
                 'nodes'   : Node.all().filter('section =', section.key()).filter('archive =', archive).order('-inserted'),
                 'archive' : archive
                 }
-            self.template( 'archive-index.html', vals, config.value('Theme') );
+            self.template( 'archive-index.html', vals, util.config_value('Theme') );
 
         elif this_page == 'comment' and this_ext == 'html':
             # get the comment if it exists
@@ -177,7 +177,7 @@ class LollySite(webbase.WebBase):
                 'node'    : comment.node,
                 'comment' : comment,
                 }
-            self.template( 'comment.html', vals, config.value('Theme') );
+            self.template( 'comment.html', vals, util.config_value('Theme') );
 
         elif this_ext == 'html':
             # get the node itself
@@ -198,7 +198,7 @@ class LollySite(webbase.WebBase):
                 'node'     : node,
                 'comments' : comments,
                 }
-            self.template( 'node.html', vals, config.value('Theme') );
+            self.template( 'node.html', vals, util.config_value('Theme') );
         else:
             # 404
             self.error(404)
@@ -254,11 +254,11 @@ class LollySite(webbase.WebBase):
             comment.put()
 
             # send a mail to the admin
-            admin_email = config.value('Admin Email')
+            admin_email = util.config_value('Admin Email')
             if mail.is_email_valid(admin_email):
-                url_post = 'http://www.' + config.value('Naked Domain') + node.section.path + node.name + '.html'
-                url_mod  = 'http://www.' + config.value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
-                url_del  = 'http://www.' + config.value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
+                url_post = 'http://www.' + util.config_value('Naked Domain') + node.section.path + node.name + '.html'
+                url_mod  = 'http://www.' + util.config_value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
+                url_del  = 'http://www.' + util.config_value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
 
                 body = 'From: ' + name + ' <' + email + '>\n'
                 body = body + 'Site: ' + website + '\n\n'
@@ -289,6 +289,10 @@ class LollySite(webbase.WebBase):
             type = self.request.get('type')
             subject = self.request.get('subject')
             message = self.request.POST.items()
+            redirect = self.request.get('redirect')
+
+            # create the full URL we should be redirecting to
+            full_redirect = util.construct_redirect( redirect )
 
             # now create the message
             msg = Message(
@@ -299,7 +303,7 @@ class LollySite(webbase.WebBase):
             msg.put()
 
             # send a mail to the admin
-            admin_email = config.value('Admin Email')
+            admin_email = util.config_value('Admin Email')
             if mail.is_email_valid(admin_email):
                 body =        'type    : ' + type + '\n'
                 body = body + 'subject : ' + subject + '\n'
@@ -310,7 +314,7 @@ class LollySite(webbase.WebBase):
                 # don't do anything
                 logging.info('No valid email set, skipping sending admin an email for new message')
 
-            self.redirect('.')
+            self.redirect(full_redirect)
             return
         else:
             # not found

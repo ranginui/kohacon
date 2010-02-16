@@ -4,9 +4,7 @@
 
 <h2>Image List</h2>
 
-{% if images.count %}
-
-<p>There are {{ images.count|escape }} images.</p>
+<p>There {{ images|length|pluralize:"is,are" }} {{ more|yesno:"more than," }} {{ image_count|escape }} image{{ images|length|pluralize }}.</p>
 
 <table class="list striped">
   <thead>
@@ -51,11 +49,5 @@
     {% endfor %}
   </tbody>
 </table>
-
-{% else %}
-
-<p>There are no images.</p>
-
-{% endif %}
 
 {% endblock %}

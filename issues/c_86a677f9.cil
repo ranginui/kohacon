@@ -1,0 +1,16 @@
+Issue: b2dce870
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-13T09:31:34
+Updated: 2010-02-13T09:31:34
+
+Am going to allow redirects to pages on the site only. Therefore, am going to
+allow redirecting to http://subdomain.domain appended with the redirect
+parameter.
+
+e.g. SubDomain   = www
+     NakedDomain = example.com
+     Redirect    = /
+     URL         = http://www.example.com/
+
+This way, we _always_ redirect to an internal page and it doesn't matter what
+is happening in the redirect itself.

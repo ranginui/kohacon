@@ -1,0 +1,20 @@
+Summary: Add a 'redirect' field for general form (Message) submission
+Status: Finished
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Comment: 86a677f9
+Comment: ff4ecd7c
+Inserted: 2010-02-03T10:44:45
+Updated: 2010-02-13T10:10:24
+
+But make sure it's not an open redirect. We should check to make sure that the
+redirect starts with 'https?://' + \w+ + '.' + 'Naked Domain'.
+
+Not sure of the exact check, but yeah, something like that.
+
+Alternatively we always ask for an absolute URL in the site (e.g.
+/something/page.html) onto which will be preceded the 'http://' + 'Naked
+Domain'.
+
+Hmm, I kinda don't like either of these ideas, but maybe that's all we can do.

@@ -39,7 +39,7 @@ from google.appengine.ext import db
 
 # local modules
 import webbase
-import property
+import config
 import section
 import page
 import image
@@ -73,12 +73,12 @@ application = webapp.WSGIApplication(
         ('/admin/', Home),
         ('/admin/credits.html', Credit),
 
-        # properties
-        ('/admin/property/', property.List),
-        ('/admin/property/new.html', property.Edit),
-        ('/admin/property/edit.html', property.Edit),
-        ('/admin/property/uncache.html', property.UnCache),
-        ('/admin/property/del.html', property.Del),
+        # config
+        ('/admin/config/', config.List),
+        ('/admin/config/new.html', config.Edit),
+        ('/admin/config/edit.html', config.Edit),
+        ('/admin/config/uncache.html', config.UnCache),
+        ('/admin/config/del.html', config.Del),
 
         # sections
         ('/admin/section/', section.List),
@@ -112,6 +112,7 @@ application = webapp.WSGIApplication(
 
         # comments
         ('/admin/comment/', comment.Index),
+        ('/admin/comment/edit.html', comment.Edit),
         ('/admin/comment/del.html', comment.Del),
         ('/admin/comment/del-all.html', comment.DelAll),
 

@@ -42,12 +42,19 @@ import util
 
 ## ----------------------------------------------------------------------------
 
+image_count = 20
+
 # List
 class List(webbase.WebBase):
     def get(self):
-        images = Image.all().order('-inserted')
+        images = Image.all().order('-inserted').fetch(image_count+1)
+
+        more = True if len(images) > image_count else False
+
         vals = {
-            'images' : images
+            'images'      : images,
+            'image_count' : image_count if more else len(images),
+            'more'        : more,
         }
         self.template( 'image-list.html', vals, 'admin' );
 

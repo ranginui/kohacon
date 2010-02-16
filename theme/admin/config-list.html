@@ -1,0 +1,42 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+<h2>Config List</h2>
+
+<p>There {{ config.config|length|pluralize:"is,are" }} {{ config.config|length|escape }} config item{{ config.config|length|pluralize }}.</p>
+
+<table class="list striped">
+  <thead>
+    <tr>
+      <th class="thin">Edit</th>
+      <th>Title</th>
+      <th>Value / Memcache</th>
+      <th class="thin">Uncache</th>
+      <th class="thin">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for title in config.config.keys %}
+    <tr>
+      <td class="c">
+        <a href="edit.html?title={{ title|urlencode }}"><img title="Edit Config" src="/s/i/layout_edit.png" /></a>
+      </td>
+      <td><a href="edit.html?title={{ title|urlencode }}">{{ title|escape }}</a></td>
+      <td>
+        {{ config.config|hash:title|escape }}
+        <br />
+        {{ title|cfg|escape }}
+      </td>
+      <td class="c">
+        <a href="uncache.html?title={{ title|urlencode }}"><img title="Uncache Config" src="/s/i/brick_delete.png" /></a>
+      </td>
+      <td class="c">
+        <a href="del.html?title={{ title|urlencode }}"><img title="Delete Config" src="/s/i/cancel.png" /></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

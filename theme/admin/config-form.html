@@ -1,0 +1,38 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+
+{% if item %}
+<h2>Edit Config</h2>
+{% else %}
+<h2>New Config</h2>
+{% endif %}
+
+<p><a href=".">&laquo;&laquo; Back to Config List</a></p>
+
+{% include 'msg.html' %}
+
+<form method="post" action="">
+{% if item.title %}
+  <input type="hidden" name="title" value="{{ item.title|urlencode }}">
+{% endif %}
+
+  <table class="edit">
+    <tbody>
+
+      <tr>
+        <th><label for="id_title">Title:</label></th>
+        <td><input type="text" id="id_title" name="title" value="{{ item.title|default:""|escape }}" /></td>
+      </tr>
+
+      <tr>
+        <th><label for="id_value">Value:</label></th>
+        <td><input type="text" id="id_value" name="value" value="{{ item.value|default:""|escape }}" /></td>
+      </tr>
+
+    </tbody>
+  </table>
+  <input type="submit" value="Save Config" />
+</form>
+
+{% endblock %}
