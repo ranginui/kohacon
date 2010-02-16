@@ -1,0 +1,10 @@
+Summary: Default the page types to 'Text'
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Label: Milestone-v0.05
+Inserted: 2010-02-16T08:43:47
+Updated: 2010-02-16T08:43:47
+
+Or at least fix it up so that it doesn't break if you save when "Select..." is
+still selected.
