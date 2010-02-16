@@ -1,0 +1,13 @@
+Summary: Add a [Save Changes] and [Save and Close] button to each content page
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-16T08:46:11
+Updated: 2010-02-16T08:46:11
+
+This means you can stay on the same editing screen but be sure that you have
+saved your content so far. This also means that validation is also done early
+and you can fix mistakes when you're right there.
+
+This also means I'll have to do some AJAXy type stuff so that's a good thing to
+get me started on that line.
