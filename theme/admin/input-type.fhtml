@@ -1,0 +1,10 @@
+      <tr>
+        <th><label for="id_type">Type:</label></th>
+        <td>
+          <select id="id_type" name="type">
+{% for type in types %}
+            <option value="{{ type|escape }}"{% ifequal type item.type %} selected="selected"{% endifequal %}>{{ type|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>
