@@ -1,0 +1,11 @@
+      <tr>
+        <th><label for="id_section">Section:</label></th>
+        <td>
+          <select id="id_section" name="section">
+            <option value="">Select...</option>
+{% for section in sections %}
+            <option value="{{ section.key|escape }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
+{% endfor %}
+          </select>
+        </td>
+      </tr>

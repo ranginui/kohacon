@@ -20,17 +20,7 @@
   <table class="edit">
     <tbody>
 
-      <tr>
-        <th><label for="id_section">Section:</label></th>
-        <td>
-          <select id="id_section" name="section">
-            <option value="">Select...</option>
-{% for section in sections %}
-            <option value="{{ section.key|urlencode }}"{% ifequal section.key item.section.key %} selected="selected"{% endifequal %}>{{ section.path|escape }}</option>
-{% endfor %}
-          </select>
-        </td>
-      </tr>
+      {% include 'input-section.fhtml' %}
 
       <tr>
         <th><label for="id_name">Name:</label></th>
@@ -62,17 +52,7 @@
         <td><textarea id="id_method" name="method" class="large">{{ item.method|escape }}</textarea></td>
       </tr>
 
-      <tr>
-        <th><label for="id_type">Type:</label></th>
-        <td>
-          <select id="id_type" name="type">
-            <option selected="selected" value="">Select...</option>
-{% for type in types %}
-            <option value="{{ type|escape }}"{% ifequal type item.type %} selected="selected"{% endifequal %}>{{ type|escape }}</option>
-{% endfor %}
-          </select>
-        </td>
-      </tr>
+      {% include 'input-type.fhtml' %}
 
       <tr>
         <th><label for="id_label_raw">Label:</label></th>

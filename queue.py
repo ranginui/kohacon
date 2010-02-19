@@ -116,8 +116,14 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         self.write('- key  = ' + section_key)
         self.write('- name = ' + name)
 
-        # ok, so get the section first
-        section = Section.get( self.request.get('section_key') )
+        # get the section first (and if the section_key is crap just finish)
+        section = None
+        try:
+            section = Section.get( self.request.get('section_key') )
+        except:
+            # by just returning here, it ends up a 200, so all is good
+            return
+
         if section is None:
             self.write('No section found')
             logging.warn( 'No section found for key: ' +  section_key )
