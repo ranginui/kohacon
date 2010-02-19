@@ -120,7 +120,7 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         section = None
         try:
             section = Section.get( self.request.get('section_key') )
-        catch:
+        except:
             # by just returning here, it ends up a 200, so all is good
             return
 
