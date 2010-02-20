@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : Solutions
+Description: A two-column, fixed-width design for 1024x768 screen resolutions.
+Version    : 1.0
+Released   : 20091102
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <title>{% block title %}{{ section.title|escape }}{% endblock %} - Fact Finder</title>
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <link href="/static/solutions/style.css" rel="stylesheet" type="text/css" media="screen" />
+  <script type="text/javascript" src="/s/js/jquery-1.4.min.js"></script>
+</head>
+
+<body>
+  <!-- #logo -->
+  <div id="logo">
+    <h1><a href="/">{{ "Title"|cfg|escape }}</a></h1>
+    <p><em>{{ "Sub Title"|cfg|escape }}</em></p>
+  </div>
+  <hr />
+  <!-- /#logo -->
+
+  <!-- #header -->
+  <div id="header">
+    <!-- #menu -->
+    <div id="menu">
+      <ul>
+        <li><a href="/submit-a-question.html" class="first">Submit a Question</a></li>
+        <li><a href="/about.html">About</a></li>
+        <li><a href="/contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <!-- /#menu -->
+
+    <!-- #search -->
+    <!--
+    <div id="search">
+      <form method="get" action="">
+        <fieldset>
+        <input type="text" name="s" id="search-text" size="15" />
+        <input type="submit" id="search-submit" value="GO" />
+        </fieldset>
+      </form>
+    </div>
+    -->
+    <!-- /#search -->
+  </div>
+  <!-- /#header -->
+
+  <!-- #page -->
+  <div id="page">
+    <!-- #content -->
+    <div id="content">
+
+      {% block content %}{% endblock %}
+
+    </div>
+    <!-- /#content -->
+
+    <!-- #sidebar -->
+    <div id="sidebar">
+      <ul>
+        <li>
+          <h2>About Fact Finder</h2>
+          <p>
+            Find out quick answers to those <a href="https://appengine.google.com/">
+            Google App Engine</a> questions. Point to these answers to help other people
+            find their information faster! Fact Finder is brought to you
+            by <a href="http://www.chilts.org/blog/">chilts.org</a>.
+          </p>
+        </li>
+        <li>
+          <h2>Google AppEngine</h2>
+          <ul>
+            <li><a href="/appengine/label:datastore.html">Datastore</a></li>
+            <li><a href="/appengine/label:memcache.html">Memcache</a></li>
+            <li><a href="/appengine/label:url-fetch.html">URL Fetch</a></li>
+            <li><a href="/appengine/label:mail.html">Mail</a></li>
+            <li><a href="/appengine/label:xmpp.html">XMPP</a></li>
+            <li><a href="/appengine/label:images.html">Images</a></li>
+            <li><a href="/appengine/label:accounts.html">Accounts</a></li>
+            <li><a href="/appengine/label:task-queues.html">Task Queues</a></li>
+            <li><a href="/appengine/label:blobstore.html">BlobStore</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!-- /#sidebar -->
+    <div style="clear: both;">&nbsp;</div>
+  </div>
+  <!-- /#page -->
+
+  <!-- #footer -->
+  <div id="footer">
+    <p>Copyright (c) 2009-2010 <a href="http://www.chilts.org/blog/">chilts.org</a>. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+  </div>
+  <!-- /#footer -->
+
+</body>
+</html>
