@@ -2,7 +2,7 @@
 
 {% block content %}
   {% for node in section|index %}
-  <div class="post"> 
+  <div class="post">
     <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
     {% include 'node.frag' %}
   </div>

@@ -1,0 +1,10 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+    {% for node in section|latest:10 %}
+    <div class="post">
+      <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+      {% include 'node.frag' %}
+    </div>
+    {% endfor %}
+{% endblock %}
