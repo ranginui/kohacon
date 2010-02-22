@@ -19,10 +19,3 @@
             {% endif %}
         {% endif %}
     {% endifequal %}
-
-    <p class="label">
-        Labels:
-    {% for label in node.label %}
-        <a href="./label:{{ label|urlencode }}.html">{{ label|escape }}</a>{% if not forloop.last %},{% endif %}
-    {% endfor %}
-    </p>
