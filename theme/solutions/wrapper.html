@@ -16,6 +16,8 @@ Released   : 20091102
   <title>{% block title %}{{ section.title|escape }}{% endblock %} - Fact Finder</title>
   <meta name="keywords" content="" />
   <meta name="description" content="" />
+  <link href="/s/css/reset.min.css" rel="stylesheet" type="text/css" />
+  <link href="/static/solutions/text.min.css" rel="stylesheet" type="text/css" />
   <link href="/static/solutions/style.css" rel="stylesheet" type="text/css" media="screen" />
   <script type="text/javascript" src="/s/js/jquery-1.4.min.js"></script>
 </head>
@@ -68,18 +70,18 @@ Released   : 20091102
 
     <!-- #sidebar -->
     <div id="sidebar">
+      <p>Brought to you by <a href="http://www.chilts.org/blog/">chilts.org</a>.</p>
       <ul>
         <li>
           <h2>About Fact Finder</h2>
           <p>
             Find out quick answers to those <a href="https://appengine.google.com/">
             Google App Engine</a> questions. Point to these answers to help other people
-            find their information faster! Fact Finder is brought to you
-            by <a href="http://www.chilts.org/blog/">chilts.org</a>.
+            find their information faster!
           </p>
         </li>
         <li>
-          <h2>Google AppEngine</h2>
+          <h2><a href="/appengine/">Google AppEngine</a></h2>
           <ul>
             <li><a href="/appengine/label:datastore.html">Datastore</a></li>
             <li><a href="/appengine/label:memcache.html">Memcache</a></li>
@@ -101,7 +103,13 @@ Released   : 20091102
 
   <!-- #footer -->
   <div id="footer">
-    <p>Copyright (c) 2009-2010 <a href="http://www.chilts.org/blog/">chilts.org</a>. All rights reserved. Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.</p>
+    <p>
+      Copyright (c) 2009-2010 <a href="http://www.chilts.org/blog/">chilts.org</a>.
+      <br />
+      Powered by <a href="http://www.chilts.org/project/lollysite/">Lollysite</a> (<a href="http://gitorious.org/lollysite/">Source</a>) running on <a href="http://kohacon.appspot.com/">App Engine</a>.
+      <br />
+      Original Design by <a href="http://www.freecsstemplates.org/">Free CSS Templates</a>.
+    </p>
   </div>
   <!-- /#footer -->
 

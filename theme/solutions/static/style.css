@@ -1,14 +1,23 @@
+/* ------------------------------------------------------------------------- */
+/*
+	Design by Free CSS Templates
+	http://www.freecsstemplates.org
+	Released for free under a Creative Commons Attribution 2.5 License
+*/
 
 /*
-Design by Free CSS Templates
-http://www.freecsstemplates.org
-Released for free under a Creative Commons Attribution 2.5 License
+	Modified by chilts.org to adhere to a vertical rhythm based on
+	http://www.alistapart.com/articles/settingtypeontheweb
 */
+
+/* ------------------------------------------------------------------------- */
+/* generic */
 
 body {
 	margin: 0;
 	padding: 0;
-	background: #FFFFFF url(bg.gif) repeat-x left top;
+	background: #FFFFFF url(menu.png) repeat-x left top;
+	/* background: #FFFFFF url(http://www.alistapart.com/d/settingtypeontheweb/images/gridbg.gif); */
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	color: #8A8A8A;
@@ -21,25 +30,42 @@ h1, h2, h3 {
 	color: #618C04;
 }
 
-h1 { font-size: 44px; }
+h1 {
+	font-size: 32px;
+	line-height: 36px;
+	margin-bottom: 18px;
+}
 
-h2 { font-size: 30px; }
+h2 {
+	font-size: 24px;
+	line-height: 36px;
+	margin-bottom: 18px;
+}
 
-h3 { }
+h3 {
+	font-size: 12px;
+	line-height: 12px;
+}
 
 p, ul, ol {
 	margin-top: 0;
-	line-height: 240%;
+	line-height: 18px;
 	text-align: justify;
+	font-size: 12px;
 }
 
 ul, ol { }
 
 blockquote { }
 
-a { color: #77B003; }
+a {
+	color: #77B003;
+	text-decoration: none;
+}
 
-a:hover { text-decoration: none; }
+a:hover {
+	color: #618C04;
+}
 
 a img {
 	border: none;
@@ -76,29 +102,61 @@ hr { display: none; }
 #wrapper {
 }
 
-/* Header */
+/* ------------------------------------------------------------------------- */
+/* Logo */
 
-#header-wrapper {
+#logo {
+	width: 940px;
+	height: 108px;
+	margin: 0 auto;
 }
+
+#logo h1 {
+	color: #618C04;
+	font-size: 48px;
+	line-height: 72px;
+	text-transform: lowercase;
+	margin-bottom: 0;
+}
+
+#logo p {
+	text-transform: lowercase;
+	font-size: 12px;
+	color: #A8A8A8;
+	margin-bottom: 18px;
+	text-transform: lowercase;
+}
+
+#logo a {
+	text-decoration: none;
+	color: #A8A8A8;
+}
+
+#logo h1 a {
+	text-decoration: none;
+	color: #618C04;
+}
+
+/* ------------------------------------------------------------------------- */
+/* Header */
 
 #header {
 	width: 940px;
 	height: 36px;
-	margin: 0 auto;
+	margin: 0 auto 36px;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Menu */
-
 #menu {
 	float: left;
 	width: 680px;
-	height: 43px;
-	/* background: url(img02.jpg) no-repeat left top; */
+	height: 36px;
 }
 
 #menu ul {
 	margin: 0;
-	padding: 0px 0px 0px 0px;
+	padding: 0;
 	list-style: none;
 	line-height: normal;
 }
@@ -106,16 +164,17 @@ hr { display: none; }
 #menu li {
 	display: block;
 	float: left;
+	margin: 0;
 }
 
 #menu a {
 	display: block;
 	float: left;
-	height: 30px;
+	height: 36px;
 	margin: 0;
-	padding: 13px 30px 0px 30px;
+	line-height: 36px;
+	padding: 0 30px 0 30px;
 	background: url(menu.gif) no-repeat left top;
-	text-decoration: none;
 	text-align: center;
 	text-transform: capitalize;
 	font-family: Arial, Helvetica, sans-serif;
@@ -134,6 +193,7 @@ hr { display: none; }
 #menu .first {
 }
 
+/* ------------------------------------------------------------------------- */
 /* Search */
 #search {
 	float: right;
@@ -175,106 +235,45 @@ hr { display: none; }
 	color: #FFFFFF;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Page */
 
 #page {
 	width: 940px;
 	margin: 0 auto;
-	padding: 70px 0px 0px 0px;
+	padding: 18px 0 0;
 }
 
-
-/** Logo */
-
-#logo {
-	width: 940px;
-	height: 115px;
-	margin: 0 auto;
-}
-
-#logo h1, #logo p {
-	margin: 0px;
-	line-height: normal;
-	text-transform: lowercase;
-	font-weight: normal;
-	color: #618C04;
-}
-
-#logo p {
-	margin-top: -4px;
-	text-transform: lowercase;
-	font-size: 13px;
-	color: #A8A8A8;
-}
-
-#logo h1 {
-	padding-top: 10px;
-	font-size: 48px;
-}
-
-#logo a {
-	text-decoration: none;
-	color: #A8A8A8;
-}
-
-#logo h1 a {
-	text-decoration: none;
-	color: #618C04;
-}
-
-#banner {
-	padding-bottom: 20px;
-}
-
+/* ------------------------------------------------------------------------- */
 /* Content */
-
 #content {
 	float: right;
 	width: 670px;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Post */
-
 .post {
-	margin-bottom: 45px;
+	margin-bottom: 36px;
 }
 
-.post .title {
-	padding-left: 15px;
-    margin-bottom: 9px;
-	font-size: 30px;
-	text-transform: capitalize;
+.date {
 }
 
-.post .title a {
-	text-decoration: none;
-	color: #618C04;
-}
-
-.post .date {
-}
-
-.post .meta {
-	margin-top: -8px;
+.meta {
 	margin-left: 2px;
-	padding: 0px 30px 2px 15px;
+	padding: 0px 30px 1px 15px;
 	border-bottom: 1px solid #D4D8CB;
 	font-family: Arial, Helvetica, sans-serif;
 	font-weight: normal;
 	font-size: 10px;
+	line-height: 16px;
 	color: #66665E;
 }
 
-.post .meta span {
-	display: block;
-	margin-top: -10px;
-}
-
-.post .meta a { }
-
 .post .entry {
-	margin-bottom: 10px;
-	padding: 10px 15px 10px 15px;
+	margin-bottom: 18px;
+	padding: 0 15px;
 }
 
 .post .links {
@@ -310,40 +309,49 @@ hr { display: none; }
 /* Form */
 
 form ul, form li {
-    list-style: none;
-    clear: both;
+	list-style: none;
+	clear: both;
 }
 
 form label, form input, form textarea {
-    float: left;
-    width: 400px;
+	float: left;
+	width: 400px;
 }
 
 form textarea {
-    height: 10em;
+	height: 10em;
 }
 
 form .button {
-    width: 200px;
+	width: 200px;
 }
 
 form label {
-    width: 90px;
-    text-align: right;
-    padding-right: 10px;
+	width: 90px;
+	text-align: right;
+	padding-right: 10px;
 }
 
 form .faux {
-    display: none;
+	display: none;
 }
 
+/* ------------------------------------------------------------------------- */
 /* Sidebar */
-
 #sidebar {
 	float: left;
 	width: 240px;
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
+}
+
+#sidebar h2 {
+	margin-bottom: 0;
+	padding-left: 14px;
+	text-transform: capitalize;
+	font-size: 18px;
+	font-weight: normal;
+	color: #618C04;
 }
 
 #sidebar ul {
@@ -354,8 +362,7 @@ form .faux {
 }
 
 #sidebar li {
-	margin-bottom: 30px;
-	padding: 0 0 10px 0px;
+	margin: 0 0 18px;
 }
 
 #sidebar li ul {
@@ -364,9 +371,8 @@ form .faux {
 
 #sidebar li li {
 	margin: 0;
-	padding: 12px 0px;
+	line-height: 17px;
 	border-bottom: 1px solid #E9E8DD;
-	/* background: url(img08.gif) no-repeat left 18px; */
 }
 
 #sidebar li li a {
@@ -380,110 +386,27 @@ form .faux {
 }
 
 #sidebar p {
-	margin: 0;
 	padding: 0px 14px;
-}
-
-#sidebar h2 {
-	height: 30px;
-	margin: 0 0 10px 0px;
-	padding: 6px 0 2px 14px;
-	/* background: url(img05.gif) repeat-x left top; */
-	text-transform: capitalize;
-	font-size: 18px;
-	font-weight: normal;
-	color: #618C04;
-}
-
-
-#sidebar p {
-	line-height: 200%;
 }
 
 #sidebar a {
 	text-align: left;
-	text-decoration: none;
 	font-weight: bold;
 }
 
-/* Calendar */
-
-#calendar {
-}
-
-#calendar caption {
-	padding-bottom: 5px;
-	font-weight: bold;
-}
-
-#calendar table {
-	width: 100%;
-	border-collapse: collapse;
-	border-bottom: 1px solid #24130F;
-	border-left: 1px solid #24130F;
-	border-right: 1px solid #24130F;
-}
-
-#calendar thead th {
-	padding: 5px 0;
-	text-align: center;
-	border-top: 1px solid #24130F;
-	border-left: 1px solid #24130F;
-	background: #24130F;
-}
-
-#calendar tbody td {
-	padding: 5px 0;
-	text-align: center;
-	border-top: 1px solid #24130F;
-	border-left: 1px solid #24130F;
-	border-bottom: 1px solid #24130F;
-}
-
-#calendar tfoot td {
-	padding: 5px;
-	border-left: 1px solid #24130F;
-	border-bottom: 1px solid #24130F;
-}
-
-#calendar tfoot #next {
-	border-top: 1px solid #24130F;
-	text-align: right;
-}
-
-#calendar tfoot #prev {
-	border-top: 1px solid #24130F;
-}
-
-#calendar .pad {
-	border-bottom: 1px solid #24130F;
-}
-
-#calendar #today {
-	background: #24130F;
-}
-
+/* ------------------------------------------------------------------------- */
 /* Footer */
-
 #footer {
 	width: 100%;
-	height: 100px;
+	height: 72px;
 	margin: 0 auto;
-	padding: 0;
+	padding: 18px 0 0;
 	background: #E1E1E1;
 }
 
-#footer-bgcontent {
-}
-
 #footer p {
-	margin: 0;
-	padding: 30px 0px 0px 0px;
 	text-align: center;
-	line-height: normal;
 	text-transform: uppercase;
 	font-size: 10px;
 }
-
-#footer a {
-}
+/* ------------------------------------------------------------------------- */
