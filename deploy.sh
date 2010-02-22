@@ -28,6 +28,10 @@ case "$APP" in
     lollysite)
         echo "Main Lollysite site"
         ;;
+    fact-finder)
+        echo "Deploying new Facts!"
+        APP=fact-finder
+        ;;
     *)
        echo "Unknown site"
        exit 2
