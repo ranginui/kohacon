@@ -71,6 +71,10 @@ a img {
 	border: none;
 }
 
+pre {
+	background-color: #eee;
+}
+
 img.left {
 	float: left;
 	margin: 7px 30px 0 0;
@@ -135,6 +139,10 @@ hr { display: none; }
 #logo h1 a {
 	text-decoration: none;
 	color: #618C04;
+}
+
+#logo img {
+	float: right;
 }
 
 /* ------------------------------------------------------------------------- */
