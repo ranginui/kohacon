@@ -321,7 +321,14 @@ form ul, form li {
 	clear: both;
 }
 
-form label, form input, form textarea {
+form label {
+	float: left;
+	width: 90px;
+	text-align: right;
+	padding-right: 10px;
+}
+
+form input, form textarea {
 	float: left;
 	width: 400px;
 }
@@ -332,12 +339,6 @@ form textarea {
 
 form .button {
 	width: 200px;
-}
-
-form label {
-	width: 90px;
-	text-align: right;
-	padding-right: 10px;
 }
 
 form .faux {
