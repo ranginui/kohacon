@@ -142,8 +142,7 @@ class SectionCheckDuplicateNodes(webbase.WebBase):
         if not mail.is_email_valid(admin_email):
             return
 
-        # url_edit = 'http://www.' + util.config_value('Naked Domain') + '/admin/node/'
-        url_edit = 'http://www.%s/admin/node/' % util.config_value('Naked Domain')
+        url_edit = util.construct_url() + '/admin/node/'
         body = 'Section %s has two nodes named %s ' % (section.path, name)
         mail.send_mail(admin_email, admin_email, 'Duplicate node name in section ' + section.path, body)
 
