@@ -2,7 +2,7 @@
 
 {% block content %}
     <h1>{{ section.title|escape }} - {{ "Title"|cfg|escape }}</h1>
-    <p>{{ section.description_html }}</p>
+    {{ section.description_html }}
 
     {% for node in section|latest:10 %}
     <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>

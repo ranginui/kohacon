@@ -2,7 +2,7 @@
 
 {% block content %}
   <h1>{{ section.title|escape }}</h1>
-  <p>{{ section.description_html }}</p>
+  {{ section.description_html }}
 
   {% for node in section|index %}
   <div class="post">
