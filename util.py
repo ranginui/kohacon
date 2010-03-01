@@ -144,7 +144,7 @@ def construct_redirect(path):
     if path is None or path == '':
         path = '/'
 
-    redirect = construct_redirect() + urllib.quote(path)
+    redirect = construct_url() + urllib.quote(path)
     return redirect
 
 def construct_url():
