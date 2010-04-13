@@ -7,6 +7,9 @@ start-chilts:
 start-fact-finder:
 	~/google_appengine/dev_appserver.py --datastore_path=store/fact-finder.db --history_path=store/data.db.history ./
 
+start-kohacon:
+	~/google_appengine/dev_appserver.py --datastore_path=store/kohacon.db --history_path=store/data.db.history ./
+
 next-release:
 	cil summary --is-open --label=Milestone-v0.05
 
