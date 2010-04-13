@@ -144,13 +144,15 @@ def construct_redirect(path):
     if path is None or path == '':
         path = '/'
 
-    redirect = 'http://'
-    if config_value('Sub Domain') is not None:
-        redirect = redirect + config_value('Sub Domain') + '.'
-    redirect = redirect + config_value('Naked Domain')
-    redirect = redirect + urllib.quote(path)
-    logging.info('Redirect = ' + redirect);
+    redirect = construct_url() + urllib.quote(path)
     return redirect
+
+def construct_url():
+    url = 'http://'
+    if config_value('Sub Domain') is not None:
+        url = url + config_value('Sub Domain') + '.'
+    url = url + config_value('Naked Domain')
+    return url
 
 def str_to_datetime(str):
     """ takes strings of the form yyyy-mm-dd hh:mm:ss and returns a datetime """

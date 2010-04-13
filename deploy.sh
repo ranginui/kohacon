@@ -30,6 +30,11 @@ case "$APP" in
         ;;
     kohacon)
         echo "KohaCon website"
+        APP=kohacon
+        ;;
+    fact-finder)
+        echo "Deploying new Facts!"
+        APP=fact-finder
         ;;
     *)
        echo "Unknown site"

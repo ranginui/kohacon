@@ -1,0 +1,13 @@
+Summary: At the start of Queues, check X-AppEngine-TaskRetryCount
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-02-19T20:31:57
+Updated: 2010-02-19T20:31:57
+
+There seems to be a header which is passed in queue requests called
+'X-AppEngine-TaskRetryCount'. If this number is particularly large, we should
+just stop retrying the queue.
+
+It'd probably be good to also send an email to the 'Admin Email' address to
+tell them that the task will no longer be retried.

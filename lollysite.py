@@ -256,9 +256,9 @@ class LollySite(webbase.WebBase):
             # send a mail to the admin
             admin_email = util.config_value('Admin Email')
             if mail.is_email_valid(admin_email):
-                url_post = 'http://www.' + util.config_value('Naked Domain') + node.section.path + node.name + '.html'
-                url_mod  = 'http://www.' + util.config_value('Naked Domain') + '/admin/comment/?key=' + str(comment.key()) + ';status='
-                url_del  = 'http://www.' + util.config_value('Naked Domain') + '/admin/comment/del.html?key='+ str(comment.key())
+                url_post = util.construct_url() + node.section.path + node.name + '.html'
+                url_mod  = util.construct_url() + '/admin/comment/?key=' + str(comment.key()) + ';status='
+                url_del  = util.construct_url() + '/admin/comment/del.html?key='+ str(comment.key())
 
                 body = 'From: ' + name + ' <' + email + '>\n'
                 body = body + 'Site: ' + website + '\n\n'

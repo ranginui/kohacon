@@ -1,0 +1,15 @@
+{% extends "wrapper.html" %}
+
+{% block content %}
+  <h1>{{ label|escape }} ({{ section.title|escape }})</h1>
+  <p class="meta">
+    <em>Found {{nodes.count|escape}} entr{{ nodes.count|pluralize:"y,ies" }}.</em>
+  </p>
+
+  {% for node in nodes %}
+  <div class="post">
+    <h2><a href="./{{ node.name|escape }}.html">{{ node.title|escape }}</a></h2>
+    {% include 'node.frag' %}
+  </div>
+  {% endfor %}
+{% endblock %}
