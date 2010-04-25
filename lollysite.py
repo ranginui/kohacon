@@ -61,6 +61,11 @@ parts = re.compile('^(.*/)(([\w\._:-]*)\.(\w+))?$')
 label_page = re.compile('^label:(.+)$', re.DOTALL | re.VERBOSE)
 archive_page = re.compile('^archive:(\d\d\d\d(-\d\d(-\d\d)?)?)$', re.DOTALL | re.VERBOSE)
 
+# allows us to check if this comment is spammy
+links = re.compile('https?://')
+def spammy_links(comment):
+    return False if len(re.findall(links, comment)) < 5 else True
+
 ## ----------------------------------------------------------------------------
 
 class LollySite(webbase.WebBase):
@@ -231,7 +236,7 @@ class LollySite(webbase.WebBase):
             # firstly, check the 'faux' field and if something is in there, redirect
             faux = self.request.get('faux')
             if len(faux) > 0:
-                logging.info('COMMENT: Spam detected, not saving')
+                logging.info('COMMENT: Spam comment detected (Faux field not empty)')
                 self.redirect('/')
                 return
 
@@ -241,6 +246,12 @@ class LollySite(webbase.WebBase):
             email = self.request.get('email')
             website = self.request.get('website')
             comment_text = re.sub('\r', '', self.request.get('comment'));
+
+            # if there are more than 4 links (https?://) in the comment, we consider it spam
+            if spammy_links(comment_text):
+                logging.info('COMMENT: Spam comment detected (Too many links)')
+                self.redirect('/')
+                return
 
             # now create the comment
             comment = Comment(
