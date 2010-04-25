@@ -1,0 +1,9 @@
+Summary: Make it so that SPAM gets caught (multiple links)
+Status: New
+CreatedBy: Andrew Chilton <andychilton@gmail.com>
+AssignedTo: Andrew Chilton <andychilton@gmail.com>
+Inserted: 2010-04-25T05:35:16
+Updated: 2010-04-25T05:35:16
+
+A lot of spam has multiple links. If we can reject those that have more than 5
+links in a message, that'll get rid of a lot of them.
