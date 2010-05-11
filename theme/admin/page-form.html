@@ -41,7 +41,9 @@
 
       <tr>
         <th><label for="id_label_raw">Label:</label></th>
-        <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
+        <td>
+          <input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /><br /><span class="msg">(Space separated, no commas.)</span>
+        </td>
       </tr>
 
       <tr>
