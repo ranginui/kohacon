@@ -44,7 +44,10 @@
 
       <tr>
         <th><label for="id_ingredients">Ingredients:</label></th>
-        <td><textarea id="id_ingredients" name="ingredients" class="medium">{{ item.ingredients|escape }}</textarea></td>
+        <td>
+          <textarea id="id_ingredients" name="ingredients" class="medium">{{ item.ingredients|escape }}</textarea>
+          <br /><span class="msg">(Markup, but generally just write a list.)
+        </td>
       </tr>
 
       <tr>
@@ -56,7 +59,9 @@
 
       <tr>
         <th><label for="id_label_raw">Label:</label></th>
-        <td><input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /></td>
+        <td>
+          <input type="text" id="id_label_raw" name="label_raw" value="{{ item.label_raw|escape }}" /><br /><span class="msg">(Space separated, no commas.)</span>
+        </td>
       </tr>
 
       <tr>
