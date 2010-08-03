@@ -46,7 +46,7 @@ esac
 sed -i.orig "1,1s/^application: lollysite$/application: $APP/" app.yaml
 
 case "$COMMAND" in
-    update|update_indexes|update_queues|update_cron)
+    update|update_indexes|update_queues|update_cron|rollback)
         echo "Doing $COMMAND"
         ~/google_appengine/appcfg.py $COMMAND ./
         ;;
